@@ -1,0 +1,103 @@
+set nocompatible	" be iMproved, required
+"filetype off		" required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'vim-ruby/vim-ruby'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'christophermca/meta5'
+Plugin 'jscappini/material.vim'
+" Plugin 'x1596357/vim'
+Plugin 'tpope/vim-unimpaired'
+" Plugin 'Lokaltog/vim-powerline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'majutsushi/tagbar'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'flazz/vim-colorschemes'
+"Plugin 'vim-latex/vim-latex'
+"Plugin 'rosenfeld/conque-term'
+Plugin 'rking/ag.vim'
+Plugin 'nvie/vim-flake8'
+"Plugin 'hynek/vim-python-pep8-indent'
+
+" All of your Plugins must be added before the following line
+call vundle#end()	" required
+filetype plugin indent on " required
+
+filetype plugin on
+syntax on
+set hls
+set hidden
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+set wildmenu
+set wildmode=full
+set history=100000
+set number
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+" 命令行模式增强，ctrl - a到行首， -e 到行尾
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+
+" conf of default YCM
+let g:ycm_global_ycm_extra_conf = '/home/lzx/.ycm_extra_conf.py'
+nnoremap <leader>gl :YcmCompleter GoToDefinition<CR>
+"nnoremap <leader>jd :YcmCompleter GoTo<CR>
+let g:ycm_complete_in_comments = 1
+let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_autoclose_preview_window_after_completion = 1
+
+" set solarized color theme
+syntax enable
+"let g:solarized_termcolors=256
+"set background=dark
+"colorscheme solarized
+"colorscheme deepsea
+colorscheme desert256
+
+" conf for gvim
+if has('gui_running')
+	set guioptions-=T
+	set guioptions-=m
+	set guifont=monaco\ 12
+endif
+
+" conf for vim-ruby
+filetype on           " Enable filetype detection
+filetype plugin on    " Enable filetype-specific plugins
+autocmd FileType ruby,yaml setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType html,eruby setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
+autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
+autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4
+
+" conf for airline
+set laststatus=2
+" let g:Powerline_symbols='unicode'
+let g:tmuxline_powerline_separators = 0
+
+" conf for vim-latex
+set grepprg=grep\ -nH\ $*
+filetype indent on
+let g:tex_flavor='latex'
+
+" conf for Ag
+let g:ag_prg="/usr/bin/ag --vimgrep"
+
+" conf for ctags
+let g:ctags_statusline=1
+
+" conf for flake8
+let g:flake8_ignore="W291,W391,E123,E124,E125,E126,E127,E128,E221,E225,E226,E261,E262,E272,E302,E501,E502"
+autocmd BufWritePost *.py call Flake8()
