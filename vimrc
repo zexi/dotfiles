@@ -40,7 +40,7 @@ cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 set wildmenu
 set wildmode=full
-set history=100000
+set history=1000
 set number
 nnoremap k gk
 nnoremap gk k
