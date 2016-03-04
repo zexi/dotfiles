@@ -64,8 +64,8 @@ syntax enable
 "set background=dark
 "colorscheme solarized
 "colorscheme deepsea
-colorscheme desert256
-
+"colorscheme desert256
+colorscheme Tomorrow-Night-Eighties
 " conf for gvim
 if has('gui_running')
 	set guioptions-=T
@@ -100,4 +100,18 @@ let g:ctags_statusline=1
 
 " conf for flake8
 let g:flake8_ignore="W291,W391,E123,E124,E125,E126,E127,E128,E221,E225,E226,E261,E262,E272,E302,E501,E502"
-autocmd BufWritePost *.py call Flake8()
+"autocmd BufWritePost *.py call Flake8()
+
+" conf for window split
+" We can use different key mappings for easy navigation between splits to save
+" a keystroke. So instead of ctrl-w then j, it’s just ctrl-j
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" Open new split panes to right and bottom, which feels more natural than
+" Vim’s default:
+set splitbelow
+set splitright
+
