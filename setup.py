@@ -2,7 +2,7 @@
 
 import os
 
-src_des_path = {'vimrc': '.vimrc', 'tmux.conf': '.tmux.conf', 'flake8': '.conf/flake8'}
+src_des_path = {'vimrc': '.vimrc', 'tmux.conf': '.tmux.conf', 'flake8': '.conf/flake8', 'pryrc': '.pryrc'}
 
 mypath = os.path.abspath(os.path.dirname(os.path.realpath(__file__))) + os.sep
 os.chdir(mypath)
