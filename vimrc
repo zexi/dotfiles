@@ -27,6 +27,7 @@ Plugin 'flazz/vim-colorschemes'
 Plugin 'rking/ag.vim'
 Plugin 'nvie/vim-flake8'
 "Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'christoomey/vim-tmux-navigator'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	" required
