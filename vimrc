@@ -22,13 +22,14 @@ Plugin 'majutsushi/tagbar'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
-"Plugin 'vim-latex/vim-latex'
+Plugin 'lervag/vimtex'
 "Plugin 'rosenfeld/conque-term'
 Plugin 'rking/ag.vim'
 Plugin 'nvie/vim-flake8'
 "Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	" required
@@ -78,8 +79,10 @@ endif
 " conf for vim-ruby
 filetype on           " Enable filetype detection
 filetype plugin on    " Enable filetype-specific plugins
-autocmd FileType ruby,yaml setlocal expandtab shiftwidth=2 tabstop=2
-autocmd FileType html,eruby setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType ruby,yaml,eruby setlocal expandtab shiftwidth=2 tabstop=2
+let g:user_emmet_install_global = 0
+autocmd FileType html,css setlocal expandtab shiftwidth=2 tabstop=2 smartindent smarttab softtabstop=2
+autocmd FileType html,css EmmetInstall 
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
 autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
@@ -102,7 +105,7 @@ let g:ctags_statusline=1
 
 " conf for flake8
 let g:flake8_ignore="W291,W391,E123,E124,E125,E126,E127,E128,E221,E225,E226,E261,E262,E272,E302,E501,E502"
-"autocmd BufWritePost *.py call Flake8()
+" autocmd BufWritePost *.py call Flake8()
 
 " conf for window split
 " We can use different key mappings for easy navigation between splits to save
