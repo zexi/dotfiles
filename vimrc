@@ -22,6 +22,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'morhetz/gruvbox'
 Plugin 'lervag/vimtex'
 "Plugin 'rosenfeld/conque-term'
 Plugin 'rking/ag.vim'
@@ -62,18 +63,22 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 " set solarized color theme
-syntax enable
+" syntax enable
 "let g:solarized_termcolors=256
-"set background=dark
+set background=dark
 "colorscheme solarized
 "colorscheme deepsea
 "colorscheme desert256
-colorscheme Tomorrow-Night-Eighties
+"let g:gruvbox_italic=1
+colorscheme gruvbox
+"colorscheme Tomorrow-Night-Eighties
 " conf for gvim
 if has('gui_running')
 	set guioptions-=T
 	set guioptions-=m
 	set guifont=monaco\ 12
+else
+	highlight Comment ctermfg=lightblue cterm=none
 endif
 
 " conf for vim-ruby
