@@ -31,6 +31,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mattn/emmet-vim'
+Plugin 'wannesm/wmgraphviz.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	" required
@@ -90,7 +91,8 @@ autocmd FileType html,css setlocal expandtab shiftwidth=2 tabstop=2 smartindent 
 autocmd FileType html,css EmmetInstall 
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
-autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+autocmd FileType python,go setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+autocmd FileType tex setlocal expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
 
 " conf for airline
 set laststatus=2
@@ -126,8 +128,8 @@ set splitbelow
 set splitright
 
 " config for buffer
-map <C-z> :bp<cr>
-map <C-x> :bn<cr>
+"map <C-z> :bp<cr>
+"map <C-x> :bn<cr>
 
 " for vim-indent-guides
 let g:indent_guides_guide_size = 1
