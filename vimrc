@@ -92,7 +92,7 @@ autocmd FileType html,css EmmetInstall
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
 autocmd FileType python,go setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
-autocmd FileType tex setlocal expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
+autocmd FileType tex,markdown setlocal expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
 
 " conf for airline
 set laststatus=2
