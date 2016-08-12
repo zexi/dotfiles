@@ -22,4 +22,16 @@ def move_file(src2des):
         print 'Create symlink: %s --> %s' % (des, src_abs_path)
         os.symlink(src_abs_path, des)
 
+def setup_tools():
+    tools_path = ['~/.vim/bundle/Vundle.vim', '~/.oh-my-zsh']
+    tools_path = [os.path.expanduser(p) for p in tools_path]
+    for p in tools_path:
+        if not os.path.exists(p):
+            if 'vim' in p:
+                cmd = 'git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim'
+            if 'zsh' in p:
+                cmd = 'sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"'
+            os.system(cmd)
+
 move_file(src_des_path)
+setup_tools()
