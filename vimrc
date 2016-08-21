@@ -21,8 +21,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'flazz/vim-colorschemes'
+"Plugin 'flazz/vim-colorschemes'
 Plugin 'morhetz/gruvbox'
+Plugin 'altercation/vim-colors-solarized'
 Plugin 'lervag/vimtex'
 "Plugin 'rosenfeld/conque-term'
 Plugin 'rking/ag.vim'
@@ -32,13 +33,19 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mattn/emmet-vim'
 Plugin 'wannesm/wmgraphviz.vim'
+Plugin 'sjl/vitality.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-surround'
+Plugin 'sjl/gundo.vim'
+Plugin 'ntpeters/vim-better-whitespace'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	" required
 filetype plugin indent on " required
 
 filetype plugin on
-syntax on
 set hls
 set hidden
 cnoremap <C-p> <Up>
@@ -64,13 +71,16 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 " set solarized color theme
-" syntax enable
-"let g:solarized_termcolors=256
+syntax on
 set background=dark
+"set background=light
+"let g:solarized_termtrans = 1
 "colorscheme solarized
+
 "colorscheme deepsea
 "colorscheme desert256
 "let g:gruvbox_italic=1
+let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
 "colorscheme Tomorrow-Night-Eighties
 " conf for gvim
@@ -98,6 +108,7 @@ autocmd FileType tex,markdown setlocal expandtab tabstop=2 shiftwidth=2 smarttab
 set laststatus=2
 " let g:Powerline_symbols='unicode'
 let g:tmuxline_powerline_separators = 0
+let g:airline_theme='durant'
 
 " conf for vim-latex
 set grepprg=grep\ -nH\ $*
@@ -134,3 +145,57 @@ set splitright
 " for vim-indent-guides
 let g:indent_guides_guide_size = 1
 let g:indent_guides_start_level = 2
+
+" sudo write
+cmap w!! w !sudo tee % >/dev/null
+
+" for Tabularize
+nmap <Leader>a& :Tabularize /&<CR>
+vmap <Leader>a& :Tabularize /&<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a,, :Tabularize /,\zs<CR>
+vmap <Leader>a,, :Tabularize /,\zs<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
+" for easymotion
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
+
+" for gundo
+nnoremap <Leader>u :GundoToggle<CR>
+
+" for white space mode
+highlight ExtraWhitespace ctermbg=red
+
+" Use a blinking upright bar cursor in Insert mode, a blinking block in normal
+if &term == 'xterm-256color' || &term == 'screen-256color'
+    let &t_SI = "\<Esc>[5 q"
+    let &t_EI = "\<Esc>[1 q"
+endif
+
+if exists('$TMUX')
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
+endif
