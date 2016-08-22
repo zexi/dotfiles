@@ -33,7 +33,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mattn/emmet-vim'
 Plugin 'wannesm/wmgraphviz.vim'
-Plugin 'sjl/vitality.vim'
+"Plugin 'sjl/vitality.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'scrooloose/nerdcommenter'
@@ -108,7 +108,7 @@ autocmd FileType tex,markdown setlocal expandtab tabstop=2 shiftwidth=2 smarttab
 set laststatus=2
 " let g:Powerline_symbols='unicode'
 let g:tmuxline_powerline_separators = 0
-let g:airline_theme='durant'
+"let g:airline_theme='durant'
 
 " conf for vim-latex
 set grepprg=grep\ -nH\ $*
@@ -170,11 +170,11 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
 " `s{char}{label}`
-nmap s <Plug>(easymotion-overwin-f)
+nmap <Leader>s <Plug>(easymotion-overwin-f)
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-overwin-f2)
+nmap <Leader>s <Plug>(easymotion-overwin-f2)
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
