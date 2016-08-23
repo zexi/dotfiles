@@ -48,6 +48,7 @@ filetype plugin indent on " required
 filetype plugin on
 set hls
 set hidden
+set incsearch
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 set wildmenu
