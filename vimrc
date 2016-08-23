@@ -55,6 +55,7 @@ set wildmenu
 set wildmode=full
 set history=1000
 set number
+set showcmd
 nnoremap k gk
 nnoremap gk k
 nnoremap j gj
@@ -99,7 +100,7 @@ filetype plugin on    " Enable filetype-specific plugins
 autocmd FileType ruby,yaml,eruby setlocal expandtab shiftwidth=2 tabstop=2
 let g:user_emmet_install_global = 0
 autocmd FileType html,css setlocal expandtab shiftwidth=2 tabstop=2 smartindent smarttab softtabstop=2
-autocmd FileType html,css EmmetInstall 
+autocmd FileType html,css EmmetInstall
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
 autocmd FileType python,go setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
@@ -200,3 +201,16 @@ if exists('$TMUX')
     let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
     let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
 endif
+
+" for ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
