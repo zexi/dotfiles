@@ -28,7 +28,7 @@ Plugin 'lervag/vimtex'
 "Plugin 'rosenfeld/conque-term'
 Plugin 'rking/ag.vim'
 Plugin 'nvie/vim-flake8'
-"Plugin 'hynek/vim-python-pep8-indent'
+Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'mattn/emmet-vim'
@@ -40,6 +40,10 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'pangloss/vim-javascript'
+Plugin 'scrooloose/syntastic'
+Plugin 'benekastah/neomake'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	" required
@@ -103,7 +107,7 @@ autocmd FileType html,css setlocal expandtab shiftwidth=2 tabstop=2 smartindent 
 autocmd FileType html,css EmmetInstall
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
-autocmd FileType python,go setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+autocmd FileType python,go,javascript setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 autocmd FileType tex,markdown setlocal expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
 
 " conf for airline
@@ -124,8 +128,8 @@ let g:ag_prg="/usr/bin/ag --vimgrep"
 let g:ctags_statusline=1
 
 " conf for flake8
-let g:flake8_ignore="W291,W391,E123,E124,E125,E126,E127,E128,E221,E225,E226,E261,E262,E272,E302,E501,E502"
-" autocmd BufWritePost *.py call Flake8()
+let g:flake8_ignore='W291,W391,E123,E124,E125,E126,E127,E128,E221,E225,E226,E261,E262,E272,E302,E501,E502'
+"autocmd BufWritePost *.py call Flake8()
 
 " conf for window split
 " We can use different key mappings for easy navigation between splits to save
@@ -214,3 +218,30 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+" for python fold
+"let g:SimpylFold_fold_import = 0
+let g:SimpylFold_docstring_preview = 1
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+set nofoldenable
+
+" for syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_flake8_args = '--ignore=W291,W391,E123,E124,E125,E126,E127,E128,E221,E225,E226,E261,E262,E272,E302,E501,E502'
+let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+"nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+nmap <Leader>Sd :SyntasticToggleMode<CR>
+" Neomake
+autocmd! BufWritePost * Neomake
+" 80th highlighted
+highlight ColorColumn ctermbg=magenta
+call matchadd('ColorColumn', '\%81v', 100)
