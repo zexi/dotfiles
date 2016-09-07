@@ -21,7 +21,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'majutsushi/tagbar'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'kien/ctrlp.vim'
-"Plugin 'flazz/vim-colorschemes'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'chriskempson/base16-vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'lervag/vimtex'
@@ -44,6 +45,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'benekastah/neomake'
+Plugin 'kchmck/vim-coffee-script'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	" required
@@ -79,8 +81,9 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 " set solarized color theme
 syntax on
 set background=dark
-"set background=light
+"let g:solarized_termcolors=256
 "let g:solarized_termtrans = 1
+"set background=light
 "colorscheme solarized
 
 "colorscheme deepsea
@@ -88,7 +91,11 @@ set background=dark
 "let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark='hard'
 colorscheme gruvbox
+"colorscheme jellybeans
 "colorscheme Tomorrow-Night-Eighties
+"colorscheme zenburn
+"let g:seoul256_background = 233
+"colorscheme seoul256
 " conf for gvim
 if has('gui_running')
 	set guioptions-=T
@@ -245,3 +252,12 @@ autocmd! BufWritePost * Neomake
 " 80th highlighted
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%81v', 100)
+
+" coffee script
+autocmd BufNewFile,BufReadPost *.coffee setl foldmethod=indent nofoldenable
+autocmd BufNewFile,BufReadPost *.coffee setl shiftwidth=2 expandtab
+
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
