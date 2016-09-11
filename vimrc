@@ -15,6 +15,7 @@ Plugin 'christophermca/meta5'
 Plugin 'jscappini/material.vim'
 " Plugin 'x1596357/vim'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-repeat'
 " Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -46,6 +47,9 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'scrooloose/syntastic'
 Plugin 'benekastah/neomake'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'lfilho/cosco.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	" required
@@ -261,3 +265,20 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+
+set clipboard=unnamed
+set clipboard+=unnamedplus
+
+" vim-repeat
+silent! call repeat#set("\<Plug>unimpaired.vim", v:count)
+
+" cosco.vim
+autocmd FileType javascript,css nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon);
+autocmd FileType javascript,css imap <silent> <Leader>; <c-o><Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript,css let g:auto_comma_or_semicolon = 1
+nmap <Leader>ic :AutoCommaOrSemiColonToggle<CR>
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<c-f>"
+let g:UltiSnipsJumpBackwardTrigger="<c-m>"
