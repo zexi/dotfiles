@@ -8,9 +8,11 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'marijnh/tern_for_vim'
 "Plugin 'vim-ruby/vim-ruby'
 Plugin 'slim-template/vim-slim.git'
-Plugin 'jiangmiao/auto-pairs'
+"Plugin 'jiangmiao/auto-pairs'
+Plugin 'Raimondi/delimitMate'
 Plugin 'christophermca/meta5'
 Plugin 'jscappini/material.vim'
 " Plugin 'x1596357/vim'
@@ -282,3 +284,17 @@ nmap <Leader>ic :AutoCommaOrSemiColonToggle<CR>
 let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-m>"
+
+function! ExpandSnippet()
+    if delimitMate#WithinEmptyPair()
+        return "\<C-R>=delimitMate#ExpandReturn()\<CR>"
+    else
+        call UltiSnips#ExpandSnippet()
+        if g:ulti_expand_res == 0
+            return "\<CR>"
+        endif
+    endif
+    return ""
+endfunction
+inoremap <expr> <CR> "\<C-R>=ExpandSnippet()\<CR>"
+
