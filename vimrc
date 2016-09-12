@@ -281,7 +281,7 @@ autocmd FileType javascript,css let g:auto_comma_or_semicolon = 1
 nmap <Leader>ic :AutoCommaOrSemiColonToggle<CR>
 
 " ultisnips
-let g:UltiSnipsExpandTrigger="<c-e>"
+let g:UltiSnipsExpandTrigger="<c-f>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-m>"
 
@@ -297,4 +297,3 @@ function! ExpandSnippet()
     return ""
 endfunction
 inoremap <expr> <CR> "\<C-R>=ExpandSnippet()\<CR>"
-
