@@ -51,7 +51,7 @@ Plugin 'benekastah/neomake'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'lfilho/cosco.vim'
+"Plugin 'lfilho/cosco.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	" required
@@ -274,10 +274,11 @@ set clipboard+=unnamedplus
 silent! call repeat#set("\<Plug>unimpaired.vim", v:count)
 
 " cosco.vim
-autocmd FileType javascript,css nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon);
-autocmd FileType javascript,css imap <silent> <Leader>; <c-o><Plug>(cosco-commaOrSemiColon)
-autocmd FileType javascript,css let g:auto_comma_or_semicolon = 1
-nmap <Leader>ic :AutoCommaOrSemiColonToggle<CR>
+"autocmd FileType javascript,css nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon);
+"autocmd FileType javascript,css imap <silent> <Leader>; <c-o><Plug>(cosco-commaOrSemiColon)
+"autocmd FileType javascript,css let g:auto_comma_or_semicolon = 1
+"nmap <Leader>ic :AutoCommaOrSemiColonToggle<CR>
+inoremap <leader>; <C-o>m`<C-o>A;<C-o>``
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<c-f>"
