@@ -53,7 +53,12 @@ Plugin 'benekastah/neomake'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-"Plugin 'lfilho/cosco.vim'
+Plugin 'lfilho/cosco.vim'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'guns/vim-sexp'
+Plugin 'tpope/vim-sexp-mappings-for-regular-people'
+Plugin 'wlangstroth/vim-racket'
+Plugin 'jpalardy/vim-slime'
 
 " All of your Plugins must be added before the following line
 call vundle#end()	" required
@@ -276,14 +281,14 @@ set clipboard+=unnamedplus
 silent! call repeat#set("\<Plug>unimpaired.vim", v:count)
 
 " cosco.vim
-"autocmd FileType javascript,css nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon);
-"autocmd FileType javascript,css imap <silent> <Leader>; <c-o><Plug>(cosco-commaOrSemiColon)
-"autocmd FileType javascript,css let g:auto_comma_or_semicolon = 1
-"nmap <Leader>ic :AutoCommaOrSemiColonToggle<CR>
-inoremap <leader>; <C-o>m`<C-o>A;<C-o>``
+autocmd FileType javascript,css nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon);
+autocmd FileType javascript,css imap <silent> <Leader>; <c-o><Plug>(cosco-commaOrSemiColon)
+autocmd FileType javascript,css let g:auto_comma_or_semicolon = 1
+nmap <Leader>ic :AutoCommaOrSemiColonToggle<CR>
+"inoremap <leader>; <C-o>m`<C-o>A;<C-o>``
 
 " ultisnips
-let g:UltiSnipsExpandTrigger="<c-f>"
+let g:UltiSnipsExpandTrigger="<c-e>"
 let g:UltiSnipsJumpForwardTrigger="<c-f>"
 let g:UltiSnipsJumpBackwardTrigger="<c-m>"
 
@@ -321,3 +326,20 @@ fun! s:isAtStartOfLine(mapping)
 endf
 " For Markdown-compatible tables use
 let g:table_mode_corner="|"
+
+" racket
+if has("autocmd")
+  au BufReadPost *.rkt,*.rktl,*.scm set filetype=racket
+  au filetype racket set lisp
+  au filetype racket set autoindent
+endif
+
+" rainbow_parentheses
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" vim slime
+let g:slime_target = "tmux"
+let g:slime_paste_file = tempname()
