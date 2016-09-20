@@ -1,67 +1,66 @@
-set nocompatible	" be iMproved, required
-"filetype off		" required
-
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'marijnh/tern_for_vim'
-"Plugin 'vim-ruby/vim-ruby'
-Plugin 'slim-template/vim-slim.git'
-"Plugin 'jiangmiao/auto-pairs'
-Plugin 'Raimondi/delimitMate'
-Plugin 'christophermca/meta5'
-Plugin 'jscappini/material.vim'
-" Plugin 'x1596357/vim'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-repeat'
-" Plugin 'Lokaltog/vim-powerline'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'majutsushi/tagbar'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'chriskempson/base16-vim'
-Plugin 'morhetz/gruvbox'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'lervag/vimtex'
-"Plugin 'rosenfeld/conque-term'
-Plugin 'rking/ag.vim'
-Plugin 'nvie/vim-flake8'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'nathanaelkane/vim-indent-guides'
-Plugin 'mattn/emmet-vim'
-Plugin 'wannesm/wmgraphviz.vim'
-"Plugin 'sjl/vitality.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'dhruvasagar/vim-table-mode'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'tpope/vim-surround'
-Plugin 'sjl/gundo.vim'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/syntastic'
-Plugin 'benekastah/neomake'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'lfilho/cosco.vim'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'guns/vim-sexp'
-Plugin 'tpope/vim-sexp-mappings-for-regular-people'
-Plugin 'wlangstroth/vim-racket'
-Plugin 'jpalardy/vim-slime'
+Plug 'Valloric/YouCompleteMe'
+Plug 'marijnh/tern_for_vim'
+"Plug 'vim-ruby/vim-ruby'
+Plug 'slim-template/vim-slim.git'
+"Plug 'jiangmiao/auto-pairs'
+Plug 'Raimondi/delimitMate'
+Plug 'christophermca/meta5'
+Plug 'jscappini/material.vim'
+" Plug 'x1596357/vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+" Plug 'Lokaltog/vim-powerline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
+Plug 'edkolev/tmuxline.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+Plug 'altercation/vim-colors-solarized'
+Plug 'lervag/vimtex'
+"Plug 'rosenfeld/conque-term'
+Plug 'rking/ag.vim'
+Plug 'nvie/vim-flake8'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'mattn/emmet-vim'
+Plug 'wannesm/wmgraphviz.vim'
+"Plug 'sjl/vitality.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'dhruvasagar/vim-table-mode'
+Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-surround'
+Plug 'sjl/gundo.vim'
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'tmhedberg/SimpylFold'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/syntastic'
+Plug 'benekastah/neomake'
+Plug 'kchmck/vim-coffee-script'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'lfilho/cosco.vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'guns/vim-sexp'
+Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'wlangstroth/vim-racket'
+Plug 'https://github.com/jpalardy/vim-slime'
+"Plug 'mattn/webapi-vim'
+"Plug 'mattn/gist-vim'
+Plug 'lambdalisue/vim-gista', { 'tag': '*' }
+Plug 'lambdalisue/vim-gista-ctrlp'
 
 " All of your Plugins must be added before the following line
-call vundle#end()	" required
+call plug#end()	" required
 filetype plugin indent on " required
 
 filetype plugin on
@@ -343,3 +342,7 @@ au Syntax * RainbowParenthesesLoadBraces
 " vim slime
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
+
+" github gist
+"let g:gist_detect_filetype = 1
+"let g:gist_post_private = 1

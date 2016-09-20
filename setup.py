@@ -23,12 +23,12 @@ def move_file(src2des):
         os.symlink(src_abs_path, des)
 
 def setup_tools():
-    tools_path = ['~/.vim/bundle/Vundle.vim', '~/.oh-my-zsh']
+    tools_path = ['~/.vim/autoload/plug.vim', '~/.oh-my-zsh']
     tools_path = [os.path.expanduser(p) for p in tools_path]
     for p in tools_path:
         if not os.path.exists(p):
             if 'vim' in p:
-                cmd = 'git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim'
+                cmd = 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
             if 'zsh' in p:
                 cmd = 'sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"'
             os.system(cmd)
