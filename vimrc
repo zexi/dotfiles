@@ -54,8 +54,6 @@ Plug 'guns/vim-sexp'
 Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'wlangstroth/vim-racket'
 Plug 'https://github.com/jpalardy/vim-slime'
-"Plug 'mattn/webapi-vim'
-"Plug 'mattn/gist-vim'
 Plug 'lambdalisue/vim-gista', { 'tag': '*' }
 Plug 'lambdalisue/vim-gista-ctrlp'
 
@@ -112,7 +110,7 @@ colorscheme gruvbox
 if has('gui_running')
 	set guioptions-=T
 	set guioptions-=m
-	set guifont=monaco\ 12
+	set guifont=Monaco:h15
 else
 	highlight Comment ctermfg=lightblue cterm=none
 endif
@@ -342,7 +340,3 @@ au Syntax * RainbowParenthesesLoadBraces
 " vim slime
 let g:slime_target = "tmux"
 let g:slime_paste_file = tempname()
-
-" github gist
-"let g:gist_detect_filetype = 1
-"let g:gist_post_private = 1
