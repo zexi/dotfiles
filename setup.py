@@ -34,4 +34,4 @@ def setup_tools():
             os.system(cmd)
 
 move_file(src_des_path)
-setup_tools()
+#setup_tools()

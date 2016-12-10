@@ -6,8 +6,8 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'marijnh/tern_for_vim'
 "Plug 'vim-ruby/vim-ruby'
 Plug 'slim-template/vim-slim.git'
-"Plug 'jiangmiao/auto-pairs'
-Plug 'Raimondi/delimitMate'
+Plug 'jiangmiao/auto-pairs'
+"Plug 'Raimondi/delimitMate'
 Plug 'christophermca/meta5'
 Plug 'jscappini/material.vim'
 " Plug 'x1596357/vim'
@@ -34,6 +34,7 @@ Plug 'mattn/emmet-vim'
 Plug 'wannesm/wmgraphviz.vim'
 "Plug 'sjl/vitality.vim'
 Plug 'godlygeek/tabular'
+Plug 'fatih/vim-go'
 Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
@@ -43,11 +44,11 @@ Plug 'sjl/gundo.vim'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'tmhedberg/SimpylFold'
 Plug 'pangloss/vim-javascript'
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
 Plug 'benekastah/neomake'
 Plug 'kchmck/vim-coffee-script'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"Plug 'SirVer/ultisnips'
+"Plug 'honza/vim-snippets'
 Plug 'lfilho/cosco.vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'guns/vim-sexp'
@@ -56,6 +57,8 @@ Plug 'wlangstroth/vim-racket'
 Plug 'https://github.com/jpalardy/vim-slime'
 Plug 'lambdalisue/vim-gista', { 'tag': '*' }
 Plug 'lambdalisue/vim-gista-ctrlp'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call plug#end()	" required
@@ -76,6 +79,7 @@ nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
+au FileType * set fo-=c fo-=r fo-=o
 " 命令行模式增强，ctrl - a到行首， -e 到行尾
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
@@ -139,7 +143,7 @@ filetype indent on
 let g:tex_flavor='latex'
 
 " conf for Ag
-let g:ag_prg="/usr/bin/ag --vimgrep"
+let g:ag_prg="/usr/local/bin/ag --vimgrep"
 
 " conf for ctags
 let g:ctags_statusline=1
@@ -242,20 +246,20 @@ autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 set nofoldenable
 
 " for syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_python_flake8_args = '--ignore=W291,W391,E123,E124,E125,E126,E127,E128,E221,E225,E226,E261,E262,E272,E302,E501,E502'
-let g:syntastic_javascript_checkers = ['jsxhint']
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
-"nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
-nmap <Leader>Sd :SyntasticToggleMode<CR>
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_python_checkers = ['flake8']
+"let g:syntastic_python_flake8_args = '--ignore=W291,W391,E123,E124,E125,E126,E127,E128,E221,E225,E226,E261,E262,E272,E302,E501,E502'
+"let g:syntastic_javascript_checkers = ['jsxhint']
+"let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
+""nnoremap <C-w>E :SyntasticCheck<CR> :SyntasticToggleMode<CR>
+"nmap <Leader>Sd :SyntasticToggleMode<CR>
 " Neomake
 autocmd! BufWritePost * Neomake
 " 80th highlighted
@@ -278,29 +282,12 @@ set clipboard+=unnamedplus
 silent! call repeat#set("\<Plug>unimpaired.vim", v:count)
 
 " cosco.vim
-autocmd FileType javascript,css nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon);
-autocmd FileType javascript,css imap <silent> <Leader>; <c-o><Plug>(cosco-commaOrSemiColon)
-autocmd FileType javascript,css let g:auto_comma_or_semicolon = 1
-nmap <Leader>ic :AutoCommaOrSemiColonToggle<CR>
-"inoremap <leader>; <C-o>m`<C-o>A;<C-o>``
-
-" ultisnips
-let g:UltiSnipsExpandTrigger="<c-e>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<c-m>"
-
-function! ExpandSnippet()
-    if delimitMate#WithinEmptyPair()
-        return "\<C-R>=delimitMate#ExpandReturn()\<CR>"
-    else
-        call UltiSnips#ExpandSnippet()
-        if g:ulti_expand_res == 0
-            return "\<CR>"
-        endif
-    endif
-    return ""
-endfunction
-inoremap <expr> <CR> "\<C-R>=ExpandSnippet()\<CR>"
+"autocmd FileType javascript,css nmap <silent> <Leader>; <Plug>(cosco-commaOrSemiColon);
+"autocmd FileType javascript,css imap <silent> <Leader>; <c-o><Plug>(cosco-commaOrSemiColon)
+"autocmd FileType javascript,css let g:auto_comma_or_semicolon = 1
+"nmap <Leader>ic :AutoCommaOrSemiColonToggle<CR>
+inoremap <leader>; <C-o>m`<C-o>A;<C-o>``
+nmap <leader>; m`A;<Esc>``
 
 " vim markdown
 let g:vim_markdown_folding_disabled = 1
@@ -308,21 +295,22 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 let g:vim_markdown_new_list_item_indent = 2
 " vim table mode
-inoreabbrev <expr> <bar><bar>
-          \ s:isAtStartOfLine('\|\|') ?
-          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
-inoreabbrev <expr> __
-          \ s:isAtStartOfLine('__') ?
-          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
-
-fun! s:isAtStartOfLine(mapping)
+function! s:isAtStartOfLine(mapping)
   let text_before_cursor = getline('.')[0 : col('.')-1]
   let mapping_pattern = '\V' . escape(a:mapping, '\')
   let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
   return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
-endf
+endfunction
+
+inoreabbrev <expr> <bar><bar>
+          \ <SID>isAtStartOfLine('\|\|') ?
+          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+inoreabbrev <expr> __
+          \ <SID>isAtStartOfLine('__') ?
+          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+
 " For Markdown-compatible tables use
-let g:table_mode_corner="|"
+"let g:table_mode_corner="|"
 
 " racket
 if has("autocmd")
