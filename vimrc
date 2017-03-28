@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
 Plug 'Valloric/YouCompleteMe'
+"Plug 'Shougo/deoplete.nvim'
 Plug 'marijnh/tern_for_vim'
 "Plug 'vim-ruby/vim-ruby'
 Plug 'slim-template/vim-slim.git'
@@ -84,10 +85,13 @@ au FileType * set fo-=c fo-=r fo-=o
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
+" conf of deoplete
+"let g:deoplete#enable_at_startup = 1
+
 " conf of default YCM
-let g:ycm_global_ycm_extra_conf = '/home/lzx/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '/Users/lzx/.ycm_extra_conf.py'
 nnoremap <leader>gl :YcmCompleter GoToDefinition<CR>
-"nnoremap <leader>jd :YcmCompleter GoTo<CR>
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
 let g:ycm_complete_in_comments = 1
 let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_autoclose_preview_window_after_completion = 1
@@ -128,7 +132,7 @@ autocmd FileType html,css setlocal expandtab shiftwidth=2 tabstop=2 smartindent 
 autocmd FileType html,css EmmetInstall
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
-autocmd FileType python,go,javascript setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+autocmd FileType python,go,javascript,java setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 autocmd FileType tex,markdown setlocal expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
 
 " conf for airline
