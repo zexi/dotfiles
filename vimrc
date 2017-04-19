@@ -115,13 +115,13 @@ colorscheme gruvbox
 "let g:seoul256_background = 233
 "colorscheme seoul256
 " conf for gvim
-if has('gui_running')
-	set guioptions-=T
-	set guioptions-=m
-	set guifont=Monaco:h15
-else
-	highlight Comment ctermfg=lightblue cterm=none
-endif
+"if has('gui_running')
+	"set guioptions-=T
+	"set guioptions-=m
+	"set guifont=Monaco:h15
+"else
+	"highlight Comment ctermfg=lightblue cterm=none
+"endif
 
 " conf for vim-ruby
 filetype on           " Enable filetype detection
@@ -279,8 +279,9 @@ if has("autocmd")
     \| exe "normal! g'\"" | endif
 endif
 
-set clipboard=unnamed
-set clipboard+=unnamedplus
+"set clipboard=unnamed
+"set clipboard+=unnamedplus
+set mouse-=a
 
 " vim-repeat
 silent! call repeat#set("\<Plug>unimpaired.vim", v:count)
