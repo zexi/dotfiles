@@ -36,6 +36,7 @@ Plug 'wannesm/wmgraphviz.vim'
 "Plug 'sjl/vitality.vim'
 Plug 'godlygeek/tabular'
 Plug 'fatih/vim-go'
+Plug 'buoto/gotests-vim'
 Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'easymotion/vim-easymotion'
@@ -67,6 +68,7 @@ filetype plugin indent on " required
 
 filetype plugin on
 set hls
+set autoread
 set hidden
 set incsearch
 cnoremap <C-p> <Up>
@@ -84,6 +86,10 @@ au FileType * set fo-=c fo-=r fo-=o
 " 命令行模式增强，ctrl - a到行首， -e 到行尾
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+
+" make exiting to normal mode a bit easier
+imap jj <ESC>
+imap kk <ESC>
 
 " conf of deoplete
 "let g:deoplete#enable_at_startup = 1
@@ -132,7 +138,7 @@ autocmd FileType html,css setlocal expandtab shiftwidth=2 tabstop=2 smartindent 
 autocmd FileType html,css EmmetInstall
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
-autocmd FileType python,go,javascript,java setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+autocmd FileType python,go,javascript,java,json setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 autocmd FileType tex,markdown setlocal expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
 
 " conf for airline
