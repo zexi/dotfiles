@@ -1,0 +1,54 @@
+!!$HOME/.Xresources
+URxvt.preeditType:Root
+!!整此处设置输入法
+URxvt.inputMethod:fcitx
+!!颜色设置
+URxvt.depth:32
+!!中括号内数表示透明度
+URxvt.inheritPixmap:true
+!URxvt.background:#000000
+URxvt.foreground:#ffffff
+URxvt.colorBD:Gray95
+URxvt.colorUL:Green
+URxvt.color1:Red2
+URxvt.color4:RoyalBlue
+URxvt.color5:Magenta2
+URxvt.color8:Gray50
+URxvt.color10:Green2
+URxvt.color12:DodgerBlue
+URxvt.color14:Cyan2
+URxvt.color15:Gray95
+URxvt.background: rgba:1111/1111/1111/FFFF
+!URxvt.shading:130
+!URxvt.title:urxvrt
+!Rxvt.background:black
+!Rxvt.foreground:green
+!Rxvt.colorBD:white
+!Rxvt.colorIT:magenta
+!Rxvt.colorUL:yellow
+!Rxvt.underlineColor:cyan
+!Rxvt.tintColor:gray
+!Rxvt.cursorColor:wite
+!!URL操作
+URxvt.urlLauncher:chromium
+URxvt.matcher.button:1
+Urxvt.perl-ext-common:matcher
+!!滚动条设置
+URxvt.scrollBar:False
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+!!滚屏设置
+URxvt.mouseWheelScrollPage:True
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+!!光标闪烁
+URxvt.cursorBlink:True
+URxvt.saveLines:10000
+!!边框
+URxvt.borderLess:False
+!!字体设置
+!URxvt.font:xft:Monospace:size=11:style=Regular:antialias=true,xft:WenQuanYi Bitmap Song:size=11:style=Regular:antialias=true
+URxvt.font:xft:Monospace:size=11:style=Regular:antialias=true,xft:WenQuanYi Zen Hei:size=11:style=Regular:antialias=true
+!URxvt.boldfont:xft:Monospace:size=12:style=Bold:antialias=true,xft:WenQuanYi Bitmap Song:size=12:style=Bold:antialias=true
+heiURxvt.boldfont:xft:Monospace:size=12:style=Bold:antialias=true,xft:WenQuanYi Zen Hei:size=12:style=Bold:antialias=true
