@@ -4,31 +4,33 @@ URxvt.preeditType:Root
 URxvt.inputMethod:fcitx
 !!颜色设置
 URxvt.depth:32
-!!中括号内数表示透明度
-URxvt.inheritPixmap:true
-!URxvt.background:#000000
-URxvt.foreground:#ffffff
-URxvt.colorBD:Gray95
-URxvt.colorUL:Green
-URxvt.color1:Red2
-URxvt.color4:RoyalBlue
-URxvt.color5:Magenta2
-URxvt.color8:Gray50
-URxvt.color10:Green2
-URxvt.color12:DodgerBlue
-URxvt.color14:Cyan2
-URxvt.color15:Gray95
-URxvt.background: rgba:1111/1111/1111/FFFF
-!URxvt.shading:130
-!URxvt.title:urxvrt
-!Rxvt.background:black
-!Rxvt.foreground:green
-!Rxvt.colorBD:white
-!Rxvt.colorIT:magenta
-!Rxvt.colorUL:yellow
-!Rxvt.underlineColor:cyan
-!Rxvt.tintColor:gray
-!Rxvt.cursorColor:wite
+*background: #0f0f0f
+*foreground: #c8c8c8
+
+!black
+*color0:  #251f1f
+*color8:  #5e5e5e
+!red
+*color1:  #eb4509
+*color9:  #eb4509
+!green
+*color2:  #94e76b
+*color10: #95e76b
+!yellow
+*color3:  #ffac18
+*color11: #ffac18
+!blue
+*color4:  #46aede
+*color12: #46aede
+!magenta
+*color5:  #e32c57
+*color13: #e32c57
+!cyan
+*color6:  #d6dbac
+*color14: #d6dbac
+!white
+*color7:  #efefef
+*color15: #efefef
 !!URL操作
 URxvt.urlLauncher:chromium
 URxvt.matcher.button:1
