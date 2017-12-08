@@ -9,18 +9,15 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'edkolev/tmuxline.vim'
+"Plug 'edkolev/tmuxline.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'fatih/vim-go'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'wlangstroth/vim-racket'
-Plug 'lambdalisue/vim-gista', { 'tag': '*' }
-Plug 'lambdalisue/vim-gista-ctrlp'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'liuchengxu/space-vim-dark'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
 Plug 'rking/ag.vim'
@@ -150,3 +147,7 @@ let g:easytags_auto_update = 0
 let g:easytags_auto_highlight = 0
 let g:easytags_events = ['BufWritePost']
 let g:easytags_async = 1
+
+" make exiting to normal mode a bit easier
+imap jj <ESC>
+imap kk <ESC>
