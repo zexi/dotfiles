@@ -12,8 +12,8 @@
 set $mod Mod4
 
 # Configure order style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
-new_float normal
+#new_window pixel 1
+#new_float normal
 
 # Hide borders
 hide_edge_borders none
