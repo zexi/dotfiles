@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 " let Vundle manage Vundle, required
 Plug 'Valloric/YouCompleteMe'
 Plug 'kien/ctrlp.vim'
-Plug 'jiangmiao/auto-pairs'
+"Plug 'jiangmiao/auto-pairs'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
@@ -151,3 +151,6 @@ let g:easytags_async = 1
 " make exiting to normal mode a bit easier
 imap jj <ESC>
 imap kk <ESC>
+
+" vim-go
+let g:go_def_mode = 'godef'
