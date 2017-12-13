@@ -49,7 +49,6 @@ class PluginConfig(object):
         return config_objects
 
 
-
 def init_argparser():
     parser = argparse.ArgumentParser(prog="dothelper")
 
@@ -80,20 +79,6 @@ def symlink_file(src, dest):
     logging.info('Create symlink: %s --> %s' % (src, dest))
     os.symlink(src, dest)
 
-
-# def setup_tools():
-    # tools_path = ['~/.vim/autoload/plug.vim', '~/.oh-my-zsh']
-    # tools_path = [os.path.expanduser(p) for p in tools_path]
-    # for p in tools_path:
-        # if not os.path.exists(p):
-            # if 'vim' in p:
-                # cmd = 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-            # if 'zsh' in p:
-                # cmd = 'sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"'
-            # os.system(cmd)
-
-# move_file(src_des_path)
-#setup_tools()
 
 def change_project_dir():
     os.chdir(PROJECT_DIR)
@@ -195,7 +180,8 @@ class TmuxConfig(BasePluginConfig):
     def ensure_tpm_install(self):
         if os.path.exists(os.path.join(HOME, '.tmux/plugins/tpm')):
             return
-        cmd = "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && ~/.tmux/plugins/tpm/bin/install_plugins"
+        cmd = "git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm && \
+                ~/.tmux/plugins/tpm/bin/install_plugins"
         process_call(cmd)
 
     def ensure_package_manager_installed(self):
@@ -214,7 +200,8 @@ class VimConfig(BasePluginConfig):
     def ensure_vimplug_install(self):
         if os.path.exists(os.path.join(HOME, '.vim/autoload/plug.vim')):
             return
-        cmd = 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+        cmd = 'curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+                https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
         process_call(cmd)
 
     def ensure_package_manager_installed(self):
