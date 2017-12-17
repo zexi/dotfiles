@@ -61,14 +61,12 @@ nnoremap gj j
 
 syntax on
 set background=dark
-let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_dark='soft'
 colorscheme gruvbox
 if has('gui_running')
 	set guioptions-=T
 	set guioptions-=m
 	set guifont=Monaco:h15
-else
-	highlight Comment ctermfg=lightblue cterm=none
 endif
 "colorscheme space-vim-dark
 
@@ -156,6 +154,10 @@ let g:go_def_mode = 'godef'
 "let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 "let g:go_metalinter_autosave = 1
 "let g:go_metalinter_deadline = "5s"
+"let g:go_def_mapping_enabled = 0
+let g:go_def_reuse_buffer = 1
+"autocmd FileType go nmap gd <Plug>(go-def-vertical)
+"autocmd FileType go nmap <C-]> <Plug>(go-def)
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -180,7 +182,7 @@ let g:jedi#goto_command = "<C-]>"
 let g:jedi#goto_assignments_command = "gd"
 
 " neomake
-call neomake#configure#automake('rw', 1000)
+call neomake#configure#automake('nw', 1000)
 let g:neomake_python_enabled_makers = ['flake8']
 " E501 is line length of 80 characters
 let g:neomake_python_flake8_maker = { 'args': ['--ignore=E501'], }
