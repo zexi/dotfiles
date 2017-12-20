@@ -12,6 +12,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'fatih/vim-go'
+Plug 'lervag/vimtex'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'morhetz/gruvbox'
@@ -32,6 +33,10 @@ endif
 
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'zchee/deoplete-jedi'
+"Plug 'autozimu/LanguageClient-neovim', {
+    "\ 'branch': 'next',
+    "\ 'do': './install.sh'
+    "\ }
 Plug 'davidhalter/jedi-vim'
 Plug 'neomake/neomake'
 Plug 'Vimjas/vim-python-pep8-indent'
@@ -187,3 +192,21 @@ let g:neomake_python_enabled_makers = ['flake8']
 " E501 is line length of 80 characters
 let g:neomake_python_flake8_maker = { 'args': ['--ignore=E501'], }
 "let g:neomake_python_pep8_maker = { 'args': ['--max-line-length=105'], }
+
+" vimtex
+if !exists('g:deoplete#omni#input_patterns')
+	let g:deoplete#omni#input_patterns = {}
+endif
+let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
+
+
+" LanguageClient
+"let g:LanguageClient_autoStart = 1
+"let g:LanguageClient_serverCommands = {
+    "\ 'javascript': ['javascript-typescript-stdio'],
+    "\ }
+
+"nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+"nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+"nnoremap <silent> <C-]> :call LanguageClient_textDocument_definition()<CR>
+"nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
