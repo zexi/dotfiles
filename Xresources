@@ -1,36 +1,29 @@
+! Colors
+*background:   [97]#282a36
+*foreground:   #eff0eb
+*cursorColor:  #9aedfe
+
+*color0:      #33303b
+*color8:      #4f4b58
+*color1:      #ff5c57
+*color9:      #ff5c57
+*color2:      #5af78e
+*color10:     #5af78e
+*color3:      #f3f99d
+*color11:     #f3f99d
+*color4:      #57c7ff
+*color12:     #57c7ff
+*color5:      #ff6ac1
+*color13:     #ff6ac1
+*color6:      #9aedfe
+*color14:     #9aedfe
+*color7:      #eff0eb
+*color15:     #eff0eb
+
 !!$HOME/.Xresources
 URxvt.preeditType:Root
 !!整此处设置输入法
 URxvt.inputMethod:fcitx
-!!颜色设置
-URxvt.depth:32
-*background: #0f0f0f
-*foreground: #c8c8c8
-
-!black
-*color0:  #251f1f
-*color8:  #5e5e5e
-!red
-*color1:  #eb4509
-*color9:  #eb4509
-!green
-*color2:  #94e76b
-*color10: #95e76b
-!yellow
-*color3:  #ffac18
-*color11: #ffac18
-!blue
-*color4:  #46aede
-*color12: #46aede
-!magenta
-*color5:  #e32c57
-*color13: #e32c57
-!cyan
-*color6:  #d6dbac
-*color14: #d6dbac
-!white
-*color7:  #efefef
-*color15: #efefef
 !!URL操作
 URxvt.urlLauncher:chromium
 URxvt.matcher.button:1
@@ -51,6 +44,10 @@ URxvt.saveLines:10000
 URxvt.borderLess:False
 !!字体设置
 !URxvt.font:xft:Monospace:size=11:style=Regular:antialias=true,xft:WenQuanYi Bitmap Song:size=11:style=Regular:antialias=true
-URxvt.font:xft:Monospace:size=11:style=Regular:antialias=true,xft:WenQuanYi Zen Hei:size=11:style=Regular:antialias=true
+!URxvt.font:xft:Monospace:size=11:style=Regular:antialias=true,xft:WenQuanYi Micro Hei Mono:size=11:style=Regular:antialias=true
 !URxvt.boldfont:xft:Monospace:size=12:style=Bold:antialias=true,xft:WenQuanYi Bitmap Song:size=12:style=Bold:antialias=true
-heiURxvt.boldfont:xft:Monospace:size=12:style=Bold:antialias=true,xft:WenQuanYi Zen Hei:size=12:style=Bold:antialias=true
+!URxvt.boldfont:xft:Monospace:size=12:style=Bold:antialias=true,xft:WenQuanYi Micro Hei Mono:size=12:style=Bold:antialias=true
+!URxvt.font:xft:DejaVu Sans Mono:pixelsize=12:antialias=true,xft:WenQuanYi Bitmap Song:pixelsize=12:antialias=true
+!URxvt.boldFont:xft:DejaVu Sans Mono:pixelsize=12:style=Bold:antialias=true,xft:WenQuanYi Bitmap Song:pixelsize=12:style=Bold:antialias=true
+URxvt.font:xft:Monospace:pixelsize=12:antialias=true,xft:WenQuanYi Bitmap Song:pixelsize=12:style=Regular:antialias=true
+URxvt.boldFont:xft:Monospace:pixelsize=12:style=Bold:antialias=true,xft:WenQuanYi Bitmap Song:pixelsize=12:style=Bold,Regular:antialias=true
