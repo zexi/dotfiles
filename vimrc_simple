@@ -4,8 +4,6 @@ call plug#begin('~/.vim/plugged')
 " let Vundle manage Vundle, required
 Plug 'kien/ctrlp.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-surround'
 Plug 'christoomey/vim-tmux-navigator'
 "Plug 'edkolev/tmuxline.vim'
@@ -23,6 +21,7 @@ Plug 'xolox/vim-easytags'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-repeat'
 Plug 'suan/vim-instant-markdown'
+Plug 'itchyny/lightline.vim'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -33,7 +32,10 @@ else
 endif
 
 Plug 'zchee/deoplete-go', { 'do': 'make'}
-Plug 'autozimu/LanguageClient-neovim', {'tag': 'binary-*-x86_64-apple-darwin'}
+"Plug 'autozimu/LanguageClient-neovim', {
+    "\ 'branch': 'next',
+    "\ 'do': 'bash install.sh',
+    "\ }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 Plug 'Vimjas/vim-python-pep8-indent'
@@ -69,6 +71,8 @@ if has('gui_running')
 	set guioptions-=T
 	set guioptions-=m
 	set guifont=Monaco:h15
+else
+	set t_Co=256
 endif
 "colorscheme space-vim-dark
 
@@ -84,12 +88,6 @@ autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
 autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
 autocmd FileType javascript,java setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 autocmd FileType tex,markdown setlocal expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
-
-" conf for airline
-set laststatus=2
-" let g:Powerline_symbols='unicode'
-let g:tmuxline_powerline_separators = 0
-"let g:airline_theme='durant'
 
 " conf for Ag
 let g:ag_prg="/usr/local/bin/ag --vimgrep"
@@ -191,11 +189,11 @@ let g:deoplete#omni#input_patterns.tex = g:vimtex#re#deoplete
 let g:tex_flavor = 'latex'
 
 " LanguageClient
-let g:LanguageClient_autoStart = 1
-let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'python': ['pyls'],
-    \ }
+"let g:LanguageClient_autoStart = 1
+"let g:LanguageClient_serverCommands = {
+    "\ 'javascript': ['javascript-typescript-stdio'],
+    "\ 'python': ['pyls'],
+    "\ }
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
@@ -205,3 +203,9 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 " markdown
 "let g:instant_markdown_slow = 1
 let g:instant_markdown_autostart = 0
+
+" status line
+set laststatus=2
+let g:lightline = {
+      \ 'colorscheme': 'seoul256',
+      \ }
