@@ -25,9 +25,10 @@ URxvt.preeditType:Root
 !!整此处设置输入法
 URxvt.inputMethod:fcitx
 !!URL操作
-URxvt.urlLauncher:chromium
+URxvt.perl-ext-common:default,matcher
+URxvt.url-launcher:/usr/bin/xdg-open
 URxvt.matcher.button:1
-Urxvt.perl-ext-common:matcher
+URxvt.colorUL: #4682B4
 !!滚动条设置
 URxvt.scrollBar:False
 URxvt.scrollBar_floating:False
