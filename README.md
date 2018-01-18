@@ -7,3 +7,8 @@
 ln -s ~/.vimrc ~/.vim/init.vim
 ln -s ~/.vim ~/.config/nvim
 ```
+
+### complete & goto definitions
+```sh
+pip install python-language-server
+```
