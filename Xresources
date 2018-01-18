@@ -25,7 +25,7 @@ URxvt.preeditType:Root
 !!整此处设置输入法
 URxvt.inputMethod:fcitx
 !!URL操作
-URxvt.perl-ext-common:default,matcher
+URxvt.perl-ext-common:default,matcher,resize-font
 URxvt.url-launcher:/usr/bin/xdg-open
 URxvt.matcher.button:1
 URxvt.colorUL: #4682B4
@@ -50,5 +50,13 @@ URxvt.borderLess:False
 !URxvt.boldfont:xft:Monospace:size=12:style=Bold:antialias=true,xft:WenQuanYi Micro Hei Mono:size=12:style=Bold:antialias=true
 !URxvt.font:xft:DejaVu Sans Mono:pixelsize=12:antialias=true,xft:WenQuanYi Bitmap Song:pixelsize=12:antialias=true
 !URxvt.boldFont:xft:DejaVu Sans Mono:pixelsize=12:style=Bold:antialias=true,xft:WenQuanYi Bitmap Song:pixelsize=12:style=Bold:antialias=true
-URxvt.font:xft:Monospace:pixelsize=12:antialias=true,xft:WenQuanYi Bitmap Song:pixelsize=12:style=Regular:antialias=true
-URxvt.boldFont:xft:Monospace:pixelsize=12:style=Bold:antialias=true,xft:WenQuanYi Bitmap Song:pixelsize=12:style=Bold,Regular:antialias=true
+URxvt.font:xft:Monospace:size=8:antialias=true,xft:WenQuanYi Bitmap Song:size=8:style=Regular:antialias=true
+URxvt.boldFont:xft:Monospace:size=8:style=Bold:antialias=true,xft:WenQuanYi Bitmap Song:size=8:style=Bold,Regular:antialias=true
+
+Xft.dpi: 150
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
