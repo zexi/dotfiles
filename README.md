@@ -12,3 +12,9 @@ ln -s ~/.vim ~/.config/nvim
 ```sh
 pip install python-language-server
 ```
+
+## HiDPI & monitor
+```sh
+# use mons is recommend
+yaourt -S mons
+```
