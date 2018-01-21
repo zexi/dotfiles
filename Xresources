@@ -50,8 +50,8 @@ URxvt.borderLess:False
 !URxvt.boldfont:xft:Monospace:size=12:style=Bold:antialias=true,xft:WenQuanYi Micro Hei Mono:size=12:style=Bold:antialias=true
 !URxvt.font:xft:DejaVu Sans Mono:pixelsize=12:antialias=true,xft:WenQuanYi Bitmap Song:pixelsize=12:antialias=true
 !URxvt.boldFont:xft:DejaVu Sans Mono:pixelsize=12:style=Bold:antialias=true,xft:WenQuanYi Bitmap Song:pixelsize=12:style=Bold:antialias=true
-URxvt.font:xft:Monospace:size=11:antialias=true,xft:WenQuanYi Bitmap Song:size=12:style=Regular:antialias=true
-URxvt.boldFont:xft:Monospace:size=11:style=Bold:antialias=true,xft:WenQuanYi Bitmap Song:size=12:style=Bold,Regular:antialias=true
+URxvt.font:xft:Monospace:size=10:antialias=true,xft:文泉驿等宽正黑:size=10:style=Regular:antialias=true
+URxvt.boldFont:xft:Monospace:size=10:style=Bold:antialias=true,xft:文泉驿等宽正黑:size=10:style=Bold:antialias=true
 
 !Xft.dpi: 150
 !Xft.autohint: 0
