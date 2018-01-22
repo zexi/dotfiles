@@ -5,9 +5,6 @@ name = "awesome"
 name = "slick"
 
 [[block]]
-block = "focused_window"
-
-[[block]]
 block = "disk_space"
 path = "/"
 alias = "/"
@@ -29,6 +26,23 @@ interval = 1
 block = "load"
 interval = 1
 format = "{1m}"
+
+[[block]]
+block = "temperature"
+collapsed = false
+interval = 10
+
+[[block]]
+block = "net"
+device = "wlp3s0"
+ssid = true
+ip = false
+speed_up = false
+graph_up = true
+interval = 5
+
+[[block]]
+block = "sound"
 
 [[block]]
 block = "battery"

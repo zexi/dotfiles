@@ -199,14 +199,14 @@ client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 # My Configuration
-set $wallpaperPath "$HOME/wallpaper/"
-set $lockPic "$HOME/wallpaper/lock.png"
+set $wallpaperPath "$HOME/Pictures/wallpaper/"
+set $lockPic "$HOME/Pictures/wallpaper/lock.png"
 exec --no-startup-id compton -b
 exec --no-startup-id fcitx
+exec --no-startup-id pnmixer
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id feh --randomize --bg-fill $wallpaperPath
-#exec --no-startup-id feh --randomize --bg-fill /home/lzx/Documents/wallpaper/
 #exec --no-startup-id xrandr --output LVDS-1  --auto --output DP-1 --primary --above LVDS-1 --auto
 
 # Lock screen
@@ -221,10 +221,14 @@ bindsym XF86AudioMute exec pamixer -m
 # Auto assign certain programs to workspaces
 #assign [class="URxvt"] 9
 assign [class="Google-chrome"] $ws2
-
+assign [class="Franz"] $ws3
+assign [class="ieaseMusic"] $ws4
+assign [class="netease-cloud-music"] $ws4
 
 # workspace
 workspace $ws1 output DP-1
+workspace $ws2 output DP-1
+workspace $ws3 output LVDS-1
 workspace $ws4 output LVDS-1
 
 workspace_auto_back_and_forth yes

@@ -22,5 +22,10 @@ yaourt -S mons
 ## i3wm
 
 ```sh
-yaourt -S i3-gaps compton feh i3status-rust-git powerline-fonts ttf-font-awesome-4 rofi
+yaourt -S i3-gaps-next-git compton feh i3status-rust-git powerline-fonts ttf-font-awesome-4 rofi
 ```
+### system tray
+* network: nm-applet
+* bluetooth: blueman-applet
+* sound: pnmixer, pavucontrol
+* input method: fcitx
