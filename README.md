@@ -18,3 +18,9 @@ pip install python-language-server
 # use mons is recommend
 yaourt -S mons
 ```
+
+## i3wm
+
+```sh
+yaourt -S i3-gaps compton feh i3status-rust-git powerline-fonts ttf-font-awesome-4 rofi
+```

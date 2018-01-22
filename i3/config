@@ -16,7 +16,7 @@ new_window none
 new_float normal
 
 # Hide borders
-hide_edge_borders none
+hide_edge_borders smart
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -38,6 +38,7 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec urxvt --depth 32 -bg rgba:3f00/3f00/3f00/dddd
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -49,6 +50,7 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec rofi -show run
+bindsym $mod+space exec rofi -show run
 
 # change focus
 bindsym $mod+h focus left
@@ -92,7 +94,8 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+Tab focus mode_toggle
+#bindsym $mod+Tab focus mode_toggle
+bindsym $mod+Tab exec rofi -show window
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -106,20 +109,18 @@ bindsym $mod+Ctrl+Left workspace prev
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers
-#set $ws1 "Terminal"
-#set $ws2 "Browser"
-#set $ws3 3
-#set $ws4 4
+# FontAwesome icons see: http://fontawesome.io/cheatsheet/
+#set $ws1 "1:Work &#xf11c;"
+set $ws1 "1:Work &#xf120;"
+set $ws2 "2:Net &#xf0ac;"
+set $ws3 "3:Misc &#xf248;"
+set $ws4 "4:Relax &#xf004;"
 
 # switch to workspace
-#bindsym $mod+1 workspace $ws1
-#bindsym $mod+2 workspace $ws2
-#bindsym $mod+3 workspace $ws3
-#bindsym $mod+4 workspace $ws4
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -128,14 +129,10 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-#bindsym $mod+Shift+1 move container to workspace $ws1
-#bindsym $mod+Shift+2 move container to workspace $ws2
-#bindsym $mod+Shift+3 move container to workspace $ws3
-#bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace 5
 bindsym $mod+Shift+6 move container to workspace 6
 bindsym $mod+Shift+7 move container to workspace 7
@@ -143,16 +140,12 @@ bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
-# Open applications on specific workspace
-#assign [class="URxvt"] $ws1
-#assign [class="Google-chrome"] $ws2
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -180,25 +173,24 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+set $transparent #00000000
 bar {
-  status_command i3status
+  #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+  i3bar_command i3bar -t
+  font pango:DejaVu Sans Mono, FontAwesome 9
   position top
-  font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-  font pango:DejaVu Sans Mono 7
+  status_command i3status-rs $HOME/.config/i3/status
   #mode hide
   #hidden_state hide
   #modifier Mod1
-  #colors {
-    #separator #dc322f
-    #background #002b36
-    #statusline #268bd2
-    #focused_workspace #fdf6e3 #859900 #fdf6e3
-    #active_workspace #fdf6e3 #6c71c4 #fdf6e3
-    #inactive_workspace #586e75 #93a1a1 #002b36
-    #urgent_workspace #d33682 #d33682 #fdf6e3
-  #}
+  #tray_output none
+  #tray_padding 0
+  #strip_workspace_numbers yes
+  colors {
+	## Whole color settings
+        #background #1e1e1e
+        background #33333399
+  }
 }
 
 client.focused #859900 #859900 #fdf6e3 #6c71c4
@@ -207,16 +199,19 @@ client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 
 # My Configuration
+set $wallpaperPath "$HOME/wallpaper/"
+set $lockPic "$HOME/wallpaper/lock.png"
+exec --no-startup-id compton -b
 exec --no-startup-id fcitx
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-#exec --no-startup-id feh --randomize --bg-fill /usr/share/backgrounds/gnome/
-exec --no-startup-id feh --randomize --bg-fill /home/lzx/Documents/Nutstore/wallpaper/
+exec --no-startup-id feh --randomize --bg-fill $wallpaperPath
+#exec --no-startup-id feh --randomize --bg-fill /home/lzx/Documents/wallpaper/
 #exec --no-startup-id xrandr --output LVDS-1  --auto --output DP-1 --primary --above LVDS-1 --auto
 
 # Lock screen
-#bindsym Mod1+Control+l exec i3-msg workspace 10 && i3lock -t -d
-bindsym Mod1+Control+l exec i3lock -t -d
+#bindsym Mod1+Control+l exec i3-msg workspace 10 && i3lock -t -d -i $lockPic
+bindsym Mod1+Control+l exec i3lock -t -d -i $lockPic
 
 # Audio shortcuts
 bindsym XF86AudioLowerVolume exec pamixer -d 10
@@ -224,7 +219,12 @@ bindsym XF86AudioRaiseVolume exec pamixer -u -i 10
 bindsym XF86AudioMute exec pamixer -m
 
 # Auto assign certain programs to workspaces
-#assign [class="Google Chrome"] 5
+#assign [class="URxvt"] 9
+assign [class="Google-chrome"] $ws2
+
 
 # workspace
-workspace 1 output DP-1
+workspace $ws1 output DP-1
+workspace $ws4 output LVDS-1
+
+workspace_auto_back_and_forth yes
