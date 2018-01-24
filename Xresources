@@ -53,10 +53,10 @@ URxvt.borderLess:False
 URxvt.font:xft:Monospace:size=10:antialias=true,xft:文泉驿等宽正黑:size=10:style=Regular:antialias=true
 URxvt.boldFont:xft:Monospace:size=10:style=Bold:antialias=true,xft:文泉驿等宽正黑:size=10:style=Bold:antialias=true
 
-!Xft.dpi: 150
-!Xft.autohint: 0
-!Xft.lcdfilter: lcddefault
-!Xft.hintstyle: hintfull
-!Xft.hinting: 1
-!Xft.antialias: 1
-!Xft.rgba: rgb
+Xft.dpi: 120
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb

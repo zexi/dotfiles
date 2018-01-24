@@ -5,6 +5,13 @@ name = "awesome"
 name = "slick"
 
 [[block]]
+block = "focused_window"
+
+[[block]]
+block = "backlight"
+device = "intel_backlight"
+
+[[block]]
 block = "disk_space"
 path = "/"
 alias = "/"

@@ -19,10 +19,20 @@ pip install python-language-server
 yaourt -S mons
 ```
 
+## URxvt
+```sh
+yaourt -S rxvt-unicode urxvt-perls urxvt-font-size-git
+```
+
 ## i3wm
 
 ```sh
-yaourt -S i3-gaps-next-git compton feh i3status-rust-git powerline-fonts ttf-font-awesome-4 rofi
+yaourt -S i3-gaps-next-git compton feh i3status-rust-git powerline-fonts ttf-font-awesome-4 rofi \
+  fcitx fcitx-configtool fcitx-googlepinyin \
+  pamixer pnmixer pavucontrol alsa-utils \
+  network-manager-applet \
+  xorg-xbacklight \
+  bluez bluez-utils blueman pulseaudio-bluetooth
 ```
 ### system tray
 * network: nm-applet
