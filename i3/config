@@ -86,7 +86,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+semicolon layout stacking
+bindsym $mod+period layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -201,6 +201,8 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 # My Configuration
 set $wallpaperPath "$HOME/Pictures/wallpaper/"
 set $lockPic "$HOME/Pictures/wallpaper/lock.png"
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec_always --no-startup-id gnome-power-manager
 exec --no-startup-id compton -b
 exec --no-startup-id fcitx
 exec --no-startup-id pnmixer
@@ -218,6 +220,9 @@ bindsym XF86AudioLowerVolume exec pamixer -d 10
 bindsym XF86AudioRaiseVolume exec pamixer -u -i 10
 bindsym XF86AudioMute exec pamixer -m
 
+# PrtSc
+bindsym Print exec shutter
+
 # Backlight control
 bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen
@@ -226,6 +231,7 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen
 #assign [class="URxvt"] 9
 assign [class="Google-chrome"] $ws2
 assign [class="Franz"] $ws3
+assign [class="electronic-wechat"] $ws4
 assign [class="ieaseMusic"] $ws4
 assign [class="netease-cloud-music"] $ws4
 
@@ -237,3 +243,4 @@ workspace $ws3 output eDP1
 workspace $ws4 output eDP1
 
 workspace_auto_back_and_forth yes
+bindsym $mod+semicolon workspace back_and_forth
