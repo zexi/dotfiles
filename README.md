@@ -34,7 +34,8 @@ yaourt -S i3-gaps-next-git i3-gnome compton feh i3status-rust-git powerline-font
   pamixer pnmixer pavucontrol alsa-utils \
   network-manager-applet \
   xorg-xbacklight \
-  bluez bluez-utils blueman pulseaudio-bluetooth
+  bluez bluez-utils blueman pulseaudio-bluetooth \
+  deepin-screenshot
 ```
 ### system tray
 * network: nm-applet
