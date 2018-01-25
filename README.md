@@ -29,16 +29,30 @@ yaourt -S rxvt-unicode urxvt-perls urxvt-font-size-git
 ## i3wm
 
 ```sh
-yaourt -S i3-gaps-next-git i3-gnome compton feh i3status-rust-git powerline-fonts ttf-font-awesome-4 rofi \
+yaourt -S i3-gaps-next-git i3-gnome \
+  compton feh i3status-rust-git powerline-fonts ttf-font-awesome-4 rofi \
   fcitx fcitx-configtool fcitx-googlepinyin \
   pamixer pnmixer pavucontrol alsa-utils \
   network-manager-applet \
   xorg-xbacklight \
-  bluez bluez-utils blueman pulseaudio-bluetooth \
-  deepin-screenshot
+  bluez bluez-utils blueman pulseaudio-bluetooth pulseaudio-bluetooth-a2dp-gdm-fix \
+  deepin-screenshot \
+  xfce4-power-manager
 ```
 ### system tray
 * network: nm-applet
 * bluetooth: blueman-applet
 * sound: pnmixer, pavucontrol
 * input method: fcitx
+
+### power management
+* use xfce4-power-manager
+
+```sh
+# lock the screen by i3
+xfconf-query -c xfce4-session -p /general/LockCommand -s "i3lock" --create -t string
+
+# update the lock command
+xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command -l"
+```
+

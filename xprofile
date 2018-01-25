@@ -3,8 +3,8 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export LANG=en_US.UTF-8
 export QT_AUTO_SCREEN_SCALE_FACTOR=1
-#export GDK_SCALE=1.25
+#export GDK_SCALE=1.5
 #export GDK_DPI_SCALE=0.5
-xset r rate 200 25
+#xset r rate 200 25
 setxkbmap -option ctrl:nocaps
 setxkbmap -option altwin:swap_lalt_lwin

@@ -177,7 +177,7 @@ set $transparent #00000000
 bar {
   #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
   i3bar_command i3bar -t
-  font pango:DejaVu Sans Mono, FontAwesome 9
+  font pango:DejaVu Sans Mono, FontAwesome 8
   position top
   status_command i3status-rs $HOME/.config/i3/status
   #mode hide
@@ -202,7 +202,7 @@ client.urgent #d33682 #d33682 #fdf6e3 #dc322f
 set $wallpaperPath "$HOME/Pictures/wallpaper/"
 set $lockPic "$HOME/Pictures/wallpaper/lock.png"
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec_always --no-startup-id gnome-power-manager
+exec_always --no-startup-id xfce4-power-manager
 exec --no-startup-id compton -b
 exec --no-startup-id fcitx
 exec --no-startup-id pnmixer

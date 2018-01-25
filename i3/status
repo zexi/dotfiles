@@ -29,10 +29,10 @@ format_swap = "{SUp}%"
 block = "cpu"
 interval = 1
 
-[[block]]
-block = "load"
-interval = 1
-format = "{1m}"
+#[[block]]
+#block = "load"
+#interval = 1
+#format = "{1m}"
 
 [[block]]
 block = "temperature"
