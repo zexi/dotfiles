@@ -208,7 +208,7 @@ let g:instant_markdown_autostart = 0
 " status line
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'solarized',
       \ }
 
 " for easymotion
