@@ -61,3 +61,4 @@ URxvt.iconFile: /usr/share/icons/HighContrast/scalable/apps/utilities-terminal.s
 !Xft.hinting: 1
 !Xft.antialias: 1
 !Xft.rgba: rgb
+!URxvt.backend: xrender

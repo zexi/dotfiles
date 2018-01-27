@@ -21,9 +21,9 @@ yaourt -S mons arandr lxrandr
 
 Must install gnome to use ** /usr/lib/gnome-settings-daemon/gsd-sound ** and gnome-tweak-tool manage DPI font scale.
 
-## URxvt
+## Terminal
 ```sh
-yaourt -S rxvt-unicode urxvt-perls urxvt-font-size-git
+yaourt -S termite termite-terminfo rxvt-unicode urxvt-perls urxvt-font-size-git
 ```
 
 ## i3wm
@@ -37,8 +37,10 @@ yaourt -S i3-gaps-next-git i3-gnome \
   xorg-xbacklight \
   bluez bluez-utils blueman pulseaudio-bluetooth pulseaudio-bluetooth-a2dp-gdm-fix \
   deepin-screenshot \
-  xfce4-power-manager
+  xfce4-power-manager \
+  ydcv
 ```
+
 ### system tray
 * network: nm-applet
 * bluetooth: blueman-applet
@@ -55,4 +57,3 @@ xfconf-query -c xfce4-session -p /general/LockCommand -s "i3lock" --create -t st
 # update the lock command
 xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command -l"
 ```
-

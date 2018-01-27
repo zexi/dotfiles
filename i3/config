@@ -37,7 +37,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec /usr/bin/termite
 bindsym $mod+Shift+Return exec urxvt --depth 32 -bg rgba:3f00/3f00/3f00/dddd
 
 # kill focused window
@@ -219,6 +219,7 @@ bindsym Mod1+Control+l exec i3lock -t -d -i $lockPic
 bindsym XF86AudioLowerVolume exec pamixer -d 10
 bindsym XF86AudioRaiseVolume exec pamixer -u -i 10
 bindsym XF86AudioMute exec pamixer -m
+bindsym XF86AudioMicMute exec amixer set Capture toggle
 
 # PrtSc
 bindsym Print exec /usr/bin/deepin-screenshot
@@ -229,10 +230,12 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen
 bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen
 
 # Auto assign certain programs to workspaces
-#assign [class="URxvt"] 9
+assign [class="Termite" title=".*tmux-restore"] $ws1
 assign [class="Google-chrome"] $ws2
 assign [class="Franz"] $ws3
-assign [class="electronic-wechat"] $ws4
+assign [class="electronic-wechat"] $ws3
+assign [class="wewechat"] $ws3
+assign [class="Wine"] $ws3
 assign [class="ieaseMusic"] $ws4
 assign [class="netease-cloud-music"] $ws4
 
@@ -245,3 +248,13 @@ workspace $ws4 output eDP1
 
 workspace_auto_back_and_forth yes
 bindsym $mod+semicolon workspace back_and_forth
+
+# start a ydcv for dictionary
+bindsym $mod+Mod1+x exec termite -e "ydcv -S"
+
+# auto start and restore tmux
+bindsym $mod+Shift+t exec termite -e ~/.tmux/tmux-restore
+
+# Display
+bindsym XF86Display exec /usr/bin/arandr
+bindsym $mod+x exec /usr/bin/arandr
