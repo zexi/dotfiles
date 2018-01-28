@@ -36,8 +36,9 @@ yaourt -S i3-gaps-next-git i3-gnome \
   network-manager-applet \
   xorg-xbacklight \
   bluez bluez-utils blueman pulseaudio-bluetooth pulseaudio-bluetooth-a2dp-gdm-fix \
-  deepin-screenshot \
+  shutter deepin-screenshot \
   xfce4-power-manager \
+  redshift \
   ydcv
 ```
 
@@ -57,3 +58,8 @@ xfconf-query -c xfce4-session -p /general/LockCommand -s "i3lock" --create -t st
 # update the lock command
 xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command -l"
 ```
+
+### others
+* franz5
+* electronic-wechat, deepin-wechat, deepin-wine-tim, deepin-wine-thunerspeed
+* netease-cloud-music, ieaseMusic
