@@ -12,7 +12,7 @@
 set $mod Mod4
 
 # Configure order style <normal|1pixel|pixel xx|none|pixel>
-new_window none
+new_window pixel 1
 new_float normal
 
 # Hide borders
@@ -235,7 +235,7 @@ bindsym $mod+Shift+t exec termite -e ~/.tmux/tmux-restore
 
 # Display
 bindsym XF86Display exec /usr/bin/arandr
-#bindsym $mod+x exec /usr/bin/arandr
+bindsym $mod+Shift+m exec /usr/bin/arandr
 
 # fix graphics glitch
 #new_window none
@@ -269,7 +269,9 @@ for_window [class="ieaseMusic"] floating enable, move container to workspace $ws
 for_window [class="Wine"] floating enable
 for_window [class="shadowsocks-qt5"] floating enable
 for_window [class="Shutter"] floating enable
-for_window [class="netease-cloud-music"] floating enable, move container to workspace $ws4
+#for_window [class="netease-cloud-music"] floating enable, move container to workspace $ws4
+for_window [class="netease-cloud-music"] floating enable
+for_window [class="Vinagre"] floating enable
 
 # Auto assign certain programs to workspaces
 assign [class="Termite" title=".*tmux-restore"] $ws1
@@ -289,8 +291,9 @@ exec --no-startup-id fcitx
 exec --no-startup-id pnmixer
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
-#exec_always --no-startup-id feh --randomize --bg-fill $wallpaperPath
-exec_always --no-startup-id feh --bg-fill $wallpaperPath
+exec --no-startup-id redshift-gtk -l 39.92:116.46 -t 5500:4500
+exec_always --no-startup-id feh --randomize --bg-fill $wallpaperPath
+#exec_always --no-startup-id feh --bg-fill $wallpaperPath
 #exec --no-startup-id xrandr --output LVDS-1  --auto --output DP-1 --primary --above LVDS-1 --auto
 
 # Lock screen
@@ -299,4 +302,4 @@ bindsym Mod1+Control+l exec i3lock -t -d -i $lockPic
 
 # scratchpad settings
 bindsym $mod+m move scratchpad
-bindsym $mod+minus scratchpad show
+bindsym $mod+grave scratchpad show
