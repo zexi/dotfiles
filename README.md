@@ -34,7 +34,7 @@ yaourt -S i3-gaps-next-git i3-gnome \
   fcitx fcitx-configtool fcitx-googlepinyin \
   pamixer pnmixer pavucontrol alsa-utils \
   network-manager-applet \
-  xorg-xbacklight \
+  acpilight \
   bluez bluez-utils blueman pulseaudio-bluetooth pulseaudio-bluetooth-a2dp-gdm-fix \
   shutter deepin-screenshot \
   xfce4-power-manager \
@@ -58,6 +58,10 @@ xfconf-query -c xfce4-session -p /general/LockCommand -s "i3lock" --create -t st
 # update the lock command
 xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command -l"
 ```
+
+### nvidia & intel gpu
+
+* set x11 nvidia releated xorg config
 
 ### others
 * franz5

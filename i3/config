@@ -51,6 +51,7 @@ bindsym $mod+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec rofi -show run
+#bindsym $mod+space exec rofi -show drun -show-icons
 bindsym $mod+space exec rofi -show drun
 
 # change focus
@@ -96,6 +97,7 @@ bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 #bindsym $mod+Tab focus mode_toggle
+#bindsym $mod+Tab exec rofi -show window -show-icons
 bindsym $mod+Tab exec rofi -show window
 
 # focus the parent container
@@ -116,6 +118,11 @@ set $ws1 "1:Work &#xf120;"
 set $ws2 "2:Net &#xf0ac;"
 set $ws3 "3:Misc &#xf248;"
 set $ws4 "4:Relax &#xf004;"
+
+# Display monitor name
+set $intMon eDP-1-1
+set $extDPMon DP-1-1
+set $extHDMIMon HDMI-1-1
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -185,8 +192,8 @@ bar {
   #mode hide
   #hidden_state hide
   #modifier Mod1
-  tray_output eDP1
-  tray_output DP2
+  #tray_output eDP1
+  #tray_output DP2
   tray_padding 0
   #strip_workspace_numbers yes
   height $height
@@ -209,19 +216,19 @@ bindsym XF86AudioMute exec pamixer -m
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 
 # PrtSc
-bindsym Print exec /usr/bin/deepin-screenshot
-
+bindsym Print exec /usr/bin/shutter
 
 # Backlight control
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen
+bindsym XF86MonBrightnessUp exec sudo xbacklight -ctrl intel_backlight -inc 20 # increase screen
+bindsym XF86MonBrightnessDown exec sudo xbacklight  -ctrl intel_backlight -dec 20 # decrease screen
 
 # workspace
-workspace $ws1 output DP2
+#workspace $ws1 output DP2
+#workspace $ws1 output HDMI1
 
-workspace $ws2 output eDP1
-workspace $ws3 output eDP1
-workspace $ws4 output eDP1
+workspace $ws2 output $intMon
+workspace $ws3 output $intMon
+workspace $ws4 output $intMon
 
 workspace_auto_back_and_forth yes
 bindsym $mod+semicolon workspace back_and_forth
@@ -272,21 +279,24 @@ for_window [class="Shutter"] floating enable
 #for_window [class="netease-cloud-music"] floating enable, move container to workspace $ws4
 for_window [class="netease-cloud-music"] floating enable
 for_window [class="Vinagre"] floating enable
+for_window [class="electronic-wechat"] floating enable
 
 # Auto assign certain programs to workspaces
 assign [class="Termite" title=".*tmux-restore"] $ws1
 assign [class="Google-chrome"] $ws2
 assign [class="Franz"] $ws3
-assign [class="electronic-wechat"] $ws3
+#assign [class="electronic-wechat"] $ws3
 assign [class="wewechat"] $ws3
+assign [class="Thunderbird"] $ws3
 
 # Autostart
 set $wallpaperPath "$HOME/Pictures/wallpaper/"
-set $lockPic "$HOME/Pictures/wallpaper/lock.png"
+set $lockPic "$HOME/Pictures/wallpaper/happy_face.png"
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec_always --no-startup-id xfce4-power-manager
-exec --no-startup-id compton -CGb --xrender-sync --xrender-sync-fence
+exec --no-startup-id compton -CGb --backend glx --xrender-sync --xrender-sync-fence
 #exec --no-startup-id compton -b
+#exec --no-startup-id compton --config ~/code/dotfiles/compton2.conf -b
 exec --no-startup-id fcitx
 exec --no-startup-id pnmixer
 exec --no-startup-id nm-applet

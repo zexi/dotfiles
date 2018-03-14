@@ -1,0 +1,10 @@
+# cat nvidia.hook
+[Trigger]
+Type=File
+Operation = Install
+Operation = Upgrade
+Target    = usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
+
+[Action]
+When=PostTransaction
+Exec=/usr/bin/rm -v /usr/share/X11/xorg.conf.d/10-nvidia-drm-outputclass.conf
