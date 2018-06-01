@@ -38,7 +38,8 @@ floating_modifier $mod
 
 # start a terminal
 bindsym $mod+Return exec /usr/bin/termite
-bindsym $mod+Shift+Return exec urxvt --depth 32 -bg rgba:3f00/3f00/3f00/dddd
+#bindsym $mod+Shift+Return exec urxvt --depth 32 -bg rgba:3f00/3f00/3f00/dddd
+bindsym $mod+Shift+Return exec /usr/bin/termite -c ~/.config/termite/config.light
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -113,7 +114,6 @@ bindsym $mod+Ctrl+Left workspace prev
 # Workspace names
 # to display names or symbols instead of plain workspace numbers
 # FontAwesome icons see: http://fontawesome.io/cheatsheet/
-#set $ws1 "1:Work &#xf11c;"
 set $ws1 "1:Work &#xf120;"
 set $ws2 "2:Net &#xf0ac;"
 set $ws3 "3:Misc &#xf248;"
@@ -234,11 +234,14 @@ workspace_auto_back_and_forth yes
 bindsym $mod+semicolon workspace back_and_forth
 
 # start a ydcv for dictionary
-#bindsym $mod+Mod1+x exec termite -e "ydcv -S"
-bindsym $mod+Mod1+x exec urxvt --depth 32 -bg rgba:3f00/3f00/3f00/dddd -e ydcv -S
+bindsym $mod+Mod1+x exec termite -e "ydcv -S"
+#bindsym $mod+Mod1+x exec urxvt --depth 32 -bg rgba:3f00/3f00/3f00/dddd -e ydcv -S
 
 # auto start and restore tmux
 bindsym $mod+Shift+t exec termite -e ~/.tmux/tmux-restore
+
+# start guake terminal
+bindsym $mod+g exec guake
 
 # Display
 bindsym XF86Display exec /usr/bin/arandr
@@ -272,6 +275,7 @@ for_window [class="(?i)recordmydesktop"] floating enable
 for_window [class="(?i)pavucontrol"] floating enable, move position mouse
 for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $height px
 for_window [class="URxvt" title="ydcv.*"] floating enable
+for_window [class="Termite" title="ydcv.*"] floating enable
 for_window [class="ieaseMusic"] floating enable, move container to workspace $ws4
 for_window [class="Wine"] floating enable
 for_window [class="shadowsocks-qt5"] floating enable
@@ -291,7 +295,7 @@ assign [class="Thunderbird"] $ws3
 
 # Autostart
 set $wallpaperPath "$HOME/Pictures/wallpaper/"
-set $lockPic "$HOME/Pictures/wallpaper/happy_face.png"
+set $lockPic "$HOME/Pictures/wallpaper/yunion-wallpaper.png"
 exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec_always --no-startup-id xfce4-power-manager
 exec --no-startup-id compton -CGb --backend glx --xrender-sync --xrender-sync-fence
@@ -309,6 +313,11 @@ exec_always --no-startup-id feh --randomize --bg-fill $wallpaperPath
 # Lock screen
 #bindsym Mod1+Control+l exec i3-msg workspace 10 && i3lock -t -d -i $lockPic
 bindsym Mod1+Control+l exec i3lock -t -d -i $lockPic
+
+# scratchpad settings
+#bindsym $mod+m move scratchpad
+#bindsym Mod1+Control+l exec i3-msg workspace 10 && i3lock -t -d -i $lockPic
+#bindsym Mod1+Control+l exec i3lock -t -d -i $lockPic
 
 # scratchpad settings
 bindsym $mod+m move scratchpad
