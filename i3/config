@@ -297,7 +297,8 @@ assign [class="Thunderbird"] $ws3
 # Autostart
 set $wallpaperPath "$HOME/Pictures/wallpaper/"
 set $lockPic "$HOME/Pictures/wallpaper/yunion-wallpaper.png"
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+# gnome xsettings
+exec --no-startup-id /usr/lib/gsd-xsettings
 exec_always --no-startup-id xfce4-power-manager
 exec --no-startup-id compton -CGb --backend glx --xrender-sync --xrender-sync-fence
 #exec --no-startup-id compton -b
