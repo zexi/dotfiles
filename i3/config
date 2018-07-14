@@ -224,7 +224,7 @@ bindsym XF86MonBrightnessUp exec sudo xbacklight -ctrl intel_backlight -inc 20 #
 bindsym XF86MonBrightnessDown exec sudo xbacklight  -ctrl intel_backlight -dec 20 # decrease screen
 
 # workspace
-#workspace $ws1 output DP2
+workspace $ws1 output DP-2
 #workspace $ws1 output HDMI1
 
 workspace $ws2 output $intMon
