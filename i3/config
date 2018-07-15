@@ -80,10 +80,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+s split h
+bindsym $mod+s split v
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+v split h
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -235,7 +235,7 @@ workspace_auto_back_and_forth yes
 bindsym $mod+semicolon workspace back_and_forth
 
 # start a ydcv for dictionary
-bindsym $mod+Mod1+x exec termite -e "ydcv -S"
+bindsym $mod+Mod1+x exec termite -c ~/.config/termite/config.trans -e "ydcv -S"
 #bindsym $mod+Mod1+x exec urxvt --depth 32 -bg rgba:3f00/3f00/3f00/dddd -e ydcv -S
 
 # auto start and restore tmux
