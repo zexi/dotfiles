@@ -253,6 +253,7 @@ bindsym $mod+Shift+m exec /usr/bin/arandr
 #for_windo [class=(?i)termite] border pixel 3
 
 for_window [window_role="pop-up"] floating enable
+no_focus [window_role="pop-up"]
 for_window [window_role="bubble"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [window_role="Preferences"] floating enable
@@ -292,6 +293,7 @@ assign [class="Google-chrome"] $ws2
 assign [class="Franz"] $ws3
 #assign [class="electronic-wechat"] $ws3
 assign [class="wewechat"] $ws3
+assign [class="dingtalk"] $ws3
 assign [class="Thunderbird"] $ws3
 
 # Autostart
