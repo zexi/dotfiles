@@ -27,6 +27,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'hashivim/vim-terraform'
+Plug 'vim-scripts/Zenburn'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -68,10 +70,12 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
+set termguicolors
 syntax on
 set background=dark
 let g:gruvbox_contrast_dark='soft'
 colorscheme gruvbox
+"colorscheme zenburn
 if has('gui_running')
 	set guioptions-=T
 	set guioptions-=m
@@ -257,3 +261,6 @@ inoreabbrev <expr> __
 
 " For Markdown-compatible tables use
 let g:table_mode_corner="|"
+
+" terminal mode
+tnoremap <Esc> <C-\><C-n>
