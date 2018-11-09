@@ -29,6 +29,7 @@ Plug 'plasticboy/vim-markdown'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'hashivim/vim-terraform'
 Plug 'vim-scripts/Zenburn'
+Plug 'w0rp/ale'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -73,7 +74,7 @@ nnoremap gj j
 set termguicolors
 syntax on
 set background=dark
-let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_dark='medium'
 colorscheme gruvbox
 "colorscheme zenburn
 if has('gui_running')
@@ -223,7 +224,7 @@ let g:vim_markdown_folding_disabled = 1
 " status line
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'seoul256',
       \ }
 
 " for easymotion
@@ -264,3 +265,13 @@ let g:table_mode_corner="|"
 
 " terminal mode
 tnoremap <Esc> <C-\><C-n>
+
+" ale
+let g:ale_linters = {
+\	'go': ['golangci-lint'],
+\}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
