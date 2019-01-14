@@ -17,8 +17,6 @@ Plug 'wlangstroth/vim-racket'
 Plug 'morhetz/gruvbox'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
 Plug 'rking/ag.vim'
 Plug 'tpope/vim-repeat'
 Plug 'suan/vim-instant-markdown'
@@ -149,12 +147,6 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" easytags
-let g:easytags_auto_update = 0
-let g:easytags_auto_highlight = 0
-let g:easytags_events = ['BufWritePost']
-let g:easytags_async = 1
-
 " make exiting to normal mode a bit easier
 imap jj <ESC>
 imap kk <ESC>
@@ -275,3 +267,4 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+let g:ale_go_golangci_lint_package = 1
