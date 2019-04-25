@@ -236,8 +236,9 @@ workspace $ws4 output $intMon
 workspace_auto_back_and_forth yes
 bindsym $mod+semicolon workspace back_and_forth
 
-# start a ydcv for dictionary
-bindsym $mod+Mod1+x exec termite -c ~/.config/termite/config.trans -e "ydcv -S"
+# start a ydict for dictionary
+bindsym $mod+Mod1+x exec termite -c ~/.config/termite/config.trans --class floatingApp # -e "ydcv -S"
+for_window [class="^floatingApp$"] floating enable
 #bindsym $mod+Mod1+x exec urxvt --depth 32 -bg rgba:3f00/3f00/3f00/dddd -e ydcv -S
 
 # auto start and restore tmux
