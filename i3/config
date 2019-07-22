@@ -320,6 +320,11 @@ exec --no-startup-id redshift-gtk -l 39.92:116.46 -t 5500:4500
 exec_always --no-startup-id feh --randomize --bg-fill $wallpaperPath
 #exec_always --no-startup-id feh --bg-fill $wallpaperPath
 #exec --no-startup-id xrandr --output LVDS-1  --auto --output DP-1 --primary --above LVDS-1 --auto
+exec --no-startup-id xrandr --output eDP1  --auto --output DP2 --primary --left-of eDP1 --auto
+
+# Set keyboard and touchpad
+exec_always --no-startup-id "$HOME/code/dotfiles/tools/keyboard-map.sh"
+exec_always --no-startup-id sudo "$HOME/code/dotfiles/tools/trackpoint-adjust.sh"
 
 # Lock screen
 #bindsym Mod1+Control+l exec i3-msg workspace 10 && i3lock -t -d -i $lockPic
