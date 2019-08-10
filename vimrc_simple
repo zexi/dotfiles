@@ -161,7 +161,7 @@ let g:go_def_mode = 'godef'
 let g:go_def_reuse_buffer = 1
 "autocmd FileType go nmap gd <Plug>(go-def-vertical)
 "autocmd FileType go nmap <C-]> <Plug>(go-def)
-autocmd FileType go nmap  g] <Plug>(go-callers)
+autocmd FileType go nmap  g] <Plug>(go-implements)
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1

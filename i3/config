@@ -327,7 +327,7 @@ set $wallpaperPath "$HOME/Pictures/wallpaper/"
 set $lockPic "$HOME/Pictures/wallpaper/yunion-wallpaper.png"
 # gnome xsettings
 exec --no-startup-id /usr/lib/gsd-xsettings
-exec_always --no-startup-id xfce4-power-manager
+#exec_always --no-startup-id xfce4-power-manager
 exec --no-startup-id compton -CGb --backend glx --xrender-sync --xrender-sync-fence
 #exec --no-startup-id compton -b
 #exec --no-startup-id compton --config ~/code/dotfiles/compton2.conf -b

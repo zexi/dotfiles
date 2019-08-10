@@ -1,0 +1,9 @@
+#!/bin/bash
+
+laptop="eDP-1"
+external="DP-2"
+
+# external top of laptop
+#swaymsg output $external pos 0 0 res 1920x1080
+swaymsg output $external pos 0 0 res 2560x1440
+swaymsg output $laptop pos 0 1440 res 1920x1080
