@@ -15,6 +15,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term termite
+# set $term kitty
 #set $term xterm
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
@@ -79,6 +80,12 @@ input "2131:256:Topre_Corporation_HHKB_Professional" {
     repeat_rate 30
 }
 
+input "3897:1553:Heng_Yu_Technology_Poker" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 200
+    repeat_rate 30
+}
+
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
@@ -99,7 +106,8 @@ input "2131:256:Topre_Corporation_HHKB_Professional" {
     bindsym $mod+d exec $menu
     #bindsym $mod+d exec rofi -show drun -show-icons -drun-icon-theme
     bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
-    bindsym $mod+Tab exec rofi -show window -show-icons
+    #bindsym $mod+Tab exec rofi -show window -show-icons
+    bindsym $mod+Tab exec termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -319,6 +327,7 @@ bindsym $mod+semicolon workspace back_and_forth
 bindsym $mod+Ctrl+a exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
 
 for_window [app_id="^floatingApp$"] floating enable
+for_window [app_id="^window-switcher$"] floating enable
 for_window [window_role="pop-up"] floating enable
 no_focus [window_role="pop-up"]
 for_window [window_role="bubble"] floating enable
