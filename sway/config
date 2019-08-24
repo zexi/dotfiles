@@ -309,6 +309,10 @@ bindsym XF86AudioRaiseVolume exec pamixer -u -i 10
 bindsym XF86AudioMute exec pamixer -m
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 
+# Display
+bindsym XF86Display exec /usr/bin/wdisplays
+bindsym $mod+Shift+m exec /usr/bin/wdisplays
+
 # start guake terminal
 bindsym $mod+g exec guake
 
@@ -321,7 +325,7 @@ hide_edge_borders smart
 #gaps outer 0
 #gaps inner 5
 
-#workspace_auto_back_and_forth yes
+workspace_auto_back_and_forth yes
 bindsym $mod+semicolon workspace back_and_forth
 
 bindsym $mod+Ctrl+a exec grim -g "$(slurp)" $(xdg-user-dir PICTURES)/$(date +'%Y-%m-%d-%H%M%S_grim.png')
