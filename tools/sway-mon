@@ -2,8 +2,24 @@
 
 laptop="eDP-1"
 external="DP-2"
+external1="HDMI-A-1"
+
+mode=$1
+
+if [[ $mode == 3 ]]; then
+    swaymsg output $external pos 0 0 res 2560x1440
+    swaymsg output $laptop pos 2560 360 res 1920x1080
+    swaymsg output $external1 enable
+    swaymsg output $external1 pos 640 1440 res 1920x1080
+else
+    swaymsg output $external pos 0 0 res 2560x1440
+    swaymsg output $external1 disable
+    swaymsg output $laptop pos 0 1440 res 1920x1080
+fi
 
 # external top of laptop
 #swaymsg output $external pos 0 0 res 1920x1080
-swaymsg output $external pos 0 0 res 2560x1440
-swaymsg output $laptop pos 0 1440 res 1920x1080
+#swaymsg output $external pos 0 0 res 2560x1440
+#swaymsg output $laptop pos 0 1440 res 1920x1080
+#swaymsg output $laptop pos 2560 360 res 1920x1080
+#swaymsg output $external1 pos 640 1440 res 1920x1080
