@@ -11,11 +11,14 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'fatih/vim-go'
 Plug 'buoto/gotests-vim'
-Plug 'kien/rainbow_parentheses.vim'
+"Plug 'kien/rainbow_parentheses.vim'
 Plug 'wlangstroth/vim-racket'
-"Plug 'morhetz/gruvbox'
+Plug 'morhetz/gruvbox'
 "Plug 'arcticicestudio/nord-vim'
 Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'joshdick/onedark.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'rking/ag.vim'
@@ -54,11 +57,14 @@ nnoremap gj j
 
 syntax on
 set termguicolors
-"set background=dark
+set background=dark
 "let g:gruvbox_contrast_dark='medium'
 "colorscheme gruvbox
-colorscheme base16-tomorrow-night-eighties
-"colorscheme nord
+"colorscheme base16-tomorrow-night-eighties
+colorscheme Tomorrow-Night-Eighties
+"colorscheme base16-atelier-dune
+"colorscheme PaperColor
+"let g:nord_bold = 0
 if has('gui_running')
 	set guioptions-=T
 	set guioptions-=m
@@ -126,11 +132,11 @@ if has("autocmd")
   au filetype racket set autoindent
 endif
 
-" rainbow_parentheses
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+"" rainbow_parentheses
+"au VimEnter * RainbowParenthesesToggle
+"au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+"au Syntax * RainbowParenthesesLoadBraces
 
 " make exiting to normal mode a bit easier
 imap jj <ESC>
@@ -164,7 +170,7 @@ let g:vim_markdown_folding_disabled = 1
 " status line
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'seoul256',
+      \ 'colorscheme': 'Tomorrow_Night_Eighties',
       \ }
 
 " for easymotion

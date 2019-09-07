@@ -14,8 +14,8 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-# set $term termite
-set $term kitty
+set $term termite
+# set $term kitty
 #set $term alacritty
 #set $term xterm
 # Your preferred application launcher

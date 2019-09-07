@@ -1,5 +1,6 @@
 {
   "suggest.noselect": false,
+  //"coc.preferences.jumpCommand": "drop",
   "languageserver": {
     "golang": {
       "command": "gopls",
