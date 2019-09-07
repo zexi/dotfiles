@@ -1,69 +1,163 @@
 # dotfiles of mine
 
-## use with nvim
+## Pre install
+
+### add archlinuxcn mirror
+
+1. add archlinuxcn mirror
+
+Ref: https://mirror.tuna.tsinghua.edu.cn/help/archlinuxcn/
 
 ```sh
+vim /etc/pacman.conf # add below contents
+[archlinuxcn]
+#SigLevel = Optional TrustedOnly
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+```
+
+2. install 
+
+```bash
+pacman -Syy
+pacman -S archlinuxcn-keyring yay
+```
+
+### config zsh
+
+```bash
+pacman -S zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+```
+
+## Setup Desktop environment
+
+- [sway](https://wiki.archlinux.org/index.php/Sway) for common use
+- [gnome](https://wiki.archlinux.org/index.php/GNOME) for backup use
+
+### Gnome
+
+```bash
+pacman -S gnome-extra gdm
+systemctl enable gdm --now
+```
+
+Set gdm default environment
+
+```bash
+cat /etc/environment
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export LANG=en_US.UTF-8
+export _JAVA_AWT_WM_NONREPARENTING=1
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCALE_FACTOR=1.1
+```
+
+### Sway
+
+```bash
+# install sway wm
+pacman -S sway waybar swaylock swayidle mako
+
+# install depends tools
+pacman -S brightnessctl rofi grim slurp wallutils \
+  termite termite-terminfo powerline-fonts ttf-font-awesome \
+  pamixer pnmixer pavucontrol alsa-utils \
+  bluez bluez-utils blueman pulseaudio-bluetooth \
+  network-manager-applet \
+  acpilight \
+  ydcv
+
+yay -S wl-clipboard-rs redshift-wlr-gamma-control-git wdisplays-git
+```
+
+### install font
+
+https://wiki.archlinux.org/index.php/Fonts_(简体中文)#中文字
+
+### input method
+
+install fcitx fcitx-configtool
+
+```bash
+pacman -S fcitx fcitx-configtool fcitx-sogoupinyin
+```
+
+### neovim
+
+```sh
+yay -S neovim-nightly
+
 ./dothelper install vim
 ln -s ~/.vimrc ~/.vim/init.vim
 ln -s ~/.vim ~/.config/nvim
 ```
 
-### complete & goto definitions
+#### complete & goto definitions
+
 ```sh
-pip install python-language-server
+# golang
+pacman -S go
+go get -v golang.org/x/tools/gopls
 ```
 
-## HiDPI & monitor
-```sh
-# use mons is recommend
-yaourt -S mons arandr lxrandr
+### tmux
+
+```bash
+pacman -S tmux
+./dothelper install tmux
 ```
 
-Must install gnome to use ** /usr/lib/gnome-settings-daemon/gsd-sound ** and gnome-tweak-tool manage DPI font scale.
+### browser
 
-## Terminal
-```sh
-yaourt -S termite termite-terminfo rxvt-unicode urxvt-perls urxvt-font-size-git
-```
+```bash
+pacman -S google-chrome chromium firefox
 
-## i3wm
-
-```sh
-yaourt -S i3-gaps-next-git i3-gnome \
-  compton feh i3status-rust-git powerline-fonts ttf-font-awesome-4 rofi \
-  fcitx fcitx-configtool fcitx-googlepinyin \
-  pamixer pnmixer pavucontrol alsa-utils \
-  network-manager-applet \
-  acpilight \
-  bluez bluez-utils blueman pulseaudio-bluetooth pulseaudio-bluetooth-a2dp-gdm-fix \
-  shutter deepin-screenshot \
-  xfce4-power-manager \
-  redshift \
-  ydcv
-```
-
-### system tray
-* network: nm-applet
-* bluetooth: blueman-applet
-* sound: pnmixer, pavucontrol
-* input method: fcitx
-
-### power management
-* use xfce4-power-manager
-
-```sh
-# lock the screen by i3
-xfconf-query -c xfce4-session -p /general/LockCommand -s "i3lock" --create -t string
-
-# update the lock command
-xfconf-query -c xfce4-session -p /general/LockCommand -s "light-locker-command -l"
+cat <<EOF > ~/.config/chromium-flags.conf
+--password-store=gnome
+EOF
+cat <<EOF > ~/.config/chrome-flags.conf
+--password-store=gnome
+EOF
 ```
 
 ### nvidia & intel gpu
 
 * set x11 nvidia releated xorg config
 
+### ssh config
+
+```bash
+cat <<EOF > ~/.ssh/config
+ControlPersist yes
+TCPKeepAlive yes
+
+
+# Merge this file into ~/.ssh/config or run `man ssh_config` for more info
+ Host *
+   SendEnv LANG LC_*
+   Compression yes
+   ControlMaster auto
+   ControlPath /tmp/.tmp_%r@%h:%p
+   ControlPersist yes
+   TCPKeepAlive yes
+   ServerAliveInterval=15
+   ServerAliveCountMax=6
+   IdentityFile ~/.ssh/id_rsa
+   ForwardAgent yes
+   ForwardX11 yes
+   ForwardX11Trusted yes
+   StrictHostKeyChecking no
+   UserKnownHostsFile=/dev/null
+EOF
+```
+
 ### others
-* franz5
-* electronic-wechat, deepin-wechat, deepin-wine-tim, deepin-wine-thunerspeed
+
 * netease-cloud-music, ieaseMusic
