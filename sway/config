@@ -44,8 +44,8 @@ set $laptop eDP-1
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 1800 'swaylock -f -c 000000' \
-         timeout 2000 'swaymsg "output * dpms off"' \
+         timeout 3600 'swaylock -f -c 000000' \
+         timeout 3900 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
 #
@@ -106,7 +106,8 @@ input "3897:1553:Heng_Yu_Technology_Poker" {
     # start your launcher
     bindsym $mod+d exec $menu
     #bindsym $mod+d exec rofi -show drun -show-icons -drun-icon-theme
-    bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
+    #bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
+    bindsym $mod+space exec wofi --show drun --allow-images --allow-markup
     #bindsym $mod+Tab exec rofi -show window -show-icons
     bindsym $mod+Tab exec termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"
 

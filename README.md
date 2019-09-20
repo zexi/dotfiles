@@ -74,7 +74,8 @@ pacman -S brightnessctl rofi grim slurp wallutils \
   acpilight \
   ydcv
 
-yay -S wl-clipboard-rs redshift-wlr-gamma-control-git wdisplays-git
+yay -S wl-clipboard-rs redshift-wlr-gamma-control-git wdisplays-git \
+  network-manager-applet-indicator libappindicator-gtk3 wofi-hg
 ```
 
 ### install font
@@ -86,7 +87,7 @@ https://wiki.archlinux.org/index.php/Fonts_(简体中文)#中文字
 install fcitx fcitx-configtool
 
 ```bash
-pacman -S fcitx fcitx-configtool fcitx-sogoupinyin
+pacman -S fcitx fcitx-configtool fcitx-sogoupinyin fcitx-im
 ```
 
 ### neovim

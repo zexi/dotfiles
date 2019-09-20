@@ -28,6 +28,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'jceb/vim-orgmode'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -256,7 +257,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Use <Tab> for confirm completion.
 " Coc only does snippet and additional edit on confirm
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+" inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 
 " Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
