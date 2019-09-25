@@ -76,7 +76,9 @@ input "1:1:AT_Translated_Set_2_keyboard" {
     repeat_rate 30
 }
 
+# Set HHKB mode: 2356 on
 input "2131:256:Topre_Corporation_HHKB_Professional" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
     repeat_delay 200
     repeat_rate 30
 }
