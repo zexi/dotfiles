@@ -42,7 +42,7 @@ filetype plugin indent on " required
 set wildmenu
 set wildmode=full
 set history=1000
-set number
+"set number
 set showcmd
 set ignorecase
 
@@ -68,8 +68,8 @@ set termguicolors
 set background=dark
 "let g:gruvbox_contrast_dark='medium'
 "colorscheme gruvbox
-"colorscheme base16-tomorrow-night-eighties
-colorscheme Tomorrow-Night-Eighties
+colorscheme base16-tomorrow-night-eighties
+"colorscheme Tomorrow-Night-Eighties
 "colorscheme base16-atelier-dune
 "colorscheme PaperColor
 "let g:nord_bold = 0
