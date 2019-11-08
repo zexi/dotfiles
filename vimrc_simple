@@ -138,6 +138,7 @@ if has("autocmd")
   au BufReadPost *.rkt,*.rktl,*.scm set filetype=racket
   au filetype racket set lisp
   au filetype racket set autoindent
+  au filetype racket let b:autopairs_enabled = 0
 endif
 
 "" rainbow_parentheses

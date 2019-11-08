@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term termite
+set $term GDK_BACKEND=x11 termite
 # set $term kitty
 #set $term alacritty
 #set $term xterm
@@ -99,7 +99,7 @@ input "3897:1553:Heng_Yu_Technology_Poker" {
 #
     # start a terminal
     bindsym $mod+Return exec $term
-    bindsym $mod+Shift+Return exec /usr/bin/termite -c ~/.config/termite/config.light
+    bindsym $mod+Shift+Return exec $term -c ~/.config/termite/config.light
 
     # kill focused window
     bindsym $mod+Shift+q kill
@@ -111,7 +111,7 @@ input "3897:1553:Heng_Yu_Technology_Poker" {
     #bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
     bindsym $mod+space exec wofi --show drun --allow-images --allow-markup
     #bindsym $mod+Tab exec rofi -show window -show-icons
-    bindsym $mod+Tab exec termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"
+    bindsym $mod+Tab exec /usr/bin/termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -317,8 +317,11 @@ bindsym XF86AudioMicMute exec amixer set Capture toggle
 bindsym XF86Display exec /usr/bin/wdisplays
 bindsym $mod+Shift+m exec /usr/bin/wdisplays
 
+# Suspend
+bindsym XF86PowerOff exec systemctl suspend
+
 # start guake terminal
-bindsym $mod+g exec guake
+bindsym $mod+g exec "$HOME/code/dotfiles/tools/xguake"
 
 #bindsym $mod+x output DP-2 pos 0 0 res 1920x1080; output eDP-1 pos 0 1080 res 1920x1080
 
@@ -363,6 +366,7 @@ for_window [class="(?i)pavucontrol"] floating enable, move position mouse
 for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $height px
 for_window [class="URxvt" title="ydcv.*"] floating enable
 for_window [class="Termite" title="ydcv.*"] floating enable
+for_window [app_id="guake"] floating enable
 for_window [class="ieaseMusic"] floating enable, move container to workspace $ws4
 for_window [class="Wine"] floating enable
 for_window [class="shadowsocks-qt5"] floating enable

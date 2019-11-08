@@ -51,12 +51,14 @@ cat /etc/environment
 # Syntax: simple "KEY=VAL" pairs on separate lines
 #
 export GTK_IM_MODULE=fcitx
+export QT4_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export LANG=en_US.UTF-8
 export _JAVA_AWT_WM_NONREPARENTING=1
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export QT_SCALE_FACTOR=1.1
+export WINIT_UNIX_BACKEND=x11
 ```
 
 ### Sway
