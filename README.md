@@ -164,3 +164,4 @@ EOF
 ### others
 
 * netease-cloud-music, ieaseMusic
+* https://github.com/gsamokovarov/jump
