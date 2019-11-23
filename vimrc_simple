@@ -168,7 +168,18 @@ let g:go_def_mapping_enabled = 0
 "autocmd FileType go nmap <C-]> <Plug>(go-def)
 "autocmd FileType go nmap  g] <Plug>(go-implements)
 
+" tex
 let g:tex_flavor = 'latex'
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-pdf',
+    \   '-pdflatex="xelatex --shell-escape %O %S"',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ]
+    \}
 
 " markdown
 "let g:instant_markdown_slow = 1

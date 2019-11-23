@@ -4,6 +4,7 @@
   //"coc.preferences.jumpCommand": "drop",
   "coc.preferences.formatOnType": true,
   "pairs.disableLanguages": ["racket"],
+  //"latex.build.onSave": true,
   "languageserver": {
     "golang": {
       "command": "gopls",
