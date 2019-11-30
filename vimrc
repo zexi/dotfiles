@@ -68,10 +68,10 @@ set termguicolors
 set background=dark
 "let g:gruvbox_contrast_dark='medium'
 "colorscheme gruvbox
-colorscheme base16-tomorrow-night-eighties
+"colorscheme base16-tomorrow-night-eighties
 "colorscheme Tomorrow-Night-Eighties
 "colorscheme base16-atelier-dune
-"colorscheme PaperColor
+colorscheme PaperColor
 "let g:nord_bold = 0
 if has('gui_running')
 	set guioptions-=T
