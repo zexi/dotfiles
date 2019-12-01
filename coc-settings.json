@@ -1,0 +1,19 @@
+{
+  "suggest.noselect": true,
+  "suggest.enablePreselect": false,
+  //"coc.preferences.jumpCommand": "drop",
+  "coc.preferences.formatOnType": true,
+  "pairs.disableLanguages": ["racket"],
+  //"latex.build.onSave": true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      //"args": ["serve", "-debug", "0.0.0.0:8484", "-rpc.trace", "-logfile", "/tmp/gopls.log"],
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"],
+      //"initializationOptions": {
+	//"usePlaceholders": true
+      //}
+    }
+  }
+}
