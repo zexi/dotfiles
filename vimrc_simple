@@ -2,7 +2,6 @@
 call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-Plug 'ctrlpvim/ctrlp.vim'
 "Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 "Plug 'christoomey/vim-tmux-navigator'
@@ -11,17 +10,15 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'fatih/vim-go'
 Plug 'buoto/gotests-vim'
-"Plug 'kien/rainbow_parentheses.vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'morhetz/gruvbox'
-"Plug 'arcticicestudio/nord-vim'
+"Plug 'preservim/nerdtree'
 Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'joshdick/onedark.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'rking/ag.vim'
 Plug 'tpope/vim-repeat'
 Plug 'suan/vim-instant-markdown'
 Plug 'itchyny/lightline.vim'
@@ -31,10 +28,12 @@ Plug 'plasticboy/vim-markdown'
 Plug 'jceb/vim-orgmode'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'hashivim/vim-terraform'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'lervag/vimtex'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'antoinemadec/coc-fzf'
 " All of your Plugins must be added before the following line
 call plug#end()    " required
 filetype plugin indent on " required
@@ -45,6 +44,7 @@ set history=1000
 "set number
 set showcmd
 set ignorecase
+"set mouse=a
 
 set hls
 set incsearch
@@ -94,9 +94,6 @@ autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
 autocmd FileType javascript,java setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 autocmd FileType tex,markdown setlocal expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
 
-" conf for Ag
-let g:ag_prg="/usr/local/bin/ag --vimgrep"
-
 " conf for ctags
 let g:ctags_statusline=1
 
@@ -120,19 +117,6 @@ let g:indent_guides_start_level = 2
 " sudo write
 cmap w!! w !sudo tee % >/dev/null
 
-" for ctrlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
-" https://medium.com/a-tiny-piece-of-vim/making-ctrlp-vim-load-100x-faster-7a722fae7df6
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-
 " racket
 if has("autocmd")
   au BufReadPost *.rkt,*.rktl,*.scm set filetype=racket
@@ -141,28 +125,21 @@ if has("autocmd")
   "au filetype racket let b:autopairs_enabled = 0
 endif
 
-"" rainbow_parentheses
-"au VimEnter * RainbowParenthesesToggle
-"au Syntax * RainbowParenthesesLoadRound
-"au Syntax * RainbowParenthesesLoadSquare
-"au Syntax * RainbowParenthesesLoadBraces
-
 " make exiting to normal mode a bit easier
 imap jj <ESC>
 imap kk <ESC>
 
 " vim-go
-" let g:go_def_mode = 'godef'
-let g:go_def_mode = 'gopls'
+let g:go_pls_enabled = 1
+let g:go_gopls_options = ['-remote=auto']
+"let g:go_def_mode = 'gopls'
 let g:go_info_mode = 'gopls'
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
+" show type info in statusbar
+" let g:go_auto_type_info = 1
 "let g:go_fmt_autosave = 0
-"let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-"let g:go_metalinter_autosave = 1
-"let g:go_metalinter_deadline = "5s"
-"let g:go_def_mapping_enabled = 0
 "let g:go_def_reuse_buffer = 1
 "autocmd FileType go nmap gd <Plug>(go-def-vertical)
 "autocmd FileType go nmap <C-]> <Plug>(go-def)
@@ -187,12 +164,6 @@ let g:instant_markdown_autostart = 0
 
 let g:vim_markdown_folding_disabled = 1
 
-" status line
-set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'Tomorrow_Night_Eighties',
-      \ }
-
 " for easymotion
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
@@ -211,6 +182,7 @@ let g:EasyMotion_smartcase = 1
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+
 " vim table mode
 function! s:isAtStartOfLine(mapping)
   let text_before_cursor = getline('.')[0 : col('.')-1]
@@ -228,9 +200,6 @@ inoreabbrev <expr> __
 
 " For Markdown-compatible tables use
 let g:table_mode_corner="|"
-
-" terminal mode
-tnoremap <Esc> <C-\><C-n>
 
 " -------------------------------------------------------------------------------------------------
 " coc.nvim default settings
@@ -251,35 +220,39 @@ set updatetime=300
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
-" auto show signcolumns
-set signcolumn=auto
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+if has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
 " Use <c-space> to trigger completion.
-" inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <silent><expr> <c-space> coc#refresh()
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-			\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
-" Use <Tab> for confirm completion.
-" Coc only does snippet and additional edit on confirm
-" inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+" <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 
 " Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
@@ -329,10 +302,20 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
 "" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -343,25 +326,61 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
 
-" Add status line support, for integration with other plugin, checkout `:h coc-status`
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+function! CocCurrentFunction()
+    return get(b:, 'coc_current_function', '')
+endfunction
+
+" status line
+"set laststatus=2
+" Add diagnostic info for https://github.com/itchyny/lightline.vim
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction'
+      \ },
+      \ }
+" Use auocmd to force lightline update.
+" autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent> <space>a  :<C-u>CocFzfList diagnostics<cr>
+" Show diagnostics current buffer
+nnoremap <silent> <space>b  :<C-u>CocFzfList diagnostics --current-buf<CR>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <space>c  :<C-u>CocFzfList commands<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocFzfList extensions<cr>
+nnoremap <silent> <space>l  :<C-u>CocFzfList location<CR>
 " Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+nnoremap <silent> <space>o  :<C-u>CocFzfList outline<cr>
 " Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <space>s  :<C-u>CocFzfList symbols<cr>
+nnoremap <silent> <space>S  :<C-u>CocFzfList services<cr>
 " Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 
 "set completeopt=noinsert,noselect,menuone
+
+" fzf.vim maps
+nnoremap <C-p> :Files<Cr>
+nnoremap <C-e> :Buffers<CR>
+nnoremap <space>w :Windows<CR>
+nnoremap <space>t :TagbarToggle<cr>
+nnoremap <space>h :History<cr>
+let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.6}}
+" terminal mode
+"tnoremap <Esc> <C-\><C-n>
+"if has("nvim")
+  "au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
+  "au FileType fzf tunmap <buffer> <Esc>
+"endif

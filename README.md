@@ -165,3 +165,14 @@ EOF
 
 * netease-cloud-music, ieaseMusic
 * https://github.com/gsamokovarov/jump
+* guake: drop down terminal
+
+### Gnome extensions
+
+| Name                     | Description        |
+|--------------------------|--------------------|
+| Activities Configuratior |                    |
+| Caffeine                 |                    |
+| Dash to Dock             |                    |
+| Switcher                 |                    |
+| system-monitor           |

@@ -237,7 +237,7 @@ bindsym XF86AudioMicMute exec amixer set Capture toggle
 
 # PrtSc
 bindsym Print exec /usr/bin/shutter
-bindsym $mod+Ctrl+a exec /usr/bin/deepin-screenshot
+bindsym $mod+Ctrl+a exec /usr/bin/flameshot
 
 # Backlight control
 bindsym XF86MonBrightnessUp exec sudo xbacklight -ctrl intel_backlight -inc 20 # increase screen
