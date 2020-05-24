@@ -2,7 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 " let Vundle manage Vundle, required
-"Plug 'jiangmiao/auto-pairs'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
 "Plug 'christoomey/vim-tmux-navigator'
 "Plug 'edkolev/tmuxline.vim'
@@ -13,6 +13,7 @@ Plug 'buoto/gotests-vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'morhetz/gruvbox'
 "Plug 'preservim/nerdtree'
+Plug 'tpope/vim-fugitive'
 Plug 'chriskempson/base16-vim'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'NLKNguyen/papercolor-theme'
@@ -22,7 +23,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-repeat'
 Plug 'suan/vim-instant-markdown'
 Plug 'itchyny/lightline.vim'
-Plug 'easymotion/vim-easymotion'
+"Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'jceb/vim-orgmode'
@@ -30,7 +31,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'hashivim/vim-terraform'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'lervag/vimtex'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
@@ -45,6 +46,7 @@ set history=1000
 set showcmd
 set ignorecase
 "set mouse=a
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 set hls
 set incsearch
@@ -173,7 +175,7 @@ let g:EasyMotion_do_mapping = 0 " Disable default mappings
 " or
 " `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-overwin-f2)
+"nmap s <Plug>(easymotion-overwin-f2)
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
@@ -222,12 +224,13 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
-  " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
-else
-  set signcolumn=yes
-endif
+"if has("patch-8.1.1564")
+  "" Recently vim can merge signcolumn and number column into one
+  "set signcolumn=number
+"else
+  "set signcolumn=yes
+"endif
+set signcolumn=auto
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -331,7 +334,7 @@ function! CocCurrentFunction()
 endfunction
 
 " status line
-"set laststatus=2
+set laststatus=2
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -374,6 +377,7 @@ nnoremap <silent> <space>p  :<C-u>CocFzfListResume<CR>
 " fzf.vim maps
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-e> :Buffers<CR>
+nnoremap <C-f> :Ag<CR>
 nnoremap <space>w :Windows<CR>
 nnoremap <space>t :TagbarToggle<cr>
 nnoremap <space>h :History<cr>

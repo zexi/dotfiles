@@ -1,9 +1,8 @@
 {
-  "suggest.noselect": false,
+  "suggest.noselect": true,
   //"suggest.enablePreselect": false,
   //"coc.preferences.jumpCommand": "drop",
   //"coc.preferences.formatOnType": true,
-  "pairs.disableLanguages": ["racket"],
   "list.normalMappings": {
      "t": "action:tabe",
      "v": "action:vsplit",
@@ -18,10 +17,16 @@
   //"latex.build.onSave": true,
   "languageserver": {
     "golang": {
+      "filetypes": ["go"],
+//      "command": "go-langserver",
+//      "initializationOptions": {
+//	      "gocodeCompletionEnabled": true,
+//	      "diagnosticsEnabled": true,
+//	      "lintTool": "golint"
+//      }
       "command": "gopls",
       "args": ["-remote=auto"],
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-      "filetypes": ["go"],
       "initializationOptions": {
 	"usePlaceholders": true
       }

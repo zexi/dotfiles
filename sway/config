@@ -321,7 +321,8 @@ bindsym $mod+Shift+m exec /usr/bin/wdisplays
 bindsym XF86PowerOff exec systemctl suspend
 
 # start guake terminal
-bindsym $mod+g exec "$HOME/code/dotfiles/tools/xguake"
+#bindsym $mod+g exec "$HOME/code/dotfiles/tools/xguake"
+bindsym $mod+g exec "guake -t"
 
 #bindsym $mod+x output DP-2 pos 0 0 res 1920x1080; output eDP-1 pos 0 1080 res 1920x1080
 
