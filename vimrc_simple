@@ -45,8 +45,6 @@ set history=1000
 "set number
 set showcmd
 set ignorecase
-"set mouse=a
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 set hls
 set incsearch
@@ -134,10 +132,10 @@ imap kk <ESC>
 " vim-go
 let g:go_pls_enabled = 1
 let g:go_gopls_options = ['-remote=auto']
-"let g:go_def_mode = 'gopls'
-let g:go_info_mode = 'gopls'
-" disable vim-go :GoDef short cut (gd)
-" this is handled by LanguageClient [LC]
+""let g:go_def_mode = 'gopls'
+"let g:go_info_mode = 'gopls'
+"" disable vim-go :GoDef short cut (gd)
+"" this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
 " show type info in statusbar
 " let g:go_auto_type_info = 1
@@ -183,7 +181,6 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-
 
 " vim table mode
 function! s:isAtStartOfLine(mapping)
@@ -235,10 +232,17 @@ set signcolumn=auto
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
+      \ pumvisible() ? coc#_select_confirm() :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+      "\ pumvisible() ? coc#_select_confirm() :
+      "\ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      "\ <SID>check_back_space() ? "\<TAB>" :
+      "\ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+"let g:coc_snippet_next = '<tab>'
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -328,6 +332,8 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " use `:OR` for organize import of current buffer
 command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+" auto format go code and add missing imports
+"autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
@@ -388,3 +394,9 @@ let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.6}}
   "au TermOpen * tnoremap <buffer> <Esc> <c-\><c-n>
   "au FileType fzf tunmap <buffer> <Esc>
 "endif
+
+" view operation
+set mouse=a
+set fillchars+=vert:│
+highlight VertSplit ctermbg=NONE guibg=NONE
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
