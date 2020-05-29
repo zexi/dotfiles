@@ -1,9 +1,9 @@
 {
-  "suggest.noselect": false,
+  //"suggest.noselect": false,
   //"suggest.enablePreselect": false,
   //"coc.preferences.jumpCommand": "drop",
-  //"coc.preferences.formatOnType": true,
-  //"coc.preferences.formatOnSaveFiletypes": ["go"],
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": ["go"],
   "list.normalMappings": {
      "t": "action:tabe",
      "v": "action:vsplit",
@@ -13,7 +13,10 @@
   "list.insertMappings": {
      "<C-t>": "action:tabe",
      "<C-v>": "action:vsplit",
-     "<C-x>": "action:split"
+     "<C-x>": "action:split",
+     "<C-r>": "do:refresh",
+     "<C-n>": "normal:j",
+     "<C-p>": "normal:k"
   },
   //"latex.build.onSave": true,
   "languageserver": {
@@ -27,9 +30,12 @@
 //      }
       "command": "gopls",
 //      "disableWorkspaceFolders": true,
-      "args": ["-remote=auto"],
+//      "args": ["-remote=auto"],
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "initializationOptions": {
+	//"completeUnimported": true,
+	//"fuzzyMatching": true,
+	//"deepCompletion": true
 	//"usePlaceholders": true
       }
     }
