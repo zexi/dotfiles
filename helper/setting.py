@@ -11,7 +11,7 @@ from .helper import Flake8Config
 
 CONFIG_MAP = {
 	VIM_PLUG: {
-		SRC: os.path.join(PROJECT_DIR, 'vimrc_simple'),
+		SRC: os.path.join(PROJECT_DIR, 'vimrc'),
 		DEST: os.path.join(HOME, '.vimrc'),
 		CLS: VimConfig,
 	},
