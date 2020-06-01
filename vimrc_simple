@@ -14,15 +14,18 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'tpope/vim-repeat'
 Plug 'suan/vim-instant-markdown'
 Plug 'itchyny/lightline.vim'
-"Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 Plug 'plasticboy/vim-markdown'
-Plug 'dhruvasagar/vim-table-mode'
+"Plug 'dhruvasagar/vim-table-mode'
 Plug 'lervag/vimtex'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
+
+" for test
+Plug '~/code/test/myplug'
 " All of your Plugins must be added before the following line
 call plug#end()    " required
 
@@ -38,8 +41,7 @@ let g:coc_global_extensions = [
   \ 'coc-vimlsp',
   \ ]
 
-filetype plugin indent on " required
-
+filetype plugin on
 set wildmenu
 set wildmode=longest:list,full
 set history=1000
@@ -52,7 +54,6 @@ set incsearch
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-filetype plugin on
 nnoremap k gk
 nnoremap gk k
 nnoremap j gj
@@ -71,7 +72,10 @@ autocmd BufReadPost *
 syntax on
 set termguicolors
 set background=dark
+set nocompatible
 colorscheme base16-tomorrow-night-eighties
+highlight LineNr guibg=NONE
+highlight VertSplit ctermbg=NONE guibg=NONE
 "colorscheme Tomorrow-Night-Eighties
 "colorscheme base16-atelier-dune
 "colorscheme PaperColor
@@ -86,8 +90,10 @@ endif
 
 " conf for language
 " Enable filetype-specific plugins
-filetype plugin on
+" disable the automatic insertion of comments
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType ruby,yaml,eruby,vim setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
 autocmd FileType html,css setlocal expandtab shiftwidth=2 tabstop=2 smartindent smarttab softtabstop=2
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
@@ -119,8 +125,8 @@ if has("autocmd")
 endif
 
 " make exiting to normal mode a bit easier
-imap jj <ESC>
-imap kk <ESC>
+"imap jj <ESC>
+"imap kk <ESC>
 
 " vim-go
 "let g:go_pls_enabled = 1
@@ -161,12 +167,8 @@ let g:vim_markdown_folding_disabled = 1
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-"nmap s <Plug>(easymotion-overwin-f)
-" or
-" `s{char}{char}{label}`
 " Need one more keystroke, but on average, it may be more comfortable.
-"nmap s <Plug>(easymotion-overwin-f2)
+nmap s <Plug>(easymotion-overwin-f2)
 
 " Turn on case insensitive feature
 let g:EasyMotion_smartcase = 1
@@ -174,21 +176,6 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
-
-" vim table mode
-function! s:isAtStartOfLine(mapping)
-  let text_before_cursor = getline('.')[0 : col('.')-1]
-  let mapping_pattern = '\V' . escape(a:mapping, '\')
-  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
-endfunction
-
-inoreabbrev <expr> <bar><bar>
-          \ <SID>isAtStartOfLine('\|\|') ?
-          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
-inoreabbrev <expr> __
-          \ <SID>isAtStartOfLine('__') ?
-          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
 " For Markdown-compatible tables use
 let g:table_mode_corner="|"
@@ -358,20 +345,23 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 "autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " status line
-" set laststatus=2
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
+function! CocCurrentFucntion()
+  "return CocAction("getCurrentFunctionSymbol")
+  return get(b:, 'coc_current_function', '')
+endfunction
+
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'cocstatus', 'currentFunction', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'cocstatus': 'coc#status'
+      \   'cocstatus': 'coc#status',
+      \   'currentFunction': 'CocCurrentFucntion'
       \ },
       \ }
-" Use auocmd to force lightline update.
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " Using CocFzfList
 " Show all diagnostics
@@ -379,7 +369,7 @@ nnoremap <silent> <space>a  :<C-u>CocFzfList diagnostics<cr>
 " Show diagnostics current buffer
 nnoremap <silent> <space>b  :<C-u>CocFzfList diagnostics --current-buf<CR>
 " Show commands
-nnoremap <silent> <space>c  :<C-u>CFzfList commands<cr>
+nnoremap <silent> <space>c  :<C-u>CocFzfList commands<cr>
 " Manage extensions
 "nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
 nnoremap <silent> <space>l  :<C-u>CocFzfList location<CR>
@@ -428,6 +418,7 @@ command! FzfCycle call <sid>fzf_next(0)
 nnoremap <C-p> :FzfCycle<Cr>
 nnoremap <C-e> :Buffers<CR>
 nnoremap <C-f> :Ag<CR>
+nnoremap <leader>ct :Colors<CR>
 nnoremap <space>w :Windows<CR>
 nnoremap <space>t :TagbarToggle<cr>
 nnoremap <space>h :History<cr>
@@ -443,7 +434,6 @@ nnoremap <space>h :History<cr>
 " view operation
 set mouse=a
 set fillchars+=vert:│
-highlight VertSplit ctermbg=NONE guibg=NONE
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 " session management
