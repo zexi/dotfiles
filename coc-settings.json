@@ -39,6 +39,12 @@
 	//"deepCompletion": true
 	//"usePlaceholders": true
       }
+    },
+    "racket": {
+      // https://github.com/jeapostrophe/racket-langserver
+      "filetypes": ["racket"],
+      "command": "racket",
+      "args": ["--lib", "racket-langserver"]
     }
   }
 }

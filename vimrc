@@ -99,7 +99,7 @@ endif
 " Enable filetype-specific plugins
 " disable the automatic insertion of comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-autocmd FileType ruby,yaml,eruby,vim setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
 autocmd FileType html,css setlocal expandtab shiftwidth=2 tabstop=2 smartindent smarttab softtabstop=2
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
@@ -125,12 +125,14 @@ set splitright
 " sudo write
 cmap w!! w !sudo tee % >/dev/null
 
-" racket
+" racket {{{
 if has("autocmd")
   au BufReadPost *.rkt,*.rktl,*.scm set filetype=racket
   au filetype racket set lisp
   au filetype racket set autoindent
+  au filetype racket let b:autopairs_enabled = 0
 endif
+" }}}
 
 " vim-go {{{
 "let g:go_pls_enabled = 1
@@ -268,8 +270,8 @@ nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
-" tagstack gotoDefinition
-function! s:gotoDefinition() abort
+" tagstack gotoTag
+function! s:gotoTag(tagkind) abort
   let l:current_tag = expand('<cWORD>')
 
   let l:current_position = getcurpos()
@@ -279,7 +281,7 @@ function! s:gotoDefinition() abort
   let l:current_tag_index = l:current_tag_stack['curidx']
   let l:current_tag_items = l:current_tag_stack['items']
 
-  if CocAction('jumpDefinition')
+  if CocAction('jump' . a:tagkind)
     let l:new_tag_index = l:current_tag_index + 1
     let l:new_tag_item = [{'tagname': l:current_tag, 'from': l:current_position}]
     let l:new_tag_items = l:current_tag_items[:]
@@ -294,11 +296,12 @@ endfunction
 
 "nmap <silent> gd <Plug>(coc-definition)
 "nmap <silent> gd :call CocAction('jumpDefinition', 'drop')<cr>
-nmap <silent> gd :call <SID>gotoDefinition()<CR>
+nmap <silent> gd :call <SID>gotoTag("Definition")<CR>
 nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gi :call <SID>gotoTag("Implementation")<CR>
+nmap <silent> gr :call <SID>gotoTag("References")<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
