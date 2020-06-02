@@ -11,6 +11,7 @@ Plug 'wlangstroth/vim-racket'
 Plug 'tpope/vim-fugitive'
 Plug 'chriskempson/base16-vim'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'itchyny/lightline.vim'
@@ -34,7 +35,6 @@ call plug#end()    " required
 let g:coc_global_extensions = [
   \ 'coc-translator',
   \ 'coc-explorer',
-  \ 'coc-pairs',
   \ 'coc-lists',
   \ 'coc-json',
   \ 'coc-snippets',
@@ -255,12 +255,13 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 " <cr> could be remapped by other vim plugin, try `:verbose imap <CR>`.
-"if exists('*complete_info')
-  "inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-"else
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-		\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-"endif
+if exists('*complete_info')
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  "inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+			"\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+  inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
 
 "" Use `[c` and `]c` to navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
@@ -278,7 +279,7 @@ function! s:gotoDefinition() abort
   let l:current_tag_index = l:current_tag_stack['curidx']
   let l:current_tag_items = l:current_tag_stack['items']
 
-  if CocAction('jumpDefinition', 'drop')
+  if CocAction('jumpDefinition')
     let l:new_tag_index = l:current_tag_index + 1
     let l:new_tag_item = [{'tagname': l:current_tag, 'from': l:current_position}]
     let l:new_tag_items = l:current_tag_items[:]

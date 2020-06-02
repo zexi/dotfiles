@@ -1,8 +1,4 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
+include colorscheme
 
 ### Variables
 #
@@ -27,7 +23,8 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 set $wallpaperPath "$HOME/Pictures/wallpaper/"
-exec_always --no-startup-id setrandom $wallpaperPath
+set $setWallpaper "$HOME/.config/sway/change_wallpaper.py"
+exec_always --no-startup-id $setWallpaper $wallpaperPath
 #
 # Example configuration:
 #
@@ -241,56 +238,15 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Reed `man 5 sway-bar` for more information about this section.
-#bar {
-#    position top
-#
-#    # When the status_command prints a new line to stdout, swaybar updates.
-#    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-#
-#    colors {
-#        statusline #ffffff
-#        background #323232
-#        inactive_workspace #32323200 #32323200 #5c5c5c
-#    }
-#}
-#
 bar {
     swaybar_command waybar
 }
 
-#set $transparent #00000000
-#bar {
-  #position top
-  #font pango:DejaVu Sans Mono, FontAwesome 12
-  #status_command i3status-rs $HOME/.config/i3/status
-  ##mode hide
-  ##hidden_state hide
-  ##modifier Mod1
-  ##tray_output eDP1
-  ##tray_output DP2
-  #tray_padding 0
-  ##strip_workspace_numbers yes
-  #height $height
-  #colors {
-## Whole color settings
-##background #1e1e1e
-##background #33333399
-    #background #282A36
-    #statusline #F8F8F2
-    #separator  #44475A
-
-    #focused_workspace  #44475A #44475A #F8F8F2
-    #active_workspace   #282A36 #44475A #F8F8F2
-    #inactive_workspace #282A36 #282A36 #BFBFBF
-    #urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    #binding_mode       #FF5555 #FF5555 #F8F8F2
-  #}
-#}
+#                       Border  BG      Text    Ind     Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
 
 # start a ydict for dictionary
 bindsym $mod+Mod1+x exec termite -c ~/.config/termite/config.trans --name=floatingApp # -e "ydcv -S"
@@ -325,6 +281,7 @@ bindsym XF86PowerOff exec systemctl suspend
 bindsym $mod+g exec "guake -t"
 
 #bindsym $mod+x output DP-2 pos 0 0 res 1920x1080; output eDP-1 pos 0 1080 res 1920x1080
+bindsym $mod+Shift+w exec $setWallpaper $wallpaperPath
 
 # Hide borders
 default_border pixel
