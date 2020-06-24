@@ -7,6 +7,7 @@ Plug 'tpope/vim-obsession'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 "Plug 'fatih/vim-go'
+Plug 'buoto/gotests-vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'tpope/vim-fugitive'
 Plug 'chriskempson/base16-vim'
@@ -19,6 +20,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'mzlogin/vim-markdown-toc'
 Plug 'lervag/vimtex'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
@@ -37,9 +39,11 @@ let g:coc_global_extensions = [
   \ 'coc-explorer',
   \ 'coc-lists',
   \ 'coc-json',
-  \ 'coc-snippets',
   \ 'coc-python',
   \ 'coc-vimlsp',
+  \ 'coc-html',
+  \ 'coc-css',
+  \ 'coc-emmet',
   \ ]
 
 filetype plugin on
@@ -125,6 +129,10 @@ set splitright
 " sudo write
 cmap w!! w !sudo tee % >/dev/null
 
+" auto-pairs {{{
+"let g:AutoPairsMapSpace = 0
+" }}}
+
 " racket {{{
 if has("autocmd")
   au BufReadPost *.rkt,*.rktl,*.scm set filetype=racket
@@ -166,8 +174,9 @@ let g:vimtex_compiler_latexmk = {
 " }}}
 
 " markdown configuration {{{
-" enable folding
-let g:vim_markdown_folding_disabled = 0
+" disable folding
+let g:vim_markdown_new_list_item_indent = 0
+let g:vim_markdown_folding_disabled = 1
 let g:instant_markdown_slow = 1
 let g:instant_markdown_autostart = 0
 " vim table mode
@@ -260,8 +269,6 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 if exists('*complete_info')
   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  "inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-			"\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
@@ -387,6 +394,7 @@ let g:lightline = {
       \ }
 
 " Using CocFzfList
+let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.6}}
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocFzfList diagnostics<cr>
 " Show diagnostics current buffer
@@ -445,7 +453,6 @@ nnoremap <leader>ct :Colors<CR>
 nnoremap <space>w :Windows<CR>
 nnoremap <space>t :TagbarToggle<cr>
 nnoremap <space>h :History<cr>
-"let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.6}}
 
 " terminal mode
 "tnoremap <Esc> <C-\><C-n>

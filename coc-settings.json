@@ -20,24 +20,20 @@
      "<C-p>": "normal:k"
   },
   //"latex.build.onSave": true,
+  "python.jediEnabled": false,
+  "python.autoUpdateLanguageServer": true,
   "languageserver": {
     "golang": {
       "filetypes": ["go"],
-//      "command": "go-langserver",
-//      "initializationOptions": {
-//	      "gocodeCompletionEnabled": true,
-//	      "diagnosticsEnabled": true,
-//	      "lintTool": "golint"
-//      }
       "command": "gopls",
 //      "disableWorkspaceFolders": true,
 //      "args": ["-remote=auto"],
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "initializationOptions": {
-	//"completeUnimported": true,
-	//"fuzzyMatching": true,
-	//"deepCompletion": true
-	//"usePlaceholders": true
+        "completeUnimported": true,
+        "fuzzyMatching": true,
+        "deepCompletion": true,
+        "usePlaceholders": false
       }
     },
     "racket": {
@@ -46,5 +42,9 @@
       "command": "racket",
       "args": ["--lib", "racket-langserver"]
     }
-  }
+  },
+  "translator.engines": [
+    "youdao",
+    "haici"
+  ]
 }

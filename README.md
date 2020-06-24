@@ -164,7 +164,6 @@ EOF
 ### others
 
 * netease-cloud-music, ieaseMusic
-* https://github.com/gsamokovarov/jump
 * guake: drop down terminal
 
 ### Gnome extensions
