@@ -1,0 +1,10 @@
+{
+  "terminal": {
+    "command": "termite",
+    "extraArgs": [
+      "-c",
+      "/home/lzx/.config/termite/config.trans"
+    ]
+  },
+  "ratio": 0.5
+}

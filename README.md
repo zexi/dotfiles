@@ -78,6 +78,7 @@ pacman -S sway waybar swaylock swayidle mako
 # install depends tools
 pacman -S brightnessctl rofi grim slurp wallutils \
   termite termite-terminfo powerline-fonts ttf-font-awesome \
+  ttf-monaco wqy-microhei wqy-zenhei wqy-bitmapfont \
   pamixer pnmixer pavucontrol alsa-utils \
   bluez bluez-utils blueman pulseaudio-bluetooth \
   network-manager-applet \
@@ -112,6 +113,7 @@ yay -S neovim-nightly
 ./dothelper install vim
 ln -s ~/.vimrc ~/.vim/init.vim
 ln -s ~/.vim ~/.config/nvim
+ln -s $(pwd)/coc-settings.json ~/.vim/coc-settings.json
 ```
 
 #### complete & goto definitions
