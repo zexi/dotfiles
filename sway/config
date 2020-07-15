@@ -11,6 +11,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term GDK_BACKEND=x11 termite
+#set $term termite
 # set $term kitty
 #set $term alacritty
 #set $term xterm
@@ -256,6 +257,7 @@ exec --no-startup-id nm-applet --indicator
 exec --no-startup-id blueman-applet
 # gnome xsettings
 exec_always /usr/lib/gsd-xsettings
+
 exec_always --no-startup-id sudo "$HOME/code/dotfiles/tools/trackpoint-adjust.sh"
 exec --no-startup-id redshift-gtk -l 39.92:116.46 -t 5500:4500
 
@@ -278,7 +280,9 @@ bindsym XF86PowerOff exec systemctl suspend
 
 # start guake terminal
 #bindsym $mod+g exec "$HOME/code/dotfiles/tools/xguake"
-bindsym $mod+g exec "guake -t"
+#bindsym $mod+g exec "guake -t"
+bindsym $mod+g exec "$HOME/go/bin/i3-go-quickterm"
+#bindsym $mod+g exec "$HOME/code/work/i3-quickterm/i3-quickterm shell"
 
 #bindsym $mod+x output DP-2 pos 0 0 res 1920x1080; output eDP-1 pos 0 1080 res 1920x1080
 bindsym $mod+Shift+w exec $setWallpaper $wallpaperPath
@@ -325,6 +329,8 @@ for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $heigh
 for_window [class="URxvt" title="ydcv.*"] floating enable
 for_window [class="Termite" title="ydcv.*"] floating enable
 for_window [app_id="guake"] floating enable
+for_window [app_id="virt-manager"] floating enable
+for_window [class="Guake"] floating enable
 for_window [class="ieaseMusic"] floating enable, move container to workspace $ws4
 for_window [class="Wine"] floating enable
 for_window [class="shadowsocks-qt5"] floating enable

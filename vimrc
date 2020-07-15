@@ -27,9 +27,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'antoinemadec/coc-fzf'
+"Plug 'sheerun/vim-polyglot'
+Plug 'pangloss/vim-javascript'
+Plug 'mattn/emmet-vim'
 
-" for test
-Plug '~/code/test/myplug'
 " All of your Plugins must be added before the following line
 call plug#end()    " required
 
@@ -44,6 +45,9 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-css',
   \ 'coc-emmet',
+  \ 'coc-tsserver',
+  \ 'coc-clangd',
+  \ 'coc-vetur',
   \ ]
 
 filetype plugin on
@@ -80,7 +84,7 @@ set background=dark
 set nocompatible
 
 " view operation
-set mouse=a
+" set mouse=a
 set fillchars+=vert:│
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
@@ -110,7 +114,7 @@ autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
 autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
 autocmd FileType javascript,java setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
-autocmd FileType tex,markdown setlocal expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
+autocmd FileType tex,markdown setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 
 " conf for window split {{{
 " We can use different key mappings for easy navigation between splits to save
@@ -125,6 +129,20 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 " }}}
+
+hi Normal guibg=NONE ctermbg=NONE
+let t:is_transparent = 1
+function! ToggleTransparentBackground()
+  if t:is_transparent == 1
+    "hi Normal guibg=#111111 ctermbg=black
+    set background=dark
+    let t:is_transparent = 0
+  else
+    hi Normal guibg=NONE ctermbg=NONE
+    let t:is_transparent = 1
+  endif
+endfunction
+nnoremap <C-x><C-t> :call ToggleTransparentBackground()<CR>
 
 " sudo write
 cmap w!! w !sudo tee % >/dev/null
@@ -470,3 +488,9 @@ nnoremap <silent> <Leader>sr  :<C-u>CocList sessions<cr>
 " toggle pause session observe
 nnoremap <Leader>sp :Obsession<CR>
 " end of session management }}}
+
+" html/css ocnfig {{{
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+"autocmd filetype html,css let b:autopairs_enabled = 0
+"}}}

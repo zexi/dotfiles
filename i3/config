@@ -264,7 +264,8 @@ for_window [class="^floatingApp$"] floating enable
 bindsym $mod+Shift+t exec termite -e ~/.tmux/tmux-restore
 
 # start guake terminal
-bindsym $mod+g exec guake
+# bindsym $mod+g exec guake
+bindsym $mod+g exec "$HOME/go/bin/i3-go-quickterm"
 
 # Display
 bindsym XF86Display exec /usr/bin/arandr

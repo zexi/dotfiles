@@ -22,6 +22,7 @@
   //"latex.build.onSave": true,
   "python.jediEnabled": false,
   "python.autoUpdateLanguageServer": true,
+  "python.analysis.diagnosticEnabled": false,
   "languageserver": {
     "golang": {
       "filetypes": ["go"],

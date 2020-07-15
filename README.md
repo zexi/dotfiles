@@ -34,14 +34,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 - [sway](https://wiki.archlinux.org/index.php/Sway) for common use
 - [gnome](https://wiki.archlinux.org/index.php/GNOME) for backup use
 
-### Gnome
+### Environment variables config
 
-```bash
-pacman -S gnome-extra gdm
-systemctl enable gdm --now
-```
-
-Set gdm default environment
+Set desktop default environment
 
 ```bash
 cat /etc/environment
@@ -61,6 +56,19 @@ export QT_SCALE_FACTOR=1.1
 export WINIT_UNIX_BACKEND=x11
 ```
 
+### Gnome
+
+```bash
+pacman -S gnome-extra gdm
+systemctl enable gdm --now
+
+# tweak-tool config
+# 'Keyboard & Mouse' -> 'Additional Layout Options':
+# Caps Lock behavior: Caps Lock is also a Ctrl
+# Alt and Win behavior:
+# Alt is swapped with Win
+```
+
 ### Sway
 
 ```bash
@@ -76,8 +84,8 @@ pacman -S brightnessctl rofi grim slurp wallutils \
   acpilight \
   ydcv
 
-yay -S wl-clipboard wl-clipboard-x11 redshift-wlr-gamma-control-git wdisplays-git \
-  network-manager-applet-indicator libappindicator-gtk3 wofi-hg
+yay -S wl-clipboard wl-clipboard-x11 redshift wdisplays-git \
+  network-manager-applet libappindicator-gtk3 wofi-hg
 ```
 
 ### install font
@@ -86,10 +94,14 @@ https://wiki.archlinux.org/index.php/Fonts_(简体中文)#中文字
 
 ### input method
 
-install fcitx fcitx-configtool
+install fcitx
 
 ```bash
-pacman -S fcitx fcitx-configtool fcitx-sogoupinyin fcitx-im
+# fcitx 4
+pacman -S fcitx fcitx-configtool fcitx-im fcitx-cloudpinyin fcitx-libpinyin
+
+# or fcitx 5
+sudo pacman -S fcitx5-chinese-addons-git fcitx5-config-qt-git fcitx5-git fcitx5-gtk-git fcitx5-qt5-git  fcitx5-qt5-git fcitx5-lua-git
 ```
 
 ### neovim
