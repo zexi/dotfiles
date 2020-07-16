@@ -89,6 +89,14 @@ yay -S wl-clipboard wl-clipboard-x11 redshift wdisplays-git \
   network-manager-applet libappindicator-gtk3 wofi-hg
 ```
 
+### git
+
+```sh
+cat ~/.gitconfig
+[credential]
+        helper = cache --timeout=86400
+```
+
 ### install font
 
 https://wiki.archlinux.org/index.php/Fonts_(简体中文)#中文字

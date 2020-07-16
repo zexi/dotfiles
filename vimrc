@@ -109,11 +109,11 @@ endif
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
-autocmd FileType html,css setlocal expandtab shiftwidth=2 tabstop=2 smartindent smarttab softtabstop=2
+autocmd FileType html,css,javascript setlocal expandtab shiftwidth=2 tabstop=2 smartindent smarttab softtabstop=2
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
 autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
-autocmd FileType javascript,java setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+autocmd FileType java setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 autocmd FileType tex,markdown setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 
 " conf for window split {{{
@@ -146,6 +146,11 @@ nnoremap <C-x><C-t> :call ToggleTransparentBackground()<CR>
 
 " sudo write
 cmap w!! w !sudo tee % >/dev/null
+
+" nerdcommenter {{{
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+"}}}
 
 " auto-pairs {{{
 "let g:AutoPairsMapSpace = 0
