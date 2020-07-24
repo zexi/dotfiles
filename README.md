@@ -75,6 +75,9 @@ systemctl enable gdm --now
 # install sway wm
 pacman -S sway waybar swaylock swayidle mako
 
+# install i3 wm
+pacman -S i3 compton i3status-rust mons screenkey
+
 # install depends tools
 pacman -S brightnessctl rofi grim slurp wallutils \
   termite termite-terminfo powerline-fonts ttf-font-awesome \
