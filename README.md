@@ -76,7 +76,7 @@ systemctl enable gdm --now
 pacman -S sway waybar swaylock swayidle mako
 
 # install i3 wm
-pacman -S i3 compton i3status-rust mons screenkey
+pacman -S i3 compton i3status-rust mons screenkey xsel
 
 # install depends tools
 pacman -S brightnessctl rofi grim slurp wallutils \
@@ -88,7 +88,7 @@ pacman -S brightnessctl rofi grim slurp wallutils \
   acpilight \
   ydcv
 
-yay -S wl-clipboard wl-clipboard-x11 redshift wdisplays-git \
+yay -S wl-clipboard redshift wdisplays-git \
   network-manager-applet libappindicator-gtk3 wofi-hg
 ```
 
