@@ -76,7 +76,9 @@ systemctl enable gdm --now
 pacman -S sway waybar swaylock swayidle mako
 
 # install i3 wm
-pacman -S i3 compton i3status-rust mons screenkey xsel
+pacman -S i3 compton i3status-rust mons screenkey xsel dunst
+
+# dunst and mako can't be installed at the same time
 
 # install depends tools
 pacman -S brightnessctl rofi grim slurp wallutils \
