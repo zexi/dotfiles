@@ -30,6 +30,8 @@ Plug 'antoinemadec/coc-fzf'
 "Plug 'sheerun/vim-polyglot'
 Plug 'pangloss/vim-javascript'
 Plug 'mattn/emmet-vim'
+Plug 'gyim/vim-boxdraw'
+Plug 'vim-scripts/DrawIt'
 
 " All of your Plugins must be added before the following line
 call plug#end()    " required
@@ -84,7 +86,7 @@ set background=dark
 set nocompatible
 
 " view operation
-" set mouse=a
+set mouse=a
 set fillchars+=vert:│
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
@@ -224,8 +226,8 @@ let g:table_mode_corner="|"
 let g:EasyMotion_do_mapping = 0 " Disable default mappings
 
 " <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
+" map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
 
 " Move to word
 map  <Leader>w <Plug>(easymotion-bd-w)
