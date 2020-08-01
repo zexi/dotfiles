@@ -90,7 +90,7 @@ pacman -S brightnessctl rofi grim slurp wallutils \
   acpilight \
   ydcv
 
-yay -S wl-clipboard redshift wdisplays-git \
+yay -S wl-clipboard redshift gammastep wdisplays-git \
   network-manager-applet libappindicator-gtk3 wofi-hg
 ```
 

@@ -31,8 +31,8 @@ exec_always --no-startup-id $setWallpaper $wallpaperPath
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 set $laptop eDP-1
-#bindswitch lid:on output $laptop disable
-#bindswitch lid:off output $laptop enable
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
 
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
@@ -259,7 +259,7 @@ exec --no-startup-id blueman-applet
 exec_always /usr/lib/gsd-xsettings
 
 exec_always --no-startup-id sudo "$HOME/code/dotfiles/tools/trackpoint-adjust.sh"
-exec --no-startup-id redshift-gtk -l 39.92:116.46 -t 5500:4500
+exec_always --no-startup-id gammastep -l 39.92:116.46 -t 5500:4500
 
 # Backlight control
 bindsym XF86MonBrightnessUp exec sudo xbacklight -ctrl intel_backlight -inc 20 # increase screen
