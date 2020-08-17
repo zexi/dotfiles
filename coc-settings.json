@@ -32,7 +32,8 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "initializationOptions": {
         "completeUnimported": true,
-        "fuzzyMatching": true,
+        "matcher": "caseInsensitive",
+        "symbolMatcher": "caseInsensitive",
         "deepCompletion": true,
         "usePlaceholders": false
       }
