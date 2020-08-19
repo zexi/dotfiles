@@ -472,9 +472,9 @@ function! s:fzf_next(idx)
   let next = (a:idx + 1) % len(commands)
   let previous = (a:idx - 1) % len(commands)
   execute 'tnoremap <buffer> <silent> <c-f> <c-\><c-n>:close<cr>:sleep 100m<cr>:call <sid>fzf_next('.next.')<cr>'
-  execute 'tnoremap <buffer> <silent> <Tab> <c-\><c-n>:close<cr>:sleep 100m<cr>:call <sid>fzf_next('.next.')<cr>'
+  "execute 'tnoremap <buffer> <silent> <Tab> <c-\><c-n>:close<cr>:sleep 100m<cr>:call <sid>fzf_next('.next.')<cr>'
   execute 'tnoremap <buffer> <silent> <c-b> <c-\><c-n>:close<cr>:sleep 100m<cr>:call <sid>fzf_next('.previous.')<cr>'
-  execute 'tnoremap <buffer> <silent> <S-Tab> <c-\><c-n>:close<cr>:sleep 100m<cr>:call <sid>fzf_next('.previous.')<cr>'
+  "execute 'tnoremap <buffer> <silent> <S-Tab> <c-\><c-n>:close<cr>:sleep 100m<cr>:call <sid>fzf_next('.previous.')<cr>'
 endfunction
 
 command! FzfCycle call <sid>fzf_next(0)
