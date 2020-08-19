@@ -48,7 +48,6 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-emmet',
   \ 'coc-tsserver',
-  \ 'coc-go',
   \ 'coc-clangd',
   \ 'coc-vetur',
   \ ]

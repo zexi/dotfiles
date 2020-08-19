@@ -24,20 +24,21 @@
   "python.autoUpdateLanguageServer": true,
   "python.analysis.diagnosticEnabled": false,
   "languageserver": {
-//    "golang": {
-//      "filetypes": ["go"],
-//      "command": "gopls",
-////      "disableWorkspaceFolders": true,
-////      "args": ["-remote=auto"],
-//      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-//      "initializationOptions": {
-//        "completeUnimported": true,
-//        "matcher": "caseInsensitive",
-//        "symbolMatcher": "caseInsensitive",
-//        "deepCompletion": true,
-//        "usePlaceholders": false
-//      }
-//    },
+     "golang": {
+        "filetypes": ["go"],
+        "command": "gopls",
+  //      "disableWorkspaceFolders": true,
+  //      "args": ["-remote=auto"],
+        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+        // "trace.server": "verbose",
+        "initializationOptions": {
+          //"completeUnimported": true,
+          //"matcher": "caseInsensitive",
+          //"symbolMatcher": "caseInsensitive",
+          //"deepCompletion": true,
+          "usePlaceholders": false
+       }
+    },
     "racket": {
       // https://github.com/jeapostrophe/racket-langserver
       "filetypes": ["racket"],
