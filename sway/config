@@ -13,7 +13,7 @@ set $right l
 set $term GDK_BACKEND=x11 termite
 #set $term termite
 # set $term kitty
-#set $term alacritty
+set $term1 alacritty
 #set $term xterm
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
@@ -96,7 +96,7 @@ input "3897:1553:Heng_Yu_Technology_Poker" {
 # Basics:
 #
     # start a terminal
-    bindsym $mod+Return exec $term
+    bindsym $mod+Return exec $term1
     bindsym $mod+Shift+Return exec $term -c ~/.config/termite/config.light
 
     # kill focused window

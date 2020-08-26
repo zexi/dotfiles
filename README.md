@@ -82,7 +82,7 @@ pacman -S i3 compton i3status-rust mons screenkey xsel dunst
 
 # install depends tools
 pacman -S brightnessctl rofi grim slurp wallutils \
-  termite termite-terminfo powerline-fonts ttf-font-awesome \
+  termite termite-terminfo alacritty powerline-fonts ttf-font-awesome \
   ttf-monaco wqy-microhei wqy-zenhei wqy-bitmapfont noto-fonts-emoji \
   pamixer pnmixer pavucontrol alsa-utils \
   bluez bluez-utils blueman pulseaudio-bluetooth \
