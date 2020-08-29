@@ -202,3 +202,25 @@ EOF
 | Dash to Dock             |                    |
 | Switcher                 |                    |
 | system-monitor           |
+
+
+### bluetooth
+
+- audio
+    - [Bluetooth_headset#Setting_up_auto_connection](https://wiki.archlinux.org/index.php/Bluetooth_headset#Setting_up_auto_connection)
+
+
+    ```bash
+    # list bluetooth devices
+    $ bluetoothctl devices
+    Device 04:5D:4B:17:9B:E1 MDR-1000X
+
+    # trust it
+    $ bluetoothctl trust 4:5D:4B:17:9B:E1
+    ```
+
+    - [Switch on connect](https://wiki.archlinux.org/index.php/PulseAudio#Switch_on_connect)
+
+- keyboard
+    - [Bluetooth keyboard](https://wiki.archlinux.org/index.php/Bluetooth_keyboard)
+
