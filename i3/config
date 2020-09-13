@@ -228,8 +228,8 @@ for_window [class="^floatingApp$"] floating enable
 bindsym $mod+Shift+t exec termite -e ~/.tmux/tmux-restore
 
 # start guake terminal
-#bindsym $mod+g exec guake
-bindsym $mod+g exec "$HOME/go/bin/i3-go-quickterm"
+bindsym $mod+g exec guake
+#bindsym $mod+g exec "$HOME/go/bin/i3-go-quickterm"
 
 # Display
 bindsym XF86Display exec /usr/bin/arandr
@@ -283,7 +283,7 @@ set $wallpaperPath "$HOME/Pictures/wallpaper/"
 exec --no-startup-id /usr/lib/gsd-xsettings
 #exec_always --no-startup-id xfce4-power-manager
 #exec --no-startup-id compton -CGb --backend glx --xrender-sync --xrender-sync-fence
-exec --no-startup-id compton -CGb --xrender-sync-fence
+#exec --no-startup-id compton -CGb --xrender-sync-fence
 #exec --no-startup-id compton -b
 #exec --no-startup-id compton --config ~/code/dotfiles/compton2.conf -b
 exec --no-startup-id fcitx -r

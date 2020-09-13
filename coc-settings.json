@@ -1,7 +1,9 @@
 {
   //"suggest.noselect": false,
   //"suggest.enablePreselect": false,
-  //"coc.preferences.jumpCommand": "drop",
+  "suggest.autoTrigger": "always",
+  "coc.preferences.jumpCommand": "drop",
+
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnType": true,
   "coc.preferences.formatOnSaveFiletypes": ["go"],
@@ -30,7 +32,7 @@
   //      "disableWorkspaceFolders": true,
   //      "args": ["-remote=auto"],
         "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-        // "trace.server": "verbose",
+        "trace.server": "verbose",
         "initializationOptions": {
           //"completeUnimported": true,
           //"matcher": "caseInsensitive",

@@ -192,6 +192,7 @@ EOF
 
 * netease-cloud-music, ieaseMusic
 * guake: drop down terminal
+    - bind 'Super+G': dbus-send --type=method_call --dest=org.guake3.RemoteControl /org/guake3/RemoteControl org.guake3.RemoteControl.show_from_remote
 
 ### Gnome extensions
 
@@ -200,8 +201,11 @@ EOF
 | Activities Configuratior |                    |
 | Caffeine                 |                    |
 | Dash to Dock             |                    |
-| Switcher                 |                    |
 | system-monitor           |
+| Multi Monitors Add-on    |                    |
+| TopIcons Plus            |                    |
+| GTK Title Bar            | hide GTK title bar |
+| Desk Changer             |                    |
 
 
 ### bluetooth

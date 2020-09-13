@@ -25,7 +25,8 @@ Plug 'lervag/vimtex'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 "Plug 'honza/vim-snippets'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
 "Plug 'sheerun/vim-polyglot'
 Plug 'pangloss/vim-javascript'
@@ -56,7 +57,7 @@ filetype plugin on
 set wildmenu
 set wildmode=longest:list,full
 set history=1000
-"set number
+set number
 set showcmd
 set ignorecase
 

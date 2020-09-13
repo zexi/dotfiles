@@ -10,7 +10,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term GDK_BACKEND=x11 termite
+#set $term GDK_BACKEND=x11 termite
 #set $term termite
 # set $term kitty
 set $term1 alacritty
@@ -50,7 +50,7 @@ exec swayidle -w \
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
-bindsym $mod+Ctrl+l exec "$HOME/code/dotfiles/tools/sway-lock"
+bindsym Mod1+Ctrl+l exec "$HOME/code/dotfiles/tools/sway-lock"
 
 ### Input configuration
 #
@@ -76,6 +76,19 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 
 # Set HHKB mode: 2356 on
 input "2131:256:Topre_Corporation_HHKB_Professional" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 200
+    repeat_rate 30
+}
+
+# HHKB BLE (YDKB)
+input "65261:6592:YANG_HHKB_BLE_(USB_DK5O)" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 200
+    repeat_rate 30
+}
+
+input "0:0:LZX_HHKB_Keyboard" {
     xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
     repeat_delay 200
     repeat_rate 30
@@ -255,6 +268,7 @@ bindsym $mod+Mod1+x exec termite -c ~/.config/termite/config.trans --name=floati
 exec fcitx -r
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id blueman-applet
+exec --no-startup-id guake
 # gnome xsettings
 exec_always /usr/lib/gsd-xsettings
 
@@ -280,8 +294,8 @@ bindsym XF86PowerOff exec systemctl suspend
 
 # start guake terminal
 #bindsym $mod+g exec "$HOME/code/dotfiles/tools/xguake"
-#bindsym $mod+g exec "guake -t"
-bindsym $mod+g exec "$HOME/go/bin/i3-go-quickterm"
+bindsym $mod+g exec "guake -t"
+#bindsym $mod+g exec "$HOME/go/bin/i3-go-quickterm"
 #bindsym $mod+g exec "$HOME/code/work/i3-quickterm/i3-quickterm shell"
 
 #bindsym $mod+x output DP-2 pos 0 0 res 1920x1080; output eDP-1 pos 0 1080 res 1920x1080
