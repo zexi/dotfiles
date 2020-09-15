@@ -81,7 +81,7 @@ pacman -S i3 compton i3status-rust mons screenkey xsel dunst
 # dunst and mako can't be installed at the same time
 
 # install depends tools
-pacman -S brightnessctl rofi grim slurp wallutils \
+pacman -S brightnessctl rofi-lbonn-wayland-git grim slurp wallutils \
   termite termite-terminfo alacritty powerline-fonts ttf-font-awesome \
   ttf-monaco wqy-microhei wqy-zenhei wqy-bitmapfont noto-fonts-emoji \
   pamixer pnmixer pavucontrol alsa-utils \
