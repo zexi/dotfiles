@@ -71,33 +71,33 @@ input "1133:16471:Logitech_M280/320/275" {
 
 input "1:1:AT_Translated_Set_2_keyboard" {
     xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
-    repeat_delay 200
+    repeat_delay 250
     repeat_rate 30
 }
 
 # Set HHKB mode: 2356 on
 input "2131:256:Topre_Corporation_HHKB_Professional" {
     xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
-    repeat_delay 200
+    repeat_delay 250
     repeat_rate 30
 }
 
 # HHKB BLE (YDKB)
 input "65261:6592:YANG_HHKB_BLE_(USB_DK5O)" {
     xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
-    repeat_delay 200
+    repeat_delay 250
     repeat_rate 30
 }
 
 input "0:0:LZX_HHKB_Keyboard" {
     xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
-    repeat_delay 200
+    repeat_delay 250
     repeat_rate 30
 }
 
 input "3897:1553:Heng_Yu_Technology_Poker" {
     xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
-    repeat_delay 200
+    repeat_delay 250
     repeat_rate 30
 }
 
@@ -278,7 +278,7 @@ exec --no-startup-id blueman-applet
 exec_always /usr/lib/gsd-xsettings
 
 exec_always --no-startup-id sudo "$HOME/code/dotfiles/tools/trackpoint-adjust.sh"
-exec_always --no-startup-id gammastep -l 39.92:116.46 -t 5500:4500
+exec --no-startup-id gammastep -l 39.92:116.46 -t 5500:4500
 
 # Backlight control
 bindsym XF86MonBrightnessUp exec sudo xbacklight -ctrl intel_backlight -inc 20 # increase screen
