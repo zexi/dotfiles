@@ -33,6 +33,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mattn/emmet-vim'
 Plug 'gyim/vim-boxdraw'
 Plug 'vim-scripts/DrawIt'
+"Plug 'itchyny/vim-haskell-indent'
 
 " All of your Plugins must be added before the following line
 call plug#end()    " required
@@ -112,11 +113,11 @@ endif
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
-autocmd FileType html,css,javascript setlocal expandtab shiftwidth=2 tabstop=2 smartindent smarttab softtabstop=2
+autocmd FileType html,css,javascript,lua setlocal expandtab shiftwidth=2 tabstop=2 smartindent smarttab softtabstop=2
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
 autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
-autocmd FileType java setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+autocmd FileType java,haskell setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 autocmd FileType tex,markdown setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 
 " conf for window split {{{
@@ -342,7 +343,8 @@ nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
 "nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gi :call <SID>gotoTag("Implementation")<CR>
-nmap <silent> gr :call <SID>gotoTag("References")<CR>
+"nmap <silent> gr :call <SID>gotoTag("References")<CR>
+nmap <silent> gr :call <SID>gotoTag("Used")<CR>
 
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>

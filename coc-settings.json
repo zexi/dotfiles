@@ -2,7 +2,7 @@
   //"suggest.noselect": false,
   //"suggest.enablePreselect": false,
   "suggest.autoTrigger": "always",
-  "coc.preferences.jumpCommand": "drop",
+  //"coc.preferences.jumpCommand": "drop",
 
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnType": true,
@@ -46,6 +46,17 @@
       "filetypes": ["racket"],
       "command": "racket",
       "args": ["--lib", "racket-langserver"]
+    },
+    "haskell": {
+        "command": "haskell-language-server-wrapper",
+        "args": ["--lsp"],
+        "rootPatterns": ["*.cabal", "cabal.config", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+        "filetypes": ["haskell", "lhaskell"]
+    },
+    "lua": {
+      "command": "lua-language-server",
+      "args": ["-E",  "/usr/share/lua-language-server/main.lua"],
+      "filetypes": ["lua"]
     }
   },
   "translator.engines": [
