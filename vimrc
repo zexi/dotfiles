@@ -25,8 +25,8 @@ Plug 'lervag/vimtex'
 Plug 'junegunn/fzf', {'do': { -> fzf#install() }}
 Plug 'junegunn/fzf.vim'
 "Plug 'honza/vim-snippets'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 Plug 'antoinemadec/coc-fzf'
 "Plug 'sheerun/vim-polyglot'
 Plug 'pangloss/vim-javascript'
@@ -115,7 +115,8 @@ autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabsto
 autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
 autocmd FileType html,css,javascript,lua setlocal expandtab shiftwidth=2 tabstop=2 smartindent smarttab softtabstop=2
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
-autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent
+autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent colorcolumn=80
+autocmd FileType text,gitcommit setlocal colorcolumn=80
 autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
 autocmd FileType java,haskell setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 autocmd FileType tex,markdown setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4

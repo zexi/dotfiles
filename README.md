@@ -45,6 +45,7 @@ cat /etc/environment
 #
 # Syntax: simple "KEY=VAL" pairs on separate lines
 #
+export INPUT_METHOD=fcitx
 export GTK_IM_MODULE=fcitx
 export QT4_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
@@ -115,7 +116,7 @@ install fcitx
 pacman -S fcitx fcitx-configtool fcitx-im fcitx-cloudpinyin fcitx-libpinyin
 
 # or fcitx 5
-sudo pacman -S fcitx5-chinese-addons-git fcitx5-config-qt-git fcitx5-git fcitx5-gtk-git fcitx5-qt5-git  fcitx5-qt5-git fcitx5-lua-git
+sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-lua
 ```
 
 ### neovim

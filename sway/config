@@ -101,6 +101,12 @@ input "3897:1553:Heng_Yu_Technology_Poker" {
     repeat_rate 30
 }
 
+input "1452:272:NIZ_BT5.0_Keyboard" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
 # hide mouse cursor on inactivity
 seat * hide_cursor 8000
 
@@ -270,7 +276,8 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 # start a ydict for dictionary
 bindsym $mod+Mod1+x exec termite -c ~/.config/termite/config.trans --name=floatingApp # -e "ydcv -S"
 
-exec fcitx -r
+#exec fcitx -r
+exec fcitx5 -r
 exec --no-startup-id nm-applet --indicator
 exec --no-startup-id blueman-applet
 #exec --no-startup-id guake
