@@ -59,6 +59,7 @@
       "filetypes": ["lua"]
     }
   },
+  "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
   "translator.engines": [
     "youdao",
     "haici"

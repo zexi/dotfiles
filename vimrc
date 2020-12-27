@@ -31,8 +31,9 @@ Plug 'antoinemadec/coc-fzf'
 "Plug 'sheerun/vim-polyglot'
 Plug 'pangloss/vim-javascript'
 Plug 'mattn/emmet-vim'
-Plug 'gyim/vim-boxdraw'
-Plug 'vim-scripts/DrawIt'
+" Plug 'gyim/vim-boxdraw'
+" Plug 'vim-scripts/DrawIt'
+Plug 'tpope/vim-rsi'
 "Plug 'itchyny/vim-haskell-indent'
 
 " All of your Plugins must be added before the following line
@@ -113,7 +114,7 @@ endif
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
-autocmd FileType html,css,javascript,lua setlocal expandtab shiftwidth=2 tabstop=2 smartindent smarttab softtabstop=2
+autocmd FileType html,css,javascript,lua setlocal shiftwidth=2 tabstop=2 softtabstop=2 autoindent
 autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent colorcolumn=80
 autocmd FileType text,gitcommit setlocal colorcolumn=80
@@ -363,6 +364,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 nmap <leader>rn <Plug>(coc-rename)
+nmap <leader>rf <Plug>(coc-refactor)
 
 " Remap for format selected region
 " xmap <leader>f  <Plug>(coc-format-selected)
@@ -511,5 +513,6 @@ nnoremap <Leader>sp :Obsession<CR>
 " html/css ocnfig {{{
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
-"autocmd filetype html,css let b:autopairs_enabled = 0
+" autocmd FileType html,css let b:autopairs_enabled = 0
+autocmd FileType html let b:AutoPairs = AutoPairsDefine({'>' : '<'}, [])
 "}}}

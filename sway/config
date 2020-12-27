@@ -107,6 +107,13 @@ input "1452:272:NIZ_BT5.0_Keyboard" {
     repeat_rate 30
 }
 
+# NIZ wired keyboard identifier
+input "1155:20786:CATEX_TECH._68EC-S" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
 # hide mouse cursor on inactivity
 seat * hide_cursor 8000
 
