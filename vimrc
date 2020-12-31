@@ -12,7 +12,7 @@ Plug 'wlangstroth/vim-racket'
 Plug 'tpope/vim-fugitive'
 Plug 'chriskempson/base16-vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'jiangmiao/auto-pairs'
+Plug 'zexi/auto-pairs'
 Plug 'tpope/vim-repeat'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'itchyny/lightline.vim'
@@ -35,6 +35,8 @@ Plug 'mattn/emmet-vim'
 " Plug 'vim-scripts/DrawIt'
 Plug 'tpope/vim-rsi'
 "Plug 'itchyny/vim-haskell-indent'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'leafOfTree/vim-vue-plugin'
 
 " All of your Plugins must be added before the following line
 call plug#end()    " required
@@ -55,7 +57,11 @@ let g:coc_global_extensions = [
   \ 'coc-vetur',
   \ ]
 
-filetype plugin on
+" let g:coc_filetype_map = {
+  " \ 'vue.html.javascript.css': 'vue',
+  " \}
+
+filetype plugin indent on
 set wildmenu
 set wildmode=longest:list,full
 set history=1000
@@ -113,9 +119,10 @@ endif
 " disable the automatic insertion of comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabstop=2
-autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
-autocmd FileType html,css,javascript,lua setlocal shiftwidth=2 tabstop=2 softtabstop=2 autoindent
-autocmd FileType sh,expect setlocal expandtab shiftwidth=4 tabstop=4 smartindent
+autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 " foldmethod=marker
+autocmd FileType html,css,javascript,vue,lua setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 autoindent smartindent
+" autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
+autocmd FileType sh,expect,python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent colorcolumn=80
 autocmd FileType text,gitcommit setlocal colorcolumn=80
 autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
@@ -433,7 +440,6 @@ let g:lightline = {
       \ }
 
 " Using CocFzfList
-let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.6}}
 " Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocFzfList diagnostics<cr>
 " Show diagnostics current buffer
@@ -472,6 +478,13 @@ vmap <Leader>r <Plug>(coc-translator-rv)
 "set completeopt=noinsert,noselect,menuone
 
 " fzf.vim maps
+let g:fzf_layout = {'window': {'width': 0.9, 'height': 0.6}}
+" check: https://www.erickpatrick.net/blog/adding-syntax-highlighting-to-fzf.vim-preview-window
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4"
+let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor}/*"'
+command! -bang -nargs=? -complete=dir Files
+     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 function! s:fzf_next(idx)
   let commands = ['Files', 'Buffers', 'History']
   execute commands[a:idx]
@@ -487,7 +500,7 @@ command! FzfCycle call <sid>fzf_next(0)
 
 nnoremap <C-p> :FzfCycle<Cr>
 nnoremap <C-e> :Buffers<CR>
-nnoremap <C-f> :Ag<CR>
+nnoremap <C-f> :Rg<CR>
 nnoremap <leader>ct :Colors<CR>
 nnoremap <space>w :Windows<CR>
 nnoremap <space>t :TagbarToggle<cr>
@@ -512,7 +525,8 @@ nnoremap <Leader>sp :Obsession<CR>
 
 " html/css ocnfig {{{
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+let g:vim_vue_plugin_load_full_syntax = 1
+autocmd FileType html,css,vue,markdown EmmetInstall
 " autocmd FileType html,css let b:autopairs_enabled = 0
-autocmd FileType html let b:AutoPairs = AutoPairsDefine({'>' : '<'}, [])
+autocmd FileType html,vue let b:AutoPairs = AutoPairsDefine({'>' : '<'}, [])
 "}}}
