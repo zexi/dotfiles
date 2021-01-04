@@ -11,6 +11,11 @@ if [[ $mode == 3 ]]; then
     swaymsg output $laptop pos 2560 360 res 1920x1080
     swaymsg output $external1 enable
     swaymsg output $external1 pos 640 1440 res 1920x1080
+elif [[ $mode == "3.1" ]]; then
+    swaymsg output $laptop pos   600 360 res 1920x1080
+    swaymsg output $external pos 2520 0 res 2560x1440
+    swaymsg output $external1 enable
+    swaymsg output $external1 pos 2520 1440 res 1920x1080
 else
     swaymsg output $external pos 0 0 res 2560x1440
     swaymsg output $external1 disable
