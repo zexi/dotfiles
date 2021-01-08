@@ -12,11 +12,11 @@ Plug 'wlangstroth/vim-racket'
 Plug 'tpope/vim-fugitive'
 Plug 'chriskempson/base16-vim'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'zexi/auto-pairs'
+Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-repeat'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'itchyny/lightline.vim'
-Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -40,26 +40,6 @@ Plug 'leafOfTree/vim-vue-plugin'
 
 " All of your Plugins must be added before the following line
 call plug#end()    " required
-
-" coc global extensions to install
-let g:coc_global_extensions = [
-  \ 'coc-translator',
-  \ 'coc-explorer',
-  \ 'coc-lists',
-  \ 'coc-json',
-  \ 'coc-python',
-  \ 'coc-vimlsp',
-  \ 'coc-html',
-  \ 'coc-css',
-  \ 'coc-emmet',
-  \ 'coc-tsserver',
-  \ 'coc-clangd',
-  \ 'coc-vetur',
-  \ ]
-
-" let g:coc_filetype_map = {
-  " \ 'vue.html.javascript.css': 'vue',
-  " \}
 
 filetype plugin indent on
 set wildmenu
@@ -119,7 +99,7 @@ endif
 " disable the automatic insertion of comments
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabstop=2
-autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 " foldmethod=marker
+autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
 autocmd FileType html,css,javascript,vue,lua setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 autoindent smartindent
 " autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 autocmd FileType sh,expect,python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
@@ -160,39 +140,24 @@ nnoremap <C-x><C-t> :call ToggleTransparentBackground()<CR>
 " sudo write
 cmap w!! w !sudo tee % >/dev/null
 
+" vim-sneak motion {{{
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
+"}}}
+
 " nerdcommenter {{{
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 "}}}
-
-" auto-pairs {{{
-"let g:AutoPairsMapSpace = 0
-" }}}
 
 " racket {{{
 if has("autocmd")
   au BufReadPost *.rkt,*.rktl,*.scm set filetype=racket
   au filetype racket set lisp
   au filetype racket set autoindent
-  au filetype racket let b:autopairs_enabled = 0
 endif
-" }}}
-
-" vim-go {{{
-"let g:go_pls_enabled = 1
-"let g:go_gopls_options = ['-remote=auto']
-""let g:go_def_mode = 'gopls'
-"let g:go_info_mode = 'gopls'
-"" disable vim-go :GoDef short cut (gd)
-"" this is handled by LanguageClient [LC]
-"let g:go_def_mapping_enabled = 0
-"" show type info in statusbar
-" let g:go_auto_type_info = 1
-"let g:go_fmt_autosave = 0
-"let g:go_def_reuse_buffer = 1
-"autocmd FileType go nmap gd <Plug>(go-def-vertical)
-"autocmd FileType go nmap <C-]> <Plug>(go-def)
-"autocmd FileType go nmap  g] <Plug>(go-implements)
 " }}}
 
 " tex configuration {{{
@@ -233,30 +198,28 @@ inoreabbrev <expr> __
 let g:table_mode_corner="|"
 " }}}
 
-" for easymotion configuration {{{
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" <Leader>f{char} to move to {char}
-" map  <Leader>f <Plug>(easymotion-bd-f)
-" nmap <Leader>f <Plug>(easymotion-overwin-f)
-
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
-
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" Need one more keystroke, but on average, it may be more comfortable.
-" nmap s <Plug>(easymotion-overwin-f2)
-
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
-
-" JK motions: Line motions
-" map <Leader>j <Plug>(easymotion-j)
-" map <Leader>k <Plug>(easymotion-k)
-"}}}
-
 " coc.nvim default settings {{{
+
+" coc global extensions to install
+let g:coc_global_extensions = [
+  \ 'coc-translator',
+  \ 'coc-explorer',
+  \ 'coc-lists',
+  \ 'coc-json',
+  \ 'coc-python',
+  \ 'coc-vimlsp',
+  \ 'coc-css',
+  \ 'coc-emmet',
+  \ 'coc-tsserver',
+  \ 'coc-clangd',
+  \ 'coc-vetur',
+  \ ]
+  " \ 'coc-html',
+
+" let g:coc_filetype_map = {
+  " \ 'vue.html.javascript.css': 'vue',
+  " \}
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -527,6 +490,48 @@ nnoremap <Leader>sp :Obsession<CR>
 let g:user_emmet_install_global = 0
 let g:vim_vue_plugin_load_full_syntax = 1
 autocmd FileType html,css,vue,markdown EmmetInstall
-" autocmd FileType html,css let b:autopairs_enabled = 0
-autocmd FileType html,vue let b:AutoPairs = AutoPairsDefine({'>' : '<'}, [])
+"}}}
+
+" lexima.vim auto pair config rules {{{
+" ref: https://github.com/deathlyfrantic/lexima-template-rules/blob/main/autoload/lexima/template_rules.vim
+" basic html/xml tag delimiters {{{
+call lexima#add_rule({
+  \ 'char': '<',
+  \ 'input_after': '>',
+  \ 'filetype': ['html', 'vue', 'xml', 'markdown'],
+  \ })
+call lexima#add_rule({
+  \ 'char': '>',
+  \ 'at': '\%#>',
+  \ 'leave': 1,
+  \ 'filetype': ['html', 'vue', 'xml', 'markdown'],
+  \ })
+call lexima#add_rule({
+  \ 'char': '<CR>',
+  \ 'input': '<CR>',
+  \ 'input_after': '<CR>',
+  \ 'at': '>\%#</',
+  \ 'filetype': ['html', 'vue', 'xml', 'markdown'],
+  \ })
+call lexima#add_rule({
+  \ 'char': '<BS>',
+  \ 'delete': 1,
+  \ 'at': '<\%#>',
+  \ 'filetype': ['html', 'vue', 'xml', 'markdown'],
+  \ })
+call lexima#add_rule({
+  \ 'char': '<BS>',
+  \ 'delete': 2,
+  \ 'at': '<\%#/>',
+  \ 'filetype': ['html', 'vue', 'xml', 'markdown'],
+  \ 'priority': 1,
+  \ })
+call lexima#add_rule({
+  \ 'char': '/',
+  \ 'delete': 1,
+  \ 'input': '/>',
+  \ 'at': '<[^>]\+\%#>',
+  \ 'filetype': ['html', 'vue', 'xml', 'markdown'],
+  \ })
+"}}}
 "}}}
