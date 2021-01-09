@@ -208,11 +208,11 @@ let g:coc_global_extensions = [
   \ 'coc-json',
   \ 'coc-python',
   \ 'coc-vimlsp',
-  \ 'coc-css',
-  \ 'coc-emmet',
-  \ 'coc-tsserver',
   \ 'coc-clangd',
+  \ 'coc-css',
+  \ 'coc-tsserver',
   \ 'coc-vetur',
+  \ 'coc-emmet',
   \ ]
   " \ 'coc-html',
 
