@@ -1,8 +1,7 @@
 {
   //"suggest.noselect": false,
   //"suggest.enablePreselect": false,
-  "suggest.autoTrigger": "always",
-  //"coc.preferences.jumpCommand": "drop",
+  // "coc.preferences.jumpCommand": "drop",
 
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnType": true,

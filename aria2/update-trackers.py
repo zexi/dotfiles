@@ -10,7 +10,7 @@ DEFAULT_URL = 'https://raw.githubusercontent.com/ngosang/trackerslist/master/tra
 
 def get_trackers(url=DEFAULT_URL):
     content = urllib.request.urlopen(url).read()
-    return b''.join(content.split()).decode('utf-8')
+    return b','.join(content.split()).decode('utf-8')
 
 
 def inject_to_config(config_path, trackers):
