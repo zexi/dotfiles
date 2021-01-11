@@ -10,7 +10,8 @@ Plug 'majutsushi/tagbar'
 Plug 'buoto/gotests-vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'tpope/vim-fugitive'
-Plug 'chriskempson/base16-vim'
+"Plug 'chriskempson/base16-vim'
+Plug 'romainl/Apprentice'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-repeat'
@@ -70,22 +71,9 @@ autocmd BufReadPost *
 	\ endif
 
 syntax on
-set termguicolors
-set background=dark
 set nocompatible
 
-" view operation
-set mouse=a
-set fillchars+=vert:│
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
-
-colorscheme base16-tomorrow-night-eighties
-highlight LineNr guibg=NONE
-highlight VertSplit ctermbg=NONE guibg=NONE
-"colorscheme Tomorrow-Night-Eighties
-"colorscheme base16-atelier-dune
-"colorscheme PaperColor
-"let g:nord_bold = 0
+" colorscheme config {{{
 if has('gui_running')
 	set guioptions-=T
 	set guioptions-=m
@@ -93,6 +81,27 @@ if has('gui_running')
 else
 	set t_Co=256
 endif
+
+set termguicolors
+" base16-tomorrow-night-eighties {{{
+" set background=dark
+" colorscheme base16-tomorrow-night-eighties
+"}}}
+
+" apprentice {{{
+colorscheme apprentice
+highlight Comment ctermbg=NONE ctermfg=240 cterm=NONE guibg=NONE guifg=#808080 gui=NONE
+highlight CursorLine ctermbg=236 ctermfg=NONE cterm=NONE guibg=#903040 guifg=NONE gui=NONE
+"}}}
+
+highlight LineNr guibg=NONE
+highlight VertSplit ctermbg=NONE guibg=NONE
+"}}}
+
+" view operation
+set mouse=a
+set fillchars+=vert:│
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 
 " conf for language
 " Enable filetype-specific plugins
@@ -213,6 +222,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-vetur',
   \ 'coc-emmet',
+  \ 'coc-highlight',
   \ ]
   " \ 'coc-html',
 
