@@ -223,6 +223,7 @@ let g:coc_global_extensions = [
   \ 'coc-vetur',
   \ 'coc-emmet',
   \ 'coc-highlight',
+  \ 'coc-java',
   \ ]
   " \ 'coc-html',
 
@@ -500,6 +501,12 @@ autocmd FileType html,css,vue,markdown EmmetInstall
 
 " lexima.vim auto pair config rules {{{
 " ref: https://github.com/deathlyfrantic/lexima-template-rules/blob/main/autoload/lexima/template_rules.vim
+" define always leaving rules {{{
+call lexima#add_rule({'char': '"', 'at': '\%#"', 'input': '<Right>'})
+call lexima#add_rule({'char': "'", 'at': "\%#'", 'input': '<Right>'})
+call lexima#add_rule({'char': ')', 'at': '\%#)', 'input': '<Right>'})
+"}}}
+
 " basic html/xml tag delimiters {{{
 call lexima#add_rule({
   \ 'char': '<',
