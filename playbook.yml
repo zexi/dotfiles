@@ -1,0 +1,16 @@
+---
+- name: Check OS
+  import_playbook: check_os.yml
+
+- hosts: all
+  roles:
+    - { role: bootstrap-os }
+    - { role: zsh, tags: zsh }
+    - role: nodejs
+      tags: ['nodejs', 'vim']
+      vars:
+        the_user: "{{ ansible_user_id }}"
+    - { role: vim, tags: vim }
+    - { role: tmux, tags: tmux }
+    - { role: golang, tags: golang }
+    - { role: swaywm, tags: swaywm }

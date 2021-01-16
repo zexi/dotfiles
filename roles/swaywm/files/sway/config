@@ -11,9 +11,9 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 #set $term GDK_BACKEND=x11 termite
-set $term termite
-# set $term1 alacritty
-set $term1 termite
+#set $term termite
+# set $term kitty
+set $term1 alacritty
 #set $term xterm
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
@@ -136,8 +136,8 @@ seat * hide_cursor 8000
     # start your launcher
     bindsym $mod+d exec $menu
     #bindsym $mod+d exec rofi -show drun -show-icons -drun-icon-theme
-    #bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
-    bindsym $mod+space exec wofi --show drun --allow-images --allow-markup
+    bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
+    #bindsym $mod+space exec wofi --show drun --allow-images --allow-markup
     #bindsym $mod+Tab exec rofi -show window -show-icons
     #bindsym $mod+Tab exec rofi -show combi -combi-modi "window:~/.config/sway/rofi-window-switch.sh" -modi combi
     bindsym $mod+Tab exec /usr/bin/termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"

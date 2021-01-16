@@ -1,0 +1,5 @@
+---
+go_path: "{{ ansible_user_dir }}/go"
+go_bin_path: "{{ go_path }}/bin"
+go_src_path: "{{ go_path }}/src"
+go_pkg_path: "{{ go_path }}/pkg"

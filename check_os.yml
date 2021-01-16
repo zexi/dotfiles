@@ -1,0 +1,7 @@
+- hosts: all
+  tasks:
+    - name: "Check ansible os family {{ ansible_os_family }} is supported"
+      assert:
+        msg: "{{ ansible_os_family }} is not supported"
+        that:
+          - ansible_os_family == "Archlinux"

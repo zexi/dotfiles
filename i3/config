@@ -286,7 +286,7 @@ exec --no-startup-id /usr/lib/gsd-xsettings
 #exec --no-startup-id compton -CGb --xrender-sync-fence
 #exec --no-startup-id compton -b
 #exec --no-startup-id compton --config ~/code/dotfiles/compton2.conf -b
-exec --no-startup-id fcitx -r
+exec --no-startup-id fcitx5 -r
 exec --no-startup-id pnmixer
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet

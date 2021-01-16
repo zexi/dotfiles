@@ -1,0 +1,48 @@
+- name: Install swaywm required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+      - sway
+      - waybar
+      - swaylock
+      - swayidle
+      - mako
+      - brightnessctl
+      - rofi
+      - grim
+      - slurp
+      - wallutils
+      - termite
+      - termite-terminfo
+      - alacritty
+      - powerline-fonts
+      - ttf-font-awesome
+      - ttf-monaco
+      - wqy-microhei
+      - wqy-zenhei
+      - wqy-bitmapfont
+      - noto-fonts-emoji
+      - pamixer
+      - pnmixer
+      - pavucontrol
+      - alsa-utils
+      - bluez
+      - bluez-utils
+      - blueman
+      - pulseaudio-bluetooth
+      - network-manager-applet
+      - acpilight
+      - ydcv
+      - wl-clipboard
+      - redshift
+      - gammastep
+      # - wdisplays-git
+      - network-manager-applet
+      - libappindicator-gtk3
+      # - wofi-hg
+
+- name: Copy config/sway
+  synchronize:
+    src: sway
+    dest: "{{ ansible_user_dir }}/.config/"

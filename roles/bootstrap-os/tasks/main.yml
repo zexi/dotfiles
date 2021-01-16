@@ -1,0 +1,8 @@
+---
+- name: Print OS family
+  debug:
+    msg: "{{ ansible_os_family }}"
+
+- include_tasks: bootstrap-archlinux.yml
+  when:
+    - ansible_os_family == "Archlinux"

@@ -1,0 +1,7 @@
+---
+vim_plug_dest: "{{ ansible_user_dir }}/.vim/autoload/plug.vim"
+vim_rc: "{{ ansible_user_dir }}/.vimrc"
+vim_config_dir: "{{ ansible_user_dir }}/.vim"
+neovim_init: "{{ ansible_user_dir }}/.vim/init.vim"
+neovim_config_dir: "{{ ansible_user_dir }}/.config/nvim"
+coc_config_dest: "{{ vim_config_dir }}/coc-settings.json"

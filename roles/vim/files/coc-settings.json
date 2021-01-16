@@ -1,0 +1,66 @@
+{
+  //"suggest.noselect": false,
+  //"suggest.enablePreselect": false,
+  // "coc.preferences.jumpCommand": "drop",
+
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnSaveFiletypes": ["go"],
+  "list.normalMappings": {
+     "t": "action:tabe",
+     "v": "action:vsplit",
+     "s": "action:split",
+     "d": "expr:GetDeleteAction"
+  },
+  "list.insertMappings": {
+     "<C-t>": "action:tabe",
+     "<C-v>": "action:vsplit",
+     "<C-x>": "action:split",
+     "<C-r>": "do:refresh",
+     "<C-n>": "normal:j",
+     "<C-p>": "normal:k"
+  },
+  //"latex.build.onSave": true,
+  "python.jediEnabled": false,
+  "python.autoUpdateLanguageServer": true,
+  "python.analysis.diagnosticEnabled": false,
+  "languageserver": {
+     "golang": {
+        "filetypes": ["go"],
+        "command": "gopls",
+  //      "disableWorkspaceFolders": true,
+  //      "args": ["-remote=auto"],
+        "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+        "trace.server": "verbose",
+        "initializationOptions": {
+          //"completeUnimported": true,
+          //"matcher": "caseInsensitive",
+          //"symbolMatcher": "caseInsensitive",
+          //"deepCompletion": true,
+          "usePlaceholders": false
+       }
+    },
+    "racket": {
+      // https://github.com/jeapostrophe/racket-langserver
+      "filetypes": ["racket"],
+      "command": "racket",
+      "args": ["--lib", "racket-langserver"]
+    },
+    "haskell": {
+        "command": "haskell-language-server-wrapper",
+        "args": ["--lsp"],
+        "rootPatterns": ["*.cabal", "cabal.config", "stack.yaml", "cabal.project", "package.yaml", "hie.yaml"],
+        "filetypes": ["haskell", "lhaskell"]
+    },
+    "lua": {
+      "command": "lua-language-server",
+      "args": ["-E",  "/usr/share/lua-language-server/main.lua"],
+      "filetypes": ["lua"]
+    }
+  },
+  "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
+  "translator.engines": [
+    "youdao",
+    "haici"
+  ]
+}

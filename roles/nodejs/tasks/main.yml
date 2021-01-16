@@ -1,0 +1,7 @@
+- name: Install nodejs packages
+  become: yes
+  pacman:
+    state: present
+    name:
+      - nodejs
+      - npm

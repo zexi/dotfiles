@@ -1,0 +1,21 @@
+- name: Install tmux required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+      - git
+      - tmux
+
+- name: Clone tpm
+  git:
+    repo: https://github.com/tmux-plugins/tpm
+    dest: "{{ tmux_tpm_dir }}"
+
+- name: Copy tmux.conf
+  copy:
+    src: tmux.conf
+    dest: "{{ tmux_config }}"
+  tags: tmux_config
+
+- name: Call tpm install plugins
+  shell: "{{ tmux_tpm_dir }}/bin/install_plugins"
