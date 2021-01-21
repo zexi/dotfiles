@@ -52,8 +52,11 @@ export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 export LANG=en_US.UTF-8
 export _JAVA_AWT_WM_NONREPARENTING=1
+# manually set the screen factor
+# it is important to set QT_AUTO_SCREEN_SCALE_FACTOR=0 otherwise
+# some applications which explicitly force high DPI enabling get scaled twice
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export QT_SCALE_FACTOR=1.1
+export QT_SCALE_FACTOR=1.2
 export WINIT_UNIX_BACKEND=x11
 ```
 
@@ -202,11 +205,13 @@ EOF
 | Activities Configuratior |                    |
 | Caffeine                 |                    |
 | Dash to Dock             |                    |
-| system-monitor           |
+| system-monitor           | system metrics monitor |
+| clipboard Indicator           |  |
 | Multi Monitors Add-on    |                    |
-| TopIcons Plus            |                    |
-| GTK Title Bar            | hide GTK title bar |
+| TopIcons Plus            | show native x11 top icon |
+| No Title Bar - Forked         | hide GTK title bar |
 | Desk Changer             |                    |
+| drop-down-terminal-x     | drop down terminal |
 
 
 ```bash
