@@ -115,11 +115,8 @@ https://wiki.archlinux.org/index.php/Fonts_(简体中文)#中文字
 install fcitx
 
 ```bash
-# fcitx 4
-pacman -S fcitx fcitx-configtool fcitx-im fcitx-cloudpinyin fcitx-libpinyin
-
-# or fcitx 5
-sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-lua
+# fcitx 5
+sudo pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-lua fcitx5-rime rime-emoji
 ```
 
 ### neovim
@@ -200,18 +197,19 @@ EOF
 
 ### Gnome extensions
 
-| Name                     | Description        |
-|--------------------------|--------------------|
-| Activities Configuratior |                    |
-| Caffeine                 |                    |
-| Dash to Dock             |                    |
-| system-monitor           | system metrics monitor |
-| clipboard Indicator           |  |
-| Multi Monitors Add-on    |                    |
-| TopIcons Plus            | show native x11 top icon |
-| No Title Bar - Forked         | hide GTK title bar |
-| Desk Changer             |                    |
-| drop-down-terminal-x     | drop down terminal |
+| Name                     | Description                                                                      |
+|--------------------------|----------------------------------------------------------------------------------|
+| Activities Configuratior |                                                                                  |
+| Caffeine                 |                                                                                  |
+| Dash to Dock             |                                                                                  |
+| system-monitor           | system metrics monitor                                                           |
+| clipboard Indicator      |                                                                                  |
+| Multi Monitors Add-on    |                                                                                  |
+| tray icons               | show native x11 top icon: https://extensions.gnome.org/extension/1503/tray-icons |
+| No Title Bar - Forked    | hide GTK title bar                                                               |
+| Desk Changer             | wallpaper changer                                                                |
+| ddterm                   | drop down terminal: https://extensions.gnome.org/extension/3780/ddterm/          |
+| switcher                 | https://github.com/daniellandau/switcher                                         |
 
 
 ```bash

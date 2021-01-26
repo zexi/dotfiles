@@ -58,6 +58,7 @@
       "filetypes": ["lua"]
     }
   },
+  "tsserver.formatOnType": false,
   "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
   "translator.engines": [
     "youdao",

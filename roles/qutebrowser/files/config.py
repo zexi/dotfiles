@@ -6,6 +6,8 @@ c.url.searchengines = {
     'github': 'https://github.com/search?q={}&ref=opensearch'
 }
 
+c.content.headers.user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.128 Safari/537.36'
+
 # Automatically enter insert mode if an editable element is focused
 # after loading the page.
 # c.input.insert_mode.auto_load = True
@@ -29,10 +31,11 @@ c.bindings.commands = {
         '<Alt-f>'         : 'fake-key <Ctrl-Right>',
         '<Alt-b>'         : 'fake-key <Ctrl-Left>',
         '<Ctrl-d>'        : 'fake-key <Delete>',
-        '<Alt-d>'         : 'fake-key <Ctrl-Delete>',
-        '<Alt-Backspace>': 'fake-key <Ctrl-Backspace>',
+        '<Alt-d>': 'fake-key <Ctrl-Delete>',
+        '<Ctrl-h>'        : 'fake-key <Backspace>',
+        '<Ctrl-w>': 'fake-key <Ctrl-Backspace>',
         '<Ctrl-y>': 'insert-text {primary}',
-        '<Ctrl-h>': 'open-editor',
+        '<Alt-h>': 'open-editor',
     },
 }
 
@@ -42,3 +45,7 @@ config.bind('x', 'tab-close')
 config.bind('X', 'undo')
 
 c.url.start_pages = ['https://cn.bing.com']
+
+config.bind('f', 'hint all current')
+c.colors.webpage.prefers_color_scheme_dark = True
+c.window.hide_decoration = True

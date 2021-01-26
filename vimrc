@@ -18,6 +18,7 @@ Plug 'tpope/vim-repeat'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'itchyny/lightline.vim'
 Plug 'justinmk/vim-sneak'
+Plug 'easymotion/vim-easymotion'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -38,6 +39,7 @@ Plug 'tpope/vim-rsi'
 "Plug 'itchyny/vim-haskell-indent'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'leafOfTree/vim-vue-plugin'
+Plug 'Yggdroot/indentLine'
 
 " All of your Plugins must be added before the following line
 call plug#end()    " required
@@ -109,9 +111,9 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
-autocmd FileType html,css,javascript,vue,lua setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 autoindent smartindent
+autocmd FileType html,css,scss,javascript,vue,lua setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 autoindent smartindent
 " autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
-autocmd FileType sh,expect,python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
+autocmd FileType sh,expect,python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 colorcolumn=80
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent colorcolumn=80
 autocmd FileType text,gitcommit setlocal colorcolumn=80
 autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
@@ -154,6 +156,23 @@ map f <Plug>Sneak_f
 map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
+"}}}
+
+" vim-easymotion {{{
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" <Leader>f{char} to move to {char}
+" map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+" nmap s <Plug>(easymotion-overwin-f2)
+nmap <Leader>f <Plug>(easymotion-overwin-f2)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 "}}}
 
 " nerdcommenter {{{
@@ -508,6 +527,9 @@ call lexima#add_rule({'char': "'", 'at': "\%#'", 'input': '<Right>'})
 call lexima#add_rule({'char': ')', 'at': '\%#)', 'input': '<Right>'})
 "}}}
 
+" <C-h> can be used in the same manner as <BS>
+let g:lexima_ctrlh_as_backspace = 1
+
 " basic html/xml tag delimiters {{{
 call lexima#add_rule({
   \ 'char': '<',
@@ -548,4 +570,9 @@ call lexima#add_rule({
   \ 'filetype': ['html', 'vue', 'xml', 'markdown'],
   \ })
 "}}}
+"}}}
+
+"{{{ indentLine config
+let g:indentLine_enabled = 0
+autocmd FileType html,vue,js let b:indentLine_enabled=1
 "}}}

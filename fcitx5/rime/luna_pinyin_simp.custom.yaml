@@ -1,0 +1,31 @@
+# encoding: utf-8
+
+patch:
+  # 表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）
+  "switches/@0/reset": 1
+
+  switches/@next:
+    name: emoji_suggestion
+    reset: 1
+    states: [ "🈚️️\uFE0E", "🈶️️\uFE0F" ]
+  'engine/filters/@before 0':
+    simplifier@emoji_suggestion
+  emoji_suggestion:
+    opencc_config: emoji.json
+    option_name: emoji_suggestion
+    tips: all
+  recognizer/patterns/reverse_lookup:
+  'punctuator/half_shape/`':
+    # copy from:  https://gist.github.com/zolunx10/3848421
+    - '(ﾟ∀ﾟ)'
+    - '≧▽≦'
+    - '⊙.⊙'
+    - '〒▽〒'
+    - '┬＿┬'
+    - '(╬ Ò ‸ Ó)'
+    - '～(￣▽￣～)(～￣▽￣)～'
+    - '<(￣︶￣)>'
+    - '<( ￣＾￣ )>'
+    - 'o(￣ヘ￣o＃)'
+    - '╮(╯_╰)╭'
+    - '╮(￣▽￣)╭'
