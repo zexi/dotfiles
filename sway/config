@@ -31,7 +31,7 @@ exec_always --no-startup-id $setWallpaper $wallpaperPath
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 set $laptop eDP-1
-output $laptop enable scale 1.75
+output $laptop enable scale 1.5
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
@@ -139,8 +139,8 @@ seat * hide_cursor 8000
     bindsym $mod+d exec $menu
     #bindsym $mod+d exec rofi -show drun -show-icons -drun-icon-theme
     #bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
-    bindsym $mod+Mod1+space exec rofi -show drun -show-icons -drun-icon-theme
-    bindsym $mod+space exec wofi --show drun --allow-images --allow-markup
+    bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
+    #bindsym $mod+space exec wofi --show drun --allow-images --allow-markup
     #bindsym $mod+Tab exec rofi -show window -show-icons
     #bindsym $mod+Tab exec rofi -show combi -combi-modi "window:~/.config/sway/rofi-window-switch.sh" -modi combi
     bindsym $mod+Tab exec /usr/bin/termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"

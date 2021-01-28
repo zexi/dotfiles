@@ -17,7 +17,7 @@ Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-repeat'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'itchyny/lightline.vim'
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'godlygeek/tabular'
@@ -152,10 +152,10 @@ nnoremap <C-x><C-t> :call ToggleTransparentBackground()<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 " vim-sneak motion {{{
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F
+" map t <Plug>Sneak_t
+" map T <Plug>Sneak_T
 "}}}
 
 " vim-easymotion {{{
@@ -234,7 +234,7 @@ let g:coc_global_extensions = [
   \ 'coc-explorer',
   \ 'coc-lists',
   \ 'coc-json',
-  \ 'coc-python',
+  \ 'coc-jedi',
   \ 'coc-vimlsp',
   \ 'coc-clangd',
   \ 'coc-css',
