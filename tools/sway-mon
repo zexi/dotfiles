@@ -30,6 +30,9 @@ elif [[ $mode == "4k" ]]; then
     swaymsg output $external enable scale 2
     swaymsg output $laptop pos 0 1080 res 1920x1080
     swaymsg output $external pos 0 0 res 3840x2160
+elif [[ $mode == '2-nuc-tb' ]]; then
+    swaymsg output DP-1 pos 1920 0 res 2560x1440
+    swaymsg output DP-2 pos 2270 1440 res 1920x1080
 else
     swaymsg output $external pos 0 0 res 2560x1440
     swaymsg output $external1 disable

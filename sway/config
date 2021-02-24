@@ -13,7 +13,8 @@ set $right l
 #set $term GDK_BACKEND=x11 termite
 set $term termite
 # set $term1 alacritty
-set $term1 termite
+#set $term1 termite
+set $term1 WINIT_UNIX_BACKEND=x11 alacritty
 #set $term xterm
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
@@ -31,7 +32,9 @@ exec_always --no-startup-id $setWallpaper $wallpaperPath
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 set $laptop eDP-1
-output $laptop enable scale 1.5
+#output $laptop enable scale 1.5
+# use 'gsettings set org.gnome.desktop.interface text-scaling-factor'
+output $laptop enable scale 1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enable
 
@@ -85,7 +88,7 @@ input "2131:256:Topre_Corporation_HHKB_Professional" {
 }
 
 # HHKB BLE (YDKB)
-input "65261:6592:YANG_HHKB_BLE_(USB_DK5O)" {
+input "65261:6592:YANG_HHKB_BLE_S_(USB_DL1K)" {
     xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
     repeat_delay 250
     repeat_rate 30

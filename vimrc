@@ -12,6 +12,7 @@ Plug 'wlangstroth/vim-racket'
 Plug 'tpope/vim-fugitive'
 "Plug 'chriskempson/base16-vim'
 Plug 'romainl/Apprentice'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-repeat'
@@ -79,7 +80,7 @@ set nocompatible
 if has('gui_running')
 	set guioptions-=T
 	set guioptions-=m
-	set guifont=Monaco:h15
+	set guifont=Monaco:h14
 else
 	set t_Co=256
 endif
@@ -90,14 +91,27 @@ set termguicolors
 " colorscheme base16-tomorrow-night-eighties
 "}}}
 
-" apprentice {{{
-colorscheme apprentice
-highlight Comment ctermbg=NONE ctermfg=240 cterm=NONE guibg=NONE guifg=#808080 gui=NONE
-highlight CursorLine ctermbg=236 ctermfg=NONE cterm=NONE guibg=#903040 guifg=NONE gui=NONE
-"}}}
+let t:is_darkmode = 0
+function! ToggleDarkMode()
+  if t:is_darkmode == 1
+    set background=light
+    let t:is_darkmode = 0
+    colorscheme PaperColor
+  else
+    set background=dark
+    let t:is_darkmode = 1
+    " apprentice {{{
+    colorscheme apprentice
+    highlight Comment ctermbg=NONE ctermfg=240 cterm=NONE guibg=NONE guifg=#808080 gui=NONE
+    highlight CursorLine ctermbg=236 ctermfg=NONE cterm=NONE guibg=#903040 guifg=NONE gui=NONE
+    "}}}
+  endif
+  highlight LineNr guibg=NONE
+  highlight VertSplit ctermbg=NONE guibg=NONE
+endfunction
 
-highlight LineNr guibg=NONE
-highlight VertSplit ctermbg=NONE guibg=NONE
+call ToggleDarkMode()
+nnoremap <C-x><C-m> :call ToggleDarkMode()<CR>
 "}}}
 
 " view operation
@@ -525,6 +539,7 @@ autocmd FileType html,css,vue,markdown EmmetInstall
 call lexima#add_rule({'char': '"', 'at': '\%#"', 'input': '<Right>'})
 call lexima#add_rule({'char': "'", 'at': "\%#'", 'input': '<Right>'})
 call lexima#add_rule({'char': ')', 'at': '\%#)', 'input': '<Right>'})
+call lexima#add_rule({'char': ']', 'at': '\%#]', 'input': '<Right>'})
 "}}}
 
 " <C-h> can be used in the same manner as <BS>
