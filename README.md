@@ -87,7 +87,7 @@ pacman -S i3 compton i3status-rust mons screenkey xsel dunst
 # install depends tools
 pacman -S brightnessctl rofi-lbonn-wayland-git grim slurp wallutils \
   termite termite-terminfo alacritty powerline-fonts ttf-font-awesome \
-  ttf-monaco wqy-microhei wqy-zenhei wqy-bitmapfont noto-fonts-emoji \
+  ttf-monaco wqy-microhei wqy-zenhei wqy-bitmapfont noto-fonts-emoji  ttf-jetbrains-mono\
   pamixer pnmixer pavucontrol alsa-utils \
   bluez bluez-utils blueman pulseaudio-bluetooth \
   network-manager-applet \

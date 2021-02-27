@@ -196,9 +196,11 @@ let g:NERDSpaceDelims = 1
 
 " racket {{{
 if has("autocmd")
-  au BufReadPost *.rkt,*.rktl,*.scm set filetype=racket
+  au BufRead,BufNewFile *.rkt,*.rktl,*.scm setfiletype=racket
   au filetype racket set lisp
   au filetype racket set autoindent
+  au FileType racket let b:lexima_disabled = 1
+  au FileType racket setlocal expandtab shiftwidth=2 tabstop=2
 endif
 " }}}
 
