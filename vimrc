@@ -12,12 +12,14 @@ Plug 'wlangstroth/vim-racket'
 Plug 'tpope/vim-fugitive'
 "Plug 'chriskempson/base16-vim'
 Plug 'romainl/Apprentice'
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'cohama/lexima.vim'
 Plug 'tpope/vim-repeat'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'itchyny/lightline.vim'
-Plug 'justinmk/vim-sneak'
+" Plug 'justinmk/vim-sneak'
+Plug 'easymotion/vim-easymotion'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -38,6 +40,7 @@ Plug 'tpope/vim-rsi'
 "Plug 'itchyny/vim-haskell-indent'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'leafOfTree/vim-vue-plugin'
+Plug 'Yggdroot/indentLine'
 
 " All of your Plugins must be added before the following line
 call plug#end()    " required
@@ -77,7 +80,7 @@ set nocompatible
 if has('gui_running')
 	set guioptions-=T
 	set guioptions-=m
-	set guifont=Monaco:h15
+	set guifont=Monaco:h14
 else
 	set t_Co=256
 endif
@@ -88,14 +91,27 @@ set termguicolors
 " colorscheme base16-tomorrow-night-eighties
 "}}}
 
-" apprentice {{{
-colorscheme apprentice
-highlight Comment ctermbg=NONE ctermfg=240 cterm=NONE guibg=NONE guifg=#808080 gui=NONE
-highlight CursorLine ctermbg=236 ctermfg=NONE cterm=NONE guibg=#903040 guifg=NONE gui=NONE
-"}}}
+let t:is_darkmode = 0
+function! ToggleDarkMode()
+  if t:is_darkmode == 1
+    set background=light
+    let t:is_darkmode = 0
+    colorscheme PaperColor
+  else
+    set background=dark
+    let t:is_darkmode = 1
+    " apprentice {{{
+    colorscheme apprentice
+    highlight Comment ctermbg=NONE ctermfg=240 cterm=NONE guibg=NONE guifg=#808080 gui=NONE
+    highlight CursorLine ctermbg=236 ctermfg=NONE cterm=NONE guibg=#903040 guifg=NONE gui=NONE
+    "}}}
+  endif
+  highlight LineNr guibg=NONE
+  highlight VertSplit ctermbg=NONE guibg=NONE
+endfunction
 
-highlight LineNr guibg=NONE
-highlight VertSplit ctermbg=NONE guibg=NONE
+call ToggleDarkMode()
+nnoremap <C-x><C-m> :call ToggleDarkMode()<CR>
 "}}}
 
 " view operation
@@ -109,9 +125,9 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
-autocmd FileType html,css,javascript,vue,lua setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 autoindent smartindent
+autocmd FileType html,css,scss,javascript,vue,lua setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 autoindent smartindent
 " autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
-autocmd FileType sh,expect,python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
+autocmd FileType sh,expect,python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 colorcolumn=80
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent colorcolumn=80
 autocmd FileType text,gitcommit setlocal colorcolumn=80
 autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
@@ -150,10 +166,27 @@ nnoremap <C-x><C-t> :call ToggleTransparentBackground()<CR>
 cmap w!! w !sudo tee % >/dev/null
 
 " vim-sneak motion {{{
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+" map f <Plug>Sneak_f
+" map F <Plug>Sneak_F
+" map t <Plug>Sneak_t
+" map T <Plug>Sneak_T
+"}}}
+
+" vim-easymotion {{{
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" <Leader>f{char} to move to {char}
+" map  <Leader>f <Plug>(easymotion-bd-f)
+" nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+" nmap s <Plug>(easymotion-overwin-f2)
+nmap <Leader>f <Plug>(easymotion-overwin-f2)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
 "}}}
 
 " nerdcommenter {{{
@@ -163,9 +196,11 @@ let g:NERDSpaceDelims = 1
 
 " racket {{{
 if has("autocmd")
-  au BufReadPost *.rkt,*.rktl,*.scm set filetype=racket
+  au BufRead,BufNewFile *.rkt,*.rktl,*.scm setfiletype=racket
   au filetype racket set lisp
   au filetype racket set autoindent
+  au FileType racket let b:lexima_disabled = 1
+  au FileType racket setlocal expandtab shiftwidth=2 tabstop=2
 endif
 " }}}
 
@@ -215,7 +250,7 @@ let g:coc_global_extensions = [
   \ 'coc-explorer',
   \ 'coc-lists',
   \ 'coc-json',
-  \ 'coc-python',
+  \ 'coc-jedi',
   \ 'coc-vimlsp',
   \ 'coc-clangd',
   \ 'coc-css',
@@ -471,6 +506,7 @@ command! FzfCycle call <sid>fzf_next(0)
 nnoremap <C-p> :FzfCycle<Cr>
 nnoremap <C-e> :Buffers<CR>
 nnoremap <C-f> :Rg<CR>
+nnoremap <silent> <leader>* :Rg <C-R><C-W><CR>
 nnoremap <leader>ct :Colors<CR>
 nnoremap <space>w :Windows<CR>
 nnoremap <space>t :TagbarToggle<cr>
@@ -505,7 +541,11 @@ autocmd FileType html,css,vue,markdown EmmetInstall
 call lexima#add_rule({'char': '"', 'at': '\%#"', 'input': '<Right>'})
 call lexima#add_rule({'char': "'", 'at': "\%#'", 'input': '<Right>'})
 call lexima#add_rule({'char': ')', 'at': '\%#)', 'input': '<Right>'})
+call lexima#add_rule({'char': ']', 'at': '\%#]', 'input': '<Right>'})
 "}}}
+
+" <C-h> can be used in the same manner as <BS>
+let g:lexima_ctrlh_as_backspace = 1
 
 " basic html/xml tag delimiters {{{
 call lexima#add_rule({
@@ -547,4 +587,9 @@ call lexima#add_rule({
   \ 'filetype': ['html', 'vue', 'xml', 'markdown'],
   \ })
 "}}}
+"}}}
+
+"{{{ indentLine config
+let g:indentLine_enabled = 0
+autocmd FileType html,vue,js let b:indentLine_enabled=1
 "}}}
