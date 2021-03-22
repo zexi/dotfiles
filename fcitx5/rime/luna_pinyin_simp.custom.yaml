@@ -3,6 +3,7 @@
 patch:
   # 表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）
   "switches/@0/reset": 1
+  #translator/dictionary: extended
 
   switches/@next:
     name: emoji_suggestion
