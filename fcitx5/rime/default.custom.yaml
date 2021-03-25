@@ -2,6 +2,7 @@ patch:
   schema_list:
   - schema: luna_pinyin_simp
   # - schema: luna_pinyin
+  # - schema: terra_pinyin
   # - schema: luna_pinyin_fluency
 
   "menu/page_size": 9

@@ -3,7 +3,7 @@
 patch:
   # 表示將 switcher 列表中的第一個元素（即 ascii_mode 開關）的初始值重設爲狀態1（即「英文」）
   "switches/@0/reset": 1
-  #translator/dictionary: extended
+  translator/dictionary: extended
 
   switches/@next:
     name: emoji_suggestion
@@ -15,9 +15,10 @@ patch:
     opencc_config: emoji.json
     option_name: emoji_suggestion
     tips: all
+
   recognizer/patterns/reverse_lookup:
   'punctuator/half_shape/`':
-    # copy from:  https://gist.github.com/zolunx10/3848421
+    # copy from: https://gist.github.com/zolunx10/3848421
     - '(ﾟ∀ﾟ)'
     - '≧▽≦'
     - '⊙.⊙'
