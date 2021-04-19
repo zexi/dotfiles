@@ -45,7 +45,13 @@ root: ~/
 # attach: false
 
 windows:
-  - misc: cd ~
+  - misc:
+    - 'cd ~'
+  - mail:
+      layout: main-vertical
+      panes:
+        - 'offlineimap'
+        - 'mutt'
   - note:
     - 'cd ~/code/notebooks'
     - "vim -c 'CocCommand explorer'"
