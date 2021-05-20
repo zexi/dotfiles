@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 " let Vundle manage Vundle, required
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
-Plug 'scrooloose/nerdcommenter'
+Plug 'preservim/nerdcommenter'
 Plug 'majutsushi/tagbar'
 "Plug 'fatih/vim-go'
 Plug 'buoto/gotests-vim'
@@ -259,6 +259,7 @@ let g:coc_global_extensions = [
   \ 'coc-emmet',
   \ 'coc-highlight',
   \ 'coc-java',
+  \ 'coc-rls',
   \ ]
   " \ 'coc-html',
 
