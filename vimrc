@@ -129,7 +129,7 @@ autocmd FileType html,css,scss,javascript,vue,lua setlocal expandtab shiftwidth=
 " autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
 autocmd FileType sh,expect,python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 colorcolumn=80
 autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 cindent colorcolumn=80
-autocmd FileType text,gitcommit setlocal colorcolumn=80
+autocmd FileType text,gitcommit setlocal colorcolumn=72
 autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
 autocmd FileType java,haskell setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
 autocmd FileType tex,markdown setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
