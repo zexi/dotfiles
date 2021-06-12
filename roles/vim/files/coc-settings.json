@@ -4,7 +4,7 @@
   // "coc.preferences.jumpCommand": "drop",
 
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
-  "coc.preferences.formatOnType": true,
+  "coc.preferences.formatOnType": false,
   "coc.preferences.formatOnSaveFiletypes": ["go"],
   "list.normalMappings": {
      "t": "action:tabe",
@@ -21,9 +21,6 @@
      "<C-p>": "normal:k"
   },
   //"latex.build.onSave": true,
-  "python.jediEnabled": false,
-  "python.autoUpdateLanguageServer": true,
-  "python.analysis.diagnosticEnabled": false,
   "languageserver": {
      "golang": {
         "filetypes": ["go"],
@@ -58,7 +55,9 @@
       "filetypes": ["lua"]
     }
   },
-  "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
+  "jedi.executable.command": "/usr/bin/jedi-language-server",
+  "tsserver.formatOnType": false,
+  // "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
   "translator.engines": [
     "youdao",
     "haici"

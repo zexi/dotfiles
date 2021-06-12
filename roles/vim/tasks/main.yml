@@ -40,15 +40,15 @@
     dest: "{{ neovim_config_dir }}"
     state: link
 
-- name: Run neovim PlugInstall
-  shell: nvim --headless +PlugInstall +qall
-
-# - name: Run fzf install
-  # shell: "{{ vim_config_dir }}/plugged/fzf/install"
-
 - name: Copy coc.nvim config
   copy:
     src: "coc-settings.json"
     dest: "{{ coc_config_dest }}"
   tags:
     - vimrc
+
+- name: Run neovim PlugInstall
+  shell: nvim --headless +PlugInstall +qall
+
+- name: Run fzf install
+  shell: "{{ vim_config_dir }}/plugged/fzf/install --all"
