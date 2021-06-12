@@ -40,9 +40,31 @@
       # - wdisplays-git
       - network-manager-applet
       - libappindicator-gtk3
+      - swappy
       # - wofi-hg
+
 
 - name: Copy config/sway
   synchronize:
     src: sway
-    dest: "{{ ansible_user_dir }}/.config/"
+    dest: "{{ config_path }}"
+
+- name: Copy config/swappy
+  synchronize:
+    src: swappy
+    dest: "{{ config_path }}"
+
+- name: Install gnome required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+    - gnome-extra
+    - gdm
+
+- name: Copy /etc/environment
+  become: yes
+  copy:
+    src: etc/environment
+    dest: /etc/environment
+    mode: '0644'

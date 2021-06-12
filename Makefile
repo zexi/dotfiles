@@ -1,10 +1,15 @@
+ANSIBLE_PLAYBOOK = ansible-playbook -i hosts.ini playbook.yml -t $@
+
 vim:
-	ansible-playbook -i hosts.ini playbook.yml -t vim
+	$(ANSIBLE_PLAYBOOK)
 
 golang:
-	ansible-playbook -i hosts.ini playbook.yml -t golang
+	$(ANSIBLE_PLAYBOOK)
 
 fcitx5:
-	ansible-playbook -i hosts.ini playbook.yml -t fcitx5
+	$(ANSIBLE_PLAYBOOK)
+
+wm:
+	$(ANSIBLE_PLAYBOOK)
 
 .PHONY: fcitx5

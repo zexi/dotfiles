@@ -13,5 +13,5 @@
     - { role: vim, tags: vim }
     - { role: tmux, tags: tmux }
     - { role: golang, tags: golang }
-    - { role: swaywm, tags: swaywm }
+    - { role: wm, tags: wm }
     - { role: fcitx5, tags: fcitx5 }
