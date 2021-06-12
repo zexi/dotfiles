@@ -1,0 +1,32 @@
+- name: Install swaywm required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+    - fcitx5-im
+    - fcitx5-chinese-addons
+    - fcitx5-rime
+    - rime-luna-pinyin
+    - rime-terra-pinyin
+    - rime-emoji
+    - rime-pinyin-zhwiki
+
+- name: Creae "{{ fcitx5_rime_path }}"
+  file:
+    path: "{{ fcitx5_rime_path }}"
+    state: directory
+
+- name: Copy rime config file
+  synchronize:
+    src: rime/default.custom.yaml
+    dest: "{{ fcitx5_rime_path }}/default.custom.yaml"
+
+- name: Copy rime config file
+  synchronize:
+    src: rime/extended.dict.yaml
+    dest: "{{ fcitx5_rime_path }}/extended.dict.yaml"
+
+- name: Copy rime config file
+  synchronize:
+    src: rime/luna_pinyin_simp.custom.yaml
+    dest: "{{ fcitx5_rime_path }}/luna_pinyin_simp.custom.yaml"

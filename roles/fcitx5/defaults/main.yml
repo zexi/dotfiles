@@ -1,0 +1,4 @@
+---
+fcitx5_path: "{{ ansible_user_dir }}/.local/share/fcitx5"
+
+fcitx5_rime_path: "{{ fcitx5_path }}/rime"

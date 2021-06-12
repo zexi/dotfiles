@@ -14,3 +14,4 @@
     - { role: tmux, tags: tmux }
     - { role: golang, tags: golang }
     - { role: swaywm, tags: swaywm }
+    - { role: fcitx5, tags: fcitx5 }

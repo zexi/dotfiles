@@ -119,6 +119,22 @@ input "1155:20786:CATEX_TECH._68EC-S" {
     repeat_rate 30
 }
 
+# ROG g14 wired keyboard identifier
+input "2821:6582:Asus_Keyboard" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
+# ROG g14 touchpad
+input "1267:12440:ELAN1201:00_04F3:3098_Touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+
 # hide mouse cursor on inactivity
 seat * hide_cursor 8000
 
