@@ -1,0 +1,11 @@
+- name: Install waybar required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+    - waybar
+
+- name: Sync config/waybar
+  synchronize:
+    src: waybar
+    dest: "{{ config_path }}"

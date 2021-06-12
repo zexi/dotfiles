@@ -1,0 +1,11 @@
+- name: Install rofi required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+    - rofi
+
+- name: Sync config/rofi
+  synchronize:
+    src: rofi
+    dest: "{{ config_path }}"

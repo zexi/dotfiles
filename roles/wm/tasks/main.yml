@@ -9,13 +9,9 @@
       - swayidle
       - mako
       - brightnessctl
-      - rofi
       - grim
       - slurp
       - wallutils
-      - termite
-      - termite-terminfo
-      - alacritty
       - powerline-fonts
       - ttf-font-awesome
       - ttf-monaco
@@ -54,6 +50,12 @@
     src: swappy
     dest: "{{ config_path }}"
 
+# TODO: fix for g14
+# - name: Execute waybar task
+  # include_tasks: ./waybar.yml
+  # tags:
+    # - waybar
+
 - name: Install gnome required packages
   become: yes
   pacman:
@@ -68,3 +70,13 @@
     src: etc/environment
     dest: /etc/environment
     mode: '0644'
+
+- name: Execute terminal task
+  include_tasks: ./terminal.yml
+  tags:
+    - terminal
+
+- name: Execute rofi task
+  include_tasks: ./rofi.yml
+  tags:
+    - rofi

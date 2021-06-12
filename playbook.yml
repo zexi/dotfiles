@@ -13,5 +13,8 @@
     - { role: vim, tags: vim }
     - { role: tmux, tags: tmux }
     - { role: golang, tags: golang }
-    - { role: wm, tags: wm }
+    - role: wm
+      tags:
+      - wm
+      - terminal
     - { role: fcitx5, tags: fcitx5 }
