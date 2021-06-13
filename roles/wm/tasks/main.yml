@@ -72,6 +72,12 @@
     dest: /etc/environment
     mode: '0644'
 
+- name: Copy systemd-logind config
+  copy:
+    src: etc/systemd/logind.conf
+    dest: /etc/systemd/logind.conf
+    mode: '0644'
+
 - name: Execute terminal task
   include_tasks: ./terminal.yml
   tags:
