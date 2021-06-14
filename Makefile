@@ -22,5 +22,7 @@ wm:
 terminal:
 	$(ANSIBLE_PLAYBOOK_TAG_T)
 
+rog-g14:
+	$(ANSIBLE_PLAYBOOK_TAG_T)
 
 .PHONY: fcitx5

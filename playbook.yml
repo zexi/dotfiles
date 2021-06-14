@@ -18,3 +18,4 @@
       - wm
       - terminal
     - { role: fcitx5, tags: fcitx5 }
+    - { role: rog-g14, tags: rog-g14 }
