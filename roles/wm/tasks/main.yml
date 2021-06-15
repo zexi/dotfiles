@@ -37,7 +37,7 @@
       - network-manager-applet
       - libappindicator-gtk3
       - swappy
-      - libinput-three-finger-drag
+        #- libinput-three-finger-drag
       # - wofi-hg
 
 
@@ -73,6 +73,7 @@
     mode: '0644'
 
 - name: Copy systemd-logind config
+  become: yes
   copy:
     src: etc/systemd/logind.conf
     dest: /etc/systemd/logind.conf

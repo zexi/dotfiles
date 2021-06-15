@@ -5,7 +5,7 @@
       "--hide-scrollbar"
     ],
     "env": [
-      "GDK_BACKEND=x11"
+      "GDK_BACKEND=wayland"
     ]
   },
   "ratio": 0.5

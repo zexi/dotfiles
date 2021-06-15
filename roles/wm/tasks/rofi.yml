@@ -3,7 +3,8 @@
   pacman:
     state: present
     name:
-    - rofi
+    #- rofi
+    - rofi-lbonn-wayland-git
 
 - name: Sync config/rofi
   synchronize:
