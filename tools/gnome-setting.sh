@@ -97,3 +97,4 @@ dconf write /org/gnome/shell/extensions/switcher/on-active-display "true"
 dconf write /org/gnome/shell/extensions/switcher/matching "1" # fuzzy match
 dconf write /org/gnome/shell/extensions/switcher/font-size "20"
 dconf write /org/gnome/shell/extensions/switcher/icon-size "20"
+dconf write /org/gnome/shell/disable-extension-version-validation "true"

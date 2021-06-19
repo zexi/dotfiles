@@ -132,7 +132,7 @@ input "1267:12440:ELAN1201:00_04F3:3098_Touchpad" {
     tap enabled
     natural_scroll enabled
     middle_emulation enabled
-    pointer_accel 0.7
+    pointer_accel 0.5
     scroll_factor 0.5
 }
 

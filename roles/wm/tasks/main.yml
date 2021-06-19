@@ -64,6 +64,7 @@
     name:
     - gnome-extra
     - gdm
+    - chrome-gnome-shell
 
 - name: Copy /etc/environment
   become: yes

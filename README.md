@@ -200,7 +200,7 @@ EOF
 | Name                                                     | Description                                                                      |
 |----------------------------------------------------------|----------------------------------------------------------------------------------|
 | Activities Configuratior                                 |                                                                                  |
-| Caffeine                                                 |                                                                                  |
+| espresso                                                 | https://extensions.gnome.org/extension/4135/espresso/                            |
 | Dash to Dock                                             |                                                                                  |
 | system-monitor                                           | system metrics monitor                                                           |
 | clipboard Indicator                                      |                                                                                  |
