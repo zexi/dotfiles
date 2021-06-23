@@ -52,10 +52,10 @@
     dest: "{{ config_path }}"
 
 # TODO: fix for g14
-# - name: Execute waybar task
-  # include_tasks: ./waybar.yml
-  # tags:
-    # - waybar
+- name: Execute waybar task
+  include_tasks: ./waybar.yml
+  tags:
+    - waybar
 
 - name: Install gnome required packages
   become: yes

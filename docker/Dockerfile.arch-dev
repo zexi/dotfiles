@@ -1,0 +1,7 @@
+FROM archlinux:base-devel-20210613.0.25781
+
+RUN echo 'Server = https://mirrors.ustc.edu.cn/archlinux/$repo/os/$arch' > /etc/pacman.d/mirrorlist
+
+RUN pacman -Syy
+
+RUN pacman -S --noconfirm git tmux neovim
