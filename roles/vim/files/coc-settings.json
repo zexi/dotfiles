@@ -57,6 +57,7 @@
   },
   "jedi.executable.command": "/usr/bin/jedi-language-server",
   "tsserver.formatOnType": false,
+  "vetur.ignoreProjectWarning": true,
   // "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
   "translator.engines": [
     "youdao",
