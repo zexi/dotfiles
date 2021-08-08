@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 " let Vundle manage Vundle, required
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
-Plug 'preservim/nerdcommenter'
+Plug 'tomtom/tcomment_vim'
 Plug 'majutsushi/tagbar'
 "Plug 'fatih/vim-go'
 Plug 'buoto/gotests-vim'
@@ -189,9 +189,8 @@ map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 "}}}
 
-" nerdcommenter {{{
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
+" tomtom/tcomment_vim {{{
+let g:tcomment_opleader1 = '<Leader>c'
 "}}}
 
 " racket {{{
