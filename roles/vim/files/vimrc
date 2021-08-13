@@ -191,6 +191,8 @@ nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 " tomtom/tcomment_vim {{{
 let g:tcomment_opleader1 = '<Leader>c'
+vnoremap <silent> <leader>cc :TComment<cr>
+vnoremap <silent> <leader>cs :TCommentBlock<cr>
 "}}}
 
 " racket {{{
@@ -531,7 +533,19 @@ nnoremap <Leader>sp :Obsession<CR>
 
 " html/css ocnfig {{{
 let g:user_emmet_install_global = 0
-let g:vim_vue_plugin_load_full_syntax = 1
+let g:vim_vue_plugin_config = {
+      \'syntax': {
+      \   'template': ['html'],
+      \   'script': ['javascript'],
+      \   'style': ['css'],
+      \},
+      \'full_syntax': [],
+      \'initial_indent': [],
+      \'attribute': 0,
+      \'keyword': 0,
+      \'foldexpr': 0,
+      \'debug': 0,
+      \}
 autocmd FileType html,css,vue,markdown EmmetInstall
 "}}}
 
