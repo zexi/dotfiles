@@ -4,6 +4,9 @@ laptop="eDP-1"
 external="DP-2"
 external1="HDMI-A-1"
 
+DP_1="DP-1"
+DP_2="DP-2"
+
 mode=$1
 
 if [[ $mode == 3 ]]; then
@@ -36,6 +39,11 @@ elif [[ $mode == '2-nuc-tb' ]]; then
 elif [[ $mode == '4k-up-2k' ]]; then
     swaymsg output $laptop pos 3180 4720 res 2560x1440
     swaymsg output $external1 pos 2560 2560 res 3840x2160
+elif [[ $mode == '4k-up-1080p' ]]; then
+    # DP_1 is 1080p
+    swaymsg output $DP_1 pos 2530 2160 res 1920x1080
+    swaymsg output $DP_1 scale 0.75
+    swaymsg output $DP_2 pos 1920 0 res 3840x2160
 else
     swaymsg output $external pos 0 0 res 2560x1440
     swaymsg output $external1 disable
