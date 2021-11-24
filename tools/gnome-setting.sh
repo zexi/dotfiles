@@ -87,14 +87,15 @@ add_custom_keybinding 0 "termite" "/usr/bin/termite" "<Super>Return"
 add_custom_keybinding 1 "xfce4-terminal" "/usr/bin/xfce4-terminal" "<Super><Shift>Return"
 add_custom_keybinding 2 "ksnip" "/home/lzx/code/dotfiles/tools/ksnip.sh" "<Super><Control>a"
 # add_custom_keybinding 3 "guake-toggle" "/usr/bin/guake-toggle" "<Super>g"
-# add_custom_keybinding 4 "rofi" "/usr/bin/rofi -show-icons -show drun -normal-window" "<Super>space"
+add_custom_keybinding 4 "rofi" "/usr/bin/rofi -show-icons -show drun" "<Super>space"
+add_custom_keybinding 5 "rofi" "/usr/bin/rofi -show-icons -show window" "<Alt>Tab"
 
 # extensions config
 # use https://github.com/daniellandau/switcher instead of rofi
-dconf write /org/gnome/shell/extensions/switcher/show-switcher "['<Super>w']"
-dconf write /org/gnome/shell/extensions/switcher/show-launcher "['<Super>space']"
-dconf write /org/gnome/shell/extensions/switcher/on-active-display "true"
-dconf write /org/gnome/shell/extensions/switcher/matching "1" # fuzzy match
-dconf write /org/gnome/shell/extensions/switcher/font-size "20"
-dconf write /org/gnome/shell/extensions/switcher/icon-size "20"
-dconf write /org/gnome/shell/disable-extension-version-validation "true"
+#dconf write /org/gnome/shell/extensions/switcher/show-switcher "['<Super>w']"
+#dconf write /org/gnome/shell/extensions/switcher/show-launcher "['<Super>space']"
+#dconf write /org/gnome/shell/extensions/switcher/on-active-display "true"
+#dconf write /org/gnome/shell/extensions/switcher/matching "1" # fuzzy match
+#dconf write /org/gnome/shell/extensions/switcher/font-size "20"
+#dconf write /org/gnome/shell/extensions/switcher/icon-size "20"
+#dconf write /org/gnome/shell/disable-extension-version-validation "true"
