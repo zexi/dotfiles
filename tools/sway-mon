@@ -44,6 +44,16 @@ elif [[ $mode == '4k-up-1080p' ]]; then
     swaymsg output $DP_1 pos 2530 2160 res 1920x1080
     swaymsg output $DP_1 scale 0.75
     swaymsg output $DP_2 pos 1920 0 res 3840x2160
+elif [[ $mode == '4k-up-156-4k' ]]; then
+    # DP_1 is 15.6 4k
+    swaymsg output $DP_1 pos 2530 2160 res 3840x2160
+    swaymsg output $DP_1 scale 1.7
+    swaymsg output $DP_2 pos 1920 0 res 3840x2160
+elif [[ $mode == '4k-up-156-2k' ]]; then
+    # DP_1 is 15.6 4k
+    swaymsg output $DP_1 pos 630 2160 res 2560x1440
+    swaymsg output $DP_1 scale 1
+    swaymsg output $DP_2 pos 0 0 res 3840x2160
 else
     swaymsg output $external pos 0 0 res 2560x1440
     swaymsg output $external1 disable

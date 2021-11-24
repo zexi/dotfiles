@@ -205,9 +205,7 @@ EOF
 | system-monitor                                           | system metrics monitor                                                           |
 | clipboard Indicator                                      |                                                                                  |
 | Multi Monitors Add-on                                    |                                                                                  |
-| tray icons or 'https://github.com/phocean/TopIcons-plus' | show native x11 top icon: https://extensions.gnome.org/extension/1503/tray-icons |
-| No Title Bar - Forked                                    | hide GTK title bar                                                               |
-| Desk Changer                                             | wallpaper changer                                                                |
+| AppIndicator and KStatusNotifierItem| show native x11 top icon: https://extensions.gnome.org/extension/615/appindicator-support/ |
 | ddterm                                                   | drop down terminal: https://extensions.gnome.org/extension/3780/ddterm/          |
 | switcher                                                 | https://github.com/daniellandau/switcher                                         |
 | pop-os-shell(for tile windows)                           | yay -S gnome-shell-extension-pop-shell-git                                       |
