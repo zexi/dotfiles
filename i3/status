@@ -7,9 +7,9 @@ name = "slick"
 [[block]]
 block = "focused_window"
 
-[[block]]
-block = "backlight"
-device = "intel_backlight"
+#[[block]]
+#block = "backlight"
+#device = "intel_backlight"
 
 [[block]]
 block = "disk_space"
@@ -19,11 +19,11 @@ info_type = "available"
 unit = "GB"
 interval = 20
 
-[[block]]
-block = "memory"
-display_type = "memory"
-format_mem = "{Mup}%"
-format_swap = "{SUp}%"
+#[[block]]
+#block = "memory"
+#display_type = "memory"
+#format_mem = "{Mup}%"
+#format_swap = "{SUp}%"
 
 [[block]]
 block = "cpu"

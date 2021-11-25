@@ -282,18 +282,14 @@ set $wallpaperPath "$HOME/Pictures/wallpaper/"
 # gnome xsettings
 exec --no-startup-id /usr/lib/gsd-xsettings
 #exec_always --no-startup-id xfce4-power-manager
-#exec --no-startup-id compton -CGb --backend glx --xrender-sync --xrender-sync-fence
-#exec --no-startup-id compton -CGb --xrender-sync-fence
-#exec --no-startup-id compton -b
-#exec --no-startup-id compton --config ~/code/dotfiles/compton2.conf -b
 exec --no-startup-id fcitx5 -r
 exec --no-startup-id pnmixer
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
 exec --no-startup-id redshift-gtk -l 39.92:116.46 -t 5500:4500
 exec_always --no-startup-id feh --randomize --bg-fill $wallpaperPath
-exec_always setxkbmap -option setxkbmap -option altwin:swap_alt_win
-exec_always setxkbmap -option setxkbmap -option ctrl:swapcaps
+exec_always /usr/bin/setxkbmap --option altwin:swap_lalt_lwin,ctrl:nocaps
+exec_always --no-startup-id "$HOME/code/dotfiles/i3/tray.sh"
+
+exec_always /usr/bin/xset r rate 200 25
 #exec_always --no-startup-id feh --bg-fill $wallpaperPath
 #exec --no-startup-id xrandr --output LVDS-1  --auto --output DP-1 --primary --above LVDS-1 --auto
 
@@ -303,7 +299,7 @@ exec_always --no-startup-id sudo "$HOME/code/dotfiles/tools/trackpoint-adjust.sh
 
 # Lock screen
 #bindsym Mod1+Control+l exec i3-msg workspace 10 && i3lock -t -d -i $lockPic
-bindsym $mod+Control+l exec i3lock -t -d -c 000000
+bindsym $mod+Control+backspace exec i3lock -t -d -c 000000
 
 # scratchpad settings
 #bindsym $mod+m move scratchpad
