@@ -26,7 +26,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec /usr/bin/termite
+bindsym $mod+Return exec /usr/bin/alacritty
 #bindsym $mod+Shift+Return exec urxvt --depth 32 -bg rgba:3f00/3f00/3f00/dddd
 bindsym $mod+Shift+Return exec /usr/bin/termite -c ~/.config/termite/config.light
 
@@ -71,10 +71,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+s split v
+bindsym $mod+s split h
 
 # split in vertical orientation
-bindsym $mod+v split h
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -94,7 +94,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+b focus child
 
 # Navigate workspaces next / previous
 bindsym $mod+Ctrl+Right workspace next
@@ -184,20 +184,27 @@ client.background       #F8F8F2
 #set $transparent #00000000
 set $height 30
 bar {
-  font pango:DejaVu Sans Mono, FontAwesome 8
+  font pango:DejaVu Sans Mono, FontAwesome 10
+  tray_output primary
   position top
   status_command i3status-rs $HOME/.config/i3/status
-  height $height
   colors {
-    background #282A36
-    statusline #F8F8F2
-    separator  #44475A
-
-    focused_workspace  #44475A #44475A #F8F8F2
-    active_workspace   #282A36 #44475A #F8F8F2
-    inactive_workspace #282A36 #282A36 #BFBFBF
-    urgent_workspace   #FF5555 #FF5555 #F8F8F2
-    binding_mode       #FF5555 #FF5555 #F8F8F2
+        separator #666666
+        background #222222
+        statusline #dddddd
+        focused_workspace #0088CC #0088CC #ffffff
+        active_workspace #333333 #333333 #ffffff
+        inactive_workspace #333333 #333333 #888888
+        urgent_workspace #2f343a #900000 #ffffff
+#    background #282A36
+#    statusline #F8F8F2
+#    separator  #44475A
+#
+#    focused_workspace  #44475A #44475A #F8F8F2
+#    active_workspace   #282A36 #44475A #F8F8F2
+#    inactive_workspace #282A36 #282A36 #BFBFBF
+#    urgent_workspace   #FF5555 #FF5555 #F8F8F2
+#    binding_mode       #FF5555 #FF5555 #F8F8F2
   }
 }
 
@@ -208,12 +215,16 @@ bindsym XF86AudioMute exec pamixer -m
 bindsym XF86AudioMicMute exec amixer set Capture toggle
 
 # PrtSc
-bindsym Print exec /usr/bin/flameshot gui
-bindsym $mod+Ctrl+a exec /usr/bin/flameshot gui
+bindsym Print exec "$HOME/code/dotfiles/tools/ksnip.sh"
+bindsym $mod+Ctrl+a exec "$HOME/code/dotfiles/tools/ksnip.sh"
 
 # Backlight control
-bindsym XF86MonBrightnessUp exec sudo xbacklight -ctrl intel_backlight -inc 20 # increase screen
-bindsym XF86MonBrightnessDown exec sudo xbacklight  -ctrl intel_backlight -dec 20 # decrease screen
+bindsym XF86MonBrightnessUp exec sudo brightnessctl s 5%+ # increase screen
+bindsym XF86MonBrightnessDown exec sudo brightnessctl s 5%- # decrease screen
+
+# Keyboard backlight control
+bindsym XF86KbdBrightnessUp exec sudo "$HOME/code/dotfiles/tools/adjust-kbd-brightness.sh" up
+bindsym XF86KbdBrightnessDown exec sudo "$HOME/code/dotfiles/tools/adjust-kbd-brightness.sh" down
 
 # workspace
 workspace_auto_back_and_forth no
@@ -228,18 +239,21 @@ for_window [class="^floatingApp$"] floating enable
 bindsym $mod+Shift+t exec termite -e ~/.tmux/tmux-restore
 
 # start guake terminal
-bindsym $mod+g exec guake
-#bindsym $mod+g exec "$HOME/go/bin/i3-go-quickterm"
+#bindsym $mod+g exec guake
+bindsym $mod+g exec "$HOME/go/bin/i3-go-quickterm"
 
 # Display
 bindsym XF86Display exec /usr/bin/arandr
 bindsym $mod+Shift+m exec /usr/bin/arandr
 
+# Suspend
+bindsym XF86PowerOff exec "$HOME/code/dotfiles/i3/suspend.sh"
+
 # fix graphics glitch
 #new_window none
 #for_windo [class=(?i)termite] border pixel 3
 
-for_window [workspace="3"] floating enable
+#for_window [workspace="3"] floating enable
 for_window [window_role="pop-up"] floating enable
 no_focus [window_role="pop-up"]
 for_window [window_role="bubble"] floating enable
@@ -268,11 +282,11 @@ for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $heigh
 for_window [class="URxvt" title="ydcv.*"] floating enable
 for_window [class="Termite" title="ydcv.*"] floating enable
 for_window [class="ieaseMusic"] floating enable, move container to workspace $ws4
-for_window [class="Wine"] floating enable
+#for_window [class="Wine"] floating enable
 for_window [class="shadowsocks-qt5"] floating enable
 for_window [class="Shutter"] floating enable
 #for_window [class="netease-cloud-music"] floating enable, move container to workspace $ws4
-for_window [class="netease-cloud-music"] floating enable
+#for_window [class="netease-cloud-music"] floating enable
 #for_window [class="Chromium"] floating enable
 for_window [class="Vinagre"] floating enable
 for_window [class="electronic-wechat"] floating enable
@@ -280,26 +294,36 @@ for_window [class="electronic-wechat"] floating enable
 # Autostart
 set $wallpaperPath "$HOME/Pictures/wallpaper/"
 # gnome xsettings
-exec --no-startup-id /usr/lib/gsd-xsettings
-#exec_always --no-startup-id xfce4-power-manager
+exec_always /usr/lib/gsd-xsettings
+exec_always /usr/lib/gsd-color
 exec --no-startup-id fcitx5 -r
-exec --no-startup-id pnmixer
+exec --no-startup-id nm-applet --indicator
+exec --no-startup-id blueman-applet
+#exec --no-startup-id pnmixer
+#exec_always --no-startup-id "$HOME/code/dotfiles/i3/tray.sh"
 exec --no-startup-id redshift-gtk -l 39.92:116.46 -t 5500:4500
+exec --no-startup-id dunst -conf $HOME/.config/i3/dunstrc
+# invoke notify
+bindsym $mod+Shift+n exec dunstctl action
+exec --no-startup-id picom --config $HOME/.config/i3/picom.conf
 exec_always --no-startup-id feh --randomize --bg-fill $wallpaperPath
-exec_always /usr/bin/setxkbmap --option altwin:swap_lalt_lwin,ctrl:nocaps
-exec_always --no-startup-id "$HOME/code/dotfiles/i3/tray.sh"
 
-exec_always /usr/bin/xset r rate 200 25
+exec_always --no-startup-id /usr/bin/setxkbmap -option altwin:swap_lalt_lwin,ctrl:nocaps
+exec_always --no-startup-id /usr/bin/xset r rate 200 25
 #exec_always --no-startup-id feh --bg-fill $wallpaperPath
 #exec --no-startup-id xrandr --output LVDS-1  --auto --output DP-1 --primary --above LVDS-1 --auto
 
 # Set keyboard and touchpad
-exec_always --no-startup-id "$HOME/code/dotfiles/tools/keyboard-map.sh"
+#exec_always --no-startup-id "$HOME/code/dotfiles/tools/keyboard-map.sh"
 exec_always --no-startup-id sudo "$HOME/code/dotfiles/tools/trackpoint-adjust.sh"
 
 # Lock screen
 #bindsym Mod1+Control+l exec i3-msg workspace 10 && i3lock -t -d -i $lockPic
-bindsym $mod+Control+backspace exec i3lock -t -d -c 000000
+#bindsym $mod+Control+backspace exec /usr/bin/i3lock -t -d -c 000000
+#bindsym $mod+Control+q exec /usr/bin/i3lock -t -d -c 000000
+#exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 3600 "betterlockscreen -l dim" "" --timer 1 "systemctl suspend" ""
+exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 3600 "betterlockscreen -l dim" "" --timer 300 "xset dpms force off" ""
+bindsym $mod+Control+q exec "$HOME/.config/i3/lock.sh"
 
 # scratchpad settings
 #bindsym $mod+m move scratchpad

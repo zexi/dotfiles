@@ -101,9 +101,8 @@ yay -S wl-clipboard redshift gammastep wdisplays-git \
 ### git
 
 ```sh
-cat ~/.gitconfig
-[credential]
-        helper = cache --timeout=86400
+# tells Git to keep your password cached in memory for a particular amount of minutes.
+git config --global credential.helper "cache --timeout=86400"
 ```
 
 ### install font
