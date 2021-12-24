@@ -104,6 +104,7 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers
 # FontAwesome icons see: http://fontawesome.io/cheatsheet/
 set $ws1 "1:Work &#xf120;"
+set $ws1 "1:Work &#xf120;"
 set $ws2 "2:Net &#xf0ac;"
 set $ws3 "3:Misc &#xf248;"
 set $ws4 "4:Relax &#xf004;"
@@ -185,7 +186,7 @@ client.background       #F8F8F2
 set $height 30
 bar {
   font pango:DejaVu Sans Mono, FontAwesome 10
-  tray_output primary
+  #tray_output primary
   position top
   status_command i3status-rs $HOME/.config/i3/status
   colors {
@@ -316,13 +317,14 @@ exec_always --no-startup-id /usr/bin/xset r rate 200 25
 # Set keyboard and touchpad
 #exec_always --no-startup-id "$HOME/code/dotfiles/tools/keyboard-map.sh"
 exec_always --no-startup-id sudo "$HOME/code/dotfiles/tools/trackpoint-adjust.sh"
+exec --no-startup-id mons -a
 
 # Lock screen
 #bindsym Mod1+Control+l exec i3-msg workspace 10 && i3lock -t -d -i $lockPic
 #bindsym $mod+Control+backspace exec /usr/bin/i3lock -t -d -c 000000
 #bindsym $mod+Control+q exec /usr/bin/i3lock -t -d -c 000000
 #exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 3600 "betterlockscreen -l dim" "" --timer 1 "systemctl suspend" ""
-exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 3600 "betterlockscreen -l dim" ""
+#exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 3600 "betterlockscreen -l dim" ""
 bindsym $mod+Control+q exec "$HOME/.config/i3/lock.sh"
 
 # scratchpad settings
