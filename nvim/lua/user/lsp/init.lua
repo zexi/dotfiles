@@ -42,11 +42,11 @@ local on_attach = function(client, bufnr)
 end
 
 vim.g.coq_settings = {
-  keymap = {
-    recommended = false,
-    jump_to_mark = '',
-    pre_select = true,
-  },
+  -- keymap = {
+  --   recommended = false,
+  --   jump_to_mark = '',
+  --   pre_select = true,
+  -- },
   auto_start = true,
   display = {
     pum = {
@@ -62,7 +62,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls', 'clangd' }
 
 local opts2 = {
   on_attach = on_attach,

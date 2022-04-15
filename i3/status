@@ -51,9 +51,9 @@ interval = 10
 [[block]]
 block = "sound"
 
-[[block]]
-block = "battery"
-interval = 10
+#[[block]]
+#block = "battery"
+#interval = 10
 
 [[block]]
 block = "time"
