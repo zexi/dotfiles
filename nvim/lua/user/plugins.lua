@@ -42,7 +42,7 @@ packer.init {
 return packer.startup(function(use)
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
--- use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim" -- Easily comment stuff
@@ -66,7 +66,7 @@ return packer.startup(function(use)
 
   -- cmp plugins
   use "neovim/nvim-lspconfig" -- enable LSP
-  use "ms-jpq/coq_nvim"
+  use { "zexi/coq_nvim", branch = 'stop-cmp-syms' }
   -- use "ms-jpq/coq.artifacts"
   use "lukas-reineke/lsp-format.nvim"
   -- use "hrsh7th/cmp-nvim-lsp"
