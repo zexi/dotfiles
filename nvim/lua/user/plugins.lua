@@ -98,6 +98,10 @@ return packer.startup(function(use)
   -- Git
   use "lewis6991/gitsigns.nvim"
 
+  -- Pretty list for showing diagnostics
+  use "kyazdani42/nvim-web-devicons"
+  use "folke/trouble.nvim"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
