@@ -56,7 +56,7 @@ return packer.startup(function(use)
   use "lewis6991/impatient.nvim"
   -- use "lukas-reineke/indent-blankline.nvim"
   -- use "goolord/alpha-nvim"
-  -- use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
+  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
   use "folke/which-key.nvim"
 
   -- Colorschemes
@@ -87,6 +87,8 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
+  use "BurntSushi/ripgrep"
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Treesitter
   use {
@@ -99,7 +101,6 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
 
   -- Pretty list for showing diagnostics
-  use "kyazdani42/nvim-web-devicons"
   use "folke/trouble.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim

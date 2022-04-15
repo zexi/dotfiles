@@ -5,6 +5,11 @@ local term_opts = { silent = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
+--Remap space as leader key
+keymap("", "<Space>", "<Nop>", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Modes
 --   normal_mode = "n"
 --   insert_mode = "i"
@@ -26,8 +31,6 @@ keymap("n", "gk", "k", opts)
 keymap("n", "j", "gj", opts)
 keymap("n", "gj", "j", opts)
 
-keymap("n", "<space>e", ":NvimTreeToggle<CR>", opts)
-keymap("n", "<C-p>", ":Telescope find_files<CR>", opts)
-keymap("n", "<C-e>", ":Telescope buffers<CR>", opts)
+keymap("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
+keymap("n", "<C-e>", "<cmd>Telescope buffers<cr>", opts)
 keymap("n", "gr", "<cmd>Trouble lsp_references<cr>", opts)
-keymap("n", "<space>b", "<cmd>Trouble document_diagnostics<cr>", opts)
