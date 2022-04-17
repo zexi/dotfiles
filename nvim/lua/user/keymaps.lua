@@ -33,4 +33,5 @@ keymap("n", "gj", "j", opts)
 
 keymap("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<C-e>", "<cmd>Telescope buffers<cr>", opts)
-keymap("n", "gr", "<cmd>Trouble lsp_references<cr>", opts)
+keymap("n", "gr", "<cmd>Telescope lsp_references include_current_line=false include_declaration=false<cr>", opts)
+keymap("n", "gi", "<cmd>Telescope lsp_implementations jump_type=vsplit ignore_filename=false<cr>", opts)
