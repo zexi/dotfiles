@@ -151,9 +151,9 @@ local remap = vim.api.nvim_set_keymap
 -- these mappings are coq recommended mappings unrelated to nvim-autopairs
 remap('i', '<Esc>', [[pumvisible() ? "<c-e><esc>" : "<esc>"]], cmp_opts)
 remap('i', '<C-c>', [[pumvisible() ? "<c-e><c-c>" : "<c-c>"]], cmp_opts)
-remap('i', '<BS>', [[pumvisible() ? "<c-e><BS>" : "<BS>"]], cmp_opts)
+-- remap('i', '<BS>', [[pumvisible() ? "<c-e><BS>" : "<BS>"]], cmp_opts)
 -- remap('i', '<Tab>', [[pumvisible() ? "<c-n>" : "<tab>"]], cmp_opts)
-remap('i', '<CR>', [[pumvisible() ? (complete_info().selected == -1 ? "<C-e><CR>" : "<C-y>") : "<CR>"]], cmp_opts)
+-- remap('i', '<CR>', [[pumvisible() ? (complete_info().selected == -1 ? "<C-e><CR>" : "<C-y>") : "<CR>"]], cmp_opts)
 remap('i', '<Tab>', [[pumvisible() ? (complete_info().selected == -1 ? "<C-e><Tab>" : "<C-y>") : "<Tab>"]], cmp_opts)
 remap('i', '<S-Tab>', [[pumvisible() ? "<c-p>" : "<c-h>"]], cmp_opts)
 

@@ -107,6 +107,9 @@ return packer.startup(function(use)
   -- Pretty list for showing diagnostics
   use "folke/trouble.nvim"
 
+  -- Sessions management
+  use 'rmagatti/auto-session'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
