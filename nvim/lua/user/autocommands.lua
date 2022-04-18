@@ -3,9 +3,20 @@ vim.cmd [[
     autocmd!
     autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
   augroup end
-]]
 
-vim.cmd [[
+  augroup _git
+    autocmd!
+    autocmd FileType gitcommit setlocal wrap
+    autocmd FileType gitcommit setlocal spell
+  augroup end
+
+  augroup _markdown
+    autocmd!
+    autocmd FileType markdown setlocal wrap
+    autocmd FileType markdown setlocal spell
+    autocmd FileType tex,markdown setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+  augroup end
+
   augroup _file_type_setting
     autocmd!
     autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabstop=2
@@ -16,6 +27,5 @@ vim.cmd [[
     autocmd FileType text,gitcommit setlocal colorcolumn=72
     autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
     autocmd FileType java,haskell setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
-    autocmd FileType tex,markdown setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
   augroup end
 ]]
