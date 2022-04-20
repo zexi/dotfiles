@@ -191,6 +191,14 @@ local opts2 = {
     debounce_text_changes = 150,
   },
   settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      completeUnimported = true,
+      usePlaceholders = false,
+    },
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -221,18 +229,3 @@ end
 
 -- local luadev = require("lua-dev").setup({})
 -- lspconfig.sumneko_lua.setup(luadev)
-
--- util = require("lspconfig/util")
---
--- lspconfig.gopls.setup({
---   cmd = {"gopls", "serve"},
---   filetypes = {"go", "gomod"},
---   settings = {
---     gopls = {
---       analyses = {
---         unusedparams = true,
---       },
---       staticcheck = true,
---     },
---   },
--- })
