@@ -72,6 +72,7 @@ return packer.startup(function(use)
   use { "zexi/coq_nvim", branch = 'stop-cmp-syms' }
   -- use "ms-jpq/coq.artifacts"
   use { "lukas-reineke/lsp-format.nvim", tag = "v2.2.3" }
+  use { "folke/lua-dev.nvim" }
   -- use "hrsh7th/cmp-nvim-lsp"
   -- use "hrsh7th/cmp-buffer" -- buffer completions
   -- use "hrsh7th/cmp-path" -- path completions
@@ -91,7 +92,7 @@ return packer.startup(function(use)
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use "BurntSushi/ripgrep"
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Treesitter
   use {
