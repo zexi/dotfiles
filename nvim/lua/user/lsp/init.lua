@@ -133,7 +133,18 @@ vim.g.coq_settings = {
     snippets = {
       enabled = false,
       warn = {},
-    }
+    },
+    tree_sitter = {
+      enabled = false,
+    },
+    tags = {
+      enabled = false,
+    },
+  },
+  completion = {
+    stop_syms = {
+      '{', '}', '(', ')', '[', ']', '', ',', ';',
+    },
   },
   -- match = {
   --   exact_matches = 0,
@@ -164,7 +175,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'gopls', 'clangd' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'vuels', 'gopls', 'clangd' }
 
 local opts2 = {
   on_attach = on_attach,
@@ -178,3 +189,18 @@ for _, lsp in pairs(servers) do
   -- lspconfig[lsp].setup(opts2)
   lspconfig[lsp].setup(coq.lsp_ensure_capabilities(opts2))
 end
+
+-- util = require("lspconfig/util")
+--
+-- lspconfig.gopls.setup({
+--   cmd = {"gopls", "serve"},
+--   filetypes = {"go", "gomod"},
+--   settings = {
+--     gopls = {
+--       analyses = {
+--         unusedparams = true,
+--       },
+--       staticcheck = true,
+--     },
+--   },
+-- })
