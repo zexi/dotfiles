@@ -122,7 +122,7 @@ end
 vim.g.coq_settings = {
   keymap = {
     recommended = false,
-    jump_to_mark = '<leader><tab>',
+    jump_to_mark = '',
     bigger_preview = '',
     pre_select = true,
   },
@@ -200,7 +200,7 @@ local opts2 = {
       },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
+        globals = { 'vim' },
       },
       workspace = {
         -- Make the server aware of Neovim runtime files
