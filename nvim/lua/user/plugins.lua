@@ -71,7 +71,7 @@ return packer.startup(function(use)
   use "neovim/nvim-lspconfig" -- enable LSP
   use { "zexi/coq_nvim", branch = 'stop-cmp-syms' }
   -- use "ms-jpq/coq.artifacts"
-  use "lukas-reineke/lsp-format.nvim"
+  use { "lukas-reineke/lsp-format.nvim", tag = "v2.2.3" }
   -- use "hrsh7th/cmp-nvim-lsp"
   -- use "hrsh7th/cmp-buffer" -- buffer completions
   -- use "hrsh7th/cmp-path" -- path completions
