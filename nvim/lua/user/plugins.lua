@@ -69,27 +69,28 @@ return packer.startup(function(use)
   use "lunarvim/darkplus.nvim"
   use "romainl/Apprentice"
 
-  -- cmp plugins
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use { "zexi/coq_nvim", branch = 'stop-cmp-syms' }
-  -- use "ms-jpq/coq.artifacts"
-  use { "lukas-reineke/lsp-format.nvim", tag = "v2.2.3" }
-  use { "folke/lua-dev.nvim" }
-  -- use "hrsh7th/cmp-nvim-lsp"
-  -- use "hrsh7th/cmp-buffer" -- buffer completions
-  -- use "hrsh7th/cmp-path" -- path completions
-  -- use "hrsh7th/cmp-cmdline" -- cmdline completions
-  -- use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  -- use "hrsh7th/nvim-cmp" -- The completion plugin
-
-  -- snippets
-  -- use "L3MON4D3/LuaSnip" --snippet engine
-  -- use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-
-  -- LSP
+  -- LSP and completion
   -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
   -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
   -- use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  -- cmp plugins
+  use "neovim/nvim-lspconfig" -- enable LSP
+  -- coq completion
+  -- use { "zexi/coq_nvim", branch = 'stop-cmp-syms' }
+  -- -- use "ms-jpq/coq.artifacts"
+  use { "lukas-reineke/lsp-format.nvim", tag = "v2.2.3" }
+  use { "folke/lua-dev.nvim" }
+  -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  -- cmp completion
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
+
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
