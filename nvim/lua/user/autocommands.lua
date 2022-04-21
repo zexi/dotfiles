@@ -7,13 +7,13 @@ vim.cmd [[
   augroup _git
     autocmd!
     autocmd FileType gitcommit setlocal wrap
-    autocmd FileType gitcommit setlocal spell
+    " autocmd FileType gitcommit setlocal spell
   augroup end
 
   augroup _markdown
     autocmd!
     autocmd FileType markdown setlocal wrap
-    autocmd FileType markdown setlocal spell
+    " autocmd FileType markdown setlocal spell
     autocmd FileType tex,markdown setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
   augroup end
 
