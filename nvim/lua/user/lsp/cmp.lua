@@ -22,10 +22,14 @@ local check_backspace = function()
 end
 
 cmp.setup({
+  preselect = cmp.PreselectMode.Item,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
     end,
+  },
+  completion = {
+    completeopt = 'menu,menuone,noinsert',
   },
   window = {
     -- completion = cmp.config.window.bordered(),
