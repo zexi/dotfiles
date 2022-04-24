@@ -57,6 +57,7 @@ exec swayidle -w \
 #bindsym Mod1+Ctrl+l exec "$HOME/code/dotfiles/tools/sway-lock"
 # bindsym $mod+Escape exec "$HOME/code/dotfiles/tools/sway-lock"
 bindsym $mod+Ctrl+backspace exec "$HOME/code/dotfiles/tools/sway-lock"
+bindsym $mod+Ctrl+q exec "$HOME/code/dotfiles/tools/sway-lock"
 
 ### Input configuration
 #
@@ -162,9 +163,9 @@ seat * hide_cursor 8000
     #bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
     bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
     #bindsym $mod+space exec wofi --show drun --allow-images --allow-markup
-    #bindsym $mod+Tab exec rofi -show window -show-icons
+    bindsym $mod+Tab exec rofi -show window -show-icons
     #bindsym $mod+Tab exec rofi -show combi -combi-modi "window:~/.config/sway/rofi-window-switch.sh" -modi combi
-    bindsym $mod+Tab exec /usr/bin/termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"
+    #bindsym $mod+Tab exec /usr/bin/termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
