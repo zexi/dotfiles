@@ -342,6 +342,7 @@ exec_always /usr/lib/gsd-color
 
 exec_always --no-startup-id sudo "$HOME/code/dotfiles/tools/trackpoint-adjust.sh"
 exec --no-startup-id gammastep -l 39.92:116.46 -t 5500:4500
+exec mako
 
 # Backlight control
 bindsym XF86MonBrightnessUp exec sudo brightnessctl s 5%+ # increase screen
