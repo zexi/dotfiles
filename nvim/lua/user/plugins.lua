@@ -114,6 +114,13 @@ return packer.startup(function(use)
   -- Sessions management
   use 'rmagatti/auto-session'
 
+  -- Markdown plugins
+  use 'godlygeek/tabular'
+  use 'preservim/vim-markdown'
+  use 'dhruvasagar/vim-table-mode'
+  use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
+  use 'mzlogin/vim-markdown-toc'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

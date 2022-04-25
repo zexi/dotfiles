@@ -220,6 +220,7 @@ seat * hide_cursor 8000
     for_window [class="Bytedance-feishu"] move container to workspace $ws2
     for_window [instance="wechat.exe"] move container to workspace $ws2
     for_window [instance="wechat.exe" title="Image Preview"] floating enable
+    for_window [instance="weixin"] move container to workspace $ws2
     for_window [title="图片"] floating enable
 
     set $ws3 "3:Misc"
