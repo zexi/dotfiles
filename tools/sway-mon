@@ -54,6 +54,7 @@ elif [[ $mode == '4k-up-156-2k' ]]; then
     swaymsg output $DP_1 pos 630 2160 res 2560x1440
     swaymsg output $DP_1 scale 1
     swaymsg output $DP_2 pos 0 0 res 3840x2160
+    swaymsg focus output $DP_2
 else
     swaymsg output $external pos 0 0 res 2560x1440
     swaymsg output $external1 disable

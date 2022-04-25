@@ -104,7 +104,6 @@ bindsym $mod+Ctrl+Left workspace prev
 # to display names or symbols instead of plain workspace numbers
 # FontAwesome icons see: http://fontawesome.io/cheatsheet/
 set $ws1 "1:Work &#xf120;"
-set $ws1 "1:Work &#xf120;"
 set $ws2 "2:Net &#xf0ac;"
 set $ws3 "3:Misc &#xf248;"
 set $ws4 "4:Relax &#xf004;"
