@@ -235,3 +235,11 @@ gsettings set org.gnome.desktop.peripherals.keyboard delay 250
 - keyboard
     - [Bluetooth keyboard](https://wiki.archlinux.org/index.php/Bluetooth_keyboard)
 
+
+### wechat
+
+```bash
+$ yay -S com.qq.weixin.deepin
+$ vim /opt/apps/com.qq.weixin.deepin/files/run.sh
+export DEEPIN_WINE_SCALE=2.0
+```

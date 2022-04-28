@@ -100,19 +100,29 @@ bindsym $mod+b focus child
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
+# Display monitor name
+set $monitor_up "DP2"
+set $monitor_down "DP1"
+
 # Workspace names
 # to display names or symbols instead of plain workspace numbers
 # FontAwesome icons see: http://fontawesome.io/cheatsheet/
 set $ws1 "1:Work &#xf120;"
+    workspace $ws1 output $monitor_up
 set $ws2 "2:Net &#xf0ac;"
+    workspace $ws2 output $monitor_down
+    for_window [class="Google-chrome"] move container to workspace $ws2
+    for_window [class="Bytedance-feishu"] move container to workspace $ws2
+    #for_window [instance="wechat.exe"] move container to workspace $ws2
+    #for_window [instance="wechat.exe" title="Image Preview"] floating enable
+    #for_window [instance="weixin"] move container to workspace $ws2
+    for_window [title="图片"] floating enable
+    for_window [class="Wine"] floating enable
 set $ws3 "3:Misc &#xf248;"
+    workspace $ws3 output $monitor_down
 set $ws4 "4:Relax &#xf004;"
-
-# Display monitor name
-#set $intMon eDP-1-1
-set $intMon eDP1
-set $extDPMon DP-1-1
-set $extHDMIMon HDMI-1-1
+    workspace $ws4 output $monitor_up
+    for_window [class="netease-cloud-music"] floating enable, move container to workspace $ws4
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -281,11 +291,8 @@ for_window [class="(?i)pavucontrol"] floating enable, move position mouse
 for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $height px
 for_window [class="URxvt" title="ydcv.*"] floating enable
 for_window [class="Termite" title="ydcv.*"] floating enable
-for_window [class="ieaseMusic"] floating enable, move container to workspace $ws4
-for_window [class="Wine"] floating enable
 for_window [class="shadowsocks-qt5"] floating enable
 for_window [class="Shutter"] floating enable
-#for_window [class="netease-cloud-music"] floating enable, move container to workspace $ws4
 #for_window [class="netease-cloud-music"] floating enable
 #for_window [class="Chromium"] floating enable
 for_window [class="Vinagre"] floating enable
