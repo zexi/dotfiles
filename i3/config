@@ -101,8 +101,11 @@ bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
 # Display monitor name
-set $monitor_up "DP2"
-set $monitor_down "DP1"
+#set $monitor_up "DP2"
+set $monitor_up "DP-0"
+#set $monitor_down "DP1"
+set $monitor_down "HDMI-1-1"
+set $monitor_right "eDP-1-1"
 
 # Workspace names
 # to display names or symbols instead of plain workspace numbers
@@ -119,7 +122,7 @@ set $ws2 "2:Net &#xf0ac;"
     for_window [title="图片"] floating enable
     for_window [class="Wine"] floating enable
 set $ws3 "3:Misc &#xf248;"
-    workspace $ws3 output $monitor_down
+    workspace $ws3 output $monitor_right
 set $ws4 "4:Relax &#xf004;"
     workspace $ws4 output $monitor_up
     for_window [class="netease-cloud-music"] floating enable, move container to workspace $ws4
