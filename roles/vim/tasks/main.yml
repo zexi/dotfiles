@@ -1,0 +1,54 @@
+- name: Install neovim/vim required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+      - vim
+      - neovim
+      - python-pynvim
+      - ripgrep
+      - bat
+
+- name: Check {{ vim_plug_dest }} is exists
+  stat:
+    path: "{{ vim_plug_dest }}"
+  register: vim_plug_result
+
+- name: Install vim-plug
+  shell: >
+    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  args:
+    warn: no
+  when: not vim_plug_result.stat.exists
+
+- name: Copy vimrc config file
+  copy:
+    src: vimrc
+    dest: "{{ vim_rc }}"
+  tags: vimrc
+
+- name: Symbolic link
+  file:
+    src: "{{ vim_rc }}"
+    dest: "{{ neovim_init }}"
+    state: link
+
+- name: Symbolic .vim config dir to .config/nvim
+  file:
+    src: "{{ vim_config_dir }}"
+    dest: "{{ neovim_config_dir }}"
+    state: link
+
+- name: Copy coc.nvim config
+  copy:
+    src: "coc-settings.json"
+    dest: "{{ coc_config_dest }}"
+  tags:
+    - vimrc
+
+- name: Run neovim PlugInstall
+  shell: nvim --headless +PlugInstall +qall
+
+- name: Run fzf install
+  shell: "{{ vim_config_dir }}/plugged/fzf/install --all"

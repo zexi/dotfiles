@@ -1,0 +1,436 @@
+include colorscheme
+
+### Variables
+#
+# Logo key. Use Mod1 for Alt.
+set $mod Mod4
+# Home row direction keys, like vim
+set $left h
+set $down j
+set $up k
+set $right l
+# Your preferred terminal emulator
+#set $term GDK_BACKEND=x11 termite
+set $term termite
+# set $term1 alacritty
+#set $term1 termite
+set $term1 WINIT_UNIX_BACKEND=x11 alacritty
+#set $term xterm
+# Your preferred application launcher
+# Note: it's recommended that you pass the final command to sway
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+### Output configuration
+#
+# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+# output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+set $wallpaperPath "$HOME/Pictures/wallpaper/"
+set $setWallpaper "$HOME/.config/sway/change_wallpaper.py"
+exec_always --no-startup-id $setWallpaper $wallpaperPath
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+set $laptop eDP-1
+#output $laptop enable scale 1.5
+# use 'gsettings set org.gnome.desktop.interface text-scaling-factor'
+output $laptop enable scale 1
+bindswitch --reload --locked lid:on output $laptop disable
+bindswitch --reload --locked lid:off output $laptop enable
+
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+### Idle configuration
+#
+# Example configuration:
+#
+exec swayidle -w \
+         timeout 3600 'swaylock -f -c 000000' \
+         timeout 3900 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
+#
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds, and turn your screens back on when
+# resumed. It will also lock your screen before your computer goes to sleep.
+#bindsym Mod1+Ctrl+l exec "$HOME/code/dotfiles/tools/sway-lock"
+# bindsym $mod+Escape exec "$HOME/code/dotfiles/tools/sway-lock"
+bindsym $mod+Ctrl+backspace exec "$HOME/code/dotfiles/tools/sway-lock"
+bindsym $mod+Ctrl+q exec "$HOME/code/dotfiles/tools/sway-lock"
+
+### Input configuration
+#
+# Example configuration:
+#
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+input "1133:16471:Logitech_M280/320/275" {
+    middle_emulation enabled
+    scroll_button button2
+}
+
+input "1:1:AT_Translated_Set_2_keyboard" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
+# Set HHKB mode: 2356 on
+input "2131:256:Topre_Corporation_HHKB_Professional" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
+# HHKB BLE (YDKB)
+input "65261:6592:YANG_HHKB_BLE_S_(USB_DL1K)" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
+input "0:0:LZX_HHKB_Keyboard" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
+input "3897:1553:Heng_Yu_Technology_Poker" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
+input "1452:272:NIZ_BT5.0_Keyboard" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
+# NIZ wired keyboard identifier
+input "1155:20786:CATEX_TECH._68EC-S" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
+# ROG g14 wired keyboard identifier
+input "2821:6582:Asus_Keyboard" {
+    xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
+    repeat_delay 250
+    repeat_rate 30
+}
+
+# ROG g14 touchpad
+input "1267:12440:ELAN1201:00_04F3:3098_Touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+    pointer_accel 0.7
+    scroll_factor 0.5
+}
+
+
+# hide mouse cursor on inactivity
+seat * hide_cursor 8000
+
+#
+# You can get the names of your inputs by running: swaymsg -t get_inputs
+# Read `man 5 sway-input` for more information about this section.
+
+### Key bindings
+#
+# Basics:
+#
+    # start a terminal
+    bindsym $mod+Return exec $term1
+    bindsym $mod+Shift+Return exec $term -c ~/.config/termite/config.light
+
+    # kill focused window
+    bindsym $mod+Shift+q kill
+    bindsym $mod+q kill
+
+    # start your launcher
+    bindsym $mod+d exec $menu
+    #bindsym $mod+d exec rofi -show drun -show-icons -drun-icon-theme
+    #bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
+    bindsym $mod+space exec rofi -show drun -show-icons -drun-icon-theme
+    #bindsym $mod+space exec wofi --show drun --allow-images --allow-markup
+    #bindsym $mod+Tab exec rofi -show window -show-icons
+    #bindsym $mod+Tab exec rofi -show combi -combi-modi "window:~/.config/sway/rofi-window-switch.sh" -modi combi
+    bindsym $mod+Tab exec /usr/bin/termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"
+
+    # Drag floating windows by holding down $mod and left mouse button.
+    # Resize them with right mouse button + $mod.
+    # Despite the name, also works for non-floating windows.
+    # Change normal to inverse to use left mouse button for resizing and right
+    # mouse button for dragging.
+    floating_modifier $mod normal
+
+    # reload the configuration file
+    bindsym $mod+Shift+r reload
+
+    # exit sway (logs you out of your Wayland session)
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+#
+# Moving around:
+#
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # _move_ the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    set $monitor_up "DP-2"
+    set $monitor_down "DP-1"
+
+    # always move ws1 to monitor_up
+    set $ws1 "1:Work"
+    workspace $ws1 output $monitor_up
+    #for_window [class="Alacritty"] move container to workspace $ws1
+
+    set $ws2 "2:Net"
+    workspace $ws2 output $monitor_down
+    for_window [class="Google-chrome"] move container to workspace $ws2
+    for_window [class="Bytedance-feishu"] move container to workspace $ws2
+    for_window [instance="wechat.exe"] move container to workspace $ws2
+    for_window [instance="wechat.exe" title="Image Preview"] floating enable
+    for_window [instance="weixin"] move container to workspace $ws2
+    for_window [title="图片"] floating enable
+
+    set $ws3 "3:Misc"
+    workspace $ws3 output $monitor_down
+
+    set $ws4 "4:Relax"
+    workspace $ws4 output $monitor_up
+    for_window [class="netease-cloud-music"] floating enable, move container to workspace $ws4
+
+    # switch to workspace
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace 5
+    bindsym $mod+6 workspace 6
+    bindsym $mod+7 workspace 7
+    bindsym $mod+8 workspace 8
+    bindsym $mod+9 workspace 9
+    bindsym $mod+0 workspace 10
+    # move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace $ws1
+    bindsym $mod+Shift+2 move container to workspace $ws2
+    bindsym $mod+Shift+3 move container to workspace $ws3
+    bindsym $mod+Shift+4 move container to workspace $ws4
+    bindsym $mod+Shift+5 move container to workspace 5
+    bindsym $mod+Shift+6 move container to workspace 6
+    bindsym $mod+Shift+7 move container to workspace 7
+    bindsym $mod+Shift+8 move container to workspace 8
+    bindsym $mod+Shift+9 move container to workspace 9
+    bindsym $mod+Shift+0 move container to workspace 10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+v splith
+    bindsym $mod+s splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+period layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+Shift+space floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+Ctrl+space focus mode_toggle
+
+    # move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    #bindsym $mod+Shift+minus move scratchpad
+    bindsym $mod+m move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    #bindsym $mod+minus scratchpad show
+    bindsym $mod+grave scratchpad show
+
+#
+# Resizing containers:
+#
+mode "resize" {
+    # left will shrink the containers width
+    # right will grow the containers width
+    # up will shrink the containers height
+    # down will grow the containers height
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+r mode "resize"
+
+bar {
+    swaybar_command waybar
+}
+
+#                       Border  BG      Text    Ind     Child Border
+client.focused          $base05 $base0D $base00 $base0D $base0D
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+
+# start a ydict for dictionary
+bindsym $mod+Mod1+x exec termite -c ~/.config/termite/config.trans --name=floatingApp # -e "ydcv -S"
+
+#exec fcitx -r
+exec fcitx5 -r
+exec --no-startup-id nm-applet --indicator
+exec --no-startup-id blueman-applet
+#exec --no-startup-id guake
+# gnome xsettings
+exec_always /usr/lib/gsd-xsettings
+exec_always /usr/lib/gsd-color
+
+exec_always --no-startup-id sudo "$HOME/code/dotfiles/tools/trackpoint-adjust.sh"
+exec --no-startup-id gammastep -l 39.92:116.46 -t 5500:4500
+exec mako
+
+# Backlight control
+bindsym XF86MonBrightnessUp exec sudo brightnessctl s 5%+ # increase screen
+bindsym XF86MonBrightnessDown exec sudo brightnessctl s 5%- # decrease screen
+
+
+# Keyboard backlight control
+bindsym XF86KbdBrightnessUp exec sudo "$HOME/code/dotfiles/tools/adjust-kbd-brightness.sh" up
+bindsym XF86KbdBrightnessDown exec sudo "$HOME/code/dotfiles/tools/adjust-kbd-brightness.sh" down
+
+# Audio shortcuts
+bindsym XF86AudioLowerVolume exec pamixer -d 10
+bindsym XF86AudioRaiseVolume exec pamixer -u -i 10
+bindsym XF86AudioMute exec pamixer -m
+bindsym XF86AudioMicMute exec amixer set Capture toggle
+
+# Display
+bindsym XF86Display exec /usr/bin/wdisplays
+bindsym $mod+Shift+m exec /usr/bin/wdisplays
+
+# Suspend
+bindsym XF86PowerOff exec systemctl suspend
+
+# start guake terminal
+#bindsym $mod+g exec "$HOME/code/dotfiles/tools/xguake"
+#bindsym $mod+g exec "guake -t"
+bindsym $mod+g exec "$HOME/go/bin/i3-go-quickterm"
+#bindsym $mod+g exec "$HOME/code/work/i3-quickterm/i3-quickterm shell"
+
+#bindsym $mod+x output DP-2 pos 0 0 res 1920x1080; output eDP-1 pos 0 1080 res 1920x1080
+bindsym $mod+Shift+w exec $setWallpaper $wallpaperPath
+
+# invoke notify
+bindsym $mod+Shift+n exec makoctl invoke
+
+# Hide borders
+default_border pixel
+hide_edge_borders smart
+#smart_gaps on
+#gaps outer 0
+#gaps inner 5
+
+workspace_auto_back_and_forth no
+bindsym $mod+semicolon workspace back_and_forth
+
+bindsym $mod+Ctrl+a exec grim -g "$(slurp)" - | swappy -f -
+#bindsym $mod+Ctrl+a exec "$HOME/code/dotfiles/tools/wrap-screenshot.sh"
+
+for_window [app_id="^floatingApp$"] floating enable
+for_window [app_id="^window-switcher$"] floating enable
+for_window [window_role="pop-up"] floating enable
+no_focus [window_role="pop-up"]
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down $height px
+for_window [class="(?i)qemu-system"] floating enable
+for_window [class="(?i)Eog"] floating enable
+for_window [class="(?i)VirtualBox" title="(?i)Manager"] floating enable
+for_window [class="(?i)VirtualBox"] floating enable
+for_window [class="(?i)blueman"] floating enable
+for_window [class="(?i)pinentry"] floating enable
+for_window [class="(?i)nm-connection-editor"] floating enable
+
+#for_window [instance="sun-awt-X11-XFramePeer"] floating enable
+for_window [instance="__scratchpad"] floating enable
+for_window [instance="__nmtui"] floating enable
+for_window [class="(?i)recordmydesktop"] floating enable
+
+for_window [class="(?i)pavucontrol"] floating enable, move position mouse
+for_window [class="(?i)pavucontrol" instance="pavucontrol-bar"] move down $height px
+for_window [class="URxvt" title="ydcv.*"] floating enable
+for_window [class="Termite" title="ydcv.*"] floating enable
+for_window [app_id="guake"] floating enable
+for_window [app_id="virt-manager"] floating enable
+for_window [class="Guake"] floating enable
+for_window [class="ieaseMusic"] floating enable, move container to workspace $ws4
+for_window [class="shadowsocks-qt5"] floating enable
+for_window [class="Shutter"] floating enable
+#for_window [class="Wine"] floating enable
+#for_window [class="netease-cloud-music"] floating enable
+#for_window [class="Chromium"] floating enable
+for_window [class="Vinagre"] floating enable
+for_window [class="electronic-wechat"] floating enable
+
+include /etc/sway/config.d/*

@@ -1,0 +1,91 @@
+- name: Install swaywm required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+      - sway
+      - waybar
+      - swaylock
+      - swayidle
+      - mako
+      - brightnessctl
+      - grim
+      - slurp
+      - wallutils
+      - powerline-fonts
+      - ttf-font-awesome
+      - ttf-monaco
+      - wqy-microhei
+      - wqy-zenhei
+      - wqy-bitmapfont
+      - noto-fonts-emoji
+      - pamixer
+      - pnmixer
+      - pavucontrol
+      - alsa-utils
+      - bluez
+      - bluez-utils
+      - blueman
+      - pulseaudio-bluetooth
+      - network-manager-applet
+      - acpilight
+      - ydcv
+      - wl-clipboard
+      - redshift
+      - gammastep
+      # - wdisplays-git
+      - network-manager-applet
+      - libappindicator-gtk3
+      - swappy
+        #- libinput-three-finger-drag
+      # - wofi-hg
+
+
+- name: Copy config/sway
+  synchronize:
+    src: sway
+    dest: "{{ config_path }}"
+
+- name: Copy config/swappy
+  synchronize:
+    src: swappy
+    dest: "{{ config_path }}"
+
+# TODO: fix for g14
+- name: Execute waybar task
+  include_tasks: ./waybar.yml
+  tags:
+    - waybar
+
+- name: Install gnome required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+    - gnome-extra
+    - gdm
+    - chrome-gnome-shell
+
+- name: Copy /etc/environment
+  become: yes
+  copy:
+    src: etc/environment
+    dest: /etc/environment
+    mode: '0644'
+
+- name: Copy systemd-logind config
+  become: yes
+  copy:
+    src: etc/systemd/logind.conf
+    dest: /etc/systemd/logind.conf
+    mode: '0644'
+
+- name: Execute terminal task
+  include_tasks: ./terminal.yml
+  tags:
+    - terminal
+
+- name: Execute rofi task
+  include_tasks: ./rofi.yml
+  tags:
+    - rofi

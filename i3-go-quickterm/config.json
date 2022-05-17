@@ -1,0 +1,12 @@
+{
+  "terminal": {
+    "command": "xfce4-terminal",
+    "extraArgs": [
+      "--hide-scrollbar"
+    ],
+    "env": [
+      "GDK_BACKEND=wayland"
+    ]
+  },
+  "ratio": 0.5
+}

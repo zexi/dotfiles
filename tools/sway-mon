@@ -1,0 +1,69 @@
+#!/bin/bash
+
+laptop="eDP-1"
+external="DP-2"
+external1="HDMI-A-1"
+
+DP_1="DP-1"
+DP_2="DP-2"
+
+mode=$1
+
+if [[ $mode == 3 ]]; then
+    swaymsg output $external pos 0 0 res 2560x1440
+    swaymsg output $laptop pos 2560 360 res 1920x1080
+    swaymsg output $external1 enable
+    swaymsg output $external1 pos 640 1440 res 1920x1080
+elif [[ $mode == "3.1" ]]; then
+    swaymsg output $laptop pos   600 360 res 1920x1080
+    swaymsg output $external pos 2520 0 res 2560x1440
+    swaymsg output $external1 enable
+    swaymsg output $external1 pos 2520 1440 res 1920x1080
+elif [[ $mode == "3.2" ]]; then
+    swaymsg output $laptop pos   3017 617 res 2560x1440
+    swaymsg output $external pos 4480 0 res 2560x1440
+    swaymsg output $external1 enable
+    swaymsg output $external1 pos 4480 1440 res 1920x1080
+elif [[ $mode == "3-right" ]]; then
+    swaymsg output $laptop pos   2560 617 res 2560x1440
+    swaymsg output $external pos 0 0 res 2560x1440
+    swaymsg output $external1 enable
+    swaymsg output $external1 pos 640 1440 res 1920x1080
+elif [[ $mode == "4k" ]]; then
+    swaymsg output $external enable scale 2
+    swaymsg output $laptop pos 0 1080 res 1920x1080
+    swaymsg output $external pos 0 0 res 3840x2160
+elif [[ $mode == '2-nuc-tb' ]]; then
+    swaymsg output DP-1 pos 1920 0 res 2560x1440
+    swaymsg output DP-2 pos 2270 1440 res 1920x1080
+elif [[ $mode == '4k-up-2k' ]]; then
+    swaymsg output $laptop pos 3180 4720 res 2560x1440
+    swaymsg output $external1 pos 2560 2560 res 3840x2160
+elif [[ $mode == '4k-up-1080p' ]]; then
+    # DP_1 is 1080p
+    swaymsg output $DP_1 pos 2530 2160 res 1920x1080
+    swaymsg output $DP_1 scale 0.75
+    swaymsg output $DP_2 pos 1920 0 res 3840x2160
+elif [[ $mode == '4k-up-156-4k' ]]; then
+    # DP_1 is 15.6 4k
+    swaymsg output $DP_1 pos 2530 2160 res 3840x2160
+    swaymsg output $DP_1 scale 1.7
+    swaymsg output $DP_2 pos 1920 0 res 3840x2160
+elif [[ $mode == '4k-up-156-2k' ]]; then
+    # DP_1 is 15.6 4k
+    swaymsg output $DP_1 pos 630 2160 res 2560x1440
+    swaymsg output $DP_1 scale 1
+    swaymsg output $DP_2 pos 0 0 res 3840x2160
+    swaymsg focus output $DP_2
+else
+    swaymsg output $external pos 0 0 res 2560x1440
+    swaymsg output $external1 disable
+    swaymsg output $laptop pos 0 1440 res 1920x1080
+fi
+
+# external top of laptop
+#swaymsg output $external pos 0 0 res 1920x1080
+#swaymsg output $external pos 0 0 res 2560x1440
+#swaymsg output $laptop pos 0 1440 res 1920x1080
+#swaymsg output $laptop pos 2560 360 res 1920x1080
+#swaymsg output $external1 pos 640 1440 res 1920x1080

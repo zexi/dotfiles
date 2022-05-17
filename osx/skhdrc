@@ -1,0 +1,70 @@
+# change focus
+# cmd - h : yabai -m window --focus west || \
+#           yabai -m window --focus $(yabai -m query --spaces --display west | jq '.[] | select(."is-visible" == true) | ."last-window"')
+cmd - h : yabai -m window --focus west || \
+          yabai -m display --focus west
+# cmd - j : yabai -m window --focus south || \
+#           yabai -m window --focus $(yabai -m query --spaces --display south | jq '.[] | select(."is-visible" == true) | ."first-window"')
+cmd - j : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus south || yabai -m display --focus south; fi
+# cmd - k : yabai -m window --focus north || \
+#           yabai -m window --focus $(yabai -m query --spaces --display north | jq '.[] | select(."is-visible" == true) | ."last-window"')
+cmd - k : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else yabai -m window --focus north || yabai -m display --focus north; fi
+# cmd - l : yabai -m window --focus east || \
+#           yabai -m window --focus $(yabai -m query --spaces --display east | jq '.[] | select(."is-visible" == true) | ."first-window"')
+cmd - l : yabai -m window --focus east || \
+          yabai -m display --focus east
+
+# (alt) change focus (using arrow keys)
+alt - left  : yabai -m window --focus west || \
+              yabai -m window --focus $(yabai -m query --spaces --display west | jq '.[] | select(."is-visible" == true) | ."last-window"')
+alt - down  : yabai -m window --focus south || \
+              yabai -m window --focus $(yabai -m query --spaces --display south | jq '.[] | select(."is-visible" == true) | ."first-window"')
+alt - up    : yabai -m window --focus north || \
+              yabai -m window --focus $(yabai -m query --spaces --display north | jq '.[] | select(."is-visible" == true) | ."last-window"')
+alt - right  : yabai -m window --focus east || \
+              yabai -m window --focus $(yabai -m query --spaces --display east | jq '.[] | select(."is-visible" == true) | ."first-window"')
+
+# shift window in current workspace
+cmd + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+cmd + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+cmd + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+# alternatively, use the arrow keys
+cmd + shift - left : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
+cmd + shift - down : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
+cmd + shift - up : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
+cmd + shift - right : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+
+# go back to previous workspace (kind of like back_and_forth in i3)
+cmd - 0x29 : yabai -m space --focus recent
+
+# focus display with arrangement index
+cmd - 1 : yabai -m display --focus 1
+cmd - 2 : yabai -m display --focus 2
+cmd - 3 : yabai -m display --focus 3
+cmd - 4 : yabai -m display --focus 4
+
+# move focused window to previous workspace
+cmd + shift - b : yabai -m window --space recent; \
+                  yabai -m space --focus recent
+
+# move focused window to next/prev workspace
+cmd + shift - 1 : yabai -m window --space 1
+cmd + shift - 2 : yabai -m window --space 2
+cmd + shift - 3 : yabai -m window --space 3
+cmd + shift - 4 : yabai -m window --space 4
+cmd + shift - 5 : yabai -m window --space 5
+cmd + shift - 6 : yabai -m window --space 6
+cmd + shift - 7 : yabai -m window --space 7
+cmd + shift - 8 : yabai -m window --space 8
+cmd + shift - 9 : yabai -m window --space 9
+#alt + shift - 0 : yabai -m window --space 10
+
+# change layout of desktop
+cmd - e : yabai -m space --layout bsp
+#alt - t : yabai -m space --layout float
+cmd - t : yabai -m window --toggle float
+cmd - 0x2F : yabai -m space --layout stack
+
+# open terminal
+cmd - return : open -n /Applications/Alacritty.app

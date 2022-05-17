@@ -1,0 +1,7 @@
+set incsearch
+set hlsearch
+set ignorecase
+set showmode
+set surround
+
+nmap gi :action GotoImplementation<CR>

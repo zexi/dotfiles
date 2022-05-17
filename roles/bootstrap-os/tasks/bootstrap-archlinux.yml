@@ -1,0 +1,53 @@
+---
+- name: Check archlinuxcn repo whether added
+  shell: grep -c "\[archlinuxcn\]" /etc/pacman.conf || true
+  changed_when: false
+  register: check_archlinux_cn
+
+- name: Add archlinuxcn repo into /etc/pacman.conf
+  become: yes
+  lineinfile:
+    dest: /etc/pacman.conf
+    line: "{{ item }}"
+  with_items:
+    - '[archlinuxcn]'
+    - 'Server = https://mirrors.cloud.tencent.com/archlinuxcn/$arch'
+  when:
+    - check_archlinux_cn.stdout == "0"
+
+- name: Install archlinuxcn-keyring related packages
+  become: yes
+  pacman:
+    state: present
+    update_cache: yes
+    name:
+      - archlinuxcn-keyring
+
+# - name: Install archlinuxcn-mirrorlist-git related packages
+  # pacman:
+    # state: present
+    # name:
+      # - archlinuxcn-mirrorlist-git
+
+- name: Install common packages
+  become: yes
+  pacman:
+    state: present
+    name:
+      - yay
+      - tmux
+      - vim
+      - curl
+      - wget
+      - git
+      - htop
+      - rsync
+      - nethogs
+
+- name: Ensure directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  with_items:
+    - "{{ ansible_user_dir }}/.config"

@@ -1,0 +1,34 @@
+- name: Install zsh related packages
+  pacman:
+    state: present
+    name:
+      - git
+      - zsh
+
+- name: Check if .zshrc exists
+  stat:
+    path: '{{ zshrc }}'
+  register: stat_zshrc_result
+
+- name: Check if .oh-my-zsh exists
+  stat:
+    path: '{{ oh_my_zsh }}'
+  register: stat_oh_my_zsh_result
+
+- name: Clone oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh
+    dest: '{{ oh_my_zsh }}'
+  when: not stat_oh_my_zsh_result.stat.exists
+
+- name: Copy .zshrc
+  copy:
+    src: zshrc
+    dest: "{{ zshrc }}"
+  when: not stat_zshrc_result.stat.exists
+
+- name: Set up zsh for user
+  become: yes
+  user:
+    name: "{{ the_user }}"
+    shell: /bin/zsh

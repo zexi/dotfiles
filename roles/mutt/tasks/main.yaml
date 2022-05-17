@@ -1,0 +1,7 @@
+- name: Install mutt required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+      - mutt
+      - offlineimap

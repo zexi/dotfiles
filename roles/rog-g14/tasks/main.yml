@@ -1,0 +1,52 @@
+# ref:
+# - https://lab.retarded.farm/zappel/asus-rog-zephyrus-g14/-/wikis/Arch/Installation-Walkthrough
+# - https://asus-linux.org/
+- name: Install g14 required packages
+  become: yes
+  pacman:
+    state: present
+    name:
+    - linux-g14
+    - linux-g14-headers
+    - linux-firmware
+    - amd-ucode
+    - asus-nb-ctrl
+    - nvidia-dkms
+    - nvidia-utils
+    - nvidia-settings
+    - nvidia-prime
+
+- name: Copy /etc/asusd/asusd.conf
+  become: yes
+  copy:
+    src: etc/asusd/asusd.conf
+    dest: /etc/asusd/asusd.conf
+    mode: '0644'
+
+- name: Enable asusd systemd services
+  become: yes
+  systemd:
+    enabled: yes
+    state: restarted
+    name: asusd
+
+- name: Enable nvidia-suspend systemd services
+  become: yes
+  systemd:
+    enabled: yes
+    # state: started
+    name: nvidia-suspend
+
+- name: Enable nvidia-resume systemd services
+  become: yes
+  systemd:
+    enabled: yes
+    # state: started
+    name: nvidia-resume
+
+- name: Enable nvidia-hibernate systemd services
+  become: yes
+  systemd:
+    enabled: yes
+    # state: started
+    name: nvidia-hibernate

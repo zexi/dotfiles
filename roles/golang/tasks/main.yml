@@ -1,0 +1,17 @@
+- name: Install golang related packages
+  become: yes
+  pacman:
+    state: present
+    name:
+      - go
+      - gopls
+
+- name: Ensure golang directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    recurse: yes
+  with_items:
+    - "{{ go_bin_path }}"
+    - "{{ go_src_path }}"
+    - "{{ go_pkg_path }}"

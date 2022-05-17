@@ -1,0 +1,8 @@
+[Unit]
+Description=Watch for, and modify, Trackpoint attributes
+
+[Path]
+PathExists=/sys/devices/platform/i8042/serio1/serio2/speed
+
+[Install]
+WantedBy=default.target

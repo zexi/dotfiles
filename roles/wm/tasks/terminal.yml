@@ -1,0 +1,19 @@
+- name: Install alacritty
+  become: yes
+  pacman:
+    state: present
+    name:
+    - alacritty
+    - termite
+    - termite-terminfo
+    - xfce4-terminal
+
+- name: Sync config/alacritty
+  synchronize:
+    src: alacritty
+    dest: "{{ config_path }}"
+
+- name: Sync config/termite
+  synchronize:
+    src: termite
+    dest: "{{ config_path }}"

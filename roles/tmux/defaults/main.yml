@@ -1,0 +1,3 @@
+tmux_config_dir: "{{ ansible_user_dir }}/.tmux"
+tmux_config: "{{ ansible_user_dir }}/.tmux.conf"
+tmux_tpm_dir: "{{ tmux_config_dir }}/plugins/tpm"
