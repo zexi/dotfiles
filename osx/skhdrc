@@ -1,13 +1,28 @@
 # change focus
-cmd - h : yabai -m window --focus west
-cmd - j : yabai -m window --focus south
-cmd - k : yabai -m window --focus north
-cmd - l : yabai -m window --focus east
+# cmd - h : yabai -m window --focus west || \
+#           yabai -m window --focus $(yabai -m query --spaces --display west | jq '.[] | select(."is-visible" == true) | ."last-window"')
+cmd - h : yabai -m window --focus west || \
+          yabai -m display --focus west
+# cmd - j : yabai -m window --focus south || \
+#           yabai -m window --focus $(yabai -m query --spaces --display south | jq '.[] | select(."is-visible" == true) | ."first-window"')
+cmd - j : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus south || yabai -m display --focus south; fi
+# cmd - k : yabai -m window --focus north || \
+#           yabai -m window --focus $(yabai -m query --spaces --display north | jq '.[] | select(."is-visible" == true) | ."last-window"')
+cmd - k : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else yabai -m window --focus north || yabai -m display --focus north; fi
+# cmd - l : yabai -m window --focus east || \
+#           yabai -m window --focus $(yabai -m query --spaces --display east | jq '.[] | select(."is-visible" == true) | ."first-window"')
+cmd - l : yabai -m window --focus east || \
+          yabai -m display --focus east
+
 # (alt) change focus (using arrow keys)
-alt - left  : yabai -m window --focus west
-alt - down  : yabai -m window --focus south
-alt - up    : yabai -m window --focus north
-alt - right : yabai -m window --focus east
+alt - left  : yabai -m window --focus west || \
+              yabai -m window --focus $(yabai -m query --spaces --display west | jq '.[] | select(."is-visible" == true) | ."last-window"')
+alt - down  : yabai -m window --focus south || \
+              yabai -m window --focus $(yabai -m query --spaces --display south | jq '.[] | select(."is-visible" == true) | ."first-window"')
+alt - up    : yabai -m window --focus north || \
+              yabai -m window --focus $(yabai -m query --spaces --display north | jq '.[] | select(."is-visible" == true) | ."last-window"')
+alt - right  : yabai -m window --focus east || \
+              yabai -m window --focus $(yabai -m query --spaces --display east | jq '.[] | select(."is-visible" == true) | ."first-window"')
 
 # shift window in current workspace
 cmd + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
