@@ -28,3 +28,7 @@ $(brew --prefix)/opt/fzf/install
 # appstore
 # install easyres to adjust monitor resolution
 ```
+
+## Use iterm2 as dropdown terminal
+
+ref: https://blog.mestwin.net/drop-down-terminal-in-macos-with-iterm2/

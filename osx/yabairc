@@ -69,5 +69,6 @@ yabai -m rule --add app='^WeChat$' manage=off
 yabai -m rule --add app='^YoudaoDict$' manage=off
 yabai -m rule --add app='^NeteaseMusic$' manage=off
 yabai -m rule --add app='^Mail$' manage=off
+yabai -m rule --add app='^iTerm2$' manage=off
 
 echo "yabai configuration loaded.."
