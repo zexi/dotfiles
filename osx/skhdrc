@@ -61,10 +61,10 @@ cmd + shift - 9 : yabai -m window --space 9
 #alt + shift - 0 : yabai -m window --space 10
 
 # change layout of desktop
-cmd - e : yabai -m space --layout bsp
-#alt - t : yabai -m space --layout float
-cmd - t : yabai -m window --toggle float
-cmd - 0x2F : yabai -m space --layout stack
+# cmd - e : yabai -m space --layout bsp
+# #alt - t : yabai -m space --layout float
+# alt - t : yabai -m window --toggle float
+# cmd - 0x2F : yabai -m space --layout stack
 
 # open terminal
 cmd - return : open -n /Applications/Alacritty.app

@@ -18,7 +18,7 @@ ln -s $(pwd)/osx/yabairc ~/.yabairc
 ```
 
 ```bash
-brew install tmux reattach-to-user-namespace clipy fzf
+brew install tmux reattach-to-user-namespace clipy fzf rectangle
 
 # To install useful key bindings and fuzzy completion:
 $(brew --prefix)/opt/fzf/install
