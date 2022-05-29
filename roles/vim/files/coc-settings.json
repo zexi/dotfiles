@@ -1,7 +1,7 @@
 {
   //"suggest.noselect": false,
   //"suggest.enablePreselect": false,
-  // "coc.preferences.jumpCommand": "drop",
+  "coc.preferences.jumpCommand": "drop",
 
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnType": false,
@@ -26,7 +26,7 @@
         "filetypes": ["go"],
         "command": "gopls",
   //      "disableWorkspaceFolders": true,
-  //      "args": ["-remote=auto"],
+        "args": ["-remote=auto"],
         "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
         "trace.server": "verbose",
         "initializationOptions": {

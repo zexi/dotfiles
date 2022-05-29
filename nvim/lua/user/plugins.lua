@@ -91,6 +91,7 @@ return packer.startup(function(use)
   -- use "hrsh7th/cmp-cmdline" -- cmdline completions
   -- use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use {'neoclide/coc.nvim', branch = 'release'}
+  use 'fannheyward/telescope-coc.nvim'
   use "buoto/gotests-vim"
 
 
