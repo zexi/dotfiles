@@ -67,7 +67,11 @@ return packer.startup(function(use)
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
-  use "romainl/Apprentice"
+  -- use "romainl/Apprentice"
+  use {"adisen99/apprentice.nvim", requires = {"rktjmp/lush.nvim"}}
+  use 'marko-cerovac/material.nvim'
+  use 'folke/tokyonight.nvim'
+  use 'navarasu/onedark.nvim'
 
   -- LSP and completion
   -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
