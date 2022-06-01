@@ -11,7 +11,7 @@
   "hover.floatConfig": {
     "border": true
   },
-  "coc.preferences.jumpCommand": "drop",
+  // "coc.preferences.jumpCommand": "drop",
 
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnType": false,

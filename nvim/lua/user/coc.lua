@@ -45,7 +45,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi :call <SID>gotoTag("Implementation")<CR>
 " nmap <silent> gr :call <SID>gotoTag("Used")<CR>
 nmap <silent> gi :Telescope coc implementations<CR>
-nmap <silent> gr :Telescope coc references<CR>
+nmap <silent> gr :Telescope coc references_used<CR>
 
 nmap <silent> [d <Plug>(coc-diagnostic-prev)
 nmap <silent> ]d <Plug>(coc-diagnostic-next)
