@@ -13,75 +13,49 @@
 -- endtry
 -- ]]
 
--- require('material.functions').change_style('darker')
--- vim.cmd[[colorscheme material]]
+-- -- Default options
+require('nightfox').setup({
+  options = {
+    -- Compiled file's destination location
+    compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+    compile_file_suffix = "_compiled", -- Compiled file suffix
+    transparent = false,    -- Disable setting background
+    terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
+    dim_inactive = false,   -- Non focused panes set to alternative background
+    styles = {              -- Style to be applied to different syntax groups
+      comments = "NONE",    -- Value is any valid attr-list value `:help attr-list`
+      conditionals = "NONE",
+      constants = "NONE",
+      functions = "NONE",
+      keywords = "NONE",
+      numbers = "NONE",
+      operators = "NONE",
+      strings = "NONE",
+      types = "NONE",
+      variables = "NONE",
+    },
+    inverse = {             -- Inverse highlight for different types
+      match_paren = false,
+      visual = false,
+      search = false,
+    },
+    modules = {             -- List of various plugins and additional options
+      -- ...
+    },
+  }
+})
 
--- vim.g.tokyonight_style = "night"
--- vim.g.tokyonight_italic_functions = true
--- vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
---
--- -- Change the "hint" color to the "orange" color, and make the "error" color bright red
--- vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
---
--- -- Load the colorscheme
--- vim.cmd[[colorscheme tokyonight]]
+-- setup must be called before loading
+vim.cmd("colorscheme nordfox")
 
--- vim.o.background = "dark" -- or "light" for light mode
+-- vim.g.seoulbones = {
+--   -- lightness = 'bright',
+--   darkness = 'warm',
+-- }
 --
--- -- Load and setup function to choose plugin and language highlights
--- require('lush')(require('apprentice').setup({
---   plugins = {
---     "buftabline",
---     "coc",
---     "cmp", -- nvim-cmp
---     "fzf",
---     "gitgutter",
---     "gitsigns",
---     "lsp",
---     "lspsaga",
---     "nerdtree",
---     "netrw",
---     "nvimtree",
---     "neogit",
---     "packer",
---     "signify",
---     "startify",
---     "syntastic",
---     "telescope",
---     "treesitter"
---   },
---   langs = {
---     "c",
---     "clojure",
---     "coffeescript",
---     "csharp",
---     "css",
---     "elixir",
---     "golang",
---     "haskell",
---     "html",
---     "java",
---     "js",
---     "json",
---     "jsx",
---     "lua",
---     "markdown",
---     "moonscript",
---     "objc",
---     "ocaml",
---     "purescript",
---     "python",
---     "ruby",
---     "rust",
---     "scala",
---     "typescript",
---     "viml",
---     "xml"
---   }
--- }))
-
-require('onedark').setup {
-    style = 'warm', -- 'warmer',  'darker'
-    transparent = true
-}
-require('onedark').load()
+-- vim.cmd [[
+-- set termguicolors
+-- set background=dark
+--
+-- colorscheme seoulbones
+-- ]]
