@@ -36,7 +36,7 @@
         "filetypes": ["go"],
         "command": "gopls",
   //      "disableWorkspaceFolders": true,
-        "args": ["-remote=auto"],
+        // "args": ["-remote=auto"],
         "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
         "trace.server": "verbose",
         "initializationOptions": {
