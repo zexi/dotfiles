@@ -33,7 +33,6 @@ keymap("n", "gj", "j", opts)
 
 keymap("n", "<C-p>", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<C-e>", "<cmd>Telescope buffers cwd_only=true sort_mru=true<cr>", opts)
-keymap("n", "<leader>h", "<cmd>Telescope oldfiles cwd_only=true<cr>", opts)
 -- -- keymap("n", "gd", "<cmd>Telescope lsp_definitions jump_type=never ignore_filename=false<cr>", opts)
 -- keymap("n", "gi", "<cmd>Telescope lsp_implementations jump_type=never ignore_filename=false<cr>", opts)
 -- keymap("n", "gr", "<cmd>Telescope lsp_references include_current_line=false include_declaration=false<cr>", opts)
