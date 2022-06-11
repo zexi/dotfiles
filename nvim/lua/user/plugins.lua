@@ -49,7 +49,7 @@ return packer.startup(function(use)
 
   -- Easily comment stuff
   use { "numToStr/Comment.nvim", tag = 'v0.6' }
-  use "kyazdani42/nvim-web-devicons"
+  -- use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
   use "tpope/vim-surround"
   use "tpope/vim-repeat"
@@ -67,7 +67,18 @@ return packer.startup(function(use)
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
-  use "romainl/Apprentice"
+  -- use "romainl/Apprentice"
+  -- use {"adisen99/apprentice.nvim", requires = {"rktjmp/lush.nvim"}}
+  -- use 'marko-cerovac/material.nvim'
+  use 'navarasu/onedark.nvim'
+  use "EdenEast/nightfox.nvim"
+  use {
+    "mcchrish/zenbones.nvim",
+    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+    requires = "rktjmp/lush.nvim"
+}
 
   -- LSP and completion
   -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
@@ -90,6 +101,8 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  -- use {'neoclide/coc.nvim', branch = 'release'}
+  -- use 'fannheyward/telescope-coc.nvim'
   use "buoto/gotests-vim"
 
 
