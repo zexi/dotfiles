@@ -140,6 +140,7 @@ local opts2 = {
   },
   settings = {
     gopls = {
+      experimentalPostfixCompletions = true,
       analyses = {
         unusedparams = true,
       },

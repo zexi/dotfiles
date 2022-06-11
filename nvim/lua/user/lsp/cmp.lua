@@ -22,7 +22,7 @@ local check_backspace = function()
 end
 
 cmp.setup({
-  preselect = cmp.PreselectMode.Item,
+  preselect = cmp.PreselectMode.None,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
