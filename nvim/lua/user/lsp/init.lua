@@ -27,6 +27,17 @@ for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
+vim.g.diagnostics_visible = false
+function _G.toggle_diagnostics()
+  if vim.g.diagnostics_visible then
+    vim.g.diagnostics_visible = false
+    vim.diagnostic.disable()
+  else
+    vim.g.diagnostics_visible = true
+    vim.diagnostic.enable()
+  end
+end
+
 local config = {
   -- disable virtual text
   virtual_text = true,
