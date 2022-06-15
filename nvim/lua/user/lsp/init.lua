@@ -192,3 +192,9 @@ end
 
 -- local luadev = require("lua-dev").setup({})
 -- lspconfig.sumneko_lua.setup(luadev)
+
+vim.cmd [[
+augroup _toggle_diagnostics
+autocmd BufEnter * lua vim.diagnostic.disable()
+augroup end
+]]
