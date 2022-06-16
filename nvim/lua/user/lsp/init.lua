@@ -159,6 +159,29 @@ local opts2 = {
       completeUnimported = true,
       usePlaceholders = false,
     },
+    vetur = {
+      completion = {
+        autoImport = false,
+        tagCasing = "kebab",
+        useScaffoldSnippets = false
+      },
+      format = {
+        defaultFormatter = {
+          js = "none",
+          ts = "none"
+        },
+        defaultFormatterOptions = {},
+        scriptInitialIndent = false,
+        styleInitialIndent = false
+      },
+      ignoreProjectWarning = true,
+      useWorkspaceDependencies = false,
+      validation = {
+        script = true,
+        style = true,
+        template = true
+      }
+    },
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
