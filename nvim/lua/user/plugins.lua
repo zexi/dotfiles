@@ -56,7 +56,7 @@ return packer.startup(function(use)
   -- use "akinsho/bufferline.nvim"
   -- use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
-  -- use "akinsho/toggleterm.nvim"
+  use "akinsho/toggleterm.nvim"
   use "ahmedkhalf/project.nvim"
   use "lewis6991/impatient.nvim"
   -- use "lukas-reineke/indent-blankline.nvim"
@@ -78,7 +78,7 @@ return packer.startup(function(use)
     -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
     -- In Vim, compat mode is turned on as Lush only works in Neovim.
     requires = "rktjmp/lush.nvim"
-}
+  }
 
   -- LSP and completion
   -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
@@ -104,7 +104,6 @@ return packer.startup(function(use)
   -- use {'neoclide/coc.nvim', branch = 'release'}
   -- use 'fannheyward/telescope-coc.nvim'
   use "buoto/gotests-vim"
-
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
