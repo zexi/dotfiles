@@ -137,7 +137,7 @@ local remap = vim.api.nvim_set_keymap
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'vuels', 'gopls', 'clangd', 'sumneko_lua' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'vuels', 'gopls', 'clangd', 'sumneko_lua', 'html' }
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
@@ -216,8 +216,8 @@ end
 -- local luadev = require("lua-dev").setup({})
 -- lspconfig.sumneko_lua.setup(luadev)
 
-vim.cmd [[
-augroup _toggle_diagnostics
-autocmd BufEnter * lua vim.diagnostic.disable()
-augroup end
-]]
+-- vim.cmd [[
+-- augroup _toggle_diagnostics
+-- autocmd BufEnter * lua vim.diagnostic.disable()
+-- augroup end
+-- ]]
