@@ -27,17 +27,6 @@ for _, sign in ipairs(signs) do
   vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 end
 
-vim.g.diagnostics_visible = false
-function _G.toggle_diagnostics()
-  if vim.g.diagnostics_visible then
-    vim.g.diagnostics_visible = false
-    vim.diagnostic.disable()
-  else
-    vim.g.diagnostics_visible = true
-    vim.diagnostic.enable()
-  end
-end
-
 local config = {
   -- disable virtual text
   virtual_text = true,
@@ -137,7 +126,7 @@ local remap = vim.api.nvim_set_keymap
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'vuels', 'gopls', 'clangd', 'sumneko_lua', 'html' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'vuels', 'gopls', 'clangd', 'sumneko_lua', 'html', 'emmet_ls' }
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
@@ -216,8 +205,20 @@ end
 -- local luadev = require("lua-dev").setup({})
 -- lspconfig.sumneko_lua.setup(luadev)
 
--- vim.cmd [[
--- augroup _toggle_diagnostics
--- autocmd BufEnter * lua vim.diagnostic.disable()
--- augroup end
--- ]]
+vim.g.diagnostics_visible = false
+function _G.toggle_diagnostics()
+  if vim.g.diagnostics_visible then
+    vim.g.diagnostics_visible = false
+    vim.diagnostic.disable()
+  else
+    vim.g.diagnostics_visible = true
+    vim.diagnostic.enable()
+  end
+end
+
+vim.cmd [[
+augroup _toggle_diagnostics
+autocmd BufEnter * lua vim.diagnostic.disable()
+autocmd InsertLeave * lua vim.diagnostic.enable()
+augroup end
+]]
