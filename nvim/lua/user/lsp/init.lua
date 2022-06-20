@@ -47,7 +47,7 @@ local config = {
   },
 }
 
-vim.diagnostic.config(config)
+-- vim.diagnostic.config(config)
 
 vim.lsp.buf.references({ includeDeclaration = false })
 
@@ -59,8 +59,14 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
   border = "rounded",
 })
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-  { underline = false, virtual_text = false, update_in_insert = false })
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+  virtual_text = false,
+  signs = false,
+  update_in_insert = false,
+  underline = true,
+})
 
 local function lsp_keymaps(bufnr)
   local keymap = vim.api.nvim_buf_set_keymap
@@ -118,7 +124,7 @@ require("lsp-format").setup({})
 local on_attach = function(client, bufnr)
   require "lsp-format".on_attach(client)
   lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  -- lsp_highlight_document(client)
 end
 
 local cmp_opts = { noremap = true, silent = true, expr = true }
@@ -216,9 +222,9 @@ function _G.toggle_diagnostics()
   end
 end
 
-vim.cmd [[
-augroup _toggle_diagnostics
-autocmd BufEnter * lua vim.diagnostic.disable()
-autocmd InsertLeave * lua vim.diagnostic.enable()
-augroup end
-]]
+-- vim.cmd [[
+-- augroup _toggle_diagnostics
+-- autocmd BufEnter * lua vim.diagnostic.disable()
+-- autocmd InsertLeave * lua vim.diagnostic.enable()
+-- augroup end
+-- ]]
