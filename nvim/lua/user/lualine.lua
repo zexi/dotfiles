@@ -11,10 +11,11 @@ local diagnostics = {
   "diagnostics",
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
-  symbols = { error = " ", warn = " " },
-  colored = false,
+  -- symbols = { error = " ", warn = " " },
+  symbols = {error = 'E', warn = 'W', info = 'I', hint = 'H'},
+  colored = true,
   update_in_insert = false,
-  always_visible = true,
+  always_visible = false,
 }
 
 local diff = {
@@ -136,7 +137,7 @@ local opts2 = {
       { 'mode', separator = { left = '' }, right_padding = 2 },
     },
     lualine_b = { 'filename', 'branch' },
-    lualine_c = { '' },
+    lualine_c = { diagnostics },
     lualine_x = {},
     lualine_y = { 'filetype', 'encoding', 'progress' },
     lualine_z = {
