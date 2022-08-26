@@ -4,7 +4,9 @@ if not status_ok then
   return
 end
 
-npairs.setup({})
+npairs.setup({
+  disable_filetype = { "TelescopePrompt", "lisp", "scheme" },
+})
 -- npairs.setup {
 --   map_cr = false,
 --   check_ts = true,
