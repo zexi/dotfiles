@@ -29,9 +29,9 @@ vim.cmd [[
     autocmd FileType java,haskell setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
   augroup end
 
-  augroup _cursor_line
-    au!
-    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
-    au WinLeave * setlocal nocursorline
-  augroup end
+""  augroup _cursor_line
+""    au!
+""    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
+""    au WinLeave * setlocal nocursorline
+""  augroup end
 ]]
