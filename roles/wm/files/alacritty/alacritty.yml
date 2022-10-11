@@ -100,7 +100,7 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    family: Hack Nerd Font Mono
+    family: Menlo
     #family: JetBrains Mono
     style: Regular
 

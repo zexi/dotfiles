@@ -39,6 +39,7 @@ local options = {
   --  guifont = "monospace:h17",               -- the font used in graphical neovim applications
   listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣",
   spelllang = "en,cjk", -- The name "cjk" is included East Asian characters are excluded from spell checking.
+  history = 2000,
 }
 
 -- vim.opt.shortmess:append "c"
