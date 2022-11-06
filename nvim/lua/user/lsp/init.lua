@@ -6,6 +6,9 @@ end
 -- require "user.lsp.lsp-installer"
 -- require("user.lsp.handlers").setup()
 -- require "user.lsp.null-ls"
+require("lspconfig").emmet_ls.setup({
+  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "vue" }
+})
 
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -62,11 +65,11 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
   {
-  virtual_text = false,
-  signs = false,
-  update_in_insert = false,
-  underline = true,
-})
+    virtual_text = false,
+    signs = false,
+    update_in_insert = false,
+    underline = true,
+  })
 
 local function lsp_keymaps(bufnr)
   local keymap = vim.api.nvim_buf_set_keymap
@@ -161,6 +164,7 @@ local opts2 = {
         useScaffoldSnippets = false
       },
       format = {
+        enable = true,
         defaultFormatter = {
           js = "none",
           ts = "none"
