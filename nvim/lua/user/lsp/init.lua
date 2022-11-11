@@ -135,7 +135,8 @@ local remap = vim.api.nvim_set_keymap
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'vuels', 'gopls', 'clangd', 'sumneko_lua', 'html', 'emmet_ls' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'vuels', 'gopls', 'clangd', 'sumneko_lua', 'html', 'emmet_ls',
+  'eslint' }
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
@@ -164,7 +165,7 @@ local opts2 = {
         useScaffoldSnippets = false
       },
       format = {
-        enable = true,
+        enable = false,
         defaultFormatter = {
           js = "none",
           ts = "none"
