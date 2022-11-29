@@ -7,7 +7,7 @@ end
 -- require("user.lsp.handlers").setup()
 -- require "user.lsp.null-ls"
 require("lspconfig").emmet_ls.setup({
-  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "vue" }
+  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" }
 })
 
 -- Mappings.
@@ -135,12 +135,35 @@ local remap = vim.api.nvim_set_keymap
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'vuels', 'gopls', 'clangd', 'sumneko_lua', 'html', 'emmet_ls',
-  'eslint' }
+local servers = { 'pyright', 'rust_analyzer', 'tsserver', 'clangd', 'sumneko_lua', 'html', 'emmet_ls', 'eslint' }
 
 local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
+
+local function new_opts(name, input_opts, settings)
+  -- local coq = require "user.lsp.coq"
+  local cmp = require "user.lsp.cmp"
+
+  local default_opts = {
+    on_attach = on_attach,
+    flags = {
+      -- This will be the default in neovim 0.7+
+      debounce_text_changes = 150,
+    },
+    settings = {
+      [name] = settings
+    }
+  }
+  for k, v in pairs(input_opts) do
+    default_opts[k] = v
+  end
+  return cmp.options(default_opts)
+end
+
+local function new_setting_opts(name, settings)
+  return new_opts(name, {}, settings)
+end
 
 local opts2 = {
   on_attach = on_attach,
@@ -149,39 +172,6 @@ local opts2 = {
     debounce_text_changes = 150,
   },
   settings = {
-    gopls = {
-      experimentalPostfixCompletions = true,
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
-      completeUnimported = true,
-      usePlaceholders = false,
-    },
-    vetur = {
-      completion = {
-        autoImport = false,
-        tagCasing = "kebab",
-        useScaffoldSnippets = false
-      },
-      format = {
-        enable = false,
-        defaultFormatter = {
-          js = "none",
-          ts = "none"
-        },
-        defaultFormatterOptions = {},
-        scriptInitialIndent = false,
-        styleInitialIndent = false
-      },
-      ignoreProjectWarning = true,
-      useWorkspaceDependencies = false,
-      validation = {
-        script = true,
-        style = true,
-        template = true
-      }
-    },
     Lua = {
       runtime = {
         -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
@@ -205,16 +195,43 @@ local opts2 = {
   }
 }
 
--- local coq = require "user.lsp.coq"
-local cmp = require "user.lsp.cmp"
-
 for _, lsp in pairs(servers) do
   -- lspconfig[lsp].setup(coq.capabilities(opts2))
+  local cmp = require "user.lsp.cmp"
   lspconfig[lsp].setup(cmp.options(opts2))
 end
 
--- local luadev = require("lua-dev").setup({})
--- lspconfig.sumneko_lua.setup(luadev)
+local util = require 'lspconfig/util'
+
+-- golang gopls
+lspconfig.gopls.setup(
+  new_setting_opts(
+    "gopls",
+    {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+      completeUnimported = true,
+      usePlaceholders = false,
+    }))
+
+-- vue volar
+lspconfig.volar.setup(
+  new_opts(
+    "volar",
+    {
+      filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
+      init_options = {
+        typescript = {
+        -- tsdk = '/path/to/.npm/lib/node_modules/typescript/lib'
+          tsdk = '/opt/homebrew/lib/node_modules/typescript/lib'
+        -- Alternative location if installed as root:
+        -- tsdk = '/usr/local/lib/node_modules/typescript/lib'
+        }
+      }
+    }, {}))
 
 vim.g.diagnostics_visible = false
 function _G.toggle_diagnostics()
@@ -226,10 +243,3 @@ function _G.toggle_diagnostics()
     vim.diagnostic.enable()
   end
 end
-
--- vim.cmd [[
--- augroup _toggle_diagnostics
--- autocmd BufEnter * lua vim.diagnostic.disable()
--- autocmd InsertLeave * lua vim.diagnostic.enable()
--- augroup end
--- ]]
