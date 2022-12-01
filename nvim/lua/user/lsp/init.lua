@@ -7,7 +7,7 @@ end
 -- require("user.lsp.handlers").setup()
 -- require "user.lsp.null-ls"
 require("lspconfig").emmet_ls.setup({
-  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" }
+  filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "vue" }
 })
 
 -- Mappings.
