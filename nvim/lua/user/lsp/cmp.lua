@@ -21,13 +21,6 @@ local check_backspace = function()
 
 end
 
-local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-cmp.event:on(
-  'confirm_done',
-  cmp_autopairs.on_confirm_done()
-)
--- ref: https://github.com/windwp/nvim-autopairs/wiki/Completion-plugin
-
 cmp.setup({
   preselect = cmp.PreselectMode.None,
   snippet = {

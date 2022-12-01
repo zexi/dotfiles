@@ -42,3 +42,11 @@ npairs.setup({
 -- end
 --
 -- remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+
+local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+local cmp = require "cmp"
+cmp.event:on(
+  'confirm_done',
+  cmp_autopairs.on_confirm_done()
+)
+-- ref: https://github.com/windwp/nvim-autopairs/wiki/Completion-plugin
