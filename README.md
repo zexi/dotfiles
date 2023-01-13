@@ -250,3 +250,9 @@ export DEEPIN_WINE_SCALE=2.0
 # disable macos dock bouncing
 $ defaults write com.apple.dock no-bouncing -bool TRUE;
 ```
+
+### goland vimrc
+
+```bash
+$ ln -s $(pwd)/ideavimrc ~/.ideavimrc
+```
