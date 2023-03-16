@@ -2,21 +2,27 @@ set incsearch
 set hlsearch
 set ignorecase
 set showmode
+set showcmd
+set wildmenu
 " 屏幕滚动时在光标上下方保留5行预览代码
 set so=5
 set surround
 set ideajoin
+set NERDTree
+set commentary
 
 let mapleader= " "
 nnoremap <Leader>o :<C-u>action RecentProjectListGroup<CR>
 nnoremap <Leader>h :<C-u>action RecentFiles<CR>
 nnoremap <leader>rn :action Refactorings.QuickListPopupAction<CR>
 nnoremap <leader>g :action Generate<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
 
 nnoremap gi :action GotoImplementation<CR>
 nnoremap gd :action GotoDeclaration<CR>
 nnoremap gr :<C-u>action ShowUsages<CR>
-" nnoremap gc :action CommentByLineComment<CR>
+"nnoremap gc :action CommentByLineComment<CR>
+"vnoremap gb :action CommentByBlockComment<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap [d :action GotoPreviousError<CR>
 
