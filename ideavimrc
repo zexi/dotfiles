@@ -36,6 +36,7 @@ nnoremap <leader>nc :action NewClass<CR>
 " nnoremap <leader>gm :action OverrideMethods<CR>
 nnoremap <leader>sn :action ShowNavBar<CR>
 nnoremap <leader>so :source ~/.ideavimrc<CR>
+nnoremap <leader>F :action FindInPath<CR>
 
 nnoremap gi :action GotoImplementation<CR>
 " nnoremap gd :action GotoDeclaration<CR>
