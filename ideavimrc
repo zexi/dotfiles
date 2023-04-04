@@ -15,7 +15,8 @@ set showmode
 set showcmd
 set number
 " keep cursor centered vertically on the screen
-set scrolloff=999
+" set scrolloff=999
+set scrolloff=5
 
 """ Idea specific settings -------------------
 set ideajoin

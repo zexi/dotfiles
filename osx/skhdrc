@@ -35,8 +35,9 @@ cmd + shift - down : yabai -m window --swap south || $(yabai -m window --display
 cmd + shift - up : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
 cmd + shift - right : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
 
-# go back to previous workspace (kind of like back_and_forth in i3)
-cmd - 0x29 : yabai -m space --focus recent
+# go back to previous focused (kind of like back_and_forth in i3)
+cmd - b : yabai -m display --focus recent
+# cmd - 0 : yabai -m display --focus recent
 
 # focus display with arrangement index
 cmd - 1 : yabai -m display --focus 1

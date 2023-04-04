@@ -23,13 +23,13 @@ yabai -m config top_padding 0
 
 # global settings
 yabai -m config mouse_follows_focus          on
-yabai -m config focus_follows_mouse          autofocus
+yabai -m config focus_follows_mouse          autofocus # autofocus / autoraise / on / off
 
 # auto tile windows to the side
 yabai -m config window_placement             second_child
 # make floating windows stay on top
-# yabai -m config window_topmost               on
-yabai -m config window_topmost               off
+yabai -m config window_topmost               on
+# yabai -m config window_topmost               off
 
 yabai -m config window_opacity               off
 yabai -m config window_opacity_duration      0.0
@@ -61,10 +61,10 @@ yabai -m rule --add title='Preferences$' manage=off
 yabai -m rule --add title='Settings$' manage=off
 
 # Some Goland settings, in case you are using it. float Goland Preference panes
-yabai -m rule --add app='Goland IDEA' title='^$' manage=off
-yabai -m rule --add app='Goland IDEA' title='Project Structure' manage=off
-yabai -m rule --add app='Goland IDEA' title='Preferences' manage=off
-yabai -m rule --add app='Goland IDEA' title='Edit configuration' manage=off
+# yabai -m rule --add app='Goland IDEA' title='^$' manage=off
+# yabai -m rule --add app='Goland IDEA' title='Project Structure' manage=off
+# yabai -m rule --add app='Goland IDEA' title='Preferences' manage=off
+# yabai -m rule --add app='Goland IDEA' title='Edit configuration' manage=off
 
 # float apps
 # yabai -m rule --add app='^Feishu$' manage=off
