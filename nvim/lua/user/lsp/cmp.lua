@@ -18,7 +18,6 @@ require("luasnip/loaders/from_vscode").lazy_load()
 local check_backspace = function()
   local col = vim.fn.col "." - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-
 end
 
 cmp.setup({
@@ -32,8 +31,8 @@ cmp.setup({
     completeopt = 'menu,menuone,noinsert',
   },
   window = {
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -75,7 +74,7 @@ cmp.setup({
   }),
   sources = {
     { name = "nvim_lsp" },
-    { name = "luasnip" },
+    -- { name = "luasnip" },
     { name = "buffer" },
     { name = "path" },
   },

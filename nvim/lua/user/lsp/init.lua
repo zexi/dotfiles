@@ -115,7 +115,7 @@ local function lsp_highlight_document(client)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]] ,
+    ]],
       false
     )
   end
@@ -205,17 +205,22 @@ local util = require 'lspconfig/util'
 
 -- golang gopls
 lspconfig.gopls.setup(
-  new_setting_opts(
-    "gopls",
+  new_opts("gopls", {
+    cmd = { "gopls", "serve" },
+    filetypes = { "go", "gomod" },
+    root_dir = util.root_pattern("go.work", "go.mod"),
     {
-      experimentalPostfixCompletions = true,
       analyses = {
         unusedparams = true,
       },
       staticcheck = true,
       completeUnimported = true,
+    },
+    init_options = {
       usePlaceholders = false,
-    }))
+    }
+  })
+)
 
 -- vue volar
 lspconfig.volar.setup(
@@ -225,10 +230,10 @@ lspconfig.volar.setup(
       filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue', 'json' },
       init_options = {
         typescript = {
-        -- tsdk = '/path/to/.npm/lib/node_modules/typescript/lib'
+          -- tsdk = '/path/to/.npm/lib/node_modules/typescript/lib'
           tsdk = '/opt/homebrew/lib/node_modules/typescript/lib'
-        -- Alternative location if installed as root:
-        -- tsdk = '/usr/local/lib/node_modules/typescript/lib'
+          -- Alternative location if installed as root:
+          -- tsdk = '/usr/local/lib/node_modules/typescript/lib'
         }
       }
     }, {}))
