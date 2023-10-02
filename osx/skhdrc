@@ -1,8 +1,13 @@
 # change focus
 # cmd - h : yabai -m window --focus west || \
 #           yabai -m window --focus $(yabai -m query --spaces --display west | jq '.[] | select(."is-visible" == true) | ."last-window"')
-cmd - h : yabai -m window --focus west || \
-          yabai -m display --focus west
+
+# cmd - h : yabai -m window --focus west || \
+#           yabai -m display --focus west
+
+cmd - h : ~/code/dotfiles/osx/yabai-focus.py west
+cmd - l : ~/code/dotfiles/osx/yabai-focus.py east
+
 # cmd - j : yabai -m window --focus south || \
 #           yabai -m window --focus $(yabai -m query --spaces --display south | jq '.[] | select(."is-visible" == true) | ."first-window"')
 cmd - j : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.next || yabai -m window --focus stack.first); else yabai -m window --focus south || yabai -m display --focus south; fi
@@ -11,8 +16,9 @@ cmd - j : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ];
 cmd - k : if [ "$(yabai -m query --spaces --space | jq -r '.type')" = "stack" ]; then (yabai -m window --focus stack.prev || yabai -m window --focus stack.last); else yabai -m window --focus north || yabai -m display --focus north; fi
 # cmd - l : yabai -m window --focus east || \
 #           yabai -m window --focus $(yabai -m query --spaces --display east | jq '.[] | select(."is-visible" == true) | ."first-window"')
-cmd - l : yabai -m window --focus east || \
-          yabai -m display --focus east
+
+# cmd - l : yabai -m window --focus east || \
+#           yabai -m display --focus east
 
 # (alt) change focus (using arrow keys)
 alt - left  : yabai -m window --focus west || \
