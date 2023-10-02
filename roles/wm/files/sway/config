@@ -101,6 +101,11 @@ input "0:0:LZX_HHKB_Keyboard" {
     repeat_rate 30
 }
 
+input "1278:33:HHKB-Hybrid_2_Keyboard" {
+    repeat_delay 250
+    repeat_rate 30
+}
+
 input "3897:1553:Heng_Yu_Technology_Poker" {
     xkb_options altwin:swap_lalt_lwin,ctrl:nocaps
     repeat_delay 250
@@ -165,7 +170,10 @@ seat * hide_cursor 8000
     #bindsym $mod+space exec wofi --show drun --allow-images --allow-markup
     #bindsym $mod+Tab exec rofi -show window -show-icons
     #bindsym $mod+Tab exec rofi -show combi -combi-modi "window:~/.config/sway/rofi-window-switch.sh" -modi combi
-    bindsym $mod+Tab exec /usr/bin/termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"
+    # bindsym $mod+Tab exec /usr/bin/termite -c ~/.config/termite/config.trans --name=window-switcher -e "$HOME/.config/sway/switch_window.py"
+    # bindsym $mod+Tab exec $term1 --class window-switcher -e "$HOME/.config/sway/switch_window.py"
+    exec env RUST_BACKTRACE=1 RUST_LOG=swayr=debug swayrd > /tmp/swayrd.log 2>&1
+    bindsym $mod+Tab exec swayr switch-window
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -394,6 +402,7 @@ bindsym $mod+Ctrl+a exec grim -g "$(slurp)" - | swappy -f -
 
 for_window [app_id="^floatingApp$"] floating enable
 for_window [app_id="^window-switcher$"] floating enable
+for_window [class="^window-switcher$"] floating enable
 for_window [window_role="pop-up"] floating enable
 no_focus [window_role="pop-up"]
 for_window [window_role="bubble"] floating enable
