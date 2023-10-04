@@ -42,21 +42,22 @@ packer.init {
 return packer.startup(function(use)
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use "windwp/nvim-autopairs" -- Autopairs, integrates with both cmp and treesitter
+  use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
+  use "windwp/nvim-autopairs"  -- Autopairs, integrates with both cmp and treesitter
+  -- use 'm4xshen/autoclose.nvim'
   -- use 'cohama/lexima.vim'
 
   -- Easily comment stuff
   use { "numToStr/Comment.nvim", tag = 'v0.6' }
-  use "kyazdani42/nvim-web-devicons"
+  -- use "kyazdani42/nvim-web-devicons"
   use "kyazdani42/nvim-tree.lua"
   use "tpope/vim-surround"
   use "tpope/vim-repeat"
   -- use "akinsho/bufferline.nvim"
   -- use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
-  -- use "akinsho/toggleterm.nvim"
+  use "akinsho/toggleterm.nvim"
   use "ahmedkhalf/project.nvim"
   use "lewis6991/impatient.nvim"
   -- use "lukas-reineke/indent-blankline.nvim"
@@ -67,7 +68,18 @@ return packer.startup(function(use)
   -- Colorschemes
   -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
-  use "romainl/Apprentice"
+  -- use "romainl/Apprentice"
+  -- use {"adisen99/apprentice.nvim", requires = {"rktjmp/lush.nvim"}}
+  -- use 'marko-cerovac/material.nvim'
+  use 'navarasu/onedark.nvim'
+  use "EdenEast/nightfox.nvim"
+  use {
+    "mcchrish/zenbones.nvim",
+    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+    requires = "rktjmp/lush.nvim"
+  }
 
   -- LSP and completion
   -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
@@ -81,16 +93,18 @@ return packer.startup(function(use)
   use { "lukas-reineke/lsp-format.nvim", tag = "v2.2.3" }
   use { "folke/lua-dev.nvim" }
   -- snippets
-  use "L3MON4D3/LuaSnip" --snippet engine
+  use "L3MON4D3/LuaSnip"             --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
   -- cmp completion
-  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/nvim-cmp"             -- The completion plugin
   use "hrsh7th/cmp-nvim-lsp"
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip" -- snippet completions
-
+  use "hrsh7th/cmp-buffer"           -- buffer completions
+  use "hrsh7th/cmp-path"             -- path completions
+  use "hrsh7th/cmp-cmdline"          -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip"     -- snippet completions
+  -- use {'neoclide/coc.nvim', branch = 'release'}
+  -- use 'fannheyward/telescope-coc.nvim'
+  use "buoto/gotests-vim"
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"

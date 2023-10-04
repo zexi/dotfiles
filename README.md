@@ -243,3 +243,16 @@ $ yay -S com.qq.weixin.deepin
 $ vim /opt/apps/com.qq.weixin.deepin/files/run.sh
 export DEEPIN_WINE_SCALE=2.0
 ```
+
+### alacritty
+
+```bash
+# disable macos dock bouncing
+$ defaults write com.apple.dock no-bouncing -bool TRUE;
+```
+
+### goland vimrc
+
+```bash
+$ ln -s $(pwd)/ideavimrc ~/.ideavimrc
+```

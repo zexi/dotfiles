@@ -1,7 +1,79 @@
+""" Map leader to space ---------------
+let mapleader= " "
+
+""" Plugins
+set surround
+set commentary
+set NERDTree
+set easymotion
+
+""" Common settings -------------------
 set incsearch
 set hlsearch
 set ignorecase
 set showmode
-set surround
+set showcmd
+set number
+" keep cursor centered vertically on the screen
+set scrolloff=999
+" set scrolloff=99
 
-nmap gi :action GotoImplementation<CR>
+""" Idea specific settings -------------------
+set ideajoin
+set ideastatusicon=gray
+set idearefactormode=keep
+" https://superuser.com/questions/622898/how-to-turn-off-the-bell-sound-in-intellij
+" https://stackoverflow.com/questions/63386803/how-to-turn-off-a-bell-in-intellij-idea
+set visualbell
+set noerrorbells
+
+""" Mappings ------------------------
+nnoremap <Leader>o :<C-u>action RecentProjectListGroup<CR>
+nnoremap <Leader>h :<C-u>action RecentFiles<CR>
+nnoremap <leader>rn :action Refactorings.QuickListPopupAction<CR>
+nnoremap <leader>g :action Generate<CR>
+nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <leader>nc :action NewClass<CR>
+" nnoremap <leader>gm :action OverrideMethods<CR>
+nnoremap <leader>sn :action ShowNavBar<CR>
+nnoremap <leader>so :source ~/.ideavimrc<CR>
+nnoremap <leader>F :action FindInPath<CR>
+
+nnoremap gi :action GotoImplementation<CR>
+" nnoremap gd :action GotoDeclaration<CR>
+nnoremap gd <C-]>
+nnoremap gr :<C-u>action ShowUsages<CR>
+"nnoremap gc :action CommentByLineComment<CR>
+"vnoremap gb :action CommentByBlockComment<CR>
+nnoremap ]d :action GotoNextError<CR>
+nnoremap ]D :action GotoPreviousError<CR>
+
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+
+" Running and Debugging
+nnoremap ,r :action ContextRun<CR>
+nnoremap ,c :action RunClass<CR>
+nnoremap ,f :action ChooseRunConfiguration<CR>
+nnoremap ,t :action ActivateRunToolWindow<CR>
+nnoremap ,u :action Rerun<CR>
+
+nnoremap <C-;> :action JumpToLastWindow<CR>
+nnoremap <c-,> :action HideAllWindows<CR>
+nnoremap <c-\> :action ActivateTerminalToolWindow<CR>
+nnoremap <C-e> :<C-u>action RecentFiles<CR>
+nnoremap <C-P> :<C-u>action GotoFile<CR>
+nnoremap <C-S-p> :<C-u>action GotoAction<CR>
+
+
+" We can use different key mappings for easy navigation between splits to save
+" a keystroke. So instead of ctrl-w then j, it’s just ctrl-j
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+nnoremap [[ :action MethodUp<CR>
+nnoremap ]] :action MethodDown<CR>
