@@ -1,0 +1,12 @@
+[Unit]
+Description=Toggle screen display according by lid closed status
+After=syslog.target network.target systemd-user-sessions.service getty@tty1.service
+
+[Service]
+Type=oneshot
+Environment="PARAM=sleep"
+ExecStart=/home/lzx/code/dotfiles/remote/toggle-lid-dpms.sh $PARAM
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
