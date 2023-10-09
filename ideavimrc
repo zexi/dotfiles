@@ -44,7 +44,7 @@ nnoremap gi :action GotoImplementation<CR>
 nnoremap gd <C-]>
 nnoremap gr :<C-u>action ShowUsages<CR>
 "nnoremap gc :action CommentByLineComment<CR>
-"vnoremap gb :action CommentByBlockComment<CR>
+vnoremap gb :action CommentByBlockComment<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap ]D :action GotoPreviousError<CR>
 

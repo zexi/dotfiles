@@ -66,13 +66,8 @@ return packer.startup(function(use)
   use "folke/which-key.nvim"
 
   -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "lunarvim/darkplus.nvim"
-  -- use "romainl/Apprentice"
-  -- use {"adisen99/apprentice.nvim", requires = {"rktjmp/lush.nvim"}}
-  -- use 'marko-cerovac/material.nvim'
-  use 'navarasu/onedark.nvim'
   use "EdenEast/nightfox.nvim"
+  use "projekt0n/github-nvim-theme"
   use {
     "mcchrish/zenbones.nvim",
     -- Optionally install Lush. Allows for more configuration or extending the colorscheme
