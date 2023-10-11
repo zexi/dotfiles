@@ -42,7 +42,7 @@ cmd + shift - up : yabai -m window --swap north || $(yabai -m window --display n
 cmd + shift - right : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
 
 # go back to previous focused (kind of like back_and_forth in i3)
-cmd - b : yabai -m display --focus recent
+# cmd - b : yabai -m display --focus recent
 # 0x29 is semicolon key: foud from https://github.com/koekeishiya/skhd/issues/1
 cmd - 0x29 : yabai -m display --focus recent
 # cmd - 0 : yabai -m display --focus recent
