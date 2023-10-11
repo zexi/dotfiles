@@ -5,13 +5,6 @@ if not status_ok then
   return
 end
 
-local config_status_ok, nvim_tree_config = pcall(require, "nvim-tree.config")
-if not config_status_ok then
-  return
-end
-
-local tree_cb = nvim_tree_config.nvim_tree_callback
-
 nvim_tree.setup {
   auto_reload_on_write = true,
   create_in_closed_folder = false,
@@ -20,7 +13,7 @@ nvim_tree.setup {
   hijack_netrw = true,
   hijack_unnamed_buffer_when_opening = false,
   open_on_tab = false,
-  sort_by = "name",
+  sort_by = "case_sensitive",
   update_cwd = true,
   reload_on_bufenter = false,
   respect_buf_cwd = true,
@@ -28,18 +21,11 @@ nvim_tree.setup {
     adaptive_size = false,
     centralize_selection = false,
     width = 30,
-    hide_root_folder = false,
     side = "left",
     preserve_window_proportions = false,
     number = false,
     relativenumber = false,
     signcolumn = "yes",
-    mappings = {
-      custom_only = false,
-      list = {
-        -- user mappings go here
-      },
-    },
     float = {
       enable = false,
       quit_on_focus_loss = true,

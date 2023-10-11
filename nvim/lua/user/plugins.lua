@@ -51,7 +51,7 @@ return packer.startup(function(use)
   -- Easily comment stuff
   use { "numToStr/Comment.nvim", tag = 'v0.6' }
   -- use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
+  use "nvim-tree/nvim-tree.lua"
   use "tpope/vim-surround"
   use "tpope/vim-repeat"
   -- use "akinsho/bufferline.nvim"
