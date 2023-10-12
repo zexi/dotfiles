@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+
+TMUX_RUNNING=false
+if tmux list-sessions &>/dev/null; then
+    TMUX_RUNNING=true
+fi
+
+T_RUNTYPE="serverless"
+if [[ "$TMUX_RUNNING" == "true" ]]; then
+    if [ "$TMUX" ]; then 
+        T_RUNTYPE="attached"
+    else
+        T_RUNTYPE="detached"
+    fi
+fi
+
+SESSION_NAME="$(basename $(pwd) | tr ' .:' '_')"
+
+if [ "$T_RUNTYPE" != "serverless" ]; then
+    SESSION=$(tmux list-sessions -F '#S' | grep "^$SESSION_NAME$") # find existing session
+fi
+
+if [ "$SESSION" = "" ]; then
+    SESSION="$SESSION_NAME"
+    tmux new-session -d -s "$SESSION" -c "$(pwd)"
+fi
+
+case $T_RUNTYPE in
+attached)
+    tmux switch-client -t "$SESSION"
+    ;;
+detached) ;&
+serverless)
+    tmux attach -t "$SESSION"
+    ;;
+esac

@@ -1,0 +1,27 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
+# Added by Toolbox App
+export PATH="$PATH:/usr/local/bin"
+
+
+##
+# Your previous /Users/lzx/.zprofile file was backed up as /Users/lzx/.zprofile.macports-saved_2023-04-04_at_10:25:42
+##
+
+# MacPorts Installer addition on 2023-04-04_at_10:25:42: adding an appropriate PATH variable for use with MacPorts.
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+# Finished adapting your PATH environment variable for use with MacPorts.
+
+
+# MacPorts Installer addition on 2023-04-04_at_10:25:42: adding an appropriate MANPATH variable for use with MacPorts.
+export MANPATH="/opt/local/share/man:$MANPATH"
+# Finished adapting your MANPATH environment variable for use with MacPorts.
+
+
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
+
+# ~/.tmux/plugins
+export PATH=$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin:$PATH
+export T_SESSION_NAME_INCLUDE_PARENT="true"
