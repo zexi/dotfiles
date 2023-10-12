@@ -15,7 +15,9 @@ if [[ "$TMUX_RUNNING" == "true" ]]; then
     fi
 fi
 
-SESSION_NAME="$(basename $(pwd) | tr ' .:' '_')"
+RESULT="$(pwd)"
+# SESSION_NAME="$(echo $RESULT | tr ' .:' '_')"
+SESSION_NAME=$(echo "$RESULT" | tr ' .:' '_' | awk -F "/" '{print $(NF-1)"/"$NF}')
 
 if [ "$T_RUNTYPE" != "serverless" ]; then
     SESSION=$(tmux list-sessions -F '#S' | grep "^$SESSION_NAME$") # find existing session
