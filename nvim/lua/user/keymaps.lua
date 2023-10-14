@@ -43,3 +43,8 @@ keymap("n", "<leader>*", "<cmd>lua require('telescope.builtin').grep_string({sea
 keymap("c", "w!!", "w !sudo tee % >/dev/null", { noremap = true })
 keymap("c", "<C-p>", "<Up>", { noremap = true })
 keymap("c", "<C-n>", "<Down>", { noremap = true })
+
+-- Move --
+-- Keep cursor line vertically centered in vim
+-- keymap("n", "j", "jzz", opts)
+-- keymap("n", "k", "kzz", opts)
