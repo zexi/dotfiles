@@ -68,4 +68,7 @@
     "youdao",
     "haici"
   ],
+  "cSpell.enabled": true,
+  "cSpell.showStatus": false,
+  "cSpell.allowCompoundWords": true,
 }

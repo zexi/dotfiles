@@ -44,9 +44,9 @@ return packer.startup(function(use)
   use "wbthomason/packer.nvim" -- Have packer manage itself
   use "nvim-lua/popup.nvim"    -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim"  -- Useful lua functions used ny lots of plugins
-  -- use "windwp/nvim-autopairs"  -- Autopairs, integrates with both cmp and treesitter
+  use "windwp/nvim-autopairs"  -- Autopairs, integrates with both cmp and treesitter
   -- use 'm4xshen/autoclose.nvim'
-  use 'cohama/lexima.vim'
+  -- use 'cohama/lexima.vim'
 
   -- Easily comment stuff
   use { "numToStr/Comment.nvim", tag = 'v0.6' }
@@ -59,7 +59,6 @@ return packer.startup(function(use)
   use "nvim-lualine/lualine.nvim"
   use "akinsho/toggleterm.nvim"
   use "ahmedkhalf/project.nvim"
-  use "lewis6991/impatient.nvim"
   -- use "lukas-reineke/indent-blankline.nvim"
   -- use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight

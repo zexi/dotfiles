@@ -38,9 +38,9 @@ local options = {
   -- sidescrolloff = 999,
   --  guifont = "monospace:h17",               -- the font used in graphical neovim applications
   listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣",
-  -- spell = true,
+  spell = false,
   spelllang = "en_us,cjk", -- The name "cjk" is included East Asian characters are excluded from spell checking.
-  -- spelloptions = "camel",
+  spelloptions = "camel",
   history = 2000,
 }
 
