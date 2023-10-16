@@ -11,6 +11,7 @@
   "hover.floatConfig": {
     "border": true
   },
+  "suggest.noselect": true,
   // "coc.preferences.jumpCommand": "drop",
 
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
@@ -66,5 +67,5 @@
   "translator.engines": [
     "youdao",
     "haici"
-  ]
+  ],
 }
