@@ -54,8 +54,6 @@ return packer.startup(function(use)
   use "nvim-tree/nvim-tree.lua"
   use "tpope/vim-surround"
   use "tpope/vim-repeat"
-  -- use "akinsho/bufferline.nvim"
-  -- use "moll/vim-bbye"
   use "nvim-lualine/lualine.nvim"
   use "akinsho/toggleterm.nvim"
   use "ahmedkhalf/project.nvim"

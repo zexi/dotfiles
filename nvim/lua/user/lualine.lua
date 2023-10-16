@@ -138,6 +138,7 @@ local opts2 = {
     },
     lualine_b = { 'filename', 'branch' },
     lualine_c = { diagnostics },
+		-- lualine_c = {"%{coc#status()} %{get(b:,'coc_current_function','')}"},
     lualine_x = {},
     lualine_y = { 'filetype', 'encoding', 'progress' },
     lualine_z = {

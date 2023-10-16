@@ -11,7 +11,11 @@
   "hover.floatConfig": {
     "border": true
   },
-  "suggest.noselect": true,
+  "signature.enable": true,
+  "signature.hideOnTextChange": false,
+  "signature.preferShownAbove": true,
+  "signature.target": "echo",
+  // "suggest.noselect": true,
   // "coc.preferences.jumpCommand": "drop",
 
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
@@ -61,14 +65,12 @@
         "filetypes": ["haskell", "lhaskell"]
     }
   },
-  "jedi.executable.command": "/usr/bin/jedi-language-server",
+  "clangd.arguments": ["--function-arg-placeholders=0"],
   "tsserver.formatOnType": false,
   // "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
   "translator.engines": [
     "youdao",
     "haici"
   ],
-  "cSpell.enabled": true,
-  "cSpell.showStatus": false,
-  "cSpell.allowCompoundWords": true,
+  "sumneko-lua.enableNvimLuaDev": true,
 }
