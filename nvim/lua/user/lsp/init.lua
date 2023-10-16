@@ -222,6 +222,12 @@ lspconfig.gopls.setup(
   })
 )
 
+lspconfig.clangd.setup(
+  new_opts("clangd", {
+    cmd = { "clangd", "--function-arg-placeholders=0" }
+  })
+)
+
 -- vue volar
 lspconfig.volar.setup(
   new_opts(
