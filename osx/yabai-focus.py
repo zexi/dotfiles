@@ -29,6 +29,9 @@ class Window:
     def get_app(self) -> Optional[str]:
         return self.data.get('app')
 
+    def get_display(self) -> Optional[int]:
+        return self.data.get('display')
+
     def get_frame(self) -> Frame:
         frame = self.data.get('frame', {})
         return Frame(frame['x'], frame['y'],
@@ -108,16 +111,37 @@ def get_windows():
     return Windows(json.loads(output))
 
 
+WIN_WEST = 'west'
+WIN_EAST = 'east'
+DIS_CYCLE = 'display_cycle'
+
+
+def display_focus_cycle(all_wins: Windows, cur_window: Window):
+    cur_display = cur_window.get_display()
+    if not cur_display:
+        raise Exception(f'Not found display from current window: {cur_display}')
+    display_nums = (win.get_display() for win in all_wins)
+    max_display_num = max(display_nums)
+
+    focus_num =  cur_display + 1
+    if focus_num > max_display_num:
+        focus_num = focus_num % max_display_num
+    run_yabai_cmd(f"-m display --focus {focus_num}")
+
+
 def start():
     if len(sys.argv) != 2:
-        raise RuntimeWarning(f'Usage {sys.argv[0]} west|east')
+        raise RuntimeWarning(f'Usage {sys.argv[0]} {WIN_WEST}|{WIN_EAST}|{DIS_CYCLE}')
     direction = sys.argv[1]
+
     windows = get_windows()
     cur_window = windows.get_focused_window()
-    if cur_window:
-        cur_window.focus_direct(windows, direction)
-    else:
+    if not cur_window:
         raise Exception('Not found current focused window')
+    if direction == DIS_CYCLE:
+        display_focus_cycle(windows, cur_window)
+    else:
+        cur_window.focus_direct(windows, direction)
 
 if __name__ == '__main__':
     try:
