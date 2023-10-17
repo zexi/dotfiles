@@ -49,7 +49,7 @@ return packer.startup(function(use)
   -- use 'cohama/lexima.vim'
 
   -- Easily comment stuff
-  use { "numToStr/Comment.nvim", tag = 'v0.6' }
+  use "numToStr/Comment.nvim"
   -- use "kyazdani42/nvim-web-devicons"
   use "nvim-tree/nvim-tree.lua"
   use "tpope/vim-surround"
@@ -60,7 +60,9 @@ return packer.startup(function(use)
   -- use "lukas-reineke/indent-blankline.nvim"
   -- use "goolord/alpha-nvim"
   use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
-  use "folke/which-key.nvim"
+  use {
+    "folke/which-key.nvim",
+  }
 
   -- Colorschemes
   use "EdenEast/nightfox.nvim"
