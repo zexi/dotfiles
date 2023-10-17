@@ -20,7 +20,7 @@
 
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.formatOnType": false,
-  "coc.preferences.formatOnSaveFiletypes": ["go"],
+  "coc.preferences.formatOnSaveFiletypes": ["go", "cpp"],
   "list.normalMappings": {
      "t": "action:tabe",
      "v": "action:vsplit",

@@ -24,12 +24,13 @@ end
 -- other plugins before putting this into your config
 local opts = { silent = true, noremap = true, expr = true, replace_keycodes = false }
 -- keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
--- keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 
 -- Make <CR> to accept selected completion item or notify coc.nvim to format
 -- <C-g>u breaks current undo, please make your own choice
 keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
-keyset("i", "<TAB>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
+-- use <TAB> to confirm, make the behaviour like Goland or vscode
+keyset("i", "<TAB>", [[coc#pum#visible() ? coc#pum#confirm() : v:lua.check_back_space() ? "<TAB>" : coc#refresh()]], opts)
 
 -- Use <c-j> to trigger snippets
 keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
@@ -242,35 +243,3 @@ vim.g.coc_global_extensions = {
 
 -- telescope bind
 require('telescope').load_extension('coc')
-
--- for auto pairs
-local remap = vim.api.nvim_set_keymap
-local npairs = require('nvim-autopairs')
-npairs.setup({
-  map_cr=false,
-  disable_filetype = { "TelescopePrompt", "lisp", "scheme" },
-})
-
--- skip it, if you use another global object
-_G.MUtils= {}
-
--- old version
--- MUtils.completion_confirm=function()
-  -- if vim.fn["coc#pum#visible"]() ~= 0 then
-    -- return vim.fn["coc#_select_confirm"]()
-  -- else
-    -- return npairs.autopairs_cr()
-  -- end
--- end
-
--- new version for custom pum
-MUtils.completion_confirm=function()
-    if vim.fn["coc#pum#visible"]() ~= 0  then
-        return vim.fn["coc#pum#confirm"]()
-    else
-        return npairs.autopairs_cr()
-    end
-end
-
-remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
--- from: https://github.com/windwp/nvim-autopairs/wiki/Completion-plugin
