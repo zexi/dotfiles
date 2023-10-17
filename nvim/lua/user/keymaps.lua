@@ -38,6 +38,9 @@ keymap("n", "<leader>b", "<cmd>Telescope diagnostics bufnr=0<cr>", opts)
 keymap("n", "<leader>*", "<cmd>lua require('telescope.builtin').grep_string({search = vim.fn.expand('<cword>')})<cr>",
   opts)
 
+keymap("i", "<C-f>", "<Right>", opts)
+keymap("i", "<C-b>", "<Left>", opts)
+
 -- Command --
 -- sudo write
 keymap("c", "w!!", "w !sudo tee % >/dev/null", { noremap = true })
