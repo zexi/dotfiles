@@ -48,6 +48,7 @@ keyset("n", "]d", "<Plug>(coc-diagnostic-next)", { silent = true })
 -- keyset("n", "gy", "<Plug>(coc-type-definition)", { silent = true })
 -- keyset("n", "gi", ":Telescope coc implementations<CR>", { silent = true })
 -- keyset("n", "gr", ":Telescope coc references_used<CR>", { silent = true })
+--[[ keyset("n", "gr", "<Plug>(coc-references-used)", { silent = true }) ]]
 -- TAG FUNCTION --
 vim.cmd([[
 set tagfunc=CocTagFunc
@@ -79,8 +80,8 @@ nmap <silent> gd :call <SID>gotoTag("Definition")<CR>
 nmap <silent> gD <Plug>(coc-declaration)
 nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi :call <SID>gotoTag("Implementation")<CR>
-" nmap <silent> gr :call <SID>gotoTag("Used")<CR>
 nmap <silent> gi :Telescope coc implementations<CR>
+" nmap <silent> gr :call <SID>gotoTag("Used")<CR>
 nmap <silent> gr :Telescope coc references_used<CR>
 ]])
 

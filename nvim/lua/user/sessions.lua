@@ -6,7 +6,7 @@ end
 vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 session.setup({
-  log_level = 'info',
+  log_level = 'error',
   auto_ession_root_dir = vim.fn.stdpath('data').."/sessions/",
   auto_session_enabled = true,
   auto_save_enabled = true,

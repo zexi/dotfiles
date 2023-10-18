@@ -22,7 +22,8 @@ vim.cmd [[
     autocmd FileType ruby,yaml,eruby,vim,json setlocal expandtab shiftwidth=2 tabstop=2
     autocmd FileType tmux,vim setlocal expandtab shiftwidth=2 tabstop=2 foldmethod=marker
     autocmd FileType html,css,scss,javascript,lua,vue setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-    autocmd FileType sh,expect,python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 colorcolumn=80
+    "" autocmd FileType sh,expect,python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4 colorcolumn=80
+    autocmd FileType sh,expect,python setlocal expandtab shiftwidth=4 softtabstop=4 tabstop=4
     autocmd FileType c,cpp,dot setlocal sw=4 tabstop=4 colorcolumn=80
     autocmd FileType text,gitcommit setlocal colorcolumn=72
     autocmd FileType go setlocal sw=4 tabstop=4 noexpandtab
