@@ -76,30 +76,30 @@ return packer.startup(function(use)
   }
 
   -- -- LSP and completion
-  -- -- use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  -- -- use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  -- -- use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  -- -- cmp plugins
-  -- use "neovim/nvim-lspconfig" -- enable LSP
-  -- -- coq completion
-  -- -- use { "zexi/coq_nvim", branch = 'stop-cmp-syms' }
-  -- -- -- use "ms-jpq/coq.artifacts"
-  -- use { "lukas-reineke/lsp-format.nvim", tag = "v2.2.3" }
-  -- use { "folke/lua-dev.nvim" }
-  -- -- snippets
-  -- use "L3MON4D3/LuaSnip"             --snippet engine
-  -- use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
-  -- -- cmp completion
-  -- use "hrsh7th/nvim-cmp"             -- The completion plugin
-  -- use "hrsh7th/cmp-nvim-lsp"
-  -- use "hrsh7th/cmp-buffer"           -- buffer completions
-  -- use "hrsh7th/cmp-path"             -- path completions
-  -- use "hrsh7th/cmp-cmdline"          -- cmdline completions
-  -- use "saadparwaiz1/cmp_luasnip"     -- snippet completions
+  use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v3.x',
+  requires = {
+      --- Uncomment these if you want to manage LSP servers from neovim
+      -- {'williamboman/mason.nvim'},
+      -- {'williamboman/mason-lspconfig.nvim'},
 
-  -- coc plugins
-  use { 'neoclide/coc.nvim', branch = 'release' }
-  use 'fannheyward/telescope-coc.nvim'
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},
+      {'hrsh7th/cmp-nvim-lsp'},
+      {'hrsh7th/cmp-buffer'},
+      {'hrsh7th/cmp-nvim-lua'},
+      {'hrsh7th/cmp-path'},
+      {'hrsh7th/cmp-cmdline'},
+      {'L3MON4D3/LuaSnip'},
+    }
+  }
+
+  --[[ -- coc plugins ]]
+  --[[ use { 'neoclide/coc.nvim', branch = 'release' } ]]
+  --[[ use 'fannheyward/telescope-coc.nvim' ]]
 
   use "buoto/gotests-vim"
 
