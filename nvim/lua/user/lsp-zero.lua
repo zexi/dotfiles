@@ -18,6 +18,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = false,
     underline = true,
   })
+vim.opt['signcolumn'] = 'no'
 
 lsp_zero.on_attach(function(client, bufnr)
   local keymap = vim.api.nvim_buf_set_keymap

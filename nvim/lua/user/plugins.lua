@@ -51,7 +51,8 @@ return packer.startup(function(use)
   -- Easily comment stuff
   use "numToStr/Comment.nvim"
   -- use "kyazdani42/nvim-web-devicons"
-  use "nvim-tree/nvim-tree.lua"
+  use { "nvim-tree/nvim-tree.lua",
+    require = "nvim-tree/nvim-web-devicons" }
   use "tpope/vim-surround"
   use "tpope/vim-repeat"
   use "nvim-lualine/lualine.nvim"
@@ -77,23 +78,23 @@ return packer.startup(function(use)
 
   -- -- LSP and completion
   use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v3.x',
-  requires = {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
+    requires = {
       --- Uncomment these if you want to manage LSP servers from neovim
       -- {'williamboman/mason.nvim'},
       -- {'williamboman/mason-lspconfig.nvim'},
 
       -- LSP Support
-      {'neovim/nvim-lspconfig'},
+      { 'neovim/nvim-lspconfig' },
       -- Autocompletion
-      {'hrsh7th/nvim-cmp'},
-      {'hrsh7th/cmp-nvim-lsp'},
-      {'hrsh7th/cmp-buffer'},
-      {'hrsh7th/cmp-nvim-lua'},
-      {'hrsh7th/cmp-path'},
-      {'hrsh7th/cmp-cmdline'},
-      {'L3MON4D3/LuaSnip'},
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'L3MON4D3/LuaSnip' },
     }
   }
 
