@@ -67,6 +67,8 @@
   },
   "clangd.arguments": ["--function-arg-placeholders=0"],
   "tsserver.formatOnType": false,
+  "javascript.suggest.completeFunctionCalls": false,
+  "typescript.suggest.completeFunctionCalls": false,
   // "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
   "translator.engines": [
     "youdao",
