@@ -60,6 +60,8 @@ end)
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 local cmp_format = require('lsp-zero').cmp_format()
+local luasnip = require('luasnip')
+require('luasnip.loaders.from_vscode').lazy_load()
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -70,24 +72,25 @@ end
 cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
+    { name = 'luasnip' },
     {
       name = 'buffer',
       -- REF: https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number
-      option = {
-        get_bufnrs = function()
-          local bufs = {}
-          for _, win in ipairs(vim.api.nvim_list_wins()) do
-            bufs[vim.api.nvim_win_get_buf(win)] = true
-          end
-          return vim.tbl_keys(bufs)
-        end
-      }
+      --[[ option = { ]]
+      --[[   get_bufnrs = function() ]]
+      --[[     local bufs = {} ]]
+      --[[     for _, win in ipairs(vim.api.nvim_list_wins()) do ]]
+      --[[       bufs[vim.api.nvim_win_get_buf(win)] = true ]]
+      --[[     end ]]
+      --[[     return vim.tbl_keys(bufs) ]]
+      --[[   end ]]
+      --[[ } ]]
     },
     { name = 'nvim_lua' }
     --[[ { name = "path" }, ]]
   },
   -- preselect = 'item',
-  preselect = cmp.PreselectMode.None,
+  --[[ preselect = cmp.PreselectMode.None, ]]
   completion = {
     completeopt = 'menu,menuone,noinsert'
   },
@@ -98,18 +101,30 @@ cmp.setup({
       if cmp.visible() then
         local entry = cmp.get_selected_entry()
         if not entry then
-          cmp.select_next_item({ behavior = cmp.SelectBehaavior.Select })
+          cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
         else
           cmp.confirm()
         end
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       else
         fallback()
       end
-    end, { "i", "s" })
+    end, { "i", "s" }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   }),
+
   snippet = {
     expand = function(args)
-      require('luasnip').lsp_expand(args.body)
+      luasnip.lsp_expand(args.body)
     end
   },
   -- (Optional) Show source name in completion menu
@@ -133,6 +148,13 @@ local util = require 'lspconfig/util'
 
 lspconfig.lua_ls.setup({
   -- for Neovim completions
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      }
+    }
+  },
   on_init = function(client)
     local path = client.workspace_folders[1].name
     if not vim.loop.fs_stat(path .. '/.luarc.json') and not vim.loop.fs_stat(path .. '/.luarc.jsonc') then
@@ -147,13 +169,13 @@ lspconfig.lua_ls.setup({
           workspace = {
             checkThirdParty = false,
             library = {
-              vim.env.VIMRUNTIME
+              vim.env.VIMRUNTIME,
               -- "${3rd}/luv/library"
               -- "${3rd}/busted/library",
-            }
+            },
             -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
             -- library = vim.api.nvim_get_runtime_file("", true)
-          }
+          },
         }
       })
 
@@ -163,7 +185,16 @@ lspconfig.lua_ls.setup({
   end
 })
 
-lspconfig.pyright.setup({})
+lspconfig.pyright.setup({
+  settings = {
+    python = {
+      -- FROM: https://github.com/microsoft/pyright/blob/main/docs/settings.md
+      analysis = {
+        typeCheckingMode = 'off'
+      }
+    }
+  }
+})
 
 lspconfig.gopls.setup({
   cmd = { 'gopls', 'serve' },
@@ -171,6 +202,16 @@ lspconfig.gopls.setup({
   root_dir = util.root_pattern("go.work", "go.mod"),
   init_options = {
     usePlaceholders = false,
+  },
+  settings = {
+    gopls = {
+      experimentalPostfixCompletions = true,
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
+    }
   }
 })
 
