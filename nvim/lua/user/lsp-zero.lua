@@ -70,7 +70,19 @@ end
 cmp.setup({
   sources = {
     { name = 'nvim_lsp' },
-    { name = 'buffer' },
+    {
+      name = 'buffer',
+      -- REF: https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number
+      option = {
+        get_bufnrs = function()
+          local bufs = {}
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            bufs[vim.api.nvim_win_get_buf(win)] = true
+          end
+          return vim.tbl_keys(bufs)
+        end
+      }
+    },
     { name = 'nvim_lua' }
     --[[ { name = "path" }, ]]
   },
