@@ -4,18 +4,15 @@ if not status_ok then
   return
 end
 
-npairs.setup({
-  disable_filetype = { "TelescopePrompt", "lisp", "scheme" },
-})
 npairs.setup {
-  map_cr = false,
+  map_cr = true,
   check_ts = true,
   ts_config = {
     lua = { "string", "source" },
     javascript = { "string", "template_string" },
     java = false,
   },
-  disable_filetype = { "TelescopePrompt", "spectre_panel" },
+  disable_filetype = { "TelescopePrompt", "lisp", "scheme" },
   fast_wrap = {
     map = "<M-e>",
     chars = { "{", "[", "(", '"', "'" },
