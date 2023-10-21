@@ -30,14 +30,21 @@ vim.cmd [[
     autocmd FileType java,haskell setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
   augroup end
 
-  augroup AutoAdjustResize
-    autocmd!
-    autocmd VimResized * execute "normal! \<C-w>="
-  augroup end
-
 ""  augroup _cursor_line
 ""    au!
 ""    au VimEnter,WinEnter,BufWinEnter * setlocal cursorline
 ""    au WinLeave * setlocal nocursorline
 ""  augroup end
 ]]
+
+local wr_group = vim.api.nvim_create_augroup('WinResize', { clear = true })
+
+vim.api.nvim_create_autocmd(
+  'VimResized',
+  {
+    group = wr_group,
+    pattern = '*',
+    command = 'wincmd =',
+    desc = 'Automatically resize windows when the host window size changes.'
+  }
+)
