@@ -71,10 +71,10 @@ end
 
 cmp.setup({
   sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'nvim_lsp', keyword_length = 1 },
     {
       name = 'buffer',
+      keyword_length = 3,
       -- REF: https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number
       --[[ option = { ]]
       --[[   get_bufnrs = function() ]]
@@ -86,9 +86,23 @@ cmp.setup({
       --[[   end ]]
       --[[ } ]]
     },
-    { name = 'nvim_lua' }
+    { name = 'luasnip',  keyword_length = 2 },
+    { name = 'nvim_lua', keyword_length = 1 }
     --[[ { name = "path" }, ]]
   },
+  --  sorting = {
+  --    comparators = {
+  --      cmp.config.compare.locality,
+  --      cmp.config.compare.recently_used,
+  --      cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+  --      cmp.config.compare.offset,
+  --      cmp.config.compare.order,
+  --      --[[ cmp.config.compare.exact, ]]
+  --      --[[ cmp.config.compare.kind, ]]
+  --      -- cmp.config.compare.sort_text,
+  --      --[[ cmp.config.compare.length, ]]
+  --    }
+  --  },
   -- preselect = 'item',
   --[[ preselect = cmp.PreselectMode.None, ]]
   completion = {
