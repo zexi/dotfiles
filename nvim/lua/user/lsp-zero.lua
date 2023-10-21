@@ -18,7 +18,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     update_in_insert = false,
     underline = true,
   })
-vim.opt['signcolumn'] = 'no'
+--[[ vim.opt['signcolumn'] = 'no' ]]
 
 lsp_zero.on_attach(function(client, bufnr)
   local keymap = vim.api.nvim_buf_set_keymap
@@ -68,14 +68,41 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
+local lspkind_comparator = function(conf)
+  local lsp_types = require('cmp.types').lsp
+  return function(entry1, entry2)
+    if entry1.source.name ~= 'nvim_lsp' then
+      if entry2.source.name == 'nvim_lsp' then
+        return false
+      else
+        return nil
+      end
+    end
+    local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
+    local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
+
+    local priority1 = conf.kind_priority[kind1] or 0
+    local priority2 = conf.kind_priority[kind2] or 0
+    if priority1 == priority2 then
+      return nil
+    end
+    return priority2 < priority1
+  end
+end
+
+local label_comparator = function(entry1, entry2)
+  return entry1.completion_item.label < entry2.completion_item.label
+end
 
 cmp.setup({
+  -- FROM: https://www.reddit.com/r/neovim/comments/u3c3kw/how_do_you_sorting_cmp_completions_items/
   sources = {
-    { name = 'nvim_lsp', keyword_length = 1 },
+    { name = 'nvim_lsp', keyword_length = 1, priority = 8 },
+    { name = 'luasnip',  keyword_length = 2, priority = 7 },
     {
       name = 'buffer',
       keyword_length = 3,
-      -- REF: https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number
+      priority = 7,
       --[[ option = { ]]
       --[[   get_bufnrs = function() ]]
       --[[     local bufs = {} ]]
@@ -86,23 +113,57 @@ cmp.setup({
       --[[   end ]]
       --[[ } ]]
     },
-    { name = 'luasnip',  keyword_length = 2 },
-    { name = 'nvim_lua', keyword_length = 1 }
-    --[[ { name = "path" }, ]]
+    { name = 'nvim_lua', keyword_length = 1, priority = 5 },
+    { name = "path",     priority = 4 },
   },
-  --  sorting = {
-  --    comparators = {
-  --      cmp.config.compare.locality,
-  --      cmp.config.compare.recently_used,
-  --      cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
-  --      cmp.config.compare.offset,
-  --      cmp.config.compare.order,
-  --      --[[ cmp.config.compare.exact, ]]
-  --      --[[ cmp.config.compare.kind, ]]
-  --      -- cmp.config.compare.sort_text,
-  --      --[[ cmp.config.compare.length, ]]
-  --    }
-  --  },
+  sorting = {
+    -- REF: https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number
+    priority_weight = 1.0,
+    comparators = {
+      -- compare.score_offset, -- not good at all
+      cmp.config.compare.locality,
+      lspkind_comparator({
+        kind_priority = {
+          Keyword = 12,
+          Field = 11,
+          Property = 11,
+          Constant = 10,
+          Enum = 10,
+          EnumMember = 10,
+          Event = 10,
+          Function = 10,
+          Method = 10,
+          Operator = 10,
+          Reference = 10,
+          Struct = 10,
+          Variable = 9,
+          File = 8,
+          Folder = 8,
+          Class = 5,
+          Color = 5,
+          Module = 5,
+          Constructor = 1,
+          Interface = 1,
+          Snippet = 0,
+          Text = 1,
+          TypeParameter = 1,
+          Unit = 1,
+          Value = 1,
+        },
+      }),
+      cmp.config.compare.recently_used,
+      cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+      cmp.config.compare.offset,
+      cmp.config.compare.order,
+      -- cmp.config.compare.exact,
+      -- compare.scopes, -- what?
+      -- compare.sort_text,
+      -- compare.kind,
+      -- compare.length, -- useless
+      -- FROM: https://github.com/hrsh7th/nvim-cmp/issues/156#issuecomment-916338617
+      --[[ label_comparator, ]]
+    },
+  },
   -- preselect = 'item',
   --[[ preselect = cmp.PreselectMode.None, ]]
   completion = {
