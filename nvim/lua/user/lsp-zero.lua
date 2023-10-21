@@ -58,6 +58,7 @@ end)
 --- auto completion setup
 
 local cmp = require('cmp')
+local lsp_types = require('cmp.types').lsp
 local cmp_action = require('lsp-zero').cmp_action()
 local cmp_format = require('lsp-zero').cmp_format()
 local luasnip = require('luasnip')
@@ -69,17 +70,25 @@ local has_words_before = function()
 end
 
 local lspkind_comparator = function(conf)
-  local lsp_types = require('cmp.types').lsp
   return function(entry1, entry2)
-    if entry1.source.name ~= 'nvim_lsp' then
-      if entry2.source.name == 'nvim_lsp' then
+    local src_name1 = entry1.source.name
+    local src_name2 = entry2.source.name
+    if src_name1 ~= 'nvim_lsp' and src_name1 ~= 'luasnip' then
+      if src_name2 == 'nvim_lsp' then
         return false
       else
         return nil
       end
     end
-    local kind1 = lsp_types.CompletionItemKind[entry1:get_kind()]
-    local kind2 = lsp_types.CompletionItemKind[entry2:get_kind()]
+
+    local kind_name1 = entry1:get_kind()
+    local kind_name2 = entry2:get_kind()
+
+    local kind1 = lsp_types.CompletionItemKind[kind_name1]
+    if src_name1 == 'luasnip' then
+      kind1 = 'luasnip'
+    end
+    local kind2 = lsp_types.CompletionItemKind[kind_name2]
 
     local priority1 = conf.kind_priority[kind1] or 0
     local priority2 = conf.kind_priority[kind2] or 0
@@ -90,6 +99,19 @@ local lspkind_comparator = function(conf)
   end
 end
 
+local snippet_comparator = function(entry1, entry2)
+  local src_name1 = entry1.source.name
+  local src_name2 = entry2.source.name
+  if src_name2 == 'luasnip' and src_name1 == 'nvim_lsp' then
+    if lsp_types.CompletionItemKind[entry1:get_kind()] == 'Snippet' then
+      print(src_name1)
+      print(src_name2)
+      return false
+    end
+  end
+  return nil
+end
+
 local label_comparator = function(entry1, entry2)
   return entry1.completion_item.label < entry2.completion_item.label
 end
@@ -98,10 +120,10 @@ cmp.setup({
   -- FROM: https://www.reddit.com/r/neovim/comments/u3c3kw/how_do_you_sorting_cmp_completions_items/
   sources = {
     { name = 'nvim_lsp', keyword_length = 1, priority = 8 },
-    { name = 'luasnip',  keyword_length = 2, priority = 7 },
+    { name = 'luasnip',  keyword_length = 1, priority = 7 },
     {
       name = 'buffer',
-      keyword_length = 3,
+      keyword_length = 2,
       priority = 7,
       --[[ option = { ]]
       --[[   get_bufnrs = function() ]]
@@ -132,6 +154,7 @@ cmp.setup({
           EnumMember = 10,
           Event = 10,
           Function = 10,
+          luasnip = 10,
           Snippet = 10,
           Operator = 10,
           Struct = 10,
@@ -150,7 +173,8 @@ cmp.setup({
           Value = 1,
         },
       }),
-      --[[ label_comparator, ]]
+      -- snippet_comparator,
+      -- label_comparator,
       cmp.config.compare.offset,        -- Entries with smaller offset will be ranked higher.
       cmp.config.compare.exact,         -- Entries with exact == true will be ranked higher.
       -- cmp.config.compore.scopes, -- Entries definied in a closer scope will be ranked higher (e.g., prefer local variables to globals).
@@ -179,21 +203,23 @@ cmp.setup({
         else
           cmp.confirm()
         end
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
+        -- elseif luasnip.expand_or_jumpable() then
+        --   luasnip.expand_or_jump()
       else
         fallback()
       end
     end, { "i", "s" }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { "i", "s" }),
+    -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+    --   if cmp.visible() then
+    --     cmp.select_prev_item()
+    --   elseif luasnip.jumpable(-1) then
+    --     luasnip.jump(-1)
+    --   else
+    --     fallback()
+    --   end
+    -- end, { "i", "s" }),
+    ['<C-j>'] = cmp_action.luasnip_jump_forward(),
+    ['<C-k>'] = cmp_action.luasnip_jump_backward(),
   }),
 
   snippet = {
