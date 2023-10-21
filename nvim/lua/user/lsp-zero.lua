@@ -138,6 +138,13 @@ cmp.setup({
     { name = 'nvim_lua', keyword_length = 1, priority = 5 },
     { name = "path",     priority = 4 },
   },
+  matching = {
+    disallow_fuzzy_matching = false,
+    disallow_fullfuzzy_matching = false,
+    disallow_partial_fuzzy_matching = true,
+    disallow_partial_matching = false,
+    disallow_prefix_unmatching = true,
+  },
   sorting = {
     -- REF: https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number
     priority_weight = 1.0,
@@ -188,7 +195,7 @@ cmp.setup({
     },
   },
   -- preselect = 'item',
-  --[[ preselect = cmp.PreselectMode.None, ]]
+  preselect = cmp.PreselectMode.None,
   completion = {
     completeopt = 'menu,menuone,noinsert'
   },
