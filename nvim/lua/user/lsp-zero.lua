@@ -95,7 +95,10 @@ local lspkind_comparator = function(conf)
     if priority1 == priority2 then
       return nil
     end
-    return priority2 < priority1
+    if priority2 < priority1 then
+      return nil
+    end
+    return false
   end
 end
 
@@ -134,6 +137,7 @@ cmp.setup({
       --[[     return vim.tbl_keys(bufs) ]]
       --[[   end ]]
       --[[ } ]]
+      -- REF: https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number
     },
     { name = 'nvim_lua', keyword_length = 1, priority = 5 },
     { name = "path",     priority = 4 },
@@ -146,7 +150,6 @@ cmp.setup({
     disallow_prefix_unmatching = true,
   },
   sorting = {
-    -- REF: https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number
     priority_weight = 1.0,
     comparators = {
       -- FROM: https://github.com/hrsh7th/nvim-cmp/issues/156#issuecomment-916338617
@@ -164,12 +167,12 @@ cmp.setup({
           luasnip = 10,
           Snippet = 10,
           Operator = 10,
+          Class = 10,
           Struct = 10,
-          Variable = 9,
-          Reference = 9,
+          Variable = 10,
+          Reference = 10,
           File = 8,
           Folder = 8,
-          Class = 5,
           Color = 5,
           Module = 5,
           Constructor = 1,
@@ -188,10 +191,10 @@ cmp.setup({
       cmp.config.compare.score,         -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
       cmp.config.compare.recently_used, -- Entries that are used recently will be ranked higher.
       cmp.config.compare.locality,      -- Entries with higher locality (i.e., words that are closer to the cursor) will be ranked higher. See GH-183 for more details.
-      cmp.config.compare.kind,          -- Entires with smaller ordinal value of 'kind' will be ranked higher. See lsp.CompletionItemKind enum. Exceptions are that Text(1) will be ranked the lowest, and snippets be the highest.
+      -- cmp.config.compare.kind,          -- Entires with smaller ordinal value of 'kind' will be ranked higher. See lsp.CompletionItemKind enum. Exceptions are that Text(1) will be ranked the lowest, and snippets be the highest.
       -- cmp.config.compare.sort_text, -- Entries will be ranked according to the lexicographical order of sortText.
-      cmp.config.compare.length,        -- Entries with shorter label length will be ranked higher
-      cmp.config.compare.order,         -- Entries with smaller id will be ranked higher.
+      cmp.config.compare.length, -- Entries with shorter label length will be ranked higher
+      cmp.config.compare.order,  -- Entries with smaller id will be ranked higher.
     },
   },
   -- preselect = 'item',
