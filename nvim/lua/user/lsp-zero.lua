@@ -120,23 +120,23 @@ cmp.setup({
     -- REF: https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number
     priority_weight = 1.0,
     comparators = {
-      -- compare.score_offset, -- not good at all
-      cmp.config.compare.locality,
+      -- FROM: https://github.com/hrsh7th/nvim-cmp/issues/156#issuecomment-916338617
       lspkind_comparator({
         kind_priority = {
           Keyword = 12,
           Field = 11,
           Property = 11,
+          Method = 11,
           Constant = 10,
           Enum = 10,
           EnumMember = 10,
           Event = 10,
           Function = 10,
-          Method = 10,
+          Snippet = 10,
           Operator = 10,
-          Reference = 10,
           Struct = 10,
           Variable = 9,
+          Reference = 9,
           File = 8,
           Folder = 8,
           Class = 5,
@@ -144,24 +144,23 @@ cmp.setup({
           Module = 5,
           Constructor = 1,
           Interface = 1,
-          Snippet = 0,
           Text = 1,
           TypeParameter = 1,
           Unit = 1,
           Value = 1,
         },
       }),
-      cmp.config.compare.recently_used,
-      cmp.config.compare.score, -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
-      cmp.config.compare.offset,
-      cmp.config.compare.order,
-      -- cmp.config.compare.exact,
-      -- compare.scopes, -- what?
-      -- compare.sort_text,
-      -- compare.kind,
-      -- compare.length, -- useless
-      -- FROM: https://github.com/hrsh7th/nvim-cmp/issues/156#issuecomment-916338617
       --[[ label_comparator, ]]
+      cmp.config.compare.offset,        -- Entries with smaller offset will be ranked higher.
+      cmp.config.compare.exact,         -- Entries with exact == true will be ranked higher.
+      -- cmp.config.compore.scopes, -- Entries definied in a closer scope will be ranked higher (e.g., prefer local variables to globals).
+      cmp.config.compare.score,         -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+      cmp.config.compare.recently_used, -- Entries that are used recently will be ranked higher.
+      cmp.config.compare.locality,      -- Entries with higher locality (i.e., words that are closer to the cursor) will be ranked higher. See GH-183 for more details.
+      cmp.config.compare.kind,          -- Entires with smaller ordinal value of 'kind' will be ranked higher. See lsp.CompletionItemKind enum. Exceptions are that Text(1) will be ranked the lowest, and snippets be the highest.
+      -- cmp.config.compare.sort_text, -- Entries will be ranked according to the lexicographical order of sortText.
+      cmp.config.compare.length,        -- Entries with shorter label length will be ranked higher
+      cmp.config.compare.order,         -- Entries with smaller id will be ranked higher.
     },
   },
   -- preselect = 'item',
