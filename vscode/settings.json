@@ -1,0 +1,25 @@
+{
+    "security.workspace.trust.untrustedFiles": "open",
+    "extensions.ignoreRecommendations": true,
+    "redhat.telemetry.enabled": true,
+    "editor.wordWrap": "on",
+    "editor.renderWhitespace": "all",
+    "git.openRepositoryInParentFolders": "always",
+    "explorer.confirmDelete": false,
+    "editor.unicodeHighlight.nonBasicASCII": false,
+    "files.autoSave": "afterDelay",
+    "workbench.editor.untitled.hint": "hidden",
+    "editor.accessibilitySupport": "off",
+    "markdown-preview-enhanced.revealjsTheme": "solarized.css",
+    "workbench.editor.empty.hint": "hidden",
+    "[racket]": {
+        "editor.rulers": [
+            102
+        ],
+        "editor.formatOnType": true,
+        "editor.wordSeparators": "()[]{}\",'`;#|",
+        "editor.autoClosingBrackets": "never",
+        "editor.indentSize": "tabSize",
+        "editor.tabSize": 2
+    }
+}
