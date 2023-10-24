@@ -9,6 +9,7 @@ require "user.telescope"
 require "user.autopairs"
 -- require "user.lsp"
 require "user.lsp-zero"
+require "user.aerial"
 --[[ require "user.cocnew" ]]
 require "user.treesitter"
 require "user.comment"

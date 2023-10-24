@@ -57,6 +57,7 @@ return packer.startup(function(use)
   use "tpope/vim-repeat"
   use "nvim-lualine/lualine.nvim"
   use "akinsho/toggleterm.nvim"
+  use "stevearc/aerial.nvim"
   use "ahmedkhalf/project.nvim"
   -- use "lukas-reineke/indent-blankline.nvim"
   -- use "goolord/alpha-nvim"

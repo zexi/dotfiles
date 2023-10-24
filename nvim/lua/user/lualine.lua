@@ -12,7 +12,7 @@ local diagnostics = {
   sources = { "nvim_diagnostic" },
   sections = { "error", "warn" },
   -- symbols = { error = " ", warn = " " },
-  symbols = {error = 'E', warn = 'W', info = 'I', hint = 'H'},
+  symbols = { error = 'E', warn = 'W', info = 'I', hint = 'H' },
   colored = true,
   update_in_insert = false,
   always_visible = false,
@@ -138,8 +138,31 @@ local opts2 = {
     },
     lualine_b = { 'filename', 'branch' },
     lualine_c = { diagnostics },
-		-- lualine_c = {"%{coc#status()} %{get(b:,'coc_current_function','')}"},
+    -- lualine_c = {"%{coc#status()} %{get(b:,'coc_current_function','')}"},
     lualine_x = {},
+    -- lualine_x = {
+    --   {
+    --     "aerial",
+    --     -- The separator to be used to separate symbols in status line.
+    --     sep = ">",
+    --
+    --     -- The number of symbols to render top-down. In order to render only 'N' last
+    --     -- symbols, negative numbers may be supplied. For instance, 'depth = -1' can
+    --     -- be used in order to render only current symbol.
+    --     depth = nil,
+    --
+    --     -- When 'dense' mode is on, icons are not rendered near their symbols. Only
+    --     -- a single icon that represents the kind of current symbol is rendered at
+    --     -- the beginning of status line.
+    --     dense = false,
+    --
+    --     -- The separator to be used to separate symbols in dense mode.
+    --     dense_sep = ".",
+    --
+    --     -- Color the symbol icons.
+    --     colored = true,
+    --   },
+    -- },
     lualine_y = { 'filetype', 'encoding', 'progress' },
     lualine_z = {
       { 'location', separator = { right = '' }, left_padding = 2 },
