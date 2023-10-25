@@ -51,3 +51,7 @@ keymap("c", "<C-n>", "<Down>", { noremap = true })
 -- Keep cursor line vertically centered in vim
 -- keymap("n", "j", "jzz", opts)
 -- keymap("n", "k", "kzz", opts)
+
+-- Translate
+keymap("n", "<leader>t", "<Plug>Translate", opts)
+keymap("v", "<leader>t", "<Plug>TranslateV", opts)

@@ -136,6 +136,8 @@ return packer.startup(function(use)
   use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
   use 'mzlogin/vim-markdown-toc'
 
+  use 'voldikss/vim-translator'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
