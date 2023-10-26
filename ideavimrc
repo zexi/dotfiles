@@ -15,8 +15,8 @@ set showmode
 set showcmd
 set number
 " keep cursor centered vertically on the screen
-set scrolloff=999
-" set scrolloff=99
+" set scrolloff=999
+set scrolloff=5
 
 """ Idea specific settings -------------------
 set ideajoin
@@ -45,6 +45,7 @@ nnoremap gd <C-]>
 nnoremap gr :<C-u>action ShowUsages<CR>
 "nnoremap gc :action CommentByLineComment<CR>
 vnoremap gb :action CommentByBlockComment<CR>
+nnoremap gl :action ShowErrorDescription<CR>
 nnoremap ]d :action GotoNextError<CR>
 nnoremap ]D :action GotoPreviousError<CR>
 
@@ -53,6 +54,9 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
+" Easymotion
+
+" See action from: https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
 " Running and Debugging
 nnoremap ,r :action ContextRun<CR>
 nnoremap ,c :action RunClass<CR>

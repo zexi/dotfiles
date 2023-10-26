@@ -314,16 +314,16 @@ lspconfig.gopls.setup({
   init_options = {
     usePlaceholders = false,
   },
-  settings = {
-    gopls = {
-      experimentalPostfixCompletions = true,
-      analyses = {
-        unusedparams = true,
-        shadow = true,
-      },
-      staticcheck = true,
-    }
-  }
+  -- settings = {
+  --   gopls = {
+  --     experimentalPostfixCompletions = true,
+  --     analyses = {
+  --       unusedparams = true,
+  --       shadow = true,
+  --     },
+  --     staticcheck = true,
+  --   }
+  -- }
 })
 
 lspconfig.clangd.setup({
