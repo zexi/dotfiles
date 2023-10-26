@@ -32,7 +32,8 @@ nnoremap <Leader>o :<C-u>action RecentProjectListGroup<CR>
 nnoremap <Leader>h :<C-u>action RecentFiles<CR>
 nnoremap <leader>rn :action Refactorings.QuickListPopupAction<CR>
 nnoremap <leader>g :action Generate<CR>
-nnoremap <leader>e :NERDTreeToggle<CR>
+" nnoremap <leader>e :NERDTreeToggle<CR>
+nnoremap <leader>e :NERDTreeFind<CR>
 nnoremap <leader>nc :action NewClass<CR>
 " nnoremap <leader>gm :action OverrideMethods<CR>
 nnoremap <leader>sn :action ShowNavBar<CR>
