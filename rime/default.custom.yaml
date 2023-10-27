@@ -13,11 +13,11 @@ patch:
 
   "ascii_composer/switch_key":
     Caps_Lock: clear
-    Shift_L: commit_code
-    # Shift_L: noop # 使用系统 Control + Space 切换
-    Shift_R: noop
+    # Shift_L: commit_code
+    Shift_L: noop # 使用系统 Control + Space 切换
+    Shift_R: commit_code
     Control_L: noop
-    Control_R: noop
+    Control_R: commit_code
 
   # https://github.com/rime/squirrel/issues/113#issuecomment-309951442
   key_binder/bindings:

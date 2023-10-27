@@ -1,0 +1,29 @@
+{
+  "title": "Rime: Left ctrl + space to Control_R",
+  "rules": [
+    {
+      "description": "Rime: left_ctrl + spacebar to right_shift",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "spacebar",
+            "modifiers": {
+              "mandatory": [
+                "left_control"
+              ],
+              "optional": [
+                "any"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "right_shift"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
