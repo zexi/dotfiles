@@ -1,15 +1,20 @@
 patch:
+  # style/candidate_list_layout: linear
+  style/color_scheme: mojave_dark
+  style/color_scheme_dark: mojave_dark
+  # preset_color_schemes/purity_of_form_custom/candidate_list_layout: liner
+
   # mdls -name kMDItemCFBundleIdentifier -r /Applications/Google\ Chrome.app
   # l ~/Library/Preferences/ | grep -i termi
   app_options: 
     com.tencent.xinWeChat:
-      ascii_mode: false
+      ascii_mode: false # 非英文模式
     com.larksuite.larkApp:
       ascii_mode: false
     com.apple.Spotlight:            # 聚焦搜索
+      ascii_mode: true # 英文模式
+    com.google.Chrome:
       ascii_mode: true
-    # com.google.Chrome:
-    #   ascii_mode: true
     com.microsoft.VSCode:
       ascii_mode: true
       vim_mode: true
@@ -18,6 +23,14 @@ patch:
       no_inline: true
       vim_mode: true
     com.googlecode.iterm2:
+      ascii_mode: true
+      no_inline: true
+      vim_mode: true
+    com.jetbrains.intellij:
+      ascii_mode: true
+      no_inline: true
+      vim_mode: true
+    com.jetbrains.goland:
       ascii_mode: true
       no_inline: true
       vim_mode: true
