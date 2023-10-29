@@ -1,6 +1,27 @@
 {
-  "title": "Rime: Left ctrl + space to Control_R",
+  "title": "My osx karabiner keymaps",
   "rules": [
+    {
+      "description": "Change Ctrl + [ to Esc",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "open_bracket",
+            "modifiers": {
+              "mandatory": [
+                "left_control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "key_code": "escape"
+            }
+          ]
+        }
+      ]
+    },
     {
       "description": "Rime: left_ctrl + spacebar to right_shift",
       "manipulators": [
