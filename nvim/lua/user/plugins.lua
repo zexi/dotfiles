@@ -101,6 +101,8 @@ return packer.startup(function(use)
     }
   }
 
+  use "vim-test/vim-test"
+
   --[[ -- coc plugins ]]
   --[[ use { 'neoclide/coc.nvim', branch = 'release' } ]]
   --[[ use 'fannheyward/telescope-coc.nvim' ]]
@@ -133,7 +135,7 @@ return packer.startup(function(use)
   use 'godlygeek/tabular'
   use 'preservim/vim-markdown'
   use 'dhruvasagar/vim-table-mode'
-  use { 'iamcco/markdown-preview.nvim', run = 'cd app && yarn install' }
+  use { 'iamcco/markdown-preview.nvim', run = 'cd app &&  npx --yes yarn install' }
   use 'mzlogin/vim-markdown-toc'
 
   use 'voldikss/vim-translator'
