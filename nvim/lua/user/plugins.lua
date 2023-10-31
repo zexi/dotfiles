@@ -98,6 +98,11 @@ return packer.startup(function(use)
       { 'L3MON4D3/LuaSnip' },
       { "rafamadriz/friendly-snippets" },
       { 'saadparwaiz1/cmp_luasnip' },
+      -- CodeAction
+      {
+        'weilbith/nvim-code-action-menu',
+        cmd = 'CodeActionMenu',
+      }
     }
   }
 

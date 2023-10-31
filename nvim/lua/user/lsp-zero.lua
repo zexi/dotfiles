@@ -39,6 +39,8 @@ lsp_zero.on_attach(function(client, bufnr)
   keymap(bufnr, "n", "[d", '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
   keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
   keymap(bufnr, "n", "gl", '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  -- keymap(bufnr, "n", '<leader>g', "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+  keymap(bufnr, "n", '<leader>g', "<cmd>CodeActionMenu<cr>", opts)
 
   -- always use the active servers do autoformat
   lsp_zero.buffer_autoformat()
