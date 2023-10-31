@@ -76,7 +76,14 @@ local lspkind_comparator = function(conf)
   return function(entry1, entry2)
     local src_name1 = entry1.source.name
     local src_name2 = entry2.source.name
-    if src_name1 ~= 'nvim_lsp' and src_name1 ~= 'luasnip' then
+    -- if src_name1 ~= 'nvim_lsp' and src_name1 ~= 'luasnip' then
+    --   if src_name2 == 'nvim_lsp' then
+    --     return false
+    --   else
+    --     return nil
+    --   end
+    -- end
+    if src_name1 ~= 'nvim_lsp' then
       if src_name2 == 'nvim_lsp' then
         return false
       else
@@ -92,14 +99,14 @@ local lspkind_comparator = function(conf)
       kind1 = 'luasnip'
     end
     local kind2 = lsp_types.CompletionItemKind[kind_name2]
-
     local priority1 = conf.kind_priority[kind1] or 0
     local priority2 = conf.kind_priority[kind2] or 0
+
     if priority1 == priority2 then
       return nil
     end
     if priority2 < priority1 then
-      return nil
+      return true
     end
     return false
   end
@@ -119,7 +126,14 @@ local snippet_comparator = function(entry1, entry2)
 end
 
 local label_comparator = function(entry1, entry2)
-  return entry1.completion_item.label < entry2.completion_item.label
+  return false
+  -- print(entry1)
+  -- print(entry2)
+  -- print("-----")
+  -- if #entry1.completion_item.label == #entry2.completion_item.label then
+  --   return false
+  -- end
+  -- return #entry1.completion_item.label < #entry2.completion_item.label
 end
 
 cmp.setup({
@@ -159,20 +173,20 @@ cmp.setup({
       lspkind_comparator({
         kind_priority = {
           Keyword = 12,
+          Variable = 11,
           Field = 11,
           Property = 11,
           Method = 11,
-          Constant = 10,
-          Enum = 10,
-          EnumMember = 10,
-          Event = 10,
-          Function = 10,
-          luasnip = 10,
-          Snippet = 10,
+          Function = 11,
+          Constant = 11,
           Operator = 10,
           Class = 10,
           Struct = 10,
-          Variable = 10,
+          Enum = 10,
+          EnumMember = 10,
+          Event = 10,
+          luasnip = 10,
+          Snippet = 10,
           Reference = 10,
           File = 8,
           Folder = 8,
@@ -188,12 +202,12 @@ cmp.setup({
       }),
       -- snippet_comparator,
       -- label_comparator,
-      cmp.config.compare.offset,        -- Entries with smaller offset will be ranked higher.
-      cmp.config.compare.exact,         -- Entries with exact == true will be ranked higher.
-      -- cmp.config.compore.scopes, -- Entries definied in a closer scope will be ranked higher (e.g., prefer local variables to globals).
-      cmp.config.compare.score,         -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
-      cmp.config.compare.recently_used, -- Entries that are used recently will be ranked higher.
-      cmp.config.compare.locality,      -- Entries with higher locality (i.e., words that are closer to the cursor) will be ranked higher. See GH-183 for more details.
+      cmp.config.compare.exact,    -- Entries with exact == true will be ranked higher.
+      cmp.config.compare.offset,   -- Entries with smaller offset will be ranked higher.
+      cmp.config.compare.scopes,   -- Entries definied in a closer scope will be ranked higher (e.g., prefer local variables to globals).
+      cmp.config.compare.score,    -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
+      -- cmp.config.compare.recently_used, -- Entries that are used recently will be ranked higher.
+      cmp.config.compare.locality, -- Entries with higher locality (i.e., words that are closer to the cursor) will be ranked higher. See GH-183 for more details.
       -- cmp.config.compare.kind,          -- Entires with smaller ordinal value of 'kind' will be ranked higher. See lsp.CompletionItemKind enum. Exceptions are that Text(1) will be ranked the lowest, and snippets be the highest.
       -- cmp.config.compare.sort_text, -- Entries will be ranked according to the lexicographical order of sortText.
       cmp.config.compare.length, -- Entries with shorter label length will be ranked higher
