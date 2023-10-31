@@ -331,3 +331,9 @@ lspconfig.clangd.setup({
 })
 
 lspconfig.tsserver.setup({})
+lspconfig.html.setup({
+  init_options = {
+    provideFormatter = false
+  }
+})
+lspconfig.cssls.setup({})

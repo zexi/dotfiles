@@ -138,7 +138,12 @@ return packer.startup(function(use)
   use { 'iamcco/markdown-preview.nvim', run = 'cd app &&  npx --yes yarn install' }
   use 'mzlogin/vim-markdown-toc'
 
+  -- translator
   use 'voldikss/vim-translator'
+
+  -- web-tools
+  use 'ray-x/web-tools.nvim'
+  use 'NvChad/nvim-colorizer.lua'
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
