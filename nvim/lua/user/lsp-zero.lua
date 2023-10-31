@@ -339,3 +339,4 @@ lspconfig.html.setup({
   }
 })
 lspconfig.cssls.setup({})
+lspconfig.emmet_ls.setup({})
