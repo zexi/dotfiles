@@ -1,25 +1,98 @@
 {
-    "security.workspace.trust.untrustedFiles": "open",
-    "extensions.ignoreRecommendations": true,
-    "redhat.telemetry.enabled": true,
-    "editor.wordWrap": "on",
-    "editor.renderWhitespace": "all",
-    "git.openRepositoryInParentFolders": "always",
-    "explorer.confirmDelete": false,
-    "editor.unicodeHighlight.nonBasicASCII": false,
-    "files.autoSave": "afterDelay",
-    "workbench.editor.untitled.hint": "hidden",
-    "editor.accessibilitySupport": "off",
-    "markdown-preview-enhanced.revealjsTheme": "solarized.css",
-    "workbench.editor.empty.hint": "hidden",
-    "[racket]": {
-        "editor.rulers": [
-            102
-        ],
-        "editor.formatOnType": true,
-        "editor.wordSeparators": "()[]{}\",'`;#|",
-        "editor.autoClosingBrackets": "never",
-        "editor.indentSize": "tabSize",
-        "editor.tabSize": 2
-    }
+  "security.workspace.trust.untrustedFiles": "open",
+  "extensions.ignoreRecommendations": true,
+  "redhat.telemetry.enabled": true,
+  "editor.wordWrap": "on",
+  "editor.renderWhitespace": "all",
+  "git.openRepositoryInParentFolders": "always",
+  "explorer.confirmDelete": false,
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  // "files.autoSave": "afterDelay",
+  "editor.accessibilitySupport": "off",
+  "markdown-preview-enhanced.revealjsTheme": "solarized.css",
+  "workbench.editor.empty.hint": "hidden",
+  "[racket]": {
+    "editor.rulers": [
+      102
+    ],
+    "editor.formatOnType": true,
+    "editor.wordSeparators": "()[]{}\",'`;#|",
+    "editor.autoClosingBrackets": "never",
+    "editor.indentSize": "tabSize",
+    "editor.tabSize": 2
+  },
+  "workbench.colorTheme": "Default Dark+",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "editor.formatOnSave": true,
+  "html.format.enable": true,
+  "[html]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.suggest.insertMode": "replace",
+    "editor.formatOnSave": true,
+  },
+  "[typescript]": {
+    "editor.tabSize": 2
+  },
+  "zenMode.fullScreen": false,
+  "zenMode.hideStatusBar": false,
+  // --- vim configuration ---
+  //  - https://hoitz.medium.com/improved-vim-setup-in-visual-studio-code-bc579501b80c
+  "vim.leader": "<space>",
+  "vim.hlsearch": true,
+  "vim.enableNeovim": true,
+  // Improving the file explorer usage
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "j"
+      ],
+      "after": [
+        "g",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "k"
+      ],
+      "after": [
+        "g",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "e"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility",
+        // "workbench.files.action.showActiveFileInExplorer",
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "s",
+        "n"
+      ],
+      "commands": [
+        // "revealInExplorer",
+        "workbench.files.action.showActiveFileInExplorer",
+      ],
+    },
+    {
+      "before": [
+        "<leader>",
+        "r",
+        "n"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+  ],
+  "go.toolsManagement.autoUpdate": true,
+  "editor.cursorBlinking": "solid",
 }
