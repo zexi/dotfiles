@@ -204,7 +204,7 @@ cmp.setup({
       -- label_comparator,
       cmp.config.compare.exact,    -- Entries with exact == true will be ranked higher.
       cmp.config.compare.offset,   -- Entries with smaller offset will be ranked higher.
-      cmp.config.compare.scopes,   -- Entries definied in a closer scope will be ranked higher (e.g., prefer local variables to globals).
+      -- cmp.config.compare.scopes,   -- Entries definied in a closer scope will be ranked higher (e.g., prefer local variables to globals).
       cmp.config.compare.score,    -- based on :  score = score + ((#sources - (source_index - 1)) * sorting.priority_weight)
       -- cmp.config.compare.recently_used, -- Entries that are used recently will be ranked higher.
       cmp.config.compare.locality, -- Entries with higher locality (i.e., words that are closer to the cursor) will be ranked higher. See GH-183 for more details.
