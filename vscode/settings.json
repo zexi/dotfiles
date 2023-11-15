@@ -31,6 +31,12 @@
     "editor.suggest.insertMode": "replace",
     "editor.formatOnSave": true,
   },
+  "[css]": {
+    "editor.suggest.insertMode": "replace",
+    "cSpell.fixSpellingWithRenameProvider": false,
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+  },
   "[typescript]": {
     "editor.tabSize": 2
   },
