@@ -78,39 +78,39 @@ return packer.startup(function(use)
   }
 
   -- -- LSP and completion
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v3.x',
-    requires = {
-      --- Uncomment these if you want to manage LSP servers from neovim
-      -- {'williamboman/mason.nvim'},
-      -- {'williamboman/mason-lspconfig.nvim'},
-
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-nvim-lua' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-cmdline' },
-      { 'L3MON4D3/LuaSnip' },
-      { "rafamadriz/friendly-snippets" },
-      { 'saadparwaiz1/cmp_luasnip' },
-      -- CodeAction
-      {
-        'weilbith/nvim-code-action-menu',
-        cmd = 'CodeActionMenu',
-      }
-    }
-  }
+  -- use {
+  --   'VonHeikemen/lsp-zero.nvim',
+  --   branch = 'v3.x',
+  --   requires = {
+  --     --- Uncomment these if you want to manage LSP servers from neovim
+  --     -- {'williamboman/mason.nvim'},
+  --     -- {'williamboman/mason-lspconfig.nvim'},
+  --
+  --     -- LSP Support
+  --     { 'neovim/nvim-lspconfig' },
+  --     -- Autocompletion
+  --     { 'hrsh7th/nvim-cmp' },
+  --     { 'hrsh7th/cmp-nvim-lsp' },
+  --     { 'hrsh7th/cmp-buffer' },
+  --     { 'hrsh7th/cmp-nvim-lua' },
+  --     { 'hrsh7th/cmp-path' },
+  --     { 'hrsh7th/cmp-cmdline' },
+  --     { 'L3MON4D3/LuaSnip' },
+  --     { "rafamadriz/friendly-snippets" },
+  --     { 'saadparwaiz1/cmp_luasnip' },
+  --     -- CodeAction
+  --     {
+  --       'weilbith/nvim-code-action-menu',
+  --       cmd = 'CodeActionMenu',
+  --     }
+  --   }
+  -- }
 
   use "vim-test/vim-test"
 
-  --[[ -- coc plugins ]]
-  --[[ use { 'neoclide/coc.nvim', branch = 'release' } ]]
-  --[[ use 'fannheyward/telescope-coc.nvim' ]]
+  -- coc plugins
+  use { 'neoclide/coc.nvim', branch = 'release' }
+  use 'fannheyward/telescope-coc.nvim'
 
   use "buoto/gotests-vim"
 
@@ -147,7 +147,7 @@ return packer.startup(function(use)
   use 'voldikss/vim-translator'
 
   -- web-tools
-  use 'ray-x/web-tools.nvim'
+  -- use 'ray-x/web-tools.nvim'
   use 'NvChad/nvim-colorizer.lua'
 
   -- Automatically set up your configuration after cloning packer.nvim

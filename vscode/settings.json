@@ -3,7 +3,7 @@
   "extensions.ignoreRecommendations": true,
   "redhat.telemetry.enabled": true,
   "editor.wordWrap": "on",
-  "editor.renderWhitespace": "all",
+  "editor.renderWhitespace": "selection",
   "git.openRepositoryInParentFolders": "always",
   "explorer.confirmDelete": false,
   "editor.unicodeHighlight.nonBasicASCII": false,
@@ -21,7 +21,6 @@
     "editor.indentSize": "tabSize",
     "editor.tabSize": 2
   },
-  "workbench.colorTheme": "Default Dark+",
   "liveServer.settings.donotShowInfoMsg": true,
   "editor.formatOnSave": true,
   "html.format.enable": true,
@@ -42,6 +41,7 @@
   },
   "zenMode.fullScreen": false,
   "zenMode.hideStatusBar": false,
+  "zenMode.hideLineNumbers": false,
   // --- vim configuration ---
   //  - https://hoitz.medium.com/improved-vim-setup-in-visual-studio-code-bc579501b80c
   "vim.leader": "<space>",
@@ -49,6 +49,24 @@
   "vim.enableNeovim": true,
   // Improving the file explorer usage
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "g",
+        "i"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences",
+      ]
+    },
     {
       "before": [
         "j"
@@ -101,4 +119,6 @@
   ],
   "go.toolsManagement.autoUpdate": true,
   "editor.cursorBlinking": "solid",
+  "workbench.editor.revealIfOpen": true,
+  "workbench.colorTheme": "Default Dark+",
 }

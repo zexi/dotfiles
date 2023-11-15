@@ -63,11 +63,11 @@
     "command": "workbench.action.quickOpen",
     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
-  {
-    "key": "ctrl+p",
-    "command": "workbench.action.quickOpen",
-    "when": "!inputFocus"
-  },
+  // {
+  //   "key": "ctrl+p",
+  //   "command": "workbench.action.quickOpen",
+  //   "when": "!inputFocus"
+  // },
   {
     "key": "ctrl+e",
     "command": "workbench.action.quickOpen",
@@ -78,11 +78,11 @@
     "command": "workbench.action.showCommands",
     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
-  {
-    "key": "shift+ctrl+p",
-    "command": "workbench.action.showCommands",
-    "when": "!inputFocus"
-  },
+  // {
+  //   "key": "shift+ctrl+p",
+  //   "command": "workbench.action.showCommands",
+  //   "when": "!inputFocus"
+  // },
   {
     "key": "ctrl+,",
     "command": "workbench.action.toggleZenMode"

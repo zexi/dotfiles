@@ -70,9 +70,6 @@
   "javascript.suggest.completeFunctionCalls": false,
   "typescript.suggest.completeFunctionCalls": false,
   // "emmet.includeLanguages": {"vue-html": "html", "javascript": "javascriptreact"},
-  "translator.engines": [
-    "youdao",
-    "haici"
-  ],
   "sumneko-lua.enableNvimLuaDev": true,
+  "snippets.ultisnips.pythonPrompt": false,
 }

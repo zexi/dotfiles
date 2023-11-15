@@ -104,12 +104,11 @@ keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', { silent = true })
 
 -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
 vim.api.nvim_create_augroup("CocGroup", {})
---[[ vim.api.nvim_create_autocmd("CursorHold", { ]]
---[[   group = "CocGroup", ]]
---[[   command = "silent call CocActionAsync('highlight')", ]]
---[[   desc = "Highlight symbol under cursor on CursorHold" ]]
---[[ }) ]]
-
+-- vim.api.nvim_create_autocmd("CursorHold", {
+--   group = "CocGroup",
+--   command = "silent call CocActionAsync('highlight')",
+--   desc = "Highlight symbol under cursor on CursorHold"
+-- })
 
 -- Symbol renaming
 keyset("n", "<leader>rn", "<Plug>(coc-rename)", { silent = true })
@@ -137,15 +136,15 @@ vim.api.nvim_create_autocmd("User", {
 })
 
 -- Apply codeAction to the selected region
--- Example: `<leader>aap` for current paragraph
+-- Example: `<leader>cap` for current paragraph
 local opts = { silent = true, nowait = true }
-keyset("x", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
-keyset("n", "<leader>a", "<Plug>(coc-codeaction-selected)", opts)
+keyset("x", "<leader>c", "<Plug>(coc-codeaction-selected)", opts)
+keyset("n", "<leader>c", "<Plug>(coc-codeaction-selected)", opts)
 
 -- Remap keys for apply code actions at the cursor position.
-keyset("n", "<leader>ac", "<Plug>(coc-codeaction-cursor)", opts)
+keyset("n", "<leader>ca", "<Plug>(coc-codeaction-cursor)", opts)
 -- Remap keys for apply source code actions for current file.
-keyset("n", "<leader>as", "<Plug>(coc-codeaction-source)", opts)
+keyset("n", "<leader>cs", "<Plug>(coc-codeaction-source)", opts)
 -- Apply the most preferred quickfix action on the current line.
 keyset("n", "<leader>qf", "<Plug>(coc-fix-current)", opts)
 
@@ -205,22 +204,22 @@ vim.opt.statusline:prepend("%{coc#status()}%{get(b:,'coc_current_function','')}"
 -- code actions and coc stuff
 ---@diagnostic disable-next-line: redefined-local
 local opts = { silent = true, nowait = true }
--- Show all diagnostics
-keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
--- Manage extensions
-keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
--- Show commands
-keyset("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
+-- -- Show all diagnostics
+-- keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
+-- -- Manage extensions
+-- keyset("n", "<space>e", ":<C-u>CocList extensions<cr>", opts)
+-- -- Show commands
+-- keyset("n", "<space>c", ":<C-u>CocList commands<cr>", opts)
 -- Find symbol of current document
-keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
+-- keyset("n", "<space>o", ":<C-u>CocList outline<cr>", opts)
 -- Search workspace symbols
-keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
--- Do default action for next item
-keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
--- Do default action for previous item
-keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
--- Resume latest coc list
-keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
+-- keyset("n", "<space>s", ":<C-u>CocList -I symbols<cr>", opts)
+-- -- Do default action for next item
+-- keyset("n", "<space>j", ":<C-u>CocNext<cr>", opts)
+-- -- Do default action for previous item
+-- keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
+-- -- Resume latest coc list
+-- keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
 
 vim.g.coc_global_extensions = {
   -- 'coc-translator',
@@ -232,11 +231,12 @@ vim.g.coc_global_extensions = {
   'coc-css',
   'coc-tsserver',
   -- 'coc-vetur',
-  -- 'coc-emmet',
+  'coc-emmet',
   'coc-highlight',
   'coc-java',
   'coc-rls',
   'coc-sumneko-lua',
+  'coc-snippets',
   -- 'coc-go'
 }
 
