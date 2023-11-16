@@ -38,6 +38,10 @@ patch:
       ascii_mode: true
       no_inline: true
       vim_mode: true
+    com.jetbrains.pycharm.ce:
+      ascii_mode: true
+      no_inline: true
+      vim_mode: true
     org.alacritty:
       ascii_mode: true
       no_inline: true
