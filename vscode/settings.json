@@ -116,9 +116,35 @@
         "editor.action.rename"
       ]
     },
+    {
+      "before": [
+        "]",
+        "d",
+      ],
+      "commands": [
+        "editor.action.marker.next",
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "d",
+      ],
+      "commands": [
+        "editor.action.marker.prev",
+      ]
+    },
+    {
+      "before": [
+        "K",
+      ],
+      "commands": [
+        "editor.action.showDefinitionPreviewHover"
+      ]
+    }
   ],
   "go.toolsManagement.autoUpdate": true,
   "editor.cursorBlinking": "solid",
-  "workbench.editor.revealIfOpen": true,
+  // "workbench.editor.revealIfOpen": true,
   "workbench.colorTheme": "Default Dark+",
 }

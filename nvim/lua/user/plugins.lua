@@ -77,40 +77,40 @@ return packer.startup(function(use)
     requires = "rktjmp/lush.nvim"
   }
 
-  -- -- LSP and completion
-  -- use {
-  --   'VonHeikemen/lsp-zero.nvim',
-  --   branch = 'v3.x',
-  --   requires = {
-  --     --- Uncomment these if you want to manage LSP servers from neovim
-  --     -- {'williamboman/mason.nvim'},
-  --     -- {'williamboman/mason-lspconfig.nvim'},
-  --
-  --     -- LSP Support
-  --     { 'neovim/nvim-lspconfig' },
-  --     -- Autocompletion
-  --     { 'hrsh7th/nvim-cmp' },
-  --     { 'hrsh7th/cmp-nvim-lsp' },
-  --     { 'hrsh7th/cmp-buffer' },
-  --     { 'hrsh7th/cmp-nvim-lua' },
-  --     { 'hrsh7th/cmp-path' },
-  --     { 'hrsh7th/cmp-cmdline' },
-  --     { 'L3MON4D3/LuaSnip' },
-  --     { "rafamadriz/friendly-snippets" },
-  --     { 'saadparwaiz1/cmp_luasnip' },
-  --     -- CodeAction
-  --     {
-  --       'weilbith/nvim-code-action-menu',
-  --       cmd = 'CodeActionMenu',
-  --     }
-  --   }
-  -- }
+  -- LSP and completion
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
+    requires = {
+      --- Uncomment these if you want to manage LSP servers from neovim
+      -- {'williamboman/mason.nvim'},
+      -- {'williamboman/mason-lspconfig.nvim'},
+
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' },
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-cmdline' },
+      { 'L3MON4D3/LuaSnip' },
+      { "rafamadriz/friendly-snippets" },
+      { 'saadparwaiz1/cmp_luasnip' },
+      -- CodeAction
+      {
+        'weilbith/nvim-code-action-menu',
+        cmd = 'CodeActionMenu',
+      }
+    }
+  }
 
   use "vim-test/vim-test"
 
-  -- coc plugins
-  use { 'neoclide/coc.nvim', branch = 'release' }
-  use 'fannheyward/telescope-coc.nvim'
+  -- -- coc plugins
+  -- use { 'neoclide/coc.nvim', branch = 'release' }
+  -- use 'fannheyward/telescope-coc.nvim'
 
   use "buoto/gotests-vim"
 
