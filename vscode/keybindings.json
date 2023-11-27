@@ -43,7 +43,7 @@
     "when": "!editorTextFocus && !inputFocus"
   },
   {
-    "key": "cmd+enter",
+    "key": "shift+enter",
     "command": "renameFile",
     "when": "explorerViewletVisible && filesExplorerFocus"
   },
