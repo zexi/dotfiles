@@ -11,7 +11,15 @@ end
 -- config.color_scheme = 'Tomorrow Night'
 -- config.color_scheme = 'GitHub Dark'
 config.color_scheme = 'Vs Code Dark+ (Gogh)'
-config.font = wezterm.font 'Hack Nerd Font'
+config.bold_brightens_ansi_colors = 'BrightAndBold'
+config.font = wezterm.font_with_fallback {
+  'Hack Nerd Font',
+  'Monaco',
+}
+
 config.hide_tab_bar_if_only_one_tab = true
+-- https://github.com/wez/wezterm/issues/3774#issuecomment-1791730581
+config.freetype_load_flags = 'NO_HINTING'
+config.audible_bell = 'Disabled'
 
 return config

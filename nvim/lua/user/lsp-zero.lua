@@ -145,15 +145,15 @@ cmp.setup({
       name = 'buffer',
       keyword_length = 2,
       priority = 7,
-      --[[ option = { ]]
-      --[[   get_bufnrs = function() ]]
-      --[[     local bufs = {} ]]
-      --[[     for _, win in ipairs(vim.api.nvim_list_wins()) do ]]
-      --[[       bufs[vim.api.nvim_win_get_buf(win)] = true ]]
-      --[[     end ]]
-      --[[     return vim.tbl_keys(bufs) ]]
-      --[[   end ]]
-      --[[ } ]]
+      option = {
+        get_bufnrs = function()
+          local bufs = {}
+          for _, win in ipairs(vim.api.nvim_list_wins()) do
+            bufs[vim.api.nvim_win_get_buf(win)] = true
+          end
+          return vim.tbl_keys(bufs)
+        end
+      }
       -- REF: https://github.com/hrsh7th/cmp-buffer#get_bufnrs-type-fun-number
     },
     { name = 'nvim_lua', keyword_length = 1, priority = 5 },

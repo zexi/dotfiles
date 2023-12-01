@@ -85,7 +85,7 @@ local mappings = {
   --   "Buffers",
   -- },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
-  ["E"] = { "<cmd>NvimTreeFocus<cr>", "Explorer Focus" },
+  -- ["E"] = { "<cmd>NvimTreeFocus<cr>", "Explorer Focus" },
   -- ["w"] = { "<cmd>w!<CR>", "Save" },
   -- ["q"] = { "<cmd>q!<CR>", "Quit" },
   -- ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
@@ -173,6 +173,7 @@ local mappings = {
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+    n = { "<cmd>NvimTreeFocus<cr>", "Explorer Focus" }
   },
 
   -- t = {
