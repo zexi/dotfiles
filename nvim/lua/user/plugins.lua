@@ -54,6 +54,7 @@ return packer.startup(function(use)
   use { "nvim-tree/nvim-tree.lua",
     require = "nvim-tree/nvim-web-devicons" }
   use "tpope/vim-surround"
+  use "tpope/vim-eunuch"
   use "tpope/vim-repeat"
   use "nvim-lualine/lualine.nvim"
   use "akinsho/toggleterm.nvim"
