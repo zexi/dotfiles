@@ -14,7 +14,8 @@ vim.cmd [[
     autocmd!
     autocmd FileType markdown setlocal wrap
     " autocmd FileType markdown setlocal spell
-    autocmd FileType tex,markdown setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+    autocmd FileType markdown setlocal expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=4
+    autocmd FileType tex setlocal expandtab tabstop=2 shiftwidth=2 smarttab softtabstop=2
   augroup end
 
   augroup _file_type_setting

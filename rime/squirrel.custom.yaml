@@ -22,6 +22,9 @@ patch:
     com.microsoft.VSCode:
       ascii_mode: true
       vim_mode: true
+    md.obsidian:
+      ascii_mode: true
+      vim_mode: true
     com.apple.Terminal:
       ascii_mode: true
       no_inline: true
