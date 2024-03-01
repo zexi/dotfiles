@@ -3,10 +3,13 @@ require 'obsidian'.setup({
   workspaces = {
     {
       name = "personal",
-      path = "~/Library/Mobile Documents/com~apple~CloudDocs/notebooks"
+      path = "/Users/lzx/Documents/notebooks/my-templates"
     },
   },
   disable_frontmatter = true,
+  ui = {
+    enable = false
+  },
   note_id_func = function(title)
     -- only use file title
     return title
