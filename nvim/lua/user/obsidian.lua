@@ -3,7 +3,7 @@ require 'obsidian'.setup({
   workspaces = {
     {
       name = "personal",
-      path = "/Users/lzx/Documents/notebooks/my-templates"
+      path = "/Users/lzx/Library/Mobile Documents/iCloud~md~obsidian/Documents/notebooks"
     },
   },
   disable_frontmatter = true,

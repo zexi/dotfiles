@@ -17,6 +17,7 @@ config.font = wezterm.font_with_fallback {
   'Monaco',
   'Kaiti SC',
 }
+config.font_size = 14
 
 config.hide_tab_bar_if_only_one_tab = true
 -- https://github.com/wez/wezterm/issues/3774#issuecomment-1791730581
