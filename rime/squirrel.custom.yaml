@@ -1,5 +1,5 @@
 patch:
-  # style/candidate_list_layout: linear
+  style/candidate_list_layout: linear
   style/color_scheme: mojave_dark
   style/color_scheme_dark: mojave_dark
   # preset_color_schemes/purity_of_form_custom/candidate_list_layout: liner

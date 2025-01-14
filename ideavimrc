@@ -83,3 +83,5 @@ nnoremap <C-H> <C-W><C-H>
 
 nnoremap [[ :action MethodUp<CR>
 nnoremap ]] :action MethodDown<CR>
+nmap <Tab> <Action>(NextTab)
+nmap <S-Tab> <Action>(PreviousTab)
