@@ -1,0 +1,82 @@
+{
+    "editor.wordWrap": "on",
+    "editor.accessibilitySupport": "off",
+    "files.autoSave": "afterDelay",
+    "workbench.colorTheme": "Default Dark Modern"
+  "vim.leader": "<space>",
+  "vim.hlsearch": true,
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "g",
+        "i"
+      ],
+      "commands": [
+        "editor.action.goToImplementation"
+      ]
+    },
+    {
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences",
+      ]
+    },
+    {
+      "before": [
+        "j"
+      ],
+      "after": [
+        "g",
+        "j"
+      ]
+    },
+    {
+      "before": [
+        "k"
+      ],
+      "after": [
+        "g",
+        "k"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "r",
+        "n"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "d",
+      ],
+      "commands": [
+        "editor.action.marker.next",
+      ]
+    },
+    {
+      "before": [
+        "[",
+        "d",
+      ],
+      "commands": [
+        "editor.action.marker.prev",
+      ]
+    },
+    {
+      "before": [
+        "K",
+      ],
+      "commands": [
+        "editor.action.showDefinitionPreviewHover"
+      ]
+    }
+  ],
+}
