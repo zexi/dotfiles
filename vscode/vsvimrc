@@ -2,3 +2,7 @@ nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
+
+" 解决跳转到实现时进入 visual 模式的问题
+" 监听编辑器焦点变化，确保在跳转后保持在 normal 模式
+autocmd FocusGained * if mode() ==# 'v' || mode() ==# 'V' || mode() ==# '' | call feedkeys("\<Esc>", 'n') | endif

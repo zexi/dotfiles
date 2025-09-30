@@ -55,14 +55,14 @@
   "vim.vimrc.enable": true,
   "vim.vimrc.path": "~/.vsvimrc",
   "vim.enableNeovim": true,
-  // Improving the file explorer usage
-  "vim.visualModeKeyBindings": [
+  "multiCommand.commands": [
     {
-      "before": [
-        "g",
-        "d"
-      ],
-      "after": []
+      "command": "multiCommand.GoToReference",
+      "sequence": [
+        "revealReference",
+        "closeReferenceSearch",
+        "extension.vim_escape"
+      ]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -72,6 +72,7 @@
         "d"
       ],
       "commands": [
+        // "editor.action.revealDefinitionAside"
         "editor.action.revealDefinition"
       ]
     },
@@ -90,7 +91,7 @@
         "r"
       ],
       "commands": [
-        "editor.action.goToReferences",
+        "editor.action.goToReferences"
       ]
     },
     {

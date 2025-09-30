@@ -79,5 +79,10 @@
   {
     "key": "cmd+i",
     "command": "composerMode.agent"
+  },
+  {
+    "key": "enter",
+    "command": "multiCommand.GoToReference",
+    "when": "(inReferenceSearchEditor || referenceSearchVisible) && !treeElementCanCollapse && !treeElementCanExpand"
   }
 ]
