@@ -36,27 +36,6 @@
     "command": "workbench.action.focusBelowGroup",
     "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
   },
-  // file explore
-  {
-    "key": " e",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "!editorTextFocus && !inputFocus"
-  },
-  {
-    "key": "shift+enter",
-    "command": "renameFile",
-    "when": "explorerViewletVisible && filesExplorerFocus"
-  },
-  {
-    "key": "enter",
-    "command": "-renameFile",
-    "when": "explorerViewletVisible && filesExplorerFocus"
-  },
-  {
-    "key": "enter",
-    "command": "list.select",
-    "when": "listFocus && !inputFocus"
-  },
   // quickOpen
   {
     "key": "ctrl+p",
@@ -96,5 +75,9 @@
     "key": "ctrl+k",
     "command": "jumpToPrevSnippetPlaceholder",
     "when": "editorTextFocus && hasPrevTabstop && inSnippetMode"
+  },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
   }
 ]

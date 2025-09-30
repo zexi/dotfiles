@@ -52,9 +52,29 @@
   //  - https://hoitz.medium.com/improved-vim-setup-in-visual-studio-code-bc579501b80c
   "vim.leader": "<space>",
   "vim.hlsearch": true,
+  "vim.vimrc.enable": true,
+  "vim.vimrc.path": "~/.vsvimrc",
   "vim.enableNeovim": true,
   // Improving the file explorer usage
+  "vim.visualModeKeyBindings": [
+    {
+      "before": [
+        "g",
+        "d"
+      ],
+      "after": []
+    }
+  ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [
+        "g",
+        "d"
+      ],
+      "commands": [
+        "editor.action.revealDefinition"
+      ]
+    },
     {
       "before": [
         "g",
@@ -153,4 +173,13 @@
   "editor.cursorBlinking": "solid",
   // "workbench.editor.revealIfOpen": true,
   "workbench.colorTheme": "Default Dark+",
+  "[dockercompose]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2,
+    "editor.autoIndent": "advanced",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "[github-actions-workflow]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  }
 }
