@@ -22,7 +22,6 @@
     "editor.tabSize": 2
   },
   "liveServer.settings.donotShowInfoMsg": true,
-  "editor.formatOnSave": true,
   "html.format.enable": true,
   "[html]": {
     "editor.insertSpaces": true,
@@ -66,6 +65,15 @@
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
+    // https://github.com/VSCodeVim/Vim/issues/3277#issuecomment-2568837388
+    {
+        "before": [ "<C-o>" ],
+        "commands": [{"command": "workbench.action.navigateBack"}]
+    },
+    {
+        "before": [ "<C-i>" ],
+        "commands": [{"command": "workbench.action.navigateForward"}]
+    },
     {
       "before": [
         "g",
@@ -182,6 +190,5 @@
   },
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "workbench.editor.revealIfOpen": true
+  }
 }
