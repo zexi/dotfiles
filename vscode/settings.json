@@ -190,5 +190,6 @@
   },
   "[github-actions-workflow]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
-  }
+  },
+  "git.blame.statusBarItem.enabled": false
 }

@@ -77,6 +77,6 @@ cmd + shift - 9 : yabai -m window --space 9
 
 # open terminal
 # cmd - return : open -n /Applications/Alacritty.app/
-cmd - return : open -n /Applications/WezTerm.app
+# cmd - return : open -n /Applications/WezTerm.app
 # cmd - return : open /Applications/kitty.app/
 # cmd - return : open -n /Applications/iTerm.app
