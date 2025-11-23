@@ -192,5 +192,6 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "git.blame.statusBarItem.enabled": true,
-  "git.blame.editorDecoration.enabled": true
+  "git.blame.editorDecoration.enabled": true,
+  "editor.cursorSurroundingLines": 99
 }

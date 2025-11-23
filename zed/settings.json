@@ -11,6 +11,8 @@
   "soft_wrap": "editor_width",
   "base_keymap": "VSCode",
   "vim_mode": true,
+  // https://github.com/zed-industries/zed/issues/9447: keep cursor centered
+  "vertical_scroll_margin": 99,
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "theme": {
