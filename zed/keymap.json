@@ -1,0 +1,38 @@
+// reference from: https://github.com/jellydn/zed-101-setup
+
+[
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // put key-bindings here if you want them to work only in normal mode
+      // Window movement bindings
+      // Ctrl jklk to move between panes
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      // lsp key bindings
+      "g r": "editor::FindAllReferences"
+      // gd: jump to definition and center the line
+      // Try one of these action names if the current one doesn't work:
+      // "editor::GoToDefinition", "workspace::GoToDefinition", "lsp::GoToDefinition"
+      // ref: https://github.com/zed-industries/zed/discussions/9494#discussioncomment-14968622
+      // "g d": [
+      //   "action::Sequence", ["editor::GoToDefinition", "editor::ScrollCursorCenter"]
+      // ]
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-\\": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "j": ["vim::Down", { "display_lines": true }],
+      "k": ["vim::Up", { "display_lines": true }]
+    }
+  }
+]
