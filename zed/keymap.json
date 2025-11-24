@@ -25,7 +25,8 @@
   {
     "context": "Workspace",
     "bindings": {
-      "ctrl-\\": "terminal_panel::ToggleFocus"
+      // "ctrl-\\": "terminal_panel::ToggleFocus"
+      "ctrl-\\": "workspace::ToggleBottomDock"
     }
   },
   {
