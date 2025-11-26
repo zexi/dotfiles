@@ -193,5 +193,7 @@
   },
   "git.blame.statusBarItem.enabled": true,
   "git.blame.editorDecoration.enabled": true,
-  "editor.cursorSurroundingLines": 99
+  "editor.cursorSurroundingLines": 99,
+  "sonarlint.automaticAnalysis": false,
+  "java.gradle.buildServer.enabled": "off"
 }
